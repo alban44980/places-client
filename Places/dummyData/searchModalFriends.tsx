@@ -4,9 +4,11 @@
 
 
 const searchModalFriends = [
-  {name: 'Will', placesCount: 140},
-  {name: 'Julianna', placesCount: 14},
-  {name: 'Alban', placesCount: 1},
-  {name: 'Adriano', placesCount: 40},
-  {name: 'Connor', placesCount: 52},
+  {name: 'Will', placeCount: 140},
+  {name: 'Julianna', placeCount: 14},
+  {name: 'Alban', placeCount: 1},
+  {name: 'Adriano', placeCount: 40},
+  {name: 'Connor', placeCount: 52},
 ]
+
+module.exports = searchModalFriends
