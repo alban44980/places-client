@@ -2,16 +2,20 @@ import React from 'react';
 import {StyleSheet, View, Text, FlatList} from 'react-native';
 
 
-const sampleFriendsList = [
-  {name: 'Will', profilePicture: ''}
-]
+
 
 
 
 function FriendPlacesFilter() {
   return (
     <View style={styles.friendFilterListContainer}>
-      {/* <FlatList /> */}
+      {/* <FlatList 
+        style={styles.list}
+        contentContainerStyle = {styles.listContainerStyle}
+        horizontal={true}
+        data={}
+        renderItem={}
+      /> */}
     </View>
   );
 }
@@ -24,4 +28,9 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: 'yellow'
   },
+
+  list: {},
+
+  listContainerStyle: {},
+
 })
