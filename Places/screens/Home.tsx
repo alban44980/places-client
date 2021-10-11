@@ -8,10 +8,13 @@ import {
   TouchableOpacity,
   ListViewBase,
 } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/reducers/reducers';
 import HomeList from '../components/HomeList/HomeList';
 import SearchModal from '../components/SearchModal/SearchModal';
+import allFriendsCities from '../dummyData/allFriendsCities';
+import homeScreenPlaces from '../dummyData/homeScreenPlaces';
+import homeScreenFriends from '../dummyData/homeScreenFriends';
 
 function Home() {
   const [friends, setFriends] = useState<any[]>([]); //Interface Friend
@@ -20,9 +23,11 @@ function Home() {
   const [searchVisible, setSearchVisible] = useState<Boolean>(false);
 
   const userInfo: any = useSelector((state: RootState) => state.userInfo);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     console.log('useEffect running');
+    setCities(allFriendsCities);
     //Apicall to get the data
 
     // update userInfo state
