@@ -16,15 +16,15 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: 'rgba(0, 0, 0, 0.7)',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
 
-  fontStyle: {
-    color: 'white',
-  },
-});
+//   fontStyle: {
+//     color: 'white',
+//   },
+// });
