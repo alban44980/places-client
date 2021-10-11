@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/reducers/reducers';
+import SearchModal from '../components/SearchModal/SearchModal';
 
 function Home() {
   const [friends, setFriends] = useState<any[]>([]); //Interface Friend
@@ -16,25 +17,36 @@ function Home() {
   const [recentlyAdded, setRecentlyAdded] = useState<any[]>([]); //Interface Place
   const [searchVisible, setSearchVisible] = useState<Boolean>(false);
 
+
+
   const userInfo: any = useSelector((state: RootState) => state.userInfo);
 
   function handlePress() {
-    // setSearchVisible(true);
-    console.log('handlepress triggered');
+    setSearchVisible(true);
   }
 
   return (
     <View style={styles.container}>
-      {/* {searchVisible && <SearchModal/>} */}
+
+      { searchVisible && ( 
+        <SearchModal 
+          searchVisible={searchVisible} 
+          setSearchVisible={setSearchVisible} 
+        /> 
+        )
+      }
+
       <View style={styles.topContainer}>
         <Text style={styles.text}>MY PLACES</Text>
       </View>
+
       <TouchableOpacity style={styles.searchTouchable} onPress={handlePress}>
         <TextInput
           placeholder="Where are you going ?"
           style={styles.searchBar}
         />
       </TouchableOpacity>
+
     </View>
   );
 }
