@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    // backgroundColor: 'rgba(0, 0, 0, 0.7)',
     display: 'flex',
     flexDirection: 'column',
   },
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   searchTouchable: {
-    height: '15%',
+    height: '10%',
     width: '100%',
     backgroundColor: 'white',
     display: 'flex',
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   },
   searchContainer: {
     width: '80%',
-    height: '60%',
+    height: '70%',
     backgroundColor: 'green',
     justifyContent: 'center',
     borderRadius: 20,
@@ -95,8 +95,8 @@ const styles = StyleSheet.create({
   },
   listsContainer: {
     width: '100%',
-    height: '45%',
-    backgroundColor: 'purple',
+    height: '50%',
+    // backgroundColor: 'purple',
     justifyContent: 'space-evenly',
   },
   navBarContainer: {
