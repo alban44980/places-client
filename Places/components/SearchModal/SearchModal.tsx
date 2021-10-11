@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {StyleSheet, View, Text, Modal, SafeAreaView, TouchableOpacity, TextInput} from 'react-native';
+import {StyleSheet, View, Text, Modal, SafeAreaView, TouchableOpacity, TextInput, TouchableWithoutFeedback} from 'react-native';
+import FilterModal from './FilterModal';
 import FriendPlacesFilter from './FriendPlacesFilter';
 import PlacesList from './PlacesList';
 import SearchBar from './SearchBar';
@@ -15,8 +16,6 @@ What should the layout look like?
 ---- horizontal friends list  ---> seperate component
 -- Vertical list container ----> placeholder with background color and flex properties
 ---- vertical places list  ---> seperate component
-
-
 */
 
 
@@ -25,8 +24,11 @@ What should the layout look like?
 function SearchModal(props: any) {
 
   const {searchVisible, setSearchVisible} = props
+  const [filterModalVisible, setFilterModalVisible] = useState<Boolean>(false)
 
-
+  const handlePress = () => {
+    setFilterModalVisible(!filterModalVisible)
+  }
 
   return (
     <Modal
@@ -37,21 +39,31 @@ function SearchModal(props: any) {
         setSearchVisible(false);
        }}
     >
-      <SafeAreaView style={styles.modalContainer}>
-        
-          <TouchableOpacity style={styles.backButtonContainer} onPress={() => setSearchVisible(false)}>
-              <Text style={styles.backButtonText}>Back</Text>
-          </TouchableOpacity>
+
+        <SafeAreaView style={styles.modalContainer}>
+
+          {
+          filterModalVisible && 
+            <FilterModal  
+              filterModalVisible={filterModalVisible}
+              setFilterModalVisible={setFilterModalVisible} 
+              handlePress={handlePress}
+            />
+          } 
+
+            <TouchableOpacity 
+              style={styles.backButtonContainer} 
+              onPress={() => setSearchVisible(!searchVisible)}
+            >
+              <Text style={styles.backButtonText}>Get Back Home 😰</Text>
+            </TouchableOpacity>
+
+            <SearchBar handlePress={handlePress}/>
+            <FriendPlacesFilter />
+            <PlacesList />
 
 
-          <SearchBar />
-
-          <FriendPlacesFilter />
-
-          <PlacesList />
-
-      
-      </SafeAreaView>
+        </SafeAreaView>
     </Modal>
   );
 }
@@ -62,7 +74,7 @@ export default SearchModal;
 const styles = StyleSheet.create({
   modalContainer: {
     flex: 1, 
-    backgroundColor: 'white'
+    backgroundColor: 'black'
   },
 
   backButtonContainer: {

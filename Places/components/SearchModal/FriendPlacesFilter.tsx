@@ -1,6 +1,13 @@
 import React from 'react';
 import {StyleSheet, View, Text, FlatList} from 'react-native';
 
+
+const sampleFriendsList = [
+  {name: 'Will', profilePicture: ''}
+]
+
+
+
 function FriendPlacesFilter() {
   return (
     <View style={styles.friendFilterListContainer}>

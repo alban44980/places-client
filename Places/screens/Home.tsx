@@ -33,7 +33,7 @@ function Home() {
   }, []);
 
   function handlePress() {
-    setSearchVisible(true);
+    setSearchVisible(!searchVisible);
   }
 
   return (
