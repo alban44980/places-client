@@ -3,11 +3,11 @@
 
 
 const allFriendsCities = [
-  {name: 'Barcelona', image: 'string'},
-  {name: 'Rome', image: 'string'},
-  {name: 'Philly', image: 'string'},
-  {name: 'Paris', image: 'string'},
-  {name: 'London', image: 'string'},
+  {name: 'Barcelona', image: '../../assets/dummy-photos/dummyphoto.jpeg'},
+  {name: 'Rome', image: '../../assets/dummy-photos/dummyphoto.jpeg'},
+  {name: 'Philly', image: '../../assets/dummy-photos/dummyphoto.jpeg'},
+  {name: 'Paris', image: '../../assets/dummy-photos/dummyphoto.jpeg'},
+  {name: 'London', image: '../../assets/dummy-photos/dummyphoto.jpeg'},
 ]
 
 module.exports = allFriendsCities
