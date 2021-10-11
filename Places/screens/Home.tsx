@@ -6,9 +6,11 @@ import {
   TextInput,
   Button,
   TouchableOpacity,
+  ListViewBase,
 } from 'react-native';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/reducers/reducers';
+import HomeList from '../components/HomeList/HomeList';
 import SearchModal from '../components/SearchModal/SearchModal';
 
 function Home() {
@@ -20,6 +22,15 @@ function Home() {
 
 
   const userInfo: any = useSelector((state: RootState) => state.userInfo);
+
+  useEffect(() => {
+    console.log('useEffect running');
+    //Apicall to get the data
+
+    // update userInfo state
+
+    // set friends, cities, recentlyAdded
+  }, []);
 
   function handlePress() {
     setSearchVisible(true);
@@ -41,12 +52,16 @@ function Home() {
       </View>
 
       <TouchableOpacity style={styles.searchTouchable} onPress={handlePress}>
-        <TextInput
-          placeholder="Where are you going ?"
-          style={styles.searchBar}
-        />
+        <View style={styles.searchContainer}>
+          <Text style={styles.searchBar}>Where are you going ?</Text>
+        </View>
       </TouchableOpacity>
-
+      <View style={styles.listsContainer}>
+        <HomeList />
+        <HomeList />
+        <HomeList />
+      </View>
+      <View style={styles.navBarContainer}></View>
     </View>
   );
 }
@@ -55,11 +70,9 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    // backgroundColor: 'rgba(0, 0, 0, 0.7)',
     display: 'flex',
     flexDirection: 'column',
-    // justifyContent: 'center',
-    // alignItems: 'center',
   },
   topContainer: {
     height: '30%',
@@ -72,17 +85,34 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 30,
   },
-  inputContainer: {
-    backgroundColor: 'green',
-  },
   searchTouchable: {
-    height: 100,
+    height: '10%',
     width: '100%',
     backgroundColor: 'white',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  searchContainer: {
+    width: '80%',
+    height: '70%',
+    backgroundColor: 'green',
+    justifyContent: 'center',
+    borderRadius: 20,
   },
   searchBar: {
-    width: '80%',
-    height: 50,
+    width: '100%',
+    textAlign: 'center',
+  },
+  listsContainer: {
+    width: '100%',
+    height: '50%',
+    // backgroundColor: 'purple',
+    justifyContent: 'space-evenly',
+  },
+  navBarContainer: {
+    width: '100%',
+    height: '10%',
     backgroundColor: 'yellow',
   },
 });
