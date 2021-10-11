@@ -19,8 +19,6 @@ function Home() {
   const [recentlyAdded, setRecentlyAdded] = useState<any[]>([]); //Interface Place
   const [searchVisible, setSearchVisible] = useState<Boolean>(false);
 
-
-
   const userInfo: any = useSelector((state: RootState) => state.userInfo);
 
   useEffect(() => {
@@ -38,14 +36,12 @@ function Home() {
 
   return (
     <View style={styles.container}>
-
-      { searchVisible && ( 
-        <SearchModal 
-          searchVisible={searchVisible} 
-          setSearchVisible={setSearchVisible} 
-        /> 
-        )
-      }
+      {searchVisible && (
+        <SearchModal
+          searchVisible={searchVisible}
+          setSearchVisible={setSearchVisible}
+        />
+      )}
 
       <View style={styles.topContainer}>
         <Text style={styles.text}>MY PLACES</Text>
@@ -61,7 +57,6 @@ function Home() {
         <HomeList />
         <HomeList />
       </View>
-      <View style={styles.navBarContainer}></View>
     </View>
   );
 }
@@ -106,14 +101,10 @@ const styles = StyleSheet.create({
   },
   listsContainer: {
     width: '100%',
-    height: '50%',
+    height: '55%',
     // backgroundColor: 'purple',
     justifyContent: 'space-evenly',
-  },
-  navBarContainer: {
-    width: '100%',
-    height: '10%',
-    backgroundColor: 'yellow',
+    // backgroundColor: 'yellow',
   },
 });
 
