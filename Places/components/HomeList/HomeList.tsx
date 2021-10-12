@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, ScrollView } from 'react-native';
 import HomeListItem from './HomeListItem';
 
-function HomeList({ friends }: any) {
+function HomeList({ friends, allFriendsCities, homeScreenPlaces }: any) {
   return (
     <ScrollView
       style={styles.homeListContainer}
@@ -13,6 +13,26 @@ function HomeList({ friends }: any) {
         {friends
           ? friends.map((friend: any) => {
               return <HomeListItem key={friend.name} friend={friend} />;
+            })
+          : null}
+        {allFriendsCities
+          ? allFriendsCities.map((allFriendsCitie: any) => {
+              return (
+                <HomeListItem
+                  key={allFriendsCitie.image}
+                  allFriendsCitie={allFriendsCitie}
+                />
+              );
+            })
+          : null}
+        {homeScreenPlaces
+          ? homeScreenPlaces.map((homeScreenPlace: any) => {
+              return (
+                <HomeListItem
+                  key={homeScreenPlace.name}
+                  homeScreenPlace={homeScreenPlace}
+                />
+              );
             })
           : null}
 
