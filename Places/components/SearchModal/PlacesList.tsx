@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, View, Text, FlatList, Image} from 'react-native';
 import places from './../../dummyData/placesList'
-
+import LIContentSection from './PlacesListItemContentSection'
 
 
 
@@ -26,16 +26,10 @@ const data = places
               <Image 
                 source={{uri: item.img}} 
                 style={styles.imageStyle}
+                
               />
-              <View style={styles.itemContentContainer}>
-                <View style={styles.itemHeaderBar}>
-                  <Text>{item.name}</Text>
-                </View>
-                <View style={styles.itemContentSection}>
-                  <Text>{item.city}</Text>
-                </View>
-
-              </View>
+              <LIContentSection item={item}/>
+      
             </View>
           )
         }
@@ -56,12 +50,13 @@ const styles = StyleSheet.create({
 
   flatListStyle: {
     backgroundColor: 'gray',
-    width: '85%',
+    width: '90%',
     height:'90%'
   },
 
   flatListContContStyle: {
-    // alignItems: 'center'
+    alignItems: 'center'
+
   },
 
   itemElementStyle: {
@@ -72,24 +67,10 @@ const styles = StyleSheet.create({
   },
 
   imageStyle: {
-    height: '60%',
+    height: '50%',
     width: '100%',
+    resizeMode: 'contain'
   },
-
-  itemContentContainer: {
-    backgroundColor: 'white',
-    flex: 1
-  },
-
-  itemHeaderBar: {
-    height: '40%',
-    backgroundColor: 'lightblue'
-  },
-
-  itemContentSection: {
-    height: '60%',
-    backgroundColor: 'white'
-  }
 
 
 })
