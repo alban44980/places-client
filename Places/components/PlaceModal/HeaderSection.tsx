@@ -1,7 +1,7 @@
 import {StyleSheet, View, Text} from 'react-native';
 import React from 'react';
 
-function HeaderSection(props) {
+function HeaderSection(props: any) {
   const {place} = props
   return (
     <View style={styles.headerContainer}>

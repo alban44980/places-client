@@ -2,7 +2,7 @@ import {StyleSheet, View, Text, TouchableHighlight} from 'react-native';
 
 import React from 'react';
 
-function CloseButton(props) {
+function CloseButton(props: any) {
 
   const {handlePress} = props
 

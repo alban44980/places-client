@@ -5,6 +5,7 @@ import FilterModal from './FilterModal';
 import FriendPlacesFilter from './FriendPlacesFilter';
 import PlacesList from './PlacesList/PlacesList';
 import SearchBar from './SearchBar';
+import colors from '../../assets/styles/colors';
 
 
 /*
@@ -49,7 +50,6 @@ function SearchModal(props: any) {
     >
 
         <SafeAreaView style={styles.modalContainer}>
-          {/* Both filterModalVisible and placeModalVisible toggle whether modal appears */}
 
           {
           filterModalVisible && 
@@ -93,18 +93,18 @@ export default SearchModal;
 const styles = StyleSheet.create({
   modalContainer: {
     flex: 1, 
-    backgroundColor: 'black'
+    backgroundColor: colors.backgroundDark
   },
 
   backButtonContainer: {
     height: '7%',
     width: '100%',
-    backgroundColor: 'blue',
+    backgroundColor: colors.backgroundDark,
     justifyContent: 'center'
   },
 
   backButtonText: {
-    color: 'white',
+    color: colors.fontLight,
     textAlign: 'center'
   },
 

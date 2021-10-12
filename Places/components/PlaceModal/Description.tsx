@@ -2,7 +2,7 @@ import {StyleSheet, View, Text, ScrollView} from 'react-native';
 
 import React from 'react';
 
-function Description(props) {
+function Description(props: any) {
   const {place} = props
   return (
     <View style={styles.descriptionContainer}>

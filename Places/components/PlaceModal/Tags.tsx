@@ -17,7 +17,16 @@ function Tags() {
 
   return (
     <View style={styles.tagSectionContainer}>
-     <Text>{dummyTags[0]}</Text>
+      {
+        dummyTags.map((tag) => {
+          return (
+            <View style={styles.tagContainer}>
+              <Text style={styles.tagText}>{tag}</Text>
+            </View>
+          )
+        })
+      }
+     
     </View>
   );
 }
@@ -26,21 +35,29 @@ export default Tags;
 
 const styles = StyleSheet.create({
   tagSectionContainer: {
-    height: '5%',
+    height: '15%',
     width: '90%',
-    backgroundColor: 'pink'
+    backgroundColor: 'pink',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-evenly',
+    alignContent: 'center'
   },
 
   tagContainer: {
-    height: '10%',
-    width: '15%',
-    backgroundColor: 'blue'
+    height: '22%',
+    width: '27%',
+    backgroundColor: 'darkblue',
+    borderRadius: 10,
+    margin: 4,
+    justifyContent: 'center'
   },
 
   tagText: {
-    fontSize: 10,
-    fontWeight: '400',
-    color: 'white'
+    fontSize: 11,
+    fontWeight: '600',
+    color: 'white',
+    textAlign: 'center'
   }
   
 })

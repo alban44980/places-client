@@ -2,7 +2,7 @@ import {StyleSheet, View, Text, Image} from 'react-native';
 
 import React from 'react';
 
-function PlaceImage(props) {
+function PlaceImage(props: any) {
   const {place} = props
   return (
     <View style={styles.imageContainer}>
