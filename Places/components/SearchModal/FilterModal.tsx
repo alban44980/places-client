@@ -1,5 +1,8 @@
 import React from 'react';
 import {StyleSheet, View, Text, Modal, TouchableOpacity} from 'react-native';
+import colors from '../../assets/styles/colors';
+
+
 
 function FilterModal(props: any) {
 
@@ -43,7 +46,7 @@ const styles = StyleSheet.create({
   filterModalContainer: {
     height: '35%',
     width: '75%',
-    backgroundColor: 'pink',
+    backgroundColor: colors.backgroundDark,
     position: 'absolute',
     top: '21%',
     alignSelf: 'center'
@@ -51,11 +54,11 @@ const styles = StyleSheet.create({
 
   tagsListContainer: {
     height: '80%',
-    backgroundColor: 'lightblue'
+    backgroundColor: colors.backgroundDark
   },
 
   buttonsContainer: {
-    backgroundColor: 'gray',
+    backgroundColor: colors.backgroundLight,
     height: '20%',
     width: '100%',
     justifyContent: 'center',
@@ -64,12 +67,15 @@ const styles = StyleSheet.create({
 
   acceptButton: {
     width: '100%',
-    backgroundColor: 'lightyellow',
+    backgroundColor: colors.accentFun,
     justifyContent: 'center',
   },
 
   acceptButtonText: {
     textAlign: 'center',
+    color: colors.fontLight,
+    fontWeight: '600',
+    fontSize: 15
   }
   
 })

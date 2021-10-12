@@ -7,7 +7,7 @@ const colors = {
   backgroundLight: 'lightgray',
   fontDark: 'black',
   fontLight: 'white',
-  accentFun: 'purple'
+  accentFun: 'rgba(220, 51, 255, 1)'
 }
 
 

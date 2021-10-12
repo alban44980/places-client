@@ -1,5 +1,7 @@
 import {StyleSheet, View, Text} from 'react-native';
 import React from 'react';
+import colors from '../../assets/styles/colors';
+
 
 function HeaderSection(props: any) {
   const {place} = props
@@ -15,23 +17,27 @@ export default HeaderSection;
 
 const styles = StyleSheet.create({
   headerContainer: {
-    height: '15%',
+    height: '13%',
     width: '90%',
-    backgroundColor: 'green',
-    justifyContent: 'center'
+    backgroundColor: colors.backgroundMedium,
+    justifyContent: 'center',
+    marginBottom: 4,
+    borderColor: colors.backgroundLight,
+    borderWidth: 1,
+    borderRadius: 5
   },
 
   placeTitle: {
-    fontSize: 28,
-    color: 'white',
-    fontWeight: '700',
+    fontSize: 25,
+    color: colors.fontLight,
+    fontWeight: '600',
     textAlign: 'center',
     marginBottom: 10
   },
 
   placeOwner: {
-    fontSize: 18,
-    color: 'white',
+    fontSize: 15,
+    color: colors.fontLight,
     fontWeight: '400',
     textAlign: 'center'
   },

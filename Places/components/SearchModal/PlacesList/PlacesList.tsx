@@ -3,7 +3,7 @@ import {StyleSheet, View, Text, FlatList, Image, TouchableOpacity} from 'react-n
 import places from '../../../dummyData/placesList'
 import LIContentSection from './LIContentSection'
 import PlaceModal from '../../PlaceModal/PlaceModal';
-
+import colors from '../../../assets/styles/colors';
 
 
 
@@ -33,15 +33,9 @@ const data = places
                   handlePress()
                 }}
               >
-                <Image 
-                  source={{uri: item.img}} 
-                  style={styles.imageStyle}
-                />
-
+                <Image source={{uri: item.img}} style={styles.imageStyle} />
                 <LIContentSection item={item}/>
-
               </TouchableOpacity>
-      
             </View>
           )
         }
@@ -56,15 +50,16 @@ export default PlacesList;
 const styles = StyleSheet.create({
   placesListContainer: {
     flex: 1,
-    backgroundColor: 'green',
+    backgroundColor: colors.backgroundDark,
     alignItems: 'center',
   },
 
   flatListStyle: {
-    backgroundColor: 'gray',
+    backgroundColor: colors.backgroundMedium,
     width: '90%',
     height:'90%',
-    paddingTop: 20
+    paddingTop: 30,
+    borderRadius: 10
   },
 
   flatListContContStyle: {
@@ -76,6 +71,7 @@ const styles = StyleSheet.create({
     width: '90%',
     borderWidth: 1,
     marginBottom: 30,
+    borderRadius: 10
   },
 
   touchableItemWrapper: {
@@ -83,9 +79,11 @@ const styles = StyleSheet.create({
   },
 
   imageStyle: {
-    height: '45%',
+    height: '42%',
     width: '100%',
     resizeMode: 'cover',
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10
   },
 
 

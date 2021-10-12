@@ -1,6 +1,7 @@
 import {StyleSheet, View, Text, ScrollView} from 'react-native';
-
 import React from 'react';
+import colors from '../../assets/styles/colors';
+
 
 function Description(props: any) {
   const {place} = props
@@ -17,20 +18,24 @@ export default Description;
 
 const styles = StyleSheet.create({
   descriptionContainer: {
-    height: '30%',
-    backgroundColor: 'lightgray',
-    borderColor: 'black',
+    height: '25%',
+    backgroundColor: colors.backgroundMedium,
+    borderColor: colors.backgroundLight,
+    borderWidth: 1,
     width: '90%',
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 15,
-    paddingVertical: 15
+    paddingVertical: 15,
+    borderRadius: 5,
+    marginBottom: 15
   },
 
   descriptionText: {
-    fontSize: 20,
+    fontSize: 17,
     lineHeight: 30,
-    overflow: 'hidden'
+    overflow: 'hidden',
+    color: colors.fontLight
   }
   
 })

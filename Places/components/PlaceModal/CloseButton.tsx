@@ -1,6 +1,8 @@
 import {StyleSheet, View, Text, TouchableHighlight} from 'react-native';
-
 import React from 'react';
+import colors from '../../assets/styles/colors';
+
+
 
 function CloseButton(props: any) {
 
@@ -22,12 +24,13 @@ const styles = StyleSheet.create({
   closeButton: {
     height: '7%',
     width: '90%',
-    backgroundColor: 'blue',
-    justifyContent: 'center'
+    backgroundColor: colors.backgroundMedium,
+    justifyContent: 'center',
+    borderRadius: 10,
   },
 
   closeButtonText: {
-    color: 'white',
+    color: colors.fontLight,
     fontSize: 19,
     fontWeight: '600',
     textAlign: 'center'

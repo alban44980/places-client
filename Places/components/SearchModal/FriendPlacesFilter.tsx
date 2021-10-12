@@ -9,16 +9,13 @@ import {
   ImageBackground
 } from 'react-native';
 import FriendsList from '../../dummyData/searchModalFriends'
-
-
+import colors from '../../assets/styles/colors';
 
 
 
 function FriendPlacesFilter() {
 
   const data = FriendsList
-
-
 
   return (
     <View style={styles.friendFilterListContainer}>
@@ -56,17 +53,18 @@ const styles = StyleSheet.create({
   friendFilterListContainer: {
     height: '12%',
     width: '100%',
-    backgroundColor: 'yellow',
+    backgroundColor: colors.backgroundDark,
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: '3%',
+    marginBottom: 15
   },
 
   list: {
-    backgroundColor: 'black',
+    backgroundColor: colors.backgroundDark,
     width: '90%',
     borderStyle: 'solid',
-    borderColor: 'black',
+    borderColor: colors.backgroundDark,
     borderWidth: 1,
     borderRadius: 10
   },
@@ -91,7 +89,7 @@ const styles = StyleSheet.create({
     zIndex: -1,
     borderRadius: 10,
     borderStyle: 'solid',
-    borderColor: 'black',
+    borderColor: colors.backgroundDark,
     borderWidth: 1,
     opacity: .35
   },
@@ -106,7 +104,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 13,
     fontWeight: '400',
-    color: 'white',
+    color: colors.fontLight,
     marginBottom: 4
   },
 
@@ -114,7 +112,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 15,
     fontWeight: '700',
-    color: 'white'
+    color: colors.accentFun
   },
 
 

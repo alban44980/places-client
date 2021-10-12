@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet, View, Text, TouchableOpacity, TextInput, TouchableHighlight,} from 'react-native';
 import FilterModal from './FilterModal';
+import colors from '../../assets/styles/colors';
 
 
 
@@ -34,7 +35,7 @@ export default SearchBar;
 
 const styles = StyleSheet.create({
   searchBarContainer: {
-    backgroundColor: 'gray',
+    backgroundColor: colors.backgroundDark,
     width: '100%',
     height: '15%',
     justifyContent: 'center',
@@ -43,14 +44,14 @@ const styles = StyleSheet.create({
   },
 
   searchBar: {
-    backgroundColor: 'white',
+    backgroundColor: colors.backgroundLight,
     height: '50%',
     width: '60%',
     paddingLeft: '3%'
   },
 
   filterButtonContainer: {
-    backgroundColor: 'pink',
+    backgroundColor: colors.accentFun,
     height: '50%',
     width: '15%',
     justifyContent: 'center'
@@ -59,6 +60,8 @@ const styles = StyleSheet.create({
   filterText: {
     fontSize: 12,
     textAlign: 'center',
+    color: colors.fontDark,
+    fontWeight: '700'
   },
   
 })

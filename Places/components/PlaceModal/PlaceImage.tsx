@@ -1,6 +1,7 @@
 import {StyleSheet, View, Text, Image} from 'react-native';
-
 import React from 'react';
+import colors from '../../assets/styles/colors';
+
 
 function PlaceImage(props: any) {
   const {place} = props
@@ -16,14 +17,17 @@ export default PlaceImage;
 
 const styles = StyleSheet.create({
   imageContainer: {
-    height: '30%',
-    width: '90%'
+    height: '25%',
+    width: '90%',
+    marginTop: 10,
+    marginBottom: 15
   },
 
   imageStyle: {
     flex: 1,
     resizeMode: 'cover',
-    borderColor: 'black',
-    borderWidth: 2
+    borderWidth: 1,
+    borderRadius: 10,
+    borderColor: colors.backgroundLight
   },
 })

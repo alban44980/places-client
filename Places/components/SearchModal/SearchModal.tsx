@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
   },
 
   backButtonText: {
-    color: colors.fontLight,
+    color: colors.accentFun,
     textAlign: 'center'
   },
 

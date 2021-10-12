@@ -1,6 +1,6 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
-
+import {StyleSheet, View, Text, BackHandler} from 'react-native';
+import colors from '../../../assets/styles/colors';
 
 
 function LIContentSection(props: any) {
@@ -14,7 +14,7 @@ function LIContentSection(props: any) {
         <Text style={styles.headerTextCity}>{item.city}</Text>
       </View>
       <View style={styles.itemContentSection}>
-        <Text style={styles.descriptionText} numberOfLines={1}>{item.description}</Text>
+        <Text style={styles.descriptionText} numberOfLines={2}>{item.description}</Text>
       </View>
     </View>
   );
@@ -24,40 +24,43 @@ export default LIContentSection;
 
 const styles = StyleSheet.create({
   itemContentContainer: {
-    backgroundColor: 'gray',
     flex: 1,
-    overflow: 'hidden'
+    overflow: 'hidden',
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10
   },
 
   itemHeaderBar: {
-    height: '60%',
-    backgroundColor: 'lightgray',
+    height: '50%',
+    backgroundColor: colors.backgroundDark,
     flexDirection: 'column',
     justifyContent: 'center',
   },
 
   headerTextName: {
-    color: 'black',
+    color: colors.fontLight,
     textAlign: 'center',
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '700',
     marginBottom: 3
   },
 
   headerTextCity: {
-    color: 'black',
+    color: colors.fontLight,
     textAlign: 'center',
     fontSize: 15
   },
   
   itemContentSection: {
-    height: '60%',
-    backgroundColor: 'white',
-    padding: 10,
+    height: '50%',
+    backgroundColor: colors.backgroundLight,
+    paddingHorizontal: 20,
+    paddingVertical: 10
   },
 
   descriptionText: {
-    fontSize: 12,
+    fontSize: 13,
     fontWeight: '400',
+    lineHeight: 17
   },
 })

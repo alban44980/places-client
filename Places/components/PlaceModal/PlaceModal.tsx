@@ -6,16 +6,10 @@ import HeaderSection from './HeaderSection';
 import DetailsBar from './DetailsBar';
 import Description from './Description';
 import Tags from './Tags';
-/*
-Display Image
-Name of Place
-Name of Person
-Description
-Location
-City
-Add / Remove from My_Places
-Tags List
-*/
+import colors from '../../assets/styles/colors';
+
+
+
 
 
 function PlaceModal(props: any) {
@@ -44,7 +38,7 @@ export default PlaceModal;
 const styles = StyleSheet.create({
   modalSAVContainer: {
     flex: 1, 
-    backgroundColor:'white',
+    backgroundColor: colors.backgroundDark,
     alignItems: 'center'
   },
   

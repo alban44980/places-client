@@ -1,6 +1,7 @@
 import {StyleSheet, View, Text} from 'react-native';
-
 import React from 'react';
+import colors from '../../assets/styles/colors';
+
 
 function Tags() {
 
@@ -37,7 +38,7 @@ const styles = StyleSheet.create({
   tagSectionContainer: {
     height: '15%',
     width: '90%',
-    backgroundColor: 'pink',
+    backgroundColor: colors.accentFun,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-evenly',
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
   tagContainer: {
     height: '22%',
     width: '27%',
-    backgroundColor: 'darkblue',
+    backgroundColor: colors.backgroundDark,
     borderRadius: 10,
     margin: 4,
     justifyContent: 'center'
@@ -56,7 +57,7 @@ const styles = StyleSheet.create({
   tagText: {
     fontSize: 11,
     fontWeight: '600',
-    color: 'white',
+    color: colors.fontLight,
     textAlign: 'center'
   }
   
