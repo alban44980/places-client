@@ -62,8 +62,8 @@ function Home() {
       </TouchableOpacity>
       <View style={styles.listsContainer}>
         <HomeList friends={friends} />
-        <HomeList />
-        <HomeList />
+        <HomeList allFriendsCities={allFriendsCities} />
+        <HomeList homeScreenPlaces={homeScreenPlaces} />
       </View>
     </View>
   );

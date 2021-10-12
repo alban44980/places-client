@@ -16,16 +16,40 @@ function HomeListItem(props: any) {
 
   return (
     <View style={styles.itemContainer}>
-      {props.friend.profilePicture ? (
+      {props.friend ? (
         <ImageBackground
           style={styles.img}
-          imageStyle={{ borderRadius: 20 }}
+          imageStyle={{ borderRadius: 50 }}
           source={{
             uri: `https://${props.friend.profilePicture}`,
           }}
           // resizeMode="cover"
         >
           <Text>{props.friend.name}</Text>
+        </ImageBackground>
+      ) : null}
+      {props.allFriendsCitie ? (
+        <ImageBackground
+          style={styles.img}
+          imageStyle={{ borderRadius: 25 }}
+          source={{
+            uri: `https://${props.allFriendsCitie.image}`,
+          }}
+          // resizeMode="cover"
+        >
+          <Text>{props.allFriendsCitie.name}</Text>
+        </ImageBackground>
+      ) : null}
+      {props.homeScreenPlace ? (
+        <ImageBackground
+          style={styles.img}
+          imageStyle={{ borderRadius: 5 }}
+          source={{
+            uri: `https://${props.homeScreenPlace.profilePicture}`,
+          }}
+          // resizeMode="cover"
+        >
+          <Text style={{ color: 'red' }}>{props.homeScreenPlace.name}</Text>
         </ImageBackground>
       ) : null}
     </View>
