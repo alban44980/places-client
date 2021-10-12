@@ -1,13 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {
-  StyleSheet,
-  View,
-  Text,
-  TextInput,
-  Button,
-  TouchableOpacity,
-  ListViewBase,
-} from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/reducers/reducers';
 import HomeList from '../components/HomeList/HomeList';
