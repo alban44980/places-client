@@ -1,43 +1,44 @@
-import React, {useState} from 'react';
-import {StyleSheet, View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
+import React, { useState } from 'react';
+import {
+  StyleSheet,
+  View,
+  Text,
+  FlatList,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import places from '../../dummyData/placesList';
-import PlaceDetails from './PlaceDetails'
+import PlaceDetails from './PlaceDetails';
 import PlaceModal from '../PlaceModal/PlaceModal';
 import colors from '../../assets/styles/colors';
 
-
-
 function PlacesList(props: any) {
-
-const {handlePress, setPlace} = props
-const data = places
-
-
+  const { handlePress, setPlace } = props;
+  const data = places;
 
   return (
     <View style={styles.placesListContainer}>
-      <FlatList 
+      <FlatList
         style={styles.flatListStyle}
         contentContainerStyle={styles.flatListContContStyle}
         data={data}
         horizontal={false}
-        renderItem={ ({item}) => {
+        renderItem={({ item }) => {
           return (
             <View style={styles.itemElementStyle}>
               <TouchableOpacity
                 style={styles.touchableItemWrapper}
                 onPress={() => {
-                  setPlace(item)
-                  handlePress()
+                  setPlace(item);
+                  handlePress();
                 }}
               >
-                <Image source={{uri: item.img}} style={styles.imageStyle} />
-                <PlaceDetails item={item}/>
+                <Image source={{ uri: item.img }} style={styles.imageStyle} />
+                <PlaceDetails item={item} />
               </TouchableOpacity>
             </View>
-          )
-        }
-        }
+          );
+        }}
       />
     </View>
   );
@@ -55,9 +56,9 @@ const styles = StyleSheet.create({
   flatListStyle: {
     backgroundColor: colors.backgroundMedium,
     width: '90%',
-    height:'90%',
+    height: '90%',
     paddingTop: 30,
-    borderRadius: 10
+    borderRadius: 10,
   },
 
   flatListContContStyle: {
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
     width: '90%',
     borderWidth: 1,
     marginBottom: 30,
-    borderRadius: 10
+    borderRadius: 10,
   },
 
   touchableItemWrapper: {
@@ -81,8 +82,6 @@ const styles = StyleSheet.create({
     width: '100%',
     resizeMode: 'cover',
     borderTopLeftRadius: 10,
-    borderTopRightRadius: 10
+    borderTopRightRadius: 10,
   },
-
-
-})
+});
