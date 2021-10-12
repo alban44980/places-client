@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {StyleSheet, View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
-import places from '../../../dummyData/placesList'
-import LIContentSection from './LIContentSection'
-import PlaceModal from '../../PlaceModal/PlaceModal';
-import colors from '../../../assets/styles/colors';
+import places from '../../dummyData/placesList';
+import PlaceDetails from './PlaceDetails'
+import PlaceModal from '../PlaceModal/PlaceModal';
+import colors from '../../assets/styles/colors';
 
 
 
@@ -16,8 +16,6 @@ const data = places
 
   return (
     <View style={styles.placesListContainer}>
-
-
       <FlatList 
         style={styles.flatListStyle}
         contentContainerStyle={styles.flatListContContStyle}
@@ -34,7 +32,7 @@ const data = places
                 }}
               >
                 <Image source={{uri: item.img}} style={styles.imageStyle} />
-                <LIContentSection item={item}/>
+                <PlaceDetails item={item}/>
               </TouchableOpacity>
             </View>
           )

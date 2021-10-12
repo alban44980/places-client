@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.backgroundMedium,
     justifyContent: 'center',
     borderRadius: 10,
+    alignSelf: 'center'
   },
 
   closeButtonText: {

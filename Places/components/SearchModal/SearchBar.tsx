@@ -41,20 +41,29 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
+ 
   },
 
   searchBar: {
     backgroundColor: colors.backgroundLight,
     height: '50%',
-    width: '60%',
-    paddingLeft: '3%'
+    width: '65%',
+    paddingLeft: '3%',
+    borderTopLeftRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderColor: colors.backgroundDark,
+    borderWidth: 1
   },
 
   filterButtonContainer: {
     backgroundColor: colors.accentFun,
     height: '50%',
     width: '15%',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    borderTopRightRadius: 10,
+    borderBottomRightRadius: 10,
+    borderColor: colors.backgroundDark,
+    borderWidth: 1
   },
 
   filterText: {

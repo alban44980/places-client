@@ -15,7 +15,10 @@ import colors from '../../assets/styles/colors';
 
 function FriendPlacesFilter() {
 
-  const data = FriendsList
+  // will change to type when interface complete
+  const data: any = FriendsList.sort((a, b): any => {
+    return b.placeCount > a.placeCount
+  })
 
   return (
     <View style={styles.friendFilterListContainer}>

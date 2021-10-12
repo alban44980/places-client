@@ -1,9 +1,9 @@
 import React from 'react';
 import {StyleSheet, View, Text, BackHandler} from 'react-native';
-import colors from '../../../assets/styles/colors';
+import colors from '../../assets/styles/colors';
 
 
-function LIContentSection(props: any) {
+function PlaceDetails(props: any) {
 
   const {item} = props
 
@@ -20,7 +20,7 @@ function LIContentSection(props: any) {
   );
 }
 
-export default LIContentSection;
+export default PlaceDetails;
 
 const styles = StyleSheet.create({
   itemContentContainer: {
