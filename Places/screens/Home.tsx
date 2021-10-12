@@ -14,7 +14,8 @@ import HomeList from '../components/HomeList/HomeList';
 import SearchModal from '../components/SearchModal/SearchModal';
 import allFriendsCities from '../dummyData/allFriendsCities';
 import homeScreenPlaces from '../dummyData/homeScreenPlaces';
-import homeScreenFriends from '../dummyData/homeScreenFriends';
+import sampleFriendsList from '../dummyData/homeScreenFriends';
+import { getUserData } from '../redux/actions/actions';
 
 function Home() {
   const [friends, setFriends] = useState<any[]>([]); //Interface Friend
@@ -27,7 +28,9 @@ function Home() {
 
   useEffect(() => {
     console.log('useEffect running');
-    setCities(allFriendsCities);
+    setFriends([...sampleFriendsList]);
+    // console.log(friends);
+
     //Apicall to get the data
 
     // update userInfo state
@@ -58,7 +61,7 @@ function Home() {
         </View>
       </TouchableOpacity>
       <View style={styles.listsContainer}>
-        <HomeList />
+        <HomeList friends={friends} />
         <HomeList />
         <HomeList />
       </View>

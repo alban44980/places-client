@@ -1,22 +1,34 @@
 const sampleFriendsList = [
   {
     name: 'Alban',
-    profilePicture: '../../assets/dummy-photos/dummyphoto.jpeg',
+    profilePicture:
+      'images.pexels.com/photos/761963/pexels-photo-761963.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
   },
   {
     name: 'Connor',
-    profilePicture: '../../assets/dummy-photos/dummyphoto.jpeg',
+    profilePicture:
+      'images.pexels.com/photos/761963/pexels-photo-761963.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
   },
   {
     name: 'Adriano',
-    profilePicture: '../../assets/dummy-photos/dummyphoto.jpeg',
+    profilePicture:
+      'images.pexels.com/photos/761963/pexels-photo-761963.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
   },
-  { name: 'Dave', profilePicture: '../../assets/dummy-photos/dummyphoto.jpeg' },
+  {
+    name: 'Dave',
+    profilePicture:
+      'images.pexels.com/photos/761963/pexels-photo-761963.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  },
   {
     name: 'Randy',
-    profilePicture: '../../assets/dummy-photos/dummyphoto.jpeg',
+    profilePicture:
+      'images.pexels.com/photos/761963/pexels-photo-761963.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
   },
-  { name: 'Mike', profilePicture: '../../assets/dummy-photos/dummyphoto.jpeg' },
+  {
+    name: 'Mike',
+    profilePicture:
+      'images.pexels.com/photos/761963/pexels-photo-761963.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  },
 ];
 
 export default sampleFriendsList;
