@@ -6,7 +6,7 @@ function HomeList({ friends, allFriendsCities, homeScreenPlaces }: any) {
   return (
     <ScrollView
       style={styles.homeListContainer}
-      contentContainerStyle={styles.tryme}
+      contentContainerStyle={styles.contentContainer}
       horizontal={true}
     >
       <View style={styles.homeListContent}>
@@ -19,7 +19,7 @@ function HomeList({ friends, allFriendsCities, homeScreenPlaces }: any) {
           ? allFriendsCities.map((allFriendsCitie: any) => {
               return (
                 <HomeListItem
-                  key={allFriendsCitie.image}
+                  key={allFriendsCitie.name}
                   allFriendsCitie={allFriendsCitie}
                 />
               );
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderColor: 'black',
   },
-  tryme: {
+  contentContainer: {
     justifyContent: 'center',
     alignItems: 'center',
   },
