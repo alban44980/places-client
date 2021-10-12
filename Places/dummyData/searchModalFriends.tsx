@@ -6,4 +6,4 @@ const searchModalFriends = [
   {name: 'Connor', placeCount: 52, profile_pic: 'https://images.pexels.com/photos/7855803/pexels-photo-7855803.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'},
 ]
 
-module.exports = searchModalFriends
+export default searchModalFriends

@@ -67,4 +67,4 @@ const places = [
   },
 ]
 
-module.exports = places
+export default places

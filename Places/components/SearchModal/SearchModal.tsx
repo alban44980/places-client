@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {StyleSheet, View, Text, Modal, SafeAreaView, TouchableOpacity, TextInput, TouchableWithoutFeedback} from 'react-native';
 import FilterModal from './FilterModal';
 import FriendPlacesFilter from './FriendPlacesFilter';
-import PlacesList from './PlacesList';
+import PlacesList from './PlacesList/PlacesList';
 import SearchBar from './SearchBar';
 
 

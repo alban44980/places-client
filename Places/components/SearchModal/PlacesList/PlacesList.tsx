@@ -1,7 +1,7 @@
 import React from 'react';
-import {StyleSheet, View, Text, FlatList, Image} from 'react-native';
-import places from './../../dummyData/placesList'
-import LIContentSection from './PlacesListItemContentSection'
+import {StyleSheet, View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
+import places from '../../../dummyData/placesList'
+import LIContentSection from './LIContentSection'
 
 
 
@@ -23,12 +23,17 @@ const data = places
         renderItem={ ({item}) => {
           return (
             <View style={styles.itemElementStyle}>
-              <Image 
-                source={{uri: item.img}} 
-                style={styles.imageStyle}
-                
-              />
-              <LIContentSection item={item}/>
+              <TouchableOpacity
+                style={styles.touchableItemWrapper}
+              >
+                <Image 
+                  source={{uri: item.img}} 
+                  style={styles.imageStyle}
+                />
+
+                <LIContentSection item={item}/>
+
+              </TouchableOpacity>
       
             </View>
           )
@@ -43,7 +48,7 @@ export default PlacesList;
 
 const styles = StyleSheet.create({
   placesListContainer: {
-    height: '60%',
+    flex: 1,
     backgroundColor: 'green',
     alignItems: 'center'
   },
@@ -55,8 +60,7 @@ const styles = StyleSheet.create({
   },
 
   flatListContContStyle: {
-    alignItems: 'center'
-
+    alignItems: 'center',
   },
 
   itemElementStyle: {
@@ -66,10 +70,14 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
 
+  touchableItemWrapper: {
+    flex: 1,
+  },
+
   imageStyle: {
-    height: '50%',
+    height: '45%',
     width: '100%',
-    resizeMode: 'contain'
+    resizeMode: 'cover',
   },
 
 

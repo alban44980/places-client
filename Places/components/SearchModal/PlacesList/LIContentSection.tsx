@@ -1,6 +1,8 @@
 import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 
+
+
 function LIContentSection(props: any) {
 
   const {item} = props
@@ -12,7 +14,7 @@ function LIContentSection(props: any) {
         <Text style={styles.headerTextCity}>{item.city}</Text>
       </View>
       <View style={styles.itemContentSection}>
-        <Text style={styles.descriptionText}>{item.description}</Text>
+        <Text style={styles.descriptionText} numberOfLines={1}>{item.description}</Text>
       </View>
     </View>
   );
@@ -23,18 +25,19 @@ export default LIContentSection;
 const styles = StyleSheet.create({
   itemContentContainer: {
     backgroundColor: 'gray',
-    flex: 1
+    flex: 1,
+    overflow: 'hidden'
   },
 
   itemHeaderBar: {
     height: '60%',
-    backgroundColor: 'blue',
+    backgroundColor: 'lightgray',
     flexDirection: 'column',
     justifyContent: 'center',
   },
 
   headerTextName: {
-    color: 'white',
+    color: 'black',
     textAlign: 'center',
     fontSize: 18,
     fontWeight: '700',
@@ -42,7 +45,7 @@ const styles = StyleSheet.create({
   },
 
   headerTextCity: {
-    color: 'white',
+    color: 'black',
     textAlign: 'center',
     fontSize: 15
   },
@@ -56,6 +59,5 @@ const styles = StyleSheet.create({
   descriptionText: {
     fontSize: 12,
     fontWeight: '400',
-    
   },
 })
