@@ -1,5 +1,13 @@
-import React from 'react';
-import {StyleSheet, View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
+import React, {useState} from 'react';
+import {
+  StyleSheet, 
+  View, 
+  Text, 
+  FlatList, 
+  Image, 
+  TouchableOpacity,
+  ImageBackground
+} from 'react-native';
 import FriendsList from '../../dummyData/searchModalFriends'
 
 
@@ -9,6 +17,8 @@ import FriendsList from '../../dummyData/searchModalFriends'
 function FriendPlacesFilter() {
 
   const data = FriendsList
+
+
 
   return (
     <View style={styles.friendFilterListContainer}>
@@ -20,20 +30,21 @@ function FriendPlacesFilter() {
         renderItem= { ({item}) => {
           return (
             <View style={styles.listItemContainer}>
-              <TouchableOpacity style={styles.textOverlayContainer}>
+              <TouchableOpacity 
+                style={styles.textOverlayContainer}
+              >
                 <Text style={styles.listItemName}>{item.name}</Text>
                 <Text style={styles.listItemCount}>{item.placeCount}</Text>
               </TouchableOpacity>
+
               <Image 
                 style={styles.profilePicImage}
                 blurRadius={2}
-                source={require('./../../assets/dummy-photos/nerd.jpg')} 
+                source={{uri: item.profile_pic}} 
               />
             </View>
           )
-        }
-          
-        }
+        }}
       />
     </View>
   );
