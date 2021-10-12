@@ -21,11 +21,7 @@ function Friends() {
       <View style={styles.searchBarContainer}>
         <TextInput style={styles.searchBar} placeholder="Search" />
       </View>
-      <ScrollView
-        style={styles.listContainer}
-        contentContainerStyle={styles.contentContainer}
-        // horizontal={false}
-      >
+      <ScrollView style={styles.listContainer}>
         {sampleFriendsList.map((friend: any) => {
           return (
             <View style={styles.friendContainer}>
@@ -80,17 +76,6 @@ const styles = StyleSheet.create({
     width: '20%',
     height: '100%',
   },
-  contentContainer: {
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // backgroundColor: 'blue',
-    // height: '100%',
-    // flexGrow: 1,
-  },
-
-  // screenContainer: {
-  //   height: '100%',
-  // },
 });
 
 export default Friends;
