@@ -54,33 +54,34 @@ export default FriendPlacesFilter;
 
 const styles = StyleSheet.create({
   friendFilterListContainer: {
-    height: '20%',
+    height: '12%',
     width: '100%',
     backgroundColor: 'yellow',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    paddingVertical: '3%',
   },
 
   list: {
     backgroundColor: 'black',
-    height: '50%',
     width: '90%',
     borderStyle: 'solid',
     borderColor: 'black',
     borderWidth: 1,
+    borderRadius: 10
   },
   
   listContainerStyle: {
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   listItemContainer: {
-    marginHorizontal: 15,
-    width: 120,
-    height: '70%',
+    marginHorizontal: 10,
+    width: 70,
+    height: '80%',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   profilePicImage: {
@@ -103,15 +104,15 @@ const styles = StyleSheet.create({
 
   listItemName: {
     textAlign: 'center',
-    fontSize: 24,
+    fontSize: 13,
     fontWeight: '400',
     color: 'white',
-    marginBottom: 7
+    marginBottom: 4
   },
 
   listItemCount: {
     textAlign: 'center',
-    fontSize: 18,
+    fontSize: 15,
     fontWeight: '700',
     color: 'white'
   },

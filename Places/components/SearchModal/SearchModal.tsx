@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import {StyleSheet, View, Text, Modal, SafeAreaView, TouchableOpacity, TextInput, TouchableWithoutFeedback} from 'react-native';
+import PlaceModal from '../PlaceModal/PlaceModal';
 import FilterModal from './FilterModal';
 import FriendPlacesFilter from './FriendPlacesFilter';
-import PlacesList from './PlacesList';
+import PlacesList from './PlacesList/PlacesList';
 import SearchBar from './SearchBar';
 
 
@@ -25,9 +26,16 @@ function SearchModal(props: any) {
 
   const {searchVisible, setSearchVisible} = props
   const [filterModalVisible, setFilterModalVisible] = useState<Boolean>(false)
+  const [placeModalVisible, setPlaceModalVisible] = useState<Boolean>(false)
+  const [selectedPlace, setSelectedPlace] = useState(null)
 
-  const handlePress = () => {
+
+  const handleFilterPress = () => {
     setFilterModalVisible(!filterModalVisible)
+  }
+
+  const handlePlacePress = () => {
+    setPlaceModalVisible(!placeModalVisible)
   }
 
   return (
@@ -41,15 +49,26 @@ function SearchModal(props: any) {
     >
 
         <SafeAreaView style={styles.modalContainer}>
+          {/* Both filterModalVisible and placeModalVisible toggle whether modal appears */}
 
           {
           filterModalVisible && 
             <FilterModal  
               filterModalVisible={filterModalVisible}
               setFilterModalVisible={setFilterModalVisible} 
-              handlePress={handlePress}
+              handlePress={handleFilterPress}
             />
           } 
+
+          {
+            placeModalVisible &&
+            <PlaceModal 
+              placeModalVisible={placeModalVisible}
+              setPlaceModalVisible={setPlaceModalVisible} 
+              handlePress={handlePlacePress}
+              place={selectedPlace}
+            />
+          }
 
             <TouchableOpacity 
               style={styles.backButtonContainer} 
@@ -58,9 +77,9 @@ function SearchModal(props: any) {
               <Text style={styles.backButtonText}>Get Back Home 😰</Text>
             </TouchableOpacity>
 
-            <SearchBar handlePress={handlePress}/>
+            <SearchBar handlePress={handleFilterPress}/>
             <FriendPlacesFilter />
-            <PlacesList />
+            <PlacesList handlePress={handlePlacePress} setPlace={setSelectedPlace} />
 
 
         </SafeAreaView>
