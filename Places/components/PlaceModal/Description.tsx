@@ -24,11 +24,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 15,
-    paddingVertical: 20
+    paddingVertical: 15
   },
-  
+
   descriptionText: {
-    fontSize: 25,
+    fontSize: 20,
     lineHeight: 30,
     overflow: 'hidden'
   }

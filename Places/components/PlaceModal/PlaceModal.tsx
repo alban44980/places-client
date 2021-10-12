@@ -5,7 +5,7 @@ import PlaceImage from './PlaceImage';
 import HeaderSection from './HeaderSection';
 import DetailsBar from './DetailsBar';
 import Description from './Description';
-
+import Tags from './Tags';
 /*
 Display Image
 Name of Place
@@ -31,6 +31,7 @@ function PlaceModal(props: any) {
         <HeaderSection place={place}/>
         <DetailsBar place={place} />
         <Description place={place} />
+        <Tags />
 
 
       </SafeAreaView>
