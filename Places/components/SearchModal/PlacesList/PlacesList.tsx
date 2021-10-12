@@ -1,19 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
 import places from '../../../dummyData/placesList'
 import LIContentSection from './LIContentSection'
+import PlaceModal from '../../PlaceModal/PlaceModal';
 
 
 
 
+function PlacesList(props: any) {
 
-function PlacesList() {
-
-
+const {handlePress, setPlace} = props
 const data = places
+
+
 
   return (
     <View style={styles.placesListContainer}>
+
 
       <FlatList 
         style={styles.flatListStyle}
@@ -25,6 +28,10 @@ const data = places
             <View style={styles.itemElementStyle}>
               <TouchableOpacity
                 style={styles.touchableItemWrapper}
+                onPress={() => {
+                  setPlace(item)
+                  handlePress()
+                }}
               >
                 <Image 
                   source={{uri: item.img}} 
@@ -50,13 +57,14 @@ const styles = StyleSheet.create({
   placesListContainer: {
     flex: 1,
     backgroundColor: 'green',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   flatListStyle: {
     backgroundColor: 'gray',
     width: '90%',
-    height:'90%'
+    height:'90%',
+    paddingTop: 20
   },
 
   flatListContContStyle: {

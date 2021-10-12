@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'yellow',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: '3%'
+    paddingVertical: '3%',
   },
 
   list: {
