@@ -71,13 +71,13 @@ const styles = StyleSheet.create({
   },
   topContainer: {
     height: '30%',
-    backgroundColor: 'red',
+    backgroundColor: 'lightblue',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
   },
   text: {
-    color: 'white',
+    color: 'black',
     fontSize: 30,
   },
   searchTouchable: {
@@ -91,13 +91,14 @@ const styles = StyleSheet.create({
   searchContainer: {
     width: '80%',
     height: '70%',
-    backgroundColor: 'green',
+    backgroundColor: 'gray',
     justifyContent: 'center',
     borderRadius: 20,
   },
   searchBar: {
     width: '100%',
     textAlign: 'center',
+    color: 'white',
   },
   listsContainer: {
     width: '100%',

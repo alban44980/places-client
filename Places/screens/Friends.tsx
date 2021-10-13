@@ -31,7 +31,7 @@ function Friends() {
                   uri: `https://${friend.profilePicture}`,
                 }}
               />
-              <Text>{friend.name}</Text>
+              <Text style={styles.friendsName}>{friend.name}</Text>
             </View>
           );
         })}
@@ -58,23 +58,30 @@ const styles = StyleSheet.create({
   },
 
   listContainer: {
-    backgroundColor: 'green',
+    backgroundColor: 'whitesmoke',
     height: 2000,
     // flexGrow: 1,
     // width: '100%',
     // flex: 1,
   },
   friendContainer: {
-    backgroundColor: 'red',
+    backgroundColor: 'lightblue',
     height: 100,
     width: '90%',
     margin: 20,
     flexDirection: 'row',
     alignItems: 'center',
+    borderRadius: 20,
   },
   img: {
+    marginLeft: 10,
     width: '20%',
-    height: '100%',
+    height: '80%',
+    borderRadius: 50,
+  },
+  friendsName: {
+    fontSize: 40,
+    marginLeft: 20,
   },
 });
 
