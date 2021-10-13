@@ -15,7 +15,7 @@ function Tags() {
 
   return (
     <View style={styles.tagSectionContainer}>
-      <ScrollView horizontal={true}>
+      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         {
           tagsList.map((tag) => {
             return (

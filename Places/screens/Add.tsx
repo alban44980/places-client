@@ -3,14 +3,30 @@ import {
   StyleSheet,
   View,
   Text,
-  TextInput,
-  Button,
-  TouchableOpacity,
-  ListViewBase,
+  SafeAreaView
 } from 'react-native';
+import ImageSelector from '../components/AddPlace/ImageSelector';
+
+
 
 function Add() {
-  return <Text>Add Screen!!!</Text>;
+  return (
+    <View style={styles.container}>
+      <ImageSelector />
+
+    </View>
+  );
 }
 
 export default Add;
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: 'yellow',
+    paddingTop: 60,
+  }
+  
+})

@@ -6,9 +6,9 @@ import places from '../../dummyData/placesList';
 
 
 function SearchBar(props: any) {
+  // on search should also have a drop down list of suggested cities that match the current search
 
   const {handlePress, setSearch, setSearchResults, data, search} = props
-
 
   const searchFilter = (text: String) => {
     if (text) {
@@ -51,16 +51,15 @@ const styles = StyleSheet.create({
   searchBarContainer: {
     backgroundColor: colors.backgroundDark,
     width: '100%',
-    height: '15%',
+    height: '10%',
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
- 
   },
 
   searchBar: {
     backgroundColor: colors.backgroundLight,
-    height: '50%',
+    height: '70%',
     width: '65%',
     paddingLeft: '3%',
     borderTopLeftRadius: 10,
@@ -71,7 +70,7 @@ const styles = StyleSheet.create({
 
   filterButtonContainer: {
     backgroundColor: colors.accentFun,
-    height: '50%',
+    height: '70%',
     width: '15%',
     justifyContent: 'center',
     borderTopRightRadius: 10,

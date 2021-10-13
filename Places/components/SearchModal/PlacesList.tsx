@@ -6,6 +6,7 @@ import {
   FlatList,
   Image,
   TouchableOpacity,
+  KeyboardAvoidingView,
 } from 'react-native';
 import places from '../../dummyData/placesList';
 import PlaceDetails from './PlaceDetails';
@@ -17,7 +18,10 @@ function PlacesList(props: any) {
   const data = places;
 
   return (
-    <View style={styles.placesListContainer}>
+    <View 
+      style={styles.placesListContainer}
+
+    >
       <FlatList
         style={styles.flatListStyle}
         contentContainerStyle={styles.flatListContContStyle}
@@ -66,7 +70,7 @@ const styles = StyleSheet.create({
   },
 
   itemElementStyle: {
-    height: 200,
+    height: 170,
     minWidth: '90%',
     maxWidth: '90%',
     borderWidth: 1,
