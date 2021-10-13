@@ -24,21 +24,11 @@ function SearchModal(props: any) {
   const [selectedPlace, setSelectedPlace] = useState<any>(null);
 
   const handleFilterPress = () => {
-<<<<<<< HEAD
     setFilterModalVisible(!filterModalVisible)
   }
   const handlePlacePress = () => {
     setPlaceModalVisible(!placeModalVisible)
   }
-=======
-    setFilterModalVisible(!filterModalVisible);
-  };
-
-  const handlePlacePress = () => {
-    setPlaceModalVisible(!placeModalVisible);
-  };
-
->>>>>>> 9ba9d23ef4f7c27929548aee8e32b35fd9c9bf88
   const handleClosePress = () => {
     setSearchVisible(!searchVisible);
   };
