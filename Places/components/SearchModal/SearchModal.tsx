@@ -30,11 +30,9 @@ function SearchModal(props: any) {
   const handleFilterPress = () => {
     setFilterModalVisible(!filterModalVisible)
   }
-
   const handlePlacePress = () => {
     setPlaceModalVisible(!placeModalVisible)
   }
-
   const handleClosePress = () => {
     setSearchVisible(!searchVisible)
   }
