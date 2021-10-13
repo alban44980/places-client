@@ -13,63 +13,63 @@ const places = [
   },
   {
     id: 2,
-    name: 'Albans Dudes Gay Bar',
+    name: 'Connors Quirky Cafe',
     img:
-      'https://images.pexels.com/photos/2034851/pexels-photo-2034851.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+      'https://images.pexels.com/photos/2506993/pexels-photo-2506993.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
     description:
-      'This place is absolutely lit. Great prices and so many good looking dudes.',
+      'Super hip place, Connor and his baristas can really whip up a nice cold brew',
     location: '27 Carrer DAvila, Barcelona Spain 08005',
     address: '27 Carrer DAvila, Barcelona Spain 08005',
-    city: 'Barcelona',
+    city: 'Madrid',
     country: 'Spain',
   },
   {
     id: 3,
-    name: 'Albans Dudes Gay Bar',
+    name: 'Adrianos Race Track',
     img:
-      'https://images.pexels.com/photos/2034851/pexels-photo-2034851.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+      'https://images.pexels.com/photos/755298/pexels-photo-755298.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
     description:
-      'This place is absolutely lit. Great prices and so many good looking dudes.',
+      'Get ready for some speed, enough said',
     location: '27 Carrer DAvila, Barcelona Spain 08005',
     address: '27 Carrer DAvila, Barcelona Spain 08005',
-    city: 'Barcelona',
-    country: 'Spain',
+    city: 'Miami',
+    country: 'USA',
   },
   {
     id: 4,
-    name: 'Albans Dudes Gay Bar',
+    name: 'Juliannas Cowork Space for Wanderers and Dreamers',
     img:
-      'https://images.pexels.com/photos/2034851/pexels-photo-2034851.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+      'https://images.pexels.com/photos/3952080/pexels-photo-3952080.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
     description:
-      'This place is absolutely lit. Great prices and so many good looking dudes.',
+      'Meet nice people, bounce ideas off of other creatives, be a part of a community. This is defintiely a spot to check out.',
     location: '27 Carrer DAvila, Barcelona Spain 08005',
     address: '27 Carrer DAvila, Barcelona Spain 08005',
-    city: 'Barcelona',
-    country: 'Spain',
+    city: 'Bali',
+    country: 'Indonesia',
   },
   {
     id: 5,
-    name: 'Albans Dudes Gay Bar',
+    name: 'Eugunes Rave Life',
     img:
-      'https://images.pexels.com/photos/2034851/pexels-photo-2034851.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+      'https://images.pexels.com/photos/1154189/pexels-photo-1154189.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
     description:
-      'This place is absolutely lit. Great prices and so many good looking dudes.',
+      'If you like raves this is the place to be. Even for Berlin, shit gets wild here',
     location: '27 Carrer DAvila, Barcelona Spain 08005',
     address: '27 Carrer DAvila, Barcelona Spain 08005',
-    city: 'Barcelona',
-    country: 'Spain',
+    city: 'Berlin',
+    country: 'Germany',
   },
   {
     id: 6,
-    name: 'Albans Dudes Gay Bar',
+    name: 'Wills Burgers',
     img:
-      'https://images.pexels.com/photos/2034851/pexels-photo-2034851.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+      'https://images.pexels.com/photos/5908054/pexels-photo-5908054.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
     description:
-      'This place is absolutely lit. Great prices and so many good looking dudes.',
+      'You simply cannot find a better burger in Philly.',
     location: '27 Carrer DAvila, Barcelona Spain 08005',
     address: '27 Carrer DAvila, Barcelona Spain 08005',
-    city: 'Barcelona',
-    country: 'Spain',
+    city: 'Philadelphia',
+    country: 'USA',
   },
 ];
 

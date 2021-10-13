@@ -5,6 +5,7 @@ import MyData from '../components/MyProfile/MyData';
 import ButtonContainer from '../components/MyProfile/ButtonContainer';
 
 import FiltersContainer from '../components/MyProfile/FiltersContainer';
+import PlacesList from '../components/SearchModal/PlacesList';
 
 function Profile() {
   return (
@@ -18,8 +19,8 @@ function Profile() {
       <ButtonContainer />
       {/* FILTERS CONTAINER */}
       <FiltersContainer />
-      {/* // Search Results container */}
-      <View style={styles.resultsContainer}></View>
+      {/* Refactor to pass data for this users places */}
+      <PlacesList />
     </View>
   );
 }
@@ -33,10 +34,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  resultsContainer: {
-    backgroundColor: 'lightblue',
-    flex: 1,
-  },
+
 });
 
 export default Profile;

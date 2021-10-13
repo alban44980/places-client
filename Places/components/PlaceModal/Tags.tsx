@@ -1,32 +1,31 @@
-import {StyleSheet, View, Text} from 'react-native';
-import React from 'react';
+import {StyleSheet, View, Text, TouchableHighlight, ScrollView} from 'react-native';
+import React, {useState} from 'react';
 import colors from '../../assets/styles/colors';
+import tags from '../../dummyData/tagsList';
 
 
 function Tags() {
 
+  // there should be some kind of state for selected --> this is used for rendering color to begin with
 
-  const dummyTags = [
-    'bar',
-    'nightlife',
-    'drinks',
-    'gay',
-    'dancing',
-    'culture',
-    'sexy'
-  ]
+  // for now this is the same tags list but in reality it will be the tags associated with a place or 
+  // unique tags associated with a collection of places
+  const tagsList = tags
+
 
   return (
     <View style={styles.tagSectionContainer}>
-      {
-        dummyTags.map((tag) => {
-          return (
-            <View style={styles.tagContainer}>
-              <Text style={styles.tagText}>{tag}</Text>
-            </View>
-          )
-        })
-      }
+      <ScrollView horizontal={true}>
+        {
+          tagsList.map((tag) => {
+            return (
+              <View  style={styles.tagContainer} >
+                <Text style={styles.tagText}>#{tag}</Text>
+              </View>
+            )
+          })
+        }
+      </ScrollView>
      
     </View>
   );
@@ -36,29 +35,32 @@ export default Tags;
 
 const styles = StyleSheet.create({
   tagSectionContainer: {
-    height: '15%',
-    width: '90%',
+    flex: 1,
     backgroundColor: colors.accentFun,
     flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-evenly',
-    alignContent: 'center'
+    alignItems: 'center',
+    padding: 10,
+    overflow: 'scroll',
   },
 
   tagContainer: {
-    height: '22%',
-    width: '27%',
+    height: 35,
+    minWidth: 50,
+    maxWidth: 100,
     backgroundColor: colors.backgroundDark,
     borderRadius: 10,
-    margin: 4,
-    justifyContent: 'center'
+    marginHorizontal: 10,
+    justifyContent: 'center',
+    paddingHorizontal: 10
   },
 
+
   tagText: {
-    fontSize: 11,
-    fontWeight: '600',
+    fontSize: 10,
+    fontWeight: '500',
     color: colors.fontLight,
-    textAlign: 'center'
+    textAlign: 'center',
+    letterSpacing: 1.2,
   }
   
 })

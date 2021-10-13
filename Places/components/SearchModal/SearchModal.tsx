@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, View, Text, Modal, SafeAreaView, TouchableOpacity, TextInput, TouchableWithoutFeedback} from 'react-native';
+import {StyleSheet, View, Text, Modal, SafeAreaView, TouchableOpacity, TextInput, TouchableWithoutFeedback, TouchableHighlight} from 'react-native';
 import PlaceModal from '../PlaceModal/PlaceModal';
 import FilterModal from './FilterModal';
 import FriendPlacesFilter from './FriendPlacesFilter';
@@ -7,15 +7,23 @@ import PlacesList from './PlacesList';
 import SearchBar from './SearchBar';
 import colors from '../../assets/styles/colors';
 import CloseButton from '../PlaceModal/CloseButton';
+import places from '../../dummyData/placesList';
 
 
 
 
 function SearchModal(props: any) {
 
+  // this is a placeholder for a redux reducer of all places
+  const placesArray = places
+
+  const [placesRendered, setPlacesRendered] = useState<any[]>([...placesArray])
+  const [search, setSearch] = useState<String>('')
+
   const {searchVisible, setSearchVisible} = props
   const [filterModalVisible, setFilterModalVisible] = useState<Boolean>(false)
   const [placeModalVisible, setPlaceModalVisible] = useState<Boolean>(false)
+
   // waiting for place interface before declaring below
   const [selectedPlace, setSelectedPlace] = useState<any>(null)
 
@@ -30,6 +38,8 @@ function SearchModal(props: any) {
   const handleClosePress = () => {
     setSearchVisible(!searchVisible)
   }
+
+
 
   return (
     <Modal
@@ -59,9 +69,17 @@ function SearchModal(props: any) {
             />}
 
             <CloseButton handlePress={handleClosePress}/>
-            <SearchBar handlePress={handleFilterPress}/>
+            <SearchBar 
+              handlePress={handleFilterPress}
+              search={search}
+              setSearch={setSearch}
+              setSearchResults={setPlacesRendered}
+              data={placesArray}
+            />
+        
+
             <FriendPlacesFilter />
-            <PlacesList handlePress={handlePlacePress} setPlace={setSelectedPlace} />
+            <PlacesList handlePress={handlePlacePress} setPlace={setSelectedPlace} places={placesRendered}/>
 
         </SafeAreaView>
     </Modal>
@@ -76,6 +94,7 @@ const styles = StyleSheet.create({
     flex: 1, 
     backgroundColor: colors.backgroundDark,
   },
+
 
 
 })

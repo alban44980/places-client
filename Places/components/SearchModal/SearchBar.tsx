@@ -2,15 +2,28 @@ import React, {useState} from 'react';
 import {StyleSheet, View, Text, TouchableOpacity, TextInput, TouchableHighlight,} from 'react-native';
 import FilterModal from './FilterModal';
 import colors from '../../assets/styles/colors';
-
+import places from '../../dummyData/placesList';
 
 
 function SearchBar(props: any) {
 
-  const [filteredData, setFilteredData] = useState([])
-  const [search, setSearch] = useState('')
-  const {handlePress} = props
+  const {handlePress, setSearch, setSearchResults, data, search} = props
 
+
+  const searchFilter = (text: String) => {
+    if (text) {
+      const newData = data.filter((item: any) => {
+        const itemData = item.city ? item.city.toUpperCase() : ''.toUpperCase()
+        const textData = text.toUpperCase()
+        return itemData.indexOf(textData) > -1;
+      })
+      setSearchResults(newData);
+      setSearch(text)
+    } else {
+      setSearchResults(data)
+      setSearch(text)
+    }
+  }
 
   return (
 
@@ -19,6 +32,7 @@ function SearchBar(props: any) {
         style={styles.searchBar}
         value={search}
         placeholder='Where are you going?'
+        onChangeText={(text) => searchFilter(text)}
       />
       <TouchableHighlight 
         style={styles.filterButtonContainer}

@@ -1,14 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, View, Text, Modal, TouchableOpacity} from 'react-native';
 import colors from '../../assets/styles/colors';
+import TagsFilter from './TagsFilter';
 
 
 
 function FilterModal(props: any) {
 
   const {filterModalVisible, setFilterModalVisible, handlePress} = props
-  
-  
+
 
   return (
     <Modal
@@ -22,7 +22,7 @@ function FilterModal(props: any) {
 
       <View style={styles.filterModalContainer}>
         <View style={styles.tagsListContainer}>
-          {/* map over the array of tags and render views */}
+          <TagsFilter />
         </View>
 
        <View style={styles.buttonsContainer}>
@@ -44,17 +44,22 @@ export default FilterModal;
 
 const styles = StyleSheet.create({
   filterModalContainer: {
-    height: '35%',
-    width: '75%',
+    height: '50%',
+    width: '80%',
     backgroundColor: colors.backgroundDark,
     position: 'absolute',
     top: '21%',
-    alignSelf: 'center'
+    alignSelf: 'center',
+    borderColor: colors.backgroundDark,
+    borderWidth: 1,
+    overflow: 'hidden',
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10
   },
 
   tagsListContainer: {
     height: '80%',
-    backgroundColor: colors.backgroundDark
+    backgroundColor: colors.backgroundDark,
   },
 
   buttonsContainer: {
@@ -67,7 +72,7 @@ const styles = StyleSheet.create({
 
   acceptButton: {
     width: '100%',
-    backgroundColor: colors.accentFun,
+    backgroundColor: colors.backgroundLight,
     justifyContent: 'center',
   },
 

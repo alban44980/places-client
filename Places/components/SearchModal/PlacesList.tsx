@@ -13,7 +13,7 @@ import PlaceModal from '../PlaceModal/PlaceModal';
 import colors from '../../assets/styles/colors';
 
 function PlacesList(props: any) {
-  const { handlePress, setPlace } = props;
+  const { handlePress, setPlace, places } = props;
   const data = places;
 
   return (
@@ -67,7 +67,8 @@ const styles = StyleSheet.create({
 
   itemElementStyle: {
     height: 200,
-    width: '90%',
+    minWidth: '90%',
+    maxWidth: '90%',
     borderWidth: 1,
     marginBottom: 30,
     borderRadius: 10,
