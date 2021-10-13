@@ -3,11 +3,16 @@ import React, { useState } from 'react';
 import { Provider, useSelector, useDispatch } from 'react-redux';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import reducers, { RootState } from './redux/reducers/reducers';
+import { createStackNavigator } from '@react-navigation/stack';
+
 import store from './redux/store/store';
 import Home from './screens/Home';
 import Navigation from './components/Navigation/Navigation';
+import UserProfile from './components/UserProfile/UserProfile';
+
+const Stack: any = createStackNavigator();
 
 export default function App() {
   // const userInfo: any = useSelector((state: RootState) => state.userInfo);
@@ -15,8 +20,17 @@ export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Navigation />
+        <Stack.Navigator initialRouteName={'app'}>
+          <Stack.Screen name="userProfile" component={UserProfile} />
+          <Stack.Screen name="app" component={Navigation} />
+        </Stack.Navigator>
       </NavigationContainer>
+      {/* <NavigationContainer>
+        <Navigation /> */}
+      {/* <Stack.Navigator>
+          <Stack.Screen component={UserProfile} name="userProfile" />
+        </Stack.Navigator> */}
+      {/* </NavigationContainer> */}
     </Provider>
   );
 }
