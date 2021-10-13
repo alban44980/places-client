@@ -13,6 +13,7 @@ import SearchModal from '../components/SearchModal/SearchModal';
 import allFriendsCities from '../dummyData/allFriendsCities';
 import homeScreenPlaces from '../dummyData/homeScreenPlaces';
 import sampleFriendsList from '../dummyData/homeScreenFriends';
+
 import { getUserData } from '../redux/actions/actions';
 
 function Home() {

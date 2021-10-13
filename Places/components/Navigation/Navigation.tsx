@@ -59,7 +59,7 @@ function Tabs() {
       ></Tab.Screen>
       <Tab.Screen
         name="Add"
-        component={UserProfile}
+        component={Add}
         options={{
           tabBarIcon: ({ focused }) => (
             <View>
