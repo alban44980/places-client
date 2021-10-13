@@ -8,12 +8,9 @@ function TagsFilter() {
 
   // there should be some kind of state for selected --> this is used for rendering color to begin with
   const [selected, setSelected] = useState<String[]>([])
-
-
   const tagsList = tags
 
   const handlePress = (tag: string) => {
- 
     if (!selected.includes(tag)) {
       setSelected((prev) => [...prev, tag])
     }
@@ -52,12 +49,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.backgroundMedium,
     alignItems: 'center',
-    paddingTop: 30,
+    paddingTop: 20,
   },
 
   tagDefaultContainer: {
     height: 45,
-    width: '75%',
+    width: '60%',
     backgroundColor: colors.backgroundDark,
     borderRadius: 10,
     marginBottom: 10,
@@ -68,7 +65,7 @@ const styles = StyleSheet.create({
 
   tagSelectedContainer: {
     height: 45,
-    width: '75%',
+    width: '60%',
     backgroundColor: colors.accentFun,
     borderRadius: 10,
     marginBottom: 10,

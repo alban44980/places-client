@@ -72,7 +72,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 15,
     borderColor: colors.backgroundDark,
-    borderWidth: 2
+    borderWidth: 2,
+    marginBottom: 20
   },
 
   addImageIcon: {
