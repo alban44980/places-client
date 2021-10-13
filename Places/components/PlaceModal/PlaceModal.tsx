@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   },
 
   tagContainer: {
-    height: '8%',
+    height: '10%',
     width: '90%',
   }
   
