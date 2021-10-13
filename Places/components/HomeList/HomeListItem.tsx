@@ -1,55 +1,18 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-  Text,
-  TextInput,
-  Button,
-  TouchableOpacity,
-  ListViewBase,
-  ImageBackground,
-} from 'react-native';
-import FriendPlacesFilter from '../SearchModal/FriendPlacesFilter';
+import { StyleSheet, View, Text, ImageBackground } from 'react-native';
 
-function HomeListItem(props: any) {
-  // let image = require(friend.profilePicture);
-
+function HomeListItem({ data }: any) {
   return (
     <View style={styles.itemContainer}>
-      {props.friend ? (
+      {data ? (
         <ImageBackground
           style={styles.img}
           imageStyle={{ borderRadius: 50 }}
           source={{
-            uri: `https://${props.friend.profilePicture}`,
+            uri: `https://${data.image}`,
           }}
-          // resizeMode="cover"
         >
-          <Text>{props.friend.name}</Text>
-        </ImageBackground>
-      ) : null}
-      {props.allFriendsCitie ? (
-        <ImageBackground
-          style={styles.img}
-          imageStyle={{ borderRadius: 25 }}
-          source={{
-            uri: `https://${props.allFriendsCitie.image}`,
-          }}
-          // resizeMode="cover"
-        >
-          <Text>{props.allFriendsCitie.name}</Text>
-        </ImageBackground>
-      ) : null}
-      {props.homeScreenPlace ? (
-        <ImageBackground
-          style={styles.img}
-          imageStyle={{ borderRadius: 5 }}
-          source={{
-            uri: `https://${props.homeScreenPlace.profilePicture}`,
-          }}
-          // resizeMode="cover"
-        >
-          <Text style={{ color: 'red' }}>{props.homeScreenPlace.name}</Text>
+          <Text style={styles.title}>{data.name}</Text>
         </ImageBackground>
       ) : null}
     </View>
@@ -58,7 +21,6 @@ function HomeListItem(props: any) {
 
 const styles = StyleSheet.create({
   itemContainer: {
-    // backgroundColor: 'black',
     margin: 10,
     width: 80,
     height: 80,
@@ -69,6 +31,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
+  },
+  title: {
+    color: 'red',
   },
 });
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, SafeAreaView } from 'react-native';
 
 import MyData from '../components/MyProfile/MyData';
 import ButtonContainer from '../components/MyProfile/ButtonContainer';
@@ -9,19 +9,16 @@ import PlacesList from '../components/SearchModal/PlacesList';
 
 function Profile() {
   return (
-    <View style={styles.profileContainer}>
+    <SafeAreaView style={styles.profileContainer}>
       <View style={styles.titleContainer}>
         <Text>MY PROFILE</Text>
       </View>
-      {/* DATA CONTAINER (PROFILE PIC + FOLLOWERS + FOLLOWING + BIO) */}
       <MyData />
-      {/* BUTTON CONTAINER DOWN BELOW */}
       <ButtonContainer />
-      {/* FILTERS CONTAINER */}
       <FiltersContainer />
       {/* Refactor to pass data for this users places */}
       <PlacesList />
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -34,7 +31,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-
 });
 
 export default Profile;
