@@ -11,7 +11,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../App';
 
 function HomeListItem({ data, route }: any) {
-  type userScreenProp = StackNavigationProp<RootStackParamList, 'userProfile'>;
+  type userScreenProp = StackNavigationProp<RootStackParamList>;
 
   const navigation = useNavigation<userScreenProp>();
 
@@ -20,10 +20,10 @@ function HomeListItem({ data, route }: any) {
       style={styles.itemContainer}
       onPress={() => {
         if (route === 'userProfile') navigation.navigate('userProfile');
-        if (route === 'search') {
-          navigation.navigate('search');
-        }
-        if (route === 'place') navigation.navigate('place');
+        // if (route === 'search') {
+        //   navigation.navigate('search');
+        // }
+        // if (route === 'place') navigation.navigate('place');
       }}
     >
       {data ? (
