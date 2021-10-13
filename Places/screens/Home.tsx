@@ -46,16 +46,15 @@ function Home() {
       <View style={styles.topContainer}>
         <Text style={styles.text}>MY PLACES</Text>
       </View>
-
       <TouchableOpacity style={styles.searchTouchable} onPress={handlePress}>
         <View style={styles.searchContainer}>
           <Text style={styles.searchBar}>Where are you going ?</Text>
         </View>
       </TouchableOpacity>
       <View style={styles.listsContainer}>
-        <HomeList friends={friends} />
-        <HomeList allFriendsCities={allFriendsCities} />
-        <HomeList homeScreenPlaces={homeScreenPlaces} />
+        <HomeList data={friends} />
+        <HomeList data={allFriendsCities} />
+        <HomeList data={homeScreenPlaces} />
       </View>
     </View>
   );
@@ -65,7 +64,6 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     height: '100%',
-    // backgroundColor: 'rgba(0, 0, 0, 0.7)',
     display: 'flex',
     flexDirection: 'column',
   },
@@ -103,9 +101,7 @@ const styles = StyleSheet.create({
   listsContainer: {
     width: '100%',
     height: '55%',
-    // backgroundColor: 'purple',
     justifyContent: 'space-evenly',
-    // backgroundColor: 'yellow',
   },
 });
 
