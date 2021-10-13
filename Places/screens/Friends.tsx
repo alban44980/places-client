@@ -7,11 +7,20 @@ import {
   ScrollView,
   Image,
   SafeAreaView,
+  TouchableOpacity,
 } from 'react-native';
 
 import sampleFriendsList from '../dummyData/homeScreenFriends';
 
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../App';
+
+type userScreenProp = StackNavigationProp<RootStackParamList, 'userProfile'>;
+
 function Friends() {
+  const navigation = useNavigation<userScreenProp>();
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.searchBarContainer}>
@@ -20,7 +29,10 @@ function Friends() {
       <ScrollView style={styles.listContainer}>
         {sampleFriendsList.map((friend: any) => {
           return (
-            <View style={styles.friendContainer}>
+            <TouchableOpacity
+              style={styles.friendContainer}
+              onPress={() => navigation.navigate('userProfile')}
+            >
               <Image
                 style={styles.img}
                 source={{
@@ -28,7 +40,7 @@ function Friends() {
                 }}
               />
               <Text style={styles.friendsName}>{friend.name}</Text>
-            </View>
+            </TouchableOpacity>
           );
         })}
       </ScrollView>

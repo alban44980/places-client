@@ -11,8 +11,16 @@ import store from './redux/store/store';
 import Home from './screens/Home';
 import Navigation from './components/Navigation/Navigation';
 import UserProfile from './components/UserProfile/UserProfile';
+import SearchModal from './components/SearchModal/SearchModal';
+import PlaceModal from './components/PlaceModal/PlaceModal';
 
 const Stack: any = createStackNavigator();
+
+export type RootStackParamList = {
+  userProfile: undefined;
+  search: undefined;
+  place: undefined;
+};
 
 export default function App() {
   // const userInfo: any = useSelector((state: RootState) => state.userInfo);
@@ -22,15 +30,11 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator initialRouteName={'app'}>
           <Stack.Screen name="userProfile" component={UserProfile} />
+          <Stack.Screen name="search" component={SearchModal} />
+          <Stack.Screen name="place" component={PlaceModal} />
           <Stack.Screen name="app" component={Navigation} />
         </Stack.Navigator>
       </NavigationContainer>
-      {/* <NavigationContainer>
-        <Navigation /> */}
-      {/* <Stack.Navigator>
-          <Stack.Screen component={UserProfile} name="userProfile" />
-        </Stack.Navigator> */}
-      {/* </NavigationContainer> */}
     </Provider>
   );
 }

@@ -6,7 +6,6 @@ import ButtonContainer from '../components/MyProfile/ButtonContainer';
 
 import FiltersContainer from '../components/MyProfile/FiltersContainer';
 import PlacesList from '../components/SearchModal/PlacesList';
-import MyStack from '../components/Navigation/StackNavigator';
 
 function Profile() {
   return (

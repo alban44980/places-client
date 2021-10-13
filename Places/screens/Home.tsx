@@ -59,9 +59,9 @@ function Home() {
         </View>
       </TouchableOpacity>
       <View style={styles.listsContainer}>
-        <HomeList data={friends} />
-        <HomeList data={allFriendsCities} />
-        <HomeList data={homeScreenPlaces} />
+        <HomeList data={friends} route={'userProfile'} />
+        <HomeList data={allFriendsCities} route={'search'} />
+        <HomeList data={homeScreenPlaces} route={'place'} />
       </View>
     </SafeAreaView>
   );

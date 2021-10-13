@@ -1,9 +1,31 @@
 import React from 'react';
-import { StyleSheet, View, Text, ImageBackground } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  ImageBackground,
+  TouchableOpacity,
+} from 'react-native';
 
-function HomeListItem({ data }: any) {
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../../App';
+
+function HomeListItem({ data, route }: any) {
+  type userScreenProp = StackNavigationProp<RootStackParamList, 'userProfile'>;
+
+  const navigation = useNavigation<userScreenProp>();
+
   return (
-    <View style={styles.itemContainer}>
+    <TouchableOpacity
+      style={styles.itemContainer}
+      onPress={() => {
+        if (route === 'userProfile') navigation.navigate('userProfile');
+        if (route === 'search') {
+          navigation.navigate('search');
+        }
+        if (route === 'place') navigation.navigate('place');
+      }}
+    >
       {data ? (
         <ImageBackground
           style={styles.img}
@@ -15,7 +37,7 @@ function HomeListItem({ data }: any) {
           <Text style={styles.title}>{data.name}</Text>
         </ImageBackground>
       ) : null}
-    </View>
+    </TouchableOpacity>
   );
 }
 

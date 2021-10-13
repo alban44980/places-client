@@ -1,19 +1,10 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { useNavigation } from '@react-navigation/native';
-
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import MyStack from '../Navigation/StackNavigator';
 
 export default function ButtonContainer() {
-  const navigation = useNavigation();
-
   return (
     <View style={styles.buttonsContainer}>
-      <TouchableOpacity
-        style={styles.buttons}
-        onPress={() => navigation.navigate('userProfile')}
-      >
+      <TouchableOpacity style={styles.buttons}>
         <Text>MY PLACES</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.buttons}>

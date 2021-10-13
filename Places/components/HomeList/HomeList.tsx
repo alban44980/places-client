@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
 import HomeListItem from './HomeListItem';
 
-function HomeList({ data }: any) {
+function HomeList({ data, route }: any) {
   return (
     <ScrollView
       style={styles.homeListContainer}
@@ -12,7 +12,7 @@ function HomeList({ data }: any) {
       <View style={styles.homeListContent}>
         {data
           ? data.map((el: any) => {
-              return <HomeListItem key={el.name} data={el} />;
+              return <HomeListItem key={el.name} data={el} route={route} />;
             })
           : null}
       </View>
