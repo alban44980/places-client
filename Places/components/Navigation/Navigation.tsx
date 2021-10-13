@@ -14,6 +14,7 @@ import Home from '../../screens/Home';
 import Friends from '../../screens/Friends';
 import Add from '../../screens/Add';
 import Profile from '../../screens/Profile';
+import UserProfile from '../UserProfile/UserProfile';
 
 const Tab = createBottomTabNavigator();
 
@@ -58,7 +59,7 @@ function Tabs() {
       ></Tab.Screen>
       <Tab.Screen
         name="Add"
-        component={Add}
+        component={UserProfile}
         options={{
           tabBarIcon: ({ focused }) => (
             <View>

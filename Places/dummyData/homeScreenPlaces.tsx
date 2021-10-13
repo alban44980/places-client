@@ -1,32 +1,32 @@
 const homeScreenPlaces = [
   {
     name: 'Bar',
-    profilePicture:
+    image:
       'images.pexels.com/photos/274192/pexels-photo-274192.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
   },
   {
     name: 'Cafe',
-    profilePicture:
+    image:
       'images.pexels.com/photos/274192/pexels-photo-274192.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
   },
   {
     name: 'Glitter',
-    profilePicture:
+    image:
       'images.pexels.com/photos/274192/pexels-photo-274192.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
   },
   {
     name: 'Massage Parlor',
-    profilePicture:
+    image:
       'images.pexels.com/photos/274192/pexels-photo-274192.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
   },
   {
     name: 'Hair Dresser',
-    profilePicture:
+    image:
       'images.pexels.com/photos/274192/pexels-photo-274192.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
   },
   {
     name: 'Restaurant',
-    profilePicture:
+    image:
       'images.pexels.com/photos/274192/pexels-photo-274192.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
   },
 ];

@@ -6,18 +6,14 @@ import {
   TextInput,
   ScrollView,
   Image,
-  Button,
-  TouchableOpacity,
-  ListViewBase,
+  SafeAreaView,
 } from 'react-native';
 
 import sampleFriendsList from '../dummyData/homeScreenFriends';
 
-console.log(sampleFriendsList);
-
 function Friends() {
   return (
-    <View style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.searchBarContainer}>
         <TextInput style={styles.searchBar} placeholder="Search" />
       </View>
@@ -28,7 +24,7 @@ function Friends() {
               <Image
                 style={styles.img}
                 source={{
-                  uri: `https://${friend.profilePicture}`,
+                  uri: `https://${friend.image}`,
                 }}
               />
               <Text style={styles.friendsName}>{friend.name}</Text>
@@ -36,7 +32,7 @@ function Friends() {
           );
         })}
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -59,10 +55,6 @@ const styles = StyleSheet.create({
 
   listContainer: {
     backgroundColor: 'whitesmoke',
-    height: 2000,
-    // flexGrow: 1,
-    // width: '100%',
-    // flex: 1,
   },
   friendContainer: {
     backgroundColor: 'lightblue',

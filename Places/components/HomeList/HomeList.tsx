@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, ScrollView } from 'react-native';
+import { StyleSheet, View, ScrollView } from 'react-native';
 import HomeListItem from './HomeListItem';
 
-function HomeList({ friends, allFriendsCities, homeScreenPlaces }: any) {
+function HomeList({ data }: any) {
   return (
     <ScrollView
       style={styles.homeListContainer}
@@ -10,33 +10,11 @@ function HomeList({ friends, allFriendsCities, homeScreenPlaces }: any) {
       horizontal={true}
     >
       <View style={styles.homeListContent}>
-        {friends
-          ? friends.map((friend: any) => {
-              return <HomeListItem key={friend.name} friend={friend} />;
+        {data
+          ? data.map((el: any) => {
+              return <HomeListItem key={el.name} data={el} />;
             })
           : null}
-        {allFriendsCities
-          ? allFriendsCities.map((allFriendsCitie: any) => {
-              return (
-                <HomeListItem
-                  key={allFriendsCitie.name}
-                  allFriendsCitie={allFriendsCitie}
-                />
-              );
-            })
-          : null}
-        {homeScreenPlaces
-          ? homeScreenPlaces.map((homeScreenPlace: any) => {
-              return (
-                <HomeListItem
-                  key={homeScreenPlace.name}
-                  homeScreenPlace={homeScreenPlace}
-                />
-              );
-            })
-          : null}
-
-
       </View>
     </ScrollView>
   );
