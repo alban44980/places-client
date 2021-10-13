@@ -42,7 +42,7 @@ function UserPlaces() {
 
 const styles = StyleSheet.create({
   userPlacesContainer: {
-    backgroundColor: 'lightblue',
+    // backgroundColor: 'lightblue',
     flexGrow: 1,
     borderWidth: 1,
     borderColor: 'black',
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   itemContainer: {
     height: 140,
     width: 160, //160
-    backgroundColor: 'red',
+    backgroundColor: 'lightblue',
     margin: 20,
     // alignSelf: 'center',
   },
