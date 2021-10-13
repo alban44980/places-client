@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  SafeAreaView,
+} from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/reducers/reducers';
 import HomeList from '../components/HomeList/HomeList';
@@ -35,7 +41,7 @@ function Home() {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       {searchVisible && (
         <SearchModal
           searchVisible={searchVisible}
@@ -56,7 +62,7 @@ function Home() {
         <HomeList data={allFriendsCities} />
         <HomeList data={homeScreenPlaces} />
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 

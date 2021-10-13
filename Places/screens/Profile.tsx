@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, SafeAreaView } from 'react-native';
 
 import MyData from '../components/MyProfile/MyData';
 import ButtonContainer from '../components/MyProfile/ButtonContainer';
@@ -8,19 +8,15 @@ import FiltersContainer from '../components/MyProfile/FiltersContainer';
 
 function Profile() {
   return (
-    <View style={styles.profileContainer}>
+    <SafeAreaView style={styles.profileContainer}>
       <View style={styles.titleContainer}>
         <Text>MY PROFILE</Text>
       </View>
-      {/* DATA CONTAINER (PROFILE PIC + FOLLOWERS + FOLLOWING + BIO) */}
       <MyData />
-      {/* BUTTON CONTAINER DOWN BELOW */}
       <ButtonContainer />
-      {/* FILTERS CONTAINER */}
       <FiltersContainer />
-      {/* // Search Results container */}
       <View style={styles.resultsContainer}></View>
-    </View>
+    </SafeAreaView>
   );
 }
 
