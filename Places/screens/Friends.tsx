@@ -55,10 +55,6 @@ const styles = StyleSheet.create({
 
   listContainer: {
     backgroundColor: 'whitesmoke',
-    height: 2000,
-    // flexGrow: 1,
-    // width: '100%',
-    // flex: 1,
   },
   friendContainer: {
     backgroundColor: 'lightblue',
