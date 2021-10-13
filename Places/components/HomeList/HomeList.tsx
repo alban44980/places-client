@@ -36,17 +36,7 @@ function HomeList({ friends, allFriendsCities, homeScreenPlaces }: any) {
             })
           : null}
 
-        {/* <HomeListItem />
-        <HomeListItem />
-        <HomeListItem />
-        <HomeListItem />
-        <HomeListItem />
-        <HomeListItem />
-        <HomeListItem />
-        <HomeListItem />
-        <HomeListItem />
-        <HomeListItem />
-        <HomeListItem /> */}
+
       </View>
     </ScrollView>
   );
