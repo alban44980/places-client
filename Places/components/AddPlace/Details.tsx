@@ -33,7 +33,6 @@ function Details() {
           style={styles.searchBar}
           value={search}
           placeholder='Place name'
-          
         />
       <TouchableHighlight 
         style={styles.filterButtonContainer}
