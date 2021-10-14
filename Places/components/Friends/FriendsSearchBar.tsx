@@ -12,7 +12,9 @@ import React, {useState} from 'react';
 import colors from '../../assets/styles/colors';
 
 
-function FriendsSearchBar(props) {
+function FriendsSearchBar() {
+
+  
   return (
     <View style={styles.searchBarContainer}>
        <TextInput style={styles.searchBar} placeholder="Search" />
@@ -28,7 +30,7 @@ export default FriendsSearchBar;
 
 const styles = StyleSheet.create({
   searchBarContainer: {
-    backgroundColor: 'gray',
+    backgroundColor: colors.accentFun,
     width: '100%',
     height: '12%',
     justifyContent: 'center',
