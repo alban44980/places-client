@@ -29,6 +29,7 @@ export default function FiltersContainer() {
         contentContainerStyle={styles.scrollViewContainer}
         horizontal={true} 
         bounces={true}
+        showsHorizontalScrollIndicator={false}
       >
         {dummyTags.map((tag) => {
           return (
