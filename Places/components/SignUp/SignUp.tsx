@@ -5,29 +5,19 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  Button,
 } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 
-const initialState = {
-  user_name: '',
-  first_name: '',
-  last_name: '',
-  password: '',
-  passwordConfirmation: '',
-  bio: '',
-  email: '',
-};
-
 function SignUp() {
-  const [state, setState] = useState(initialState);
-
-  function onChange(text: String) {
-    console.log(text);
-    // setState((previous) => ({
-    //   ...previous,
-    //   [name]: value,
-    // }));
-  }
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data: any) => {
+    console.log(data);
+  };
 
   return (
     <View style={styles.loginContainer}>
@@ -35,23 +25,114 @@ function SignUp() {
         <Text style={styles.text}>MY PLACES</Text>
       </View>
       <View style={styles.formContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Username"
-          value={state.user_name}
-          onChangeText={(text) => onChange(text)}
-        ></TextInput>
-        <TextInput style={styles.input} placeholder="First name"></TextInput>
-        <TextInput style={styles.input} placeholder="Last name"></TextInput>
-        <TextInput style={styles.input} placeholder="Email"></TextInput>
-        <TextInput style={styles.input} placeholder="Password"></TextInput>
-        <TextInput
-          style={styles.input}
-          placeholder="Confirm Password"
-        ></TextInput>
-        <TouchableOpacity style={styles.loginButton}>
-          <Text>SIGNUP</Text>
-        </TouchableOpacity>
+        <Controller
+          control={control}
+          rules={{
+            required: true,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              style={styles.input}
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              placeholder="Username"
+            />
+          )}
+          name="user_name"
+          defaultValue=""
+        />
+        {errors.firstName && <Text>This is required.</Text>}
+
+        <Controller
+          control={control}
+          rules={{
+            maxLength: 100,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              style={styles.input}
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              placeholder="First name"
+            />
+          )}
+          name="first_name"
+          defaultValue=""
+        />
+        <Controller
+          control={control}
+          rules={{
+            maxLength: 100,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              style={styles.input}
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              placeholder="Last name"
+            />
+          )}
+          name="last_name"
+          defaultValue=""
+        />
+        <Controller
+          control={control}
+          rules={{
+            maxLength: 100,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              style={styles.input}
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              placeholder="Email"
+            />
+          )}
+          name="email"
+          defaultValue=""
+        />
+        <Controller
+          control={control}
+          rules={{
+            maxLength: 100,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              style={styles.input}
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              placeholder="Password"
+              secureTextEntry={true}
+            />
+          )}
+          name="password"
+          defaultValue=""
+        />
+        <Controller
+          control={control}
+          rules={{
+            maxLength: 100,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              style={styles.input}
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              placeholder="Confirm Password"
+              secureTextEntry={true}
+            />
+          )}
+          name="passwordConfirmation"
+          defaultValue=""
+        />
+
+        <Button title="Submit" onPress={handleSubmit(onSubmit)} />
       </View>
     </View>
   );
