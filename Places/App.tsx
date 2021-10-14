@@ -24,6 +24,7 @@ export type RootStackParamList = {
   place: undefined;
   login: undefined;
   signup: undefined;
+  app: undefined;
 };
 
 export default function App() {

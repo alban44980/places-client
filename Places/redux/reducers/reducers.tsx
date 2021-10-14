@@ -54,11 +54,37 @@ const placeSelected = (state = '', action: any) => {
 
 //setPlaces
 
+// access token
+const accessToken = (state = '', action: any) => {
+  switch (action.type) {
+    case 'SAVE_ACCESS_TOKEN': {
+      const { token } = action;
+      return token;
+    }
+    default:
+      return state;
+  }
+};
+
+//save refresh token
+const refreshToken = (state = '', action: any) => {
+  switch (action.type) {
+    case 'SAVE_REFRESH_TOKEN': {
+      const { token } = action;
+      return token;
+    }
+    default:
+      return state;
+  }
+};
+
 const reducers = combineReducers({
   userInfo,
   searchVisible,
   placeVisible,
   placeSelected,
+  accessToken,
+  refreshToken,
 });
 
 export default reducers;
