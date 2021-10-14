@@ -13,6 +13,7 @@ import Navigation from './components/Navigation/Navigation';
 import UserProfile from './components/UserProfile/UserProfile';
 import SearchModal from './components/SearchModal/SearchModal';
 import PlaceModal from './components/PlaceModal/PlaceModal';
+import Login from './components/Login/Login';
 
 const Stack: any = createStackNavigator();
 
@@ -28,7 +29,8 @@ export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName={'app'}>
+        <Stack.Navigator initialRouteName={'login'}>
+          <Stack.Screen name="login" component={Login} />
           <Stack.Screen name="app" component={Navigation} />
           <Stack.Screen name="userProfile" component={UserProfile} />
           <Stack.Screen name="search" component={SearchModal} />
