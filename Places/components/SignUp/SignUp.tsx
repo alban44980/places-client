@@ -45,6 +45,7 @@ function SignUp() {
               onChangeText={onChange}
               value={value}
               placeholder="Username"
+              autoCapitalize="none"
             />
           )}
           name="user_name"
@@ -64,6 +65,7 @@ function SignUp() {
               onChangeText={onChange}
               value={value}
               placeholder="First name"
+              autoCapitalize="none"
             />
           )}
           name="first_name"
@@ -81,6 +83,7 @@ function SignUp() {
               onChangeText={onChange}
               value={value}
               placeholder="Last name"
+              autoCapitalize="none"
             />
           )}
           name="last_name"
@@ -99,6 +102,7 @@ function SignUp() {
               value={value}
               placeholder="Email"
               textContentType={'emailAddress'}
+              autoCapitalize="none"
             />
           )}
           name="email"
@@ -117,6 +121,7 @@ function SignUp() {
               value={value}
               placeholder="Password"
               secureTextEntry={true}
+              autoCapitalize="none"
             />
           )}
           name="password"
@@ -140,6 +145,7 @@ function SignUp() {
               value={value}
               placeholder="Confirm Password"
               secureTextEntry={true}
+              autoCapitalize="none"
             />
           )}
           name="passwordConfirmation"
@@ -153,8 +159,6 @@ function SignUp() {
           }}
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
-              // errors={errors.passwordConfirmation}
-              // errorText={errors.passwordConfirmation.message}
               style={styles.input}
               onChangeText={onChange}
               value={value}

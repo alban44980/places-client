@@ -12,4 +12,15 @@ apiService.register = (user: any) => {
     .catch((err) => console.log(err));
 };
 
+apiService.login = (credentials: any) => {
+  return fetch(`${BASE_URL}/login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(credentials),
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
+};
+
 export default apiService;
