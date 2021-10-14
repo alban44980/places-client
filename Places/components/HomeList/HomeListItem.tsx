@@ -11,7 +11,12 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../App';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../redux/reducers/reducers';
-import { setUserData, toggleSearchVisible } from '../../redux/actions/actions';
+import {
+  setUserData,
+  toggleSearchVisible,
+  togglePlaceVisible,
+  setPlaceSelected,
+} from '../../redux/actions/actions';
 
 function HomeListItem({ data, route }: any) {
   type userScreenProp = StackNavigationProp<RootStackParamList>;
@@ -20,6 +25,13 @@ function HomeListItem({ data, route }: any) {
   const searchVisible: any = useSelector(
     (state: RootState) => state.searchVisible
   );
+  const placeVisible: any = useSelector(
+    (state: RootState) => state.placeVisible
+  );
+  const placeSelected: any = useSelector(
+    (state: RootState) => state.placeSelected
+  );
+
   const dispatch = useDispatch();
 
   return (
@@ -30,7 +42,10 @@ function HomeListItem({ data, route }: any) {
         if (route === 'search') {
           dispatch(toggleSearchVisible());
         }
-        // if (route === 'place') navigation.navigate('place');
+        if (route === 'place') {
+          dispatch(setPlaceSelected(data.name));
+          dispatch(togglePlaceVisible());
+        }
       }}
     >
       {data ? (

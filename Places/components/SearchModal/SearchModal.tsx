@@ -22,7 +22,6 @@ function SearchModal() {
   const [placesRendered, setPlacesRendered] = useState<any[]>([...placesArray]);
   const [search, setSearch] = useState<String>('');
   const [filterModalVisible, setFilterModalVisible] = useState<Boolean>(false);
-  const [placeModalVisible, setPlaceModalVisible] = useState<Boolean>(false);
   // waiting for place interface before declaring below
   const [selectedPlace, setSelectedPlace] = useState<any>(null);
 
@@ -40,10 +39,8 @@ function SearchModal() {
   };
   const handlePlacePress = () => {
     dispatch(togglePlaceVisible());
-    // setPlaceModalVisible(!placeModalVisible);
   };
   const handleClosePress = () => {
-    // setSearchVisible(!searchVisible);
     dispatch(toggleSearchVisible());
   };
 
@@ -56,7 +53,7 @@ function SearchModal() {
       visible={searchVisible}
       onRequestClose={() => {
         // setSearchVisible(false);
-        dispatch(toggleSearchVisible());
+        // dispatch(toggleSearchVisible());
       }}
     >
       <SafeAreaView style={styles.searchScreenContainer}>

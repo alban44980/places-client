@@ -10,23 +10,25 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/reducers/reducers';
 import HomeList from '../components/HomeList/HomeList';
 import SearchModal from '../components/SearchModal/SearchModal';
+import PlaceModal from '../components/PlaceModal/PlaceModal';
 import allFriendsCities from '../dummyData/allFriendsCities';
 import homeScreenPlaces from '../dummyData/homeScreenPlaces';
 import sampleFriendsList from '../dummyData/homeScreenFriends';
 
-import { setUserData, toggleSearchVisible } from '../redux/actions/actions';
+import { toggleSearchVisible } from '../redux/actions/actions';
 
 function Home() {
   const [friends, setFriends] = useState<any[]>([]); //Interface Friend
   const [cities, setCities] = useState<any[]>([]); //Interface City
   const [recentlyAdded, setRecentlyAdded] = useState<any[]>([]); //Interface Place
-  // const [searchVisible, setSearchVisible] = useState<Boolean>(false);
 
   const userInfo: any = useSelector((state: RootState) => state.userInfo);
   const searchVisible: any = useSelector(
     (state: RootState) => state.searchVisible
   );
-  console.log('searchvisible => ', searchVisible);
+  const placeVisible: any = useSelector(
+    (state: RootState) => state.placeVisible
+  );
 
   //useSelector friends
   //create 2 local states with places and cities, grabbed from the friends redux state
@@ -34,7 +36,6 @@ function Home() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('useEffect running');
     setFriends([...sampleFriendsList]);
     //Apicall to get the data
     // fetch('/backenduserdata')
@@ -58,6 +59,7 @@ function Home() {
   return (
     <SafeAreaView style={styles.container}>
       {searchVisible && <SearchModal />}
+      {placeVisible && <PlaceModal />}
 
       <View style={styles.topContainer}>
         <Text style={styles.text}>MY PLACES</Text>

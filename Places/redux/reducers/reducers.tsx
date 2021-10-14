@@ -37,12 +37,14 @@ const placeVisible = (state = false, action: any) => {
 };
 
 //placeSelected
-const setPlaceSelected = (state = '', action: any) => {
+const placeSelected = (state = '', action: any) => {
   switch (action.type) {
     case 'SET_PLACE': {
       const { placeName } = action;
       return placeName;
     }
+    default:
+      return state;
   }
 };
 
@@ -56,6 +58,7 @@ const reducers = combineReducers({
   userInfo,
   searchVisible,
   placeVisible,
+  placeSelected,
 });
 
 export default reducers;
