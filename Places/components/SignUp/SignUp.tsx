@@ -7,16 +7,25 @@ import {
   TouchableOpacity,
   Button,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../../App';
 import { useForm, Controller } from 'react-hook-form';
+import apiService from '../../ApiService';
 
 function SignUp() {
+  type userScreenProp = StackNavigationProp<RootStackParamList>;
+  const navigation = useNavigation<userScreenProp>();
+
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data: any) => {
+  const onSubmit = async (data: any) => {
     console.log(data);
+    await apiService.register(data);
+    navigation.navigate('login');
   };
 
   return (
@@ -33,7 +42,6 @@ function SignUp() {
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
               style={styles.input}
-              onBlur={onBlur}
               onChangeText={onChange}
               value={value}
               placeholder="Username"
@@ -48,11 +56,11 @@ function SignUp() {
           control={control}
           rules={{
             maxLength: 100,
+            required: true,
           }}
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
               style={styles.input}
-              onBlur={onBlur}
               onChangeText={onChange}
               value={value}
               placeholder="First name"
@@ -65,11 +73,11 @@ function SignUp() {
           control={control}
           rules={{
             maxLength: 100,
+            required: true,
           }}
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
               style={styles.input}
-              onBlur={onBlur}
               onChangeText={onChange}
               value={value}
               placeholder="Last name"
@@ -82,14 +90,15 @@ function SignUp() {
           control={control}
           rules={{
             maxLength: 100,
+            required: true,
           }}
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
               style={styles.input}
-              onBlur={onBlur}
               onChangeText={onChange}
               value={value}
               placeholder="Email"
+              textContentType={'emailAddress'}
             />
           )}
           name="email"
@@ -99,11 +108,11 @@ function SignUp() {
           control={control}
           rules={{
             maxLength: 100,
+            required: true,
           }}
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
               style={styles.input}
-              onBlur={onBlur}
               onChangeText={onChange}
               value={value}
               placeholder="Password"
@@ -117,11 +126,16 @@ function SignUp() {
           control={control}
           rules={{
             maxLength: 100,
+            required: {
+              value: true,
+              message: 'OH NOR YOU DID NOT CONFIRM YOUR PASSWORD',
+            },
           }}
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
+              // errors={errors.passwordConfirmation}
+              // errorText={errors.passwordConfirmation.message}
               style={styles.input}
-              onBlur={onBlur}
               onChangeText={onChange}
               value={value}
               placeholder="Confirm Password"
@@ -129,6 +143,25 @@ function SignUp() {
             />
           )}
           name="passwordConfirmation"
+          defaultValue=""
+        />
+        <Controller
+          control={control}
+          rules={{
+            maxLength: 100,
+            required: true,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              // errors={errors.passwordConfirmation}
+              // errorText={errors.passwordConfirmation.message}
+              style={styles.input}
+              onChangeText={onChange}
+              value={value}
+              placeholder="Bio"
+            />
+          )}
+          name="bio"
           defaultValue=""
         />
 
