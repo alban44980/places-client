@@ -12,7 +12,6 @@ import { RootStackParamList } from '../../App';
 
 function HomeListItem({ data, route }: any) {
   type userScreenProp = StackNavigationProp<RootStackParamList>;
-
   const navigation = useNavigation<userScreenProp>();
 
   return (
@@ -21,6 +20,7 @@ function HomeListItem({ data, route }: any) {
       onPress={() => {
         if (route === 'userProfile') navigation.navigate('userProfile');
         // if (route === 'search') {
+        //togglesearchVisible  state from redux
         //   navigation.navigate('search');
         // }
         // if (route === 'place') navigation.navigate('place');

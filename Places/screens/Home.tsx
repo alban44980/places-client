@@ -14,41 +14,50 @@ import allFriendsCities from '../dummyData/allFriendsCities';
 import homeScreenPlaces from '../dummyData/homeScreenPlaces';
 import sampleFriendsList from '../dummyData/homeScreenFriends';
 
-import { getUserData } from '../redux/actions/actions';
+import { setUserData, toggleSearchVisible } from '../redux/actions/actions';
 
 function Home() {
   const [friends, setFriends] = useState<any[]>([]); //Interface Friend
   const [cities, setCities] = useState<any[]>([]); //Interface City
   const [recentlyAdded, setRecentlyAdded] = useState<any[]>([]); //Interface Place
-  const [searchVisible, setSearchVisible] = useState<Boolean>(false);
+  // const [searchVisible, setSearchVisible] = useState<Boolean>(false);
 
   const userInfo: any = useSelector((state: RootState) => state.userInfo);
+  const searchVisible: any = useSelector(
+    (state: RootState) => state.searchVisible
+  );
+  console.log('searchvisible => ', searchVisible);
+
+  //useSelector friends
+  //create 2 local states with places and cities, grabbed from the friends redux state
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     console.log('useEffect running');
     setFriends([...sampleFriendsList]);
-    // console.log(friends);
-
     //Apicall to get the data
-
-    // update userInfo state
+    // fetch('/backenduserdata')
+    //   .then((response) => response.json())
+    // update userInfo state by dispatching
+    // .then((data) => {
+    //   dispatch(setUserData(data))
+    //   dispatch(setFriends(data))
+    //   dispatch(setCities(data))
+    //   dispatch(setPlaces(data))
+    //
+    // );
 
     // set friends, cities, recentlyAdded
   }, []);
 
   function handlePress() {
-    setSearchVisible(!searchVisible);
+    dispatch(toggleSearchVisible());
   }
 
   return (
     <SafeAreaView style={styles.container}>
-      {searchVisible && (
-        <SearchModal
-          searchVisible={searchVisible}
-          setSearchVisible={setSearchVisible}
-        />
-      )}
+      {searchVisible && <SearchModal />}
 
       <View style={styles.topContainer}>
         <Text style={styles.text}>MY PLACES</Text>

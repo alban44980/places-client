@@ -29,10 +29,10 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator initialRouteName={'app'}>
+          <Stack.Screen name="app" component={Navigation} />
           <Stack.Screen name="userProfile" component={UserProfile} />
           <Stack.Screen name="search" component={SearchModal} />
           <Stack.Screen name="place" component={PlaceModal} />
-          <Stack.Screen name="app" component={Navigation} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
