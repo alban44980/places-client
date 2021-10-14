@@ -15,6 +15,12 @@ import sampleFriendsList from '../dummyData/homeScreenFriends';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../App';
+import SearchBar from '../components/SearchModal/SearchBar';
+import FriendsSearchBar from '../components/Friends/FriendsSearchBar'
+
+
+
+
 
 type userScreenProp = StackNavigationProp<RootStackParamList, 'userProfile'>;
 
@@ -23,9 +29,10 @@ function Friends() {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <View style={styles.searchBarContainer}>
-        <TextInput style={styles.searchBar} placeholder="Search" />
-      </View>
+      
+
+      <FriendsSearchBar />
+
       <ScrollView style={styles.listContainer}>
         {sampleFriendsList.map((friend: any) => {
           return (
@@ -49,21 +56,7 @@ function Friends() {
 }
 
 const styles = StyleSheet.create({
-  searchBarContainer: {
-    backgroundColor: 'gray',
-    width: '100%',
-    height: '15%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
-  },
 
-  searchBar: {
-    backgroundColor: 'white',
-    height: '50%',
-    width: '60%',
-    paddingLeft: '3%',
-  },
 
   listContainer: {
     backgroundColor: 'whitesmoke',

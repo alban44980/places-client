@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
+import colors from '../../assets/styles/colors';
 
 function MyData() {
   return (
@@ -33,12 +34,14 @@ function MyData() {
       </View>
 
       <View style={styles.dataBottom}>
-        <Text style={styles.bio}>
-          {' '}
-          dummy text of the printing and typesetting industry. Lorem Ipsum has
-          been the industry's standard dummy text ever since the 1500s, when an
-          unkno{' '}
-        </Text>
+
+        <View style={styles.bio}>
+          <Text style={styles.bioText} numberOfLines={2}>
+            Backpacker, wanderer, enjoy minimalist travel, and authentic local experiences.
+            Remote worker so always finding coffee shops ☕️
+          </Text>
+
+        </View>
       </View>
     </View>
   );
@@ -47,51 +50,73 @@ function MyData() {
 const styles = StyleSheet.create({
   dataContainer: {
     height: '25%',
+    backgroundColor: colors.backgroundLight,
+    justifyContent: 'space-evenly'
   },
+
   dataTop: {
     height: '50%',
+    width: '90%',
     flexDirection: 'row',
+    alignSelf: 'center'
   },
-  dataBottom: {
-    height: '50%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  bio: {
-    borderWidth: 1,
-    borderColor: 'black',
-    width: '80%',
-    borderRadius: 25,
-    padding: 5,
-  },
+
   profilePicContainer: {
-    width: '33%',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: colors.accentFun,
+    borderRadius: 20
   },
+
   profilePic: {
     width: '40%',
     height: '80%',
   },
+
   followersContainer: {
     width: '20%',
     flex: 1,
     justifyContent: 'space-around',
   },
+
   followersInfo: {
     height: '50%',
     alignItems: 'center',
     justifyContent: 'center',
   },
+
   followingContainer: {
     width: '20%',
     flex: 1,
   },
+
   numbers: {
     fontSize: 25,
     paddingBottom: 10,
   },
+
+  dataBottom: {
+    height: '40%',
+    justifyContent: 'center',
+    alignItems: 'center',
+ 
+  },
+
+  bio: {
+    width: '95%',
+    borderRadius: 10,
+    paddingHorizontal: 20,
+    paddingVertical: 12,
+    overflow: 'hidden'
+  },
+
+  bioText: {
+    fontSize: 14,
+    lineHeight: 18
+  }
+
+
 });
 
 export default MyData;

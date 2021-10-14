@@ -53,12 +53,13 @@ export default PlacesList;
 const styles = StyleSheet.create({
   placesListContainer: {
     flex: 1,
-    backgroundColor: colors.backgroundDark,
+    backgroundColor: colors.backgroundLight,
     alignItems: 'center',
+    paddingTop: 10
   },
 
   flatListStyle: {
-    backgroundColor: colors.backgroundMedium,
+    backgroundColor: colors.backgroundBright,
     width: '90%',
     height: '90%',
     paddingTop: 30,

@@ -1,5 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, ScrollView } from 'react-native';
+import { 
+  StyleSheet, 
+  Text, 
+  ScrollView, 
+  View, 
+  TouchableOpacity 
+} from 'react-native';
+import colors from '../../assets/styles/colors';
 
 const dummyTags = [
   'Nantes',
@@ -16,33 +23,63 @@ const dummyTags = [
 
 export default function FiltersContainer() {
   return (
-    <ScrollView
-      style={styles.filtersContainer}
-      contentContainerStyle={styles.contentContainer}
-      horizontal={true}
-    >
-      {dummyTags.map((tag) => {
-        return <Text style={styles.tag}>{tag}</Text>;
-      })}
-    </ScrollView>
+    <View style={styles.filterContainer}>
+      <ScrollView 
+        style={styles.scrollViewVisual}
+        contentContainerStyle={styles.scrollViewContainer}
+        horizontal={true} 
+        bounces={true}
+      >
+        {dummyTags.map((tag) => {
+          return (
+          <TouchableOpacity style={styles.textContainer}>
+            <Text style={styles.tag}>{tag}</Text>
+          </TouchableOpacity>
+          )}
+        )}
+      </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  filtersContainer: {
-    maxHeight: '5%',
+
+  filterContainer: {
+    height: '10%',
     width: '100%',
-    marginTop: 2,
-  },
-  contentContainer: {
-    flexDirection: 'row',
-    height: '100%',
-    borderRadius: 20,
-  },
-  tag: {
+    backgroundColor: colors.backgroundLight,
     alignItems: 'center',
     justifyContent: 'center',
-    margin: 5,
-    padding: 3,
+    paddingVertical: 15
+  },
+
+  scrollViewVisual: {
+    backgroundColor: colors.backgroundLight,
+
+    paddingHorizontal: 20
+  },
+
+  scrollViewContainer: {
+    flexDirection: 'row',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  textContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '70%',
+    marginHorizontal: 10,
+    paddingHorizontal: 10,
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 10,
+    minWidth: 70,
+    backgroundColor: colors.accentFun
+  },
+
+  tag: {
+    fontSize: 12
   },
 });

@@ -1,31 +1,47 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import colors from '../../assets/styles/colors';
+
+
 
 export default function ButtonContainer() {
   return (
     <View style={styles.buttonsContainer}>
+
       <TouchableOpacity style={styles.buttons}>
-        <Text>MY PLACES</Text>
+        <Text style={styles.labelText}>My Places</Text>
       </TouchableOpacity>
+
       <TouchableOpacity style={styles.buttons}>
-        <Text>SAVED PLACES</Text>
+        <Text style={styles.labelText}>Saved</Text>
       </TouchableOpacity>
+
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   buttonsContainer: {
-    marginTop: 5,
-    height: '10%',
+    marginVertical: 5,
+    height: '7%',
     flexDirection: 'row',
     justifyContent: 'space-evenly',
+    alignItems: 'center',
+    backgroundColor: colors.backgroundLight
   },
+
   buttons: {
-    backgroundColor: 'gray',
-    width: '30%',
+    backgroundColor: colors.backgroundMedium,
+    width: '25%',
+    height: '80%',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 20,
+    borderRadius: 10,
+    borderWidth: 1
   },
+
+  labelText: {
+    fontSize: 13,
+    fontWeight: '600'
+  }
 });

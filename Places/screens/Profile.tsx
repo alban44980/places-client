@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/reducers/reducers';
 import PlaceModal from '../components/PlaceModal/PlaceModal';
 import { togglePlaceVisible} from '../redux/actions/actions';
+import colors from '../assets/styles/colors';
 
 // Using the places reducer to access a list of selected places
 
@@ -48,11 +49,11 @@ function Profile() {
       <FiltersContainer />
       {/* Refactor to pass data for this users places */}
       {/* <View style={{height: '80%'}}> */}
-        <PlacesList 
-          handlePress={handlePlacePress}
-          setPlace={setSelectedPlace}
-          places={placesRendered}
-        />
+      <PlacesList 
+        handlePress={handlePlacePress}
+        setPlace={setSelectedPlace}
+        places={placesRendered}
+      />
       {/* </View> */}
     </SafeAreaView>
   );
@@ -61,6 +62,7 @@ function Profile() {
 const styles = StyleSheet.create({
   profileContainer: {
     flex: 1,
+    backgroundColor: colors.backgroundLight
   },
 
   titleContainer: {

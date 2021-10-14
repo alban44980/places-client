@@ -14,7 +14,7 @@ import Details from '../components/AddPlace/Details';
 import ImageSelector from '../components/AddPlace/ImageSelector';
 import LocationInfo from '../components/AddPlace/LocationInfo';
 import Description from '../components/AddPlace/Description';
-import KeyboardAvoidWrap from '../components/KeyboardAvoidWrap';
+// import KeyboardAvoidWrap from '../components/KeyboardAvoidWrap';
 
 
 
