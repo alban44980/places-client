@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Modal, SafeAreaView } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../redux/reducers/reducers';
@@ -10,7 +10,10 @@ import SearchBar from './SearchBar';
 import colors from '../../assets/styles/colors';
 import CloseButton from '../PlaceModal/CloseButton';
 import places from '../../dummyData/placesList';
-import { toggleSearchVisible } from '../../redux/actions/actions';
+import {
+  toggleSearchVisible,
+  togglePlaceVisible,
+} from '../../redux/actions/actions';
 
 function SearchModal() {
   // this is a placeholder for a redux reducer of all places
@@ -27,18 +30,24 @@ function SearchModal() {
   const searchVisible: any = useSelector(
     (state: RootState) => state.searchVisible
   );
+  const placeVisible: any = useSelector(
+    (state: RootState) => state.placeVisible
+  );
   const dispatch = useDispatch();
 
   const handleFilterPress = () => {
     setFilterModalVisible(!filterModalVisible);
   };
   const handlePlacePress = () => {
-    setPlaceModalVisible(!placeModalVisible);
+    dispatch(togglePlaceVisible());
+    // setPlaceModalVisible(!placeModalVisible);
   };
   const handleClosePress = () => {
     // setSearchVisible(!searchVisible);
     dispatch(toggleSearchVisible());
   };
+
+  console.log('place visible ==>', placeVisible);
 
   return (
     <Modal
@@ -59,10 +68,10 @@ function SearchModal() {
           />
         )}
 
-        {placeModalVisible && (
+        {placeVisible && (
           <PlaceModal
-            placeModalVisible={placeModalVisible}
-            setPlaceModalVisible={setPlaceModalVisible}
+            // placeModalVisible={placeModalVisible}
+            // setPlaceModalVisible={setPlaceModalVisible}
             handlePress={handlePlacePress}
             place={selectedPlace}
           />

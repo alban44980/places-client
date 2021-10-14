@@ -16,11 +16,33 @@ const userInfo = (state = {}, action: any) => {
 
 const searchVisible = (state = false, action: any) => {
   switch (action.type) {
-    case 'TOGGLE': {
+    case 'TOGGLE_SEARCH': {
       return !state;
     }
     default:
       return state;
+  }
+};
+
+//placevisible
+
+const placeVisible = (state = false, action: any) => {
+  switch (action.type) {
+    case 'TOGGLE_PLACE': {
+      return !state;
+    }
+    default:
+      return state;
+  }
+};
+
+//placeSelected
+const setPlaceSelected = (state = '', action: any) => {
+  switch (action.type) {
+    case 'SET_PLACE': {
+      const { placeName } = action;
+      return placeName;
+    }
   }
 };
 
@@ -33,6 +55,7 @@ const searchVisible = (state = false, action: any) => {
 const reducers = combineReducers({
   userInfo,
   searchVisible,
+  placeVisible,
 });
 
 export default reducers;
