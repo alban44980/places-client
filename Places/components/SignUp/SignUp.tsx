@@ -6,32 +6,24 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-
-import { useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '../../App';
-
-type userScreenProp = StackNavigationProp<RootStackParamList, 'userProfile'>;
-
-function Login() {
-  const navigation = useNavigation<userScreenProp>();
-
+function SignUp() {
   return (
     <View style={styles.loginContainer}>
       <View style={styles.topContainer}>
         <Text style={styles.text}>MY PLACES</Text>
       </View>
       <View style={styles.formContainer}>
-        <TextInput style={styles.input} placeholder="email"></TextInput>
-        <TextInput style={styles.input} placeholder="password"></TextInput>
-        <Text
-          style={styles.createAccountButton}
-          onPress={() => navigation.navigate('signup')}
-        >
-          Create an account
-        </Text>
+        <TextInput style={styles.input} placeholder="Username"></TextInput>
+        <TextInput style={styles.input} placeholder="First name"></TextInput>
+        <TextInput style={styles.input} placeholder="Last name"></TextInput>
+        <TextInput style={styles.input} placeholder="Email"></TextInput>
+        <TextInput style={styles.input} placeholder="Password"></TextInput>
+        <TextInput
+          style={styles.input}
+          placeholder="Confirm Password"
+        ></TextInput>
         <TouchableOpacity style={styles.loginButton}>
-          <Text>LOGIN</Text>
+          <Text>SIGNUP</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -66,9 +58,7 @@ const styles = StyleSheet.create({
     width: '85%',
     padding: 10,
   },
-  createAccountButton: {
-    margin: 5,
-  },
+
   loginButton: {
     backgroundColor: 'lightblue',
     height: '20%',
@@ -79,4 +69,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default SignUp;

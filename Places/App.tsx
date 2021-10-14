@@ -14,6 +14,7 @@ import UserProfile from './components/UserProfile/UserProfile';
 import SearchModal from './components/SearchModal/SearchModal';
 import PlaceModal from './components/PlaceModal/PlaceModal';
 import Login from './components/Login/Login';
+import SignUp from './components/SignUp/SignUp';
 
 const Stack: any = createStackNavigator();
 
@@ -21,6 +22,8 @@ export type RootStackParamList = {
   userProfile: undefined;
   search: undefined;
   place: undefined;
+  login: undefined;
+  signup: undefined;
 };
 
 export default function App() {
@@ -31,6 +34,7 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator initialRouteName={'login'}>
           <Stack.Screen name="login" component={Login} />
+          <Stack.Screen name="signup" component={SignUp} />
           <Stack.Screen name="app" component={Navigation} />
           <Stack.Screen name="userProfile" component={UserProfile} />
           <Stack.Screen name="search" component={SearchModal} />
