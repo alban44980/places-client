@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -6,14 +6,41 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
+import { useForm, Controller } from 'react-hook-form';
+
+const initialState = {
+  user_name: '',
+  first_name: '',
+  last_name: '',
+  password: '',
+  passwordConfirmation: '',
+  bio: '',
+  email: '',
+};
+
 function SignUp() {
+  const [state, setState] = useState(initialState);
+
+  function onChange(text: String) {
+    console.log(text);
+    // setState((previous) => ({
+    //   ...previous,
+    //   [name]: value,
+    // }));
+  }
+
   return (
     <View style={styles.loginContainer}>
       <View style={styles.topContainer}>
         <Text style={styles.text}>MY PLACES</Text>
       </View>
       <View style={styles.formContainer}>
-        <TextInput style={styles.input} placeholder="Username"></TextInput>
+        <TextInput
+          style={styles.input}
+          placeholder="Username"
+          value={state.user_name}
+          onChangeText={(text) => onChange(text)}
+        ></TextInput>
         <TextInput style={styles.input} placeholder="First name"></TextInput>
         <TextInput style={styles.input} placeholder="Last name"></TextInput>
         <TextInput style={styles.input} placeholder="Email"></TextInput>
