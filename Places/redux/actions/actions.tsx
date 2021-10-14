@@ -18,3 +18,13 @@ export const setPlaceSelected = (placeName: string) => ({
   type: 'SET_PLACE',
   placeName,
 });
+
+export const saveAccessToken = (token: string) => ({
+  type: 'SAVE_ACCESS_TOKEN',
+  token,
+});
+
+export const saveRefreshToken = (token: string) => ({
+  type: 'SAVE_REFRESH_TOKEN',
+  token,
+});

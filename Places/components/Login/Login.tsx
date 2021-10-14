@@ -8,16 +8,24 @@ import {
   Button,
 } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
-
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../App';
 import apiService from '../../ApiService';
+import { saveAccessToken, saveRefreshToken } from '../../redux/actions/actions';
+import { RootState } from '../../redux/reducers/reducers';
 
 type userScreenProp = StackNavigationProp<RootStackParamList>;
 
 function Login() {
   const navigation = useNavigation<userScreenProp>();
+
+  const accessToken: any = useSelector((state: RootState) => state.accessToken);
+  const refreshToken: any = useSelector(
+    (state: RootState) => state.refreshToken
+  );
+  const dispatch = useDispatch();
 
   const {
     control,
@@ -26,7 +34,11 @@ function Login() {
   } = useForm();
   const onSubmit = async (data: any) => {
     console.log(data);
-    await apiService.login(data);
+    const tokens: any = await apiService.login(data);
+    console.log('access token ==>', tokens.accessToken);
+    console.log('refresh token ==>', tokens.refreshToken);
+    dispatch(saveAccessToken(tokens.accessToken));
+    dispatch(saveRefreshToken(tokens.refreshToken));
     navigation.navigate('app');
   };
 
@@ -74,6 +86,12 @@ function Login() {
           name="password"
           defaultValue=""
         />
+        <Text
+          style={styles.createAccountButton}
+          onPress={() => navigation.navigate('signup')}
+        >
+          Create an account
+        </Text>
 
         <Button title="Login" onPress={handleSubmit(onSubmit)} />
       </View>
@@ -123,10 +141,3 @@ const styles = StyleSheet.create({
 });
 
 export default Login;
-
-// <Text
-//   style={styles.createAccountButton}
-//   onPress={() => navigation.navigate('signup')}
-// >
-//   Create an account
-// </Text>;
