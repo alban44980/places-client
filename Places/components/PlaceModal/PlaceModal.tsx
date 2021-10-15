@@ -19,7 +19,10 @@ import places from '../../dummyData/placesList';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/reducers/reducers';
 
-function PlaceModal({ place, handlePress }: any) {
+function PlaceModal( props: any ) {
+  const { place, handlePress } = props
+
+
   return (
     <Modal>
       <SafeAreaView style={styles.modalSAVContainer}>
