@@ -47,6 +47,7 @@ function FriendsList() {
                 <Text style={styles.friendsName}>{friend.name}</Text>
               </View>
 
+
             </TouchableOpacity>
           );
         })}

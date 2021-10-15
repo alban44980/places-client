@@ -48,7 +48,6 @@ function HomeListItem({ data, route, setPlace, setCity, setFriend }: any) {
 
     if (route === 'place') {
       setPlace(data);
-      alert(JSON.stringify(data))
       dispatch(togglePlaceVisible());
     }
   };

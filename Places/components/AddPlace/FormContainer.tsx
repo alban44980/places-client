@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+
 import { REACT_APP_GOOGLE_MAPS_API_KEY } from '@env';
+
 
 import { StyleSheet, View, TextInput, Button } from 'react-native';
 import colors from '../../assets/styles/colors';

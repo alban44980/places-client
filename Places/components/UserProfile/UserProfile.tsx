@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, SafeAreaView } from 'react-native';
+import { StyleSheet, View, Text, Image, SafeAreaView } from 'react-native';
 import MyData from '../MyProfile/MyData';
 import ToggleFollowContainer from './ToggleFollowContainer';
 import SearchBar from '../SearchModal/SearchBar';
@@ -19,6 +19,7 @@ function UserProfile(props: any) {
       <View style={styles.titleContainer}>
         <Text style={styles.username}>{data.first_name}</Text>
       </View>
+
       {/* <MyData /> */}
       {/* <ToggleFollowContainer /> */}
       {/* //SEARCHBAR TO BE MODIFIED */}
