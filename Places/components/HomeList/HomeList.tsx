@@ -1,51 +1,66 @@
 import React from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
+import colors from '../../assets/styles/colors';
 import HomeListItem from './HomeListItem';
 
 function HomeList({ data, route, setPlace, setCity, setFriend }: any) {
 
 
   return (
-    <ScrollView
-      style={styles.homeListContainer}
-      contentContainerStyle={styles.contentContainer}
-      horizontal={true}
-    >
-      <View style={styles.homeListContent}>
-        {data
-          ? data.map((el: any) => {
-              return (
-                <HomeListItem 
-                  key={el.name} 
-                  data={el} 
-                  route={route} 
-                  setPlace={setPlace}
-                  setCity={setCity}
-                  setFriend={setFriend}
-                />
-            )
-              })
-          : null}
-      </View>
-    </ScrollView>
+    <View style={styles.listContainer}>
+
+      <ScrollView
+        style={styles.homeListContainer}
+        contentContainerStyle={styles.contentContainer}
+        horizontal={true}
+      >
+        <View style={styles.homeListContent}>
+          {data
+            ? data.map((el: any) => {
+                return (
+                  <HomeListItem 
+                    key={el.name} 
+                    data={el} 
+                    route={route} 
+                    setPlace={setPlace}
+                    setCity={setCity}
+                    setFriend={setFriend}
+                  />
+              )
+                })
+            : null}
+        </View>
+      </ScrollView>
+
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+
+  listContainer: {
+    height: '30%',
+    backgroundColor: colors.backgroundDark
+  },
+
   homeListContainer: {
-    backgroundColor: 'grey',
-    borderRadius: 25,
+    backgroundColor: colors.backgroundMedium,
+    borderRadius: 15,
     margin: 10,
-    height: '25%',
+    borderWidth: 1,
+    paddingHorizontal: 10
   },
-  homeListContent: {
-    flexDirection: 'row',
-    borderColor: 'black',
-  },
+
   contentContainer: {
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: colors.backgroundBright,
   },
+
+  homeListContent: {
+    flexDirection: 'row',
+  },
+ 
 });
 
 export default HomeList;

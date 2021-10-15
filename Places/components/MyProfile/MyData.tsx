@@ -2,19 +2,23 @@ import React from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import colors from '../../assets/styles/colors';
 
-function MyData() {
+
+
+
+
+function MyData(props: any) {
+
+
+  const { user } = props
+
   return (
     <View style={styles.dataContainer}>
       <View style={styles.dataTop}>
+        
         <View style={styles.profilePicContainer}>
-          <Image
-            style={styles.profilePic}
-            source={{
-              uri:
-                'https://toppng.com/uploads/preview/instagram-default-profile-picture-11562973083brycehrmyv.png',
-            }}
-          />
+          <Image style={styles.profilePic} source={{uri: user.img}} />
         </View>
+
         <View style={styles.followersContainer}>
           <View style={styles.followersInfo}>
             <Text>Followers</Text>

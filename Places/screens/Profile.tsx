@@ -10,6 +10,9 @@ import { RootState } from '../redux/reducers/reducers';
 import PlaceModal from '../components/PlaceModal/PlaceModal';
 import { togglePlaceVisible} from '../redux/actions/actions';
 import colors from '../assets/styles/colors';
+import user from './../dummyData/user'
+
+
 
 // Using the places reducer to access a list of selected places
 
@@ -17,7 +20,7 @@ import colors from '../assets/styles/colors';
 function Profile() {
 
   const dispatch = useDispatch();
-  const placesArray = places;
+  const placesArray = user.places;
   const [selectedPlace, setSelectedPlace] = useState<any>(null);
   const [placesRendered, setPlacesRendered] = useState<any[]>([...placesArray]);
 
@@ -44,7 +47,7 @@ function Profile() {
         <Text>MY PROFILE</Text>
       </View>
 
-      <MyData />
+      <MyData user={user}/>
       <ButtonContainer />
       <FiltersContainer />
       {/* Refactor to pass data for this users places */}

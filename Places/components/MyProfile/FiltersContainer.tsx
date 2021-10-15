@@ -20,6 +20,7 @@ const dummyTags = [
   'Miami',
   'Melbourne',
 ];
+// instead of a above it will iterate over my cities array and render a tag for each one
 
 export default function FiltersContainer() {
   return (
