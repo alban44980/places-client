@@ -3,6 +3,11 @@ import React from 'react';
 import colors from '../../assets/styles/colors';
 
 
+
+
+
+
+
 function Description(props: any) {
   const {place} = props
   return (

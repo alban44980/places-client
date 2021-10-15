@@ -1,3 +1,8 @@
+
+
+
+
+
 const allFriendsCities: any = [
   {
     name: 'Barcelona',
