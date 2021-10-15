@@ -8,7 +8,10 @@ import places from '../../dummyData/placesList';
 function SearchBar(props: any) {
   // on search should also have a drop down list of suggested cities that match the current search
 
-  const {handlePress, setSearch, setSearchResults, data, search} = props
+  const {handlePress, setSearch, setSearchResults, data, search, city} = props
+  if (city) {
+    setSearch(city)
+  }
 
   const searchFilter = (text: String) => {
     if (text) {

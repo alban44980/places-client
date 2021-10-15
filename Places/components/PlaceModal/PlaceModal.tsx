@@ -17,21 +17,21 @@ import Tags from './Tags';
 import colors from '../../assets/styles/colors';
 import places from '../../dummyData/placesList';
 
-function PlaceModal(props: any) {
-  console.log(places);
-  const place = {
-    id: 2,
-    name: 'Connors Quirky Cafe',
-    img: 'https://images.pexels.com/photos/2506993/pexels-photo-2506993.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-    description:
-      'Super hip place, Connor and his baristas can really whip up a nice cold brew',
-    location: '27 Carrer DAvila, Barcelona Spain 08005',
-    address: '27 Carrer DAvila, Barcelona Spain 08005',
-    city: 'Madrid',
-    country: 'Spain',
-  };
+function PlaceModal({place, handlePress}: any) {
 
-  const { handlePress } = props;
+  // const place = {
+  //   id: 2,
+  //   name: 'Connors Quirky Cafe',
+  //   img: 'https://images.pexels.com/photos/2506993/pexels-photo-2506993.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  //   description:
+  //     'Super hip place, Connor and his baristas can really whip up a nice cold brew',
+  //   location: '27 Carrer DAvila, Barcelona Spain 08005',
+  //   address: '27 Carrer DAvila, Barcelona Spain 08005',
+  //   city: 'Madrid',
+  //   country: 'Spain',
+  // };
+
+  // const { handlePress } = props;
 
   return (
     <Modal>

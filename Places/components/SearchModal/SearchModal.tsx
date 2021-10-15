@@ -15,7 +15,7 @@ import {
   togglePlaceVisible,
 } from '../../redux/actions/actions';
 
-function SearchModal() {
+function SearchModal( { city }: string) {
   // this is a placeholder for a redux reducer of all places
   const placesArray = places;
 
@@ -81,6 +81,7 @@ function SearchModal() {
           setSearch={setSearch}
           setSearchResults={setPlacesRendered}
           data={placesArray}
+          city={city}
         />
 
         <FriendPlacesFilter />
