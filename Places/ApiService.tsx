@@ -1,3 +1,5 @@
+import { Platform } from 'react-native';
+
 const BASE_URL = 'http://localhost:3001';
 
 const apiService: any = {};

@@ -22,8 +22,6 @@ import {
 import colors from '../../assets/styles/colors';
 
 function HomeListItem({ data, route, setPlace, setCity, setFriend }: any) {
-
-
   type userScreenProp = StackNavigationProp<RootStackParamList>;
   const navigation = useNavigation<userScreenProp>();
 
@@ -37,32 +35,33 @@ function HomeListItem({ data, route, setPlace, setCity, setFriend }: any) {
     (state: RootState) => state.placeSelected
   );
 
-
   const handlePress = () => {
     if (route === 'userProfile') {
-      setFriend(data)
-      navigation.navigate('userProfile', data)
-    };
+      setFriend(data);
+      navigation.navigate('userProfile', data);
+    }
 
     if (route === 'search') {
-      setCity(data.name)
+      setCity(data.name);
       dispatch(toggleSearchVisible());
-    };
-    
+    }
+
     if (route === 'place') {
       // dispatch(setPlaceSelected(data.name));
       setPlace(data);
       dispatch(togglePlaceVisible());
-    };
-  }
+    }
+  };
 
   const dispatch = useDispatch();
 
   return (
-    <TouchableOpacity style={styles.itemContainer} onPress={handlePress} >
-        <Image style={styles.img} source={{ uri: data.img}} resizeMode='cover' />
-        <View style={styles.textContainer}></View>
-        <Text style={styles.title}>{route !== 'userProfile' ? data.name : data.first_name}</Text>
+    <TouchableOpacity style={styles.itemContainer} onPress={handlePress}>
+      <Image style={styles.img} source={{ uri: data.img }} resizeMode="cover" />
+      <View style={styles.textContainer}></View>
+      <Text style={styles.title}>
+        {route !== 'userProfile' ? data.name : data.first_name}
+      </Text>
     </TouchableOpacity>
   );
 }
@@ -75,27 +74,27 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 5,
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
 
   img: {
     width: '100%',
     height: '100%',
-    position: 'absolute'
+    position: 'absolute',
   },
 
   textContainer: {
     backgroundColor: colors.backgroundDark,
     height: '100%',
     width: '100%',
-    opacity: .35,
+    opacity: 0.35,
     position: 'absolute',
   },
 
   title: {
     color: colors.fontLight,
     textAlign: 'center',
-    fontWeight: '700'
+    fontWeight: '700',
   },
 });
 
