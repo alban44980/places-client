@@ -18,10 +18,6 @@ import places from '../dummyData/placesList';
 import friends from '../dummyData/friends';
 import colors from '../assets/styles/colors';
 
-
-
-
-
 function Home() {
   // const [friends, setFriends] = useState<any[]>([]); //Interface Friend
   const [cities, setCities] = useState<any[]>([]); //Interface City
@@ -53,26 +49,22 @@ function Home() {
     //   dispatch(setPlaces(data))
     //
     // );
-
     // set friends, cities, recentlyAdded
   }, []);
 
   function handlePress() {
     dispatch(toggleSearchVisible());
   }
+  //  const  selectedPlace
 
-
-
-  const [placeSelected, setPlaceSelected] = useState<any>(null)
-  const [citySelected, setCitySelected] = useState<string>('')
-  const [friendSelected, setFriendSelected] = useState<any>(null)
-
-
+  const [placeSelected, setPlaceSelected] = useState<any>(null);
+  const [citySelected, setCitySelected] = useState<string>('');
+  const [friendSelected, setFriendSelected] = useState<any>(null);
 
   return (
     <SafeAreaView style={styles.container}>
-      {searchVisible && <SearchModal city={citySelected}/>}
-      {placeVisible && <PlaceModal place={placeSelected}/>}
+      {searchVisible && <SearchModal city={citySelected} />}
+      {placeVisible && <PlaceModal place={placeSelected} />}
 
       <View style={styles.headerContainer}>
         <Text style={styles.headerText}>Logo & Image PlaceHolder</Text>
@@ -80,13 +72,21 @@ function Home() {
 
       <View style={styles.searchContainer}>
         <TouchableOpacity style={styles.searchTouchable} onPress={handlePress}>
-            <Text style={styles.searchBar}>Where are you going ?</Text>
+          <Text style={styles.searchBar}>Where are you going ?</Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.listsContainer}>
-        <HomeList data={friends} route={'userProfile'} setFriend={setFriendSelected} />
-        <HomeList data={allFriendsCities} route={'search'} setCity={setCitySelected} />
+        <HomeList
+          data={friends}
+          route={'userProfile'}
+          setFriend={setFriendSelected}
+        />
+        <HomeList
+          data={allFriendsCities}
+          route={'search'}
+          setCity={setCitySelected}
+        />
         <HomeList data={places} route={'place'} setPlace={setPlaceSelected} />
       </View>
     </SafeAreaView>
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: colors.accentFun
+    backgroundColor: colors.accentFun,
   },
 
   headerContainer: {
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
 
   headerText: {
     fontSize: 24,
-    color: colors.fontLight
+    color: colors.fontLight,
   },
 
   searchContainer: {
@@ -120,8 +120,7 @@ const styles = StyleSheet.create({
     height: '15%',
     backgroundColor: colors.backgroundMedium,
     justifyContent: 'center',
-    alignItems: 'center'
-
+    alignItems: 'center',
   },
 
   searchTouchable: {
@@ -132,22 +131,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 10,
-    paddingLeft: 18
+    paddingLeft: 18,
   },
 
   searchBar: {
     width: '100%',
     color: colors.fontDark,
-    opacity: .5
+    opacity: 0.5,
   },
-
 
   listsContainer: {
     flex: 1,
     width: '95%',
     justifyContent: 'space-evenly',
     alignSelf: 'center',
-    backgroundColor: colors.backgroundDark
+    backgroundColor: colors.backgroundDark,
   },
 });
 

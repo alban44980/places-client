@@ -5,16 +5,42 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  Button,
 } from 'react-native';
-
+import { useForm, Controller } from 'react-hook-form';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../App';
+import apiService from '../../ApiService';
+import { saveAccessToken, saveRefreshToken } from '../../redux/actions/actions';
+import { RootState } from '../../redux/reducers/reducers';
 
-type userScreenProp = StackNavigationProp<RootStackParamList, 'userProfile'>;
+type userScreenProp = StackNavigationProp<RootStackParamList>;
 
 function Login() {
   const navigation = useNavigation<userScreenProp>();
+
+  const accessToken: any = useSelector((state: RootState) => state.accessToken);
+  const refreshToken: any = useSelector(
+    (state: RootState) => state.refreshToken
+  );
+  const dispatch = useDispatch();
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = async (data: any) => {
+    console.log(data);
+    const tokens: any = await apiService.login(data);
+    console.log('access token ==>', tokens.accessToken);
+    console.log('refresh token ==>', tokens.refreshToken);
+    dispatch(saveAccessToken(tokens.accessToken));
+    dispatch(saveRefreshToken(tokens.refreshToken));
+    navigation.navigate('app');
+  };
 
   return (
     <View style={styles.loginContainer}>
@@ -22,17 +48,52 @@ function Login() {
         <Text style={styles.text}>MY PLACES</Text>
       </View>
       <View style={styles.formContainer}>
-        <TextInput style={styles.input} placeholder="email"></TextInput>
-        <TextInput style={styles.input} placeholder="password"></TextInput>
+        <Controller
+          control={control}
+          rules={{
+            maxLength: 100,
+            required: true,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              style={styles.input}
+              onChangeText={onChange}
+              value={value}
+              placeholder="Email"
+              textContentType={'emailAddress'}
+              autoCapitalize="none"
+            />
+          )}
+          name="email"
+          defaultValue=""
+        />
+        <Controller
+          control={control}
+          rules={{
+            maxLength: 100,
+            required: true,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              style={styles.input}
+              onChangeText={onChange}
+              value={value}
+              placeholder="Password"
+              secureTextEntry={true}
+              autoCapitalize="none"
+            />
+          )}
+          name="password"
+          defaultValue=""
+        />
         <Text
           style={styles.createAccountButton}
           onPress={() => navigation.navigate('signup')}
         >
           Create an account
         </Text>
-        <TouchableOpacity style={styles.loginButton}>
-          <Text>LOGIN</Text>
-        </TouchableOpacity>
+
+        <Button title="Login" onPress={handleSubmit(onSubmit)} />
       </View>
     </View>
   );

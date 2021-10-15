@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -8,55 +8,42 @@ import {
   Platform,
   TouchableWithoutFeedback,
   Keyboard,
-  ScrollView
+  ScrollView,
+  TouchableHighlight,
+  Image,
 } from 'react-native';
-import Details from '../components/AddPlace/Details';
-import ImageSelector from '../components/AddPlace/ImageSelector';
-import LocationInfo from '../components/AddPlace/LocationInfo';
-import Description from '../components/AddPlace/Description';
+import colors from '../assets/styles/colors';
+import ImageContainer from '../components/AddPlace/ImageContainer';
+
 // import KeyboardAvoidWrap from '../components/KeyboardAvoidWrap';
-
-
 
 function Add() {
   return (
-    <View style={{flex:1, alignItems: 'center', paddingTop: 60}}>
-  
-        <ImageSelector />
-        <Details />
-        <LocationInfo />
-        <Description />
-
+    <View style={styles.addPageContainer}>
+      <ImageContainer />
     </View>
-
-
- 
-
-
   );
 }
 
 export default Add;
 
-
 const styles = StyleSheet.create({
-  container: {
+  addPageContainer: {
     flex: 1,
     alignItems: 'center',
     backgroundColor: 'yellow',
-    paddingTop: 60,
+    // paddingTop: 60,
   },
 
-  innerContainer: {
-    flex: 1,
-    width: '100%',
-  },
+  // innerContainer: {
+  //   flex: 1,
+  //   width: '100%',
+  // },
 
-  scrollContainer: {
-    alignItems: 'center',
-    flex: 1,
-    width: '100%',
+  // scrollContainer: {
+  //   alignItems: 'center',
+  //   flex: 1,
+  //   width: '100%',
 
-  }
-  
-})
+  // }
+});

@@ -19,6 +19,9 @@ function SearchModal( { city }: string) {
   // this is a placeholder for a redux reducer of all places
   const placesArray = places;
   const [placesRendered, setPlacesRendered] = useState<any[]>([...placesArray]);
+
+  //set initial search with selectedPlace if selectedPlace not null
+
   const [search, setSearch] = useState<String>('');
   const [filterModalVisible, setFilterModalVisible] = useState<Boolean>(false);
   // waiting for place interface before declaring below
@@ -41,6 +44,7 @@ function SearchModal( { city }: string) {
   };
   const handleClosePress = () => {
     dispatch(toggleSearchVisible());
+    // dispatch set selected place null
   };
 
   console.log('place visible ==>', placeVisible);
