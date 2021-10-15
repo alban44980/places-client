@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
 import HomeListItem from './HomeListItem';
 
-function HomeList({ data, route, setPlace, setCity }: any) {
+function HomeList({ data, route, setPlace, setCity, setFriend }: any) {
 
 
   return (
@@ -21,7 +21,7 @@ function HomeList({ data, route, setPlace, setCity }: any) {
                   route={route} 
                   setPlace={setPlace}
                   setCity={setCity}
-
+                  setFriend={setFriend}
                 />
             )
               })

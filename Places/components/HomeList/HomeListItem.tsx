@@ -18,7 +18,7 @@ import {
   setPlaceSelected,
 } from '../../redux/actions/actions';
 
-function HomeListItem({ data, route, setPlace, setCity }: any) {
+function HomeListItem({ data, route, setPlace, setCity, setFriend }: any) {
 
 
   type userScreenProp = StackNavigationProp<RootStackParamList>;
@@ -40,16 +40,21 @@ function HomeListItem({ data, route, setPlace, setCity }: any) {
     <TouchableOpacity
       style={styles.itemContainer}
       onPress={() => {
-        if (route === 'userProfile') navigation.navigate('userProfile');
+        if (route === 'userProfile') {
+          setFriend(data)
+          navigation.navigate('userProfile', data)
+        };
+
         if (route === 'search') {
           setCity(data.name)
           dispatch(toggleSearchVisible());
-        }
+        };
+        
         if (route === 'place') {
           // dispatch(setPlaceSelected(data.name));
           setPlace(data);
           dispatch(togglePlaceVisible());
-        }
+        };
       }}
     >
       {data ? (
@@ -60,7 +65,7 @@ function HomeListItem({ data, route, setPlace, setCity }: any) {
             uri: data.img,
           }}
         >
-          <Text style={styles.title}>{data.name}</Text>
+          <Text style={styles.title}>{route !== 'userProfile' ? data.name : data.first_name}</Text>
         </ImageBackground>
       ) : null}
     </TouchableOpacity>

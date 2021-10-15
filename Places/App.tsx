@@ -26,6 +26,7 @@ export type RootStackParamList = {
   signup: undefined;
 };
 
+
 export default function App() {
   // const userInfo: any = useSelector((state: RootState) => state.userInfo);
 

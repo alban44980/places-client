@@ -5,19 +5,25 @@ import ToggleFollowContainer from './ToggleFollowContainer';
 import SearchBar from '../SearchModal/SearchBar';
 import UserPlaces from './UserPlaces';
 
-function UserProfile() {
+
+
+function UserProfile(props: any) {
+
+  const data = props.route.params
+
+
   const [filterModalVisible, setFilterModalVisible] = useState<Boolean>(false);
 
   return (
     <SafeAreaView style={styles.userProfileContainer}>
       <View style={styles.titleContainer}>
-        <Text style={styles.username}>ADRIANITO</Text>
+        <Text style={styles.username}>{data.first_name}</Text>
       </View>
-      <MyData />
-      <ToggleFollowContainer />
+      {/* <MyData /> */}
+      {/* <ToggleFollowContainer /> */}
       {/* //SEARCHBAR TO BE MODIFIED */}
-      <SearchBar />
-      <UserPlaces />
+      {/* <SearchBar /> */}
+      {/* <UserPlaces /> */}
     </SafeAreaView>
   );
 }

@@ -15,7 +15,7 @@ import allFriendsCities from '../dummyData/allFriendsCities';
 import homeScreenPlaces from '../dummyData/homeScreenPlaces';
 import { toggleSearchVisible } from '../redux/actions/actions';
 import places from '../dummyData/placesList';
-import sampleFriendsList from '../dummyData/homeScreenFriends';
+import friends from '../dummyData/friends';
 
 function Home() {
   // const [friends, setFriends] = useState<any[]>([]); //Interface Friend
@@ -78,7 +78,7 @@ function Home() {
         </View>
       </TouchableOpacity>
       <View style={styles.listsContainer}>
-        <HomeList data={sampleFriendsList} route={'userProfile'} />
+        <HomeList data={friends} route={'userProfile'} setFriend={setFriendSelected} />
         <HomeList data={allFriendsCities} route={'search'} setCity={setCitySelected} />
         <HomeList data={places} route={'place'} setPlace={setPlaceSelected} />
       </View>
