@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { useEffect, useState } from 'react';
 import { REACT_APP_GOOGLE_MAPS_API_KEY } from '@env';
 
@@ -8,7 +9,7 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import { ScrollView } from 'react-native-gesture-handler';
 import TagsContainer from './tagsContainer';
 
-const CityInput = () => {
+const CityInput = ({ setCity, setCountry }) => {
   // const apiKey: any = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
   // console.log(apiKey);
   return (
@@ -16,8 +17,8 @@ const CityInput = () => {
       placeholder="City"
       onPress={(data, details = null) => {
         // 'details' is provided when fetchDetails = true
-        // console.log('DATA FROM GOOGLE ==> ', data.terms);
-        // console.log('City ==>', data.terms[0].value);
+        setCity(data.terms[0].value);
+        setCountry(data.terms[data.terms.length - 1].value);
         // console.log('Country ==>', data.terms[data.terms.length - 1].value);
         // console.log('DETAILS ==>', details.types);
       }}
@@ -38,7 +39,7 @@ const CityInput = () => {
     />
   );
 };
-const AddressInput = () => {
+const AddressInput = ({ setAddress }) => {
   // const apiKey: any = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
   return (
@@ -46,7 +47,8 @@ const AddressInput = () => {
       placeholder="Address"
       onPress={(data, details = null) => {
         // 'details' is provided when fetchDetails = true
-        console.log(data);
+        console.log(data.description);
+        setAddress(data.description);
       }}
       query={{
         key: REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -66,8 +68,21 @@ const AddressInput = () => {
 };
 
 function FormContainer() {
+  const initialState = {
+    name: '',
+    description: '',
+    tag_list: [],
+    img: '',
+    location: '',
+    address: '',
+    city: '',
+    city_info: null,
+    country: '',
+  };
+  const [state, setState] = useState(initialState);
   const [city, setCity] = useState('');
-  const [address, setAddres] = useState('');
+  const [country, setCountry] = useState('');
+  const [address, setAddress] = useState('');
   const [tags, setTags] = useState([]);
 
   const {
@@ -76,11 +91,47 @@ function FormContainer() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (data: any) => {
-    console.log('DATA FROM API', data);
-    alert('HELLOALERTT');
+  console.log(state);
 
-    // console.log(data);
+  const onSubmit = async (data: any) => {
+    console.log('DATA FROM FORM => ', data);
+    console.log('city  state ==>', city);
+    console.log('country ==>', country);
+    console.log('address ==>', address);
+    const cityGeoCall = await fetch(
+      `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${REACT_APP_GOOGLE_MAPS_API_KEY}`
+    );
+    const cityGeo = await cityGeoCall.json();
+    console.log('cityGeo ==>', cityGeo.results[0].geometry.location);
+    const addressGeoCall = await fetch(
+      `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${REACT_APP_GOOGLE_MAPS_API_KEY}`
+    );
+    const addressGeo = await addressGeoCall.json();
+    console.log('addressGeo ==>', addressGeo.results[0].geometry.location);
+    setState((previous) => ({
+      ...previous,
+      name: data.name,
+      description: data.description,
+      location: JSON.stringify(addressGeo.results[0].geometry.location),
+      address: address,
+      city: city,
+      city_info: {
+        name: city,
+        country: country,
+        location: JSON.stringify(cityGeo.results[0].geometry.location),
+      },
+      country: country,
+    }));
+
+    setTimeout(() => {
+      console.log('ENTIRE STATE CONSOLE LOGGED BRUV YIIIII ==>', state);
+    }, 2000);
+
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     let coords = data.results[0].geometry.location;
+    //     console.log('COORDINATES FROM GEOCALL BRU: ', coords);
+    //   });
   };
 
   return (
@@ -103,7 +154,7 @@ function FormContainer() {
         name="name"
         defaultValue=""
       />
-      <CityInput />
+      <CityInput setCity={setCity} setCountry={setCountry} />
 
       {/* <Controller
         control={control}
@@ -134,7 +185,7 @@ function FormContainer() {
         name="address"
         defaultValue=""
       /> */}
-      <AddressInput />
+      <AddressInput address={address} setAddress={setAddress} />
 
       <Controller
         control={control}
