@@ -18,8 +18,6 @@ import {
 } from '../../redux/actions/actions';
 
 function HomeListItem({ data, route, setPlace, setCity }: any) {
-
-
   type userScreenProp = StackNavigationProp<RootStackParamList>;
   const navigation = useNavigation<userScreenProp>();
 
@@ -41,17 +39,12 @@ function HomeListItem({ data, route, setPlace, setCity }: any) {
       onPress={() => {
         if (route === 'userProfile') navigation.navigate('userProfile');
         if (route === 'search') {
-          setCity(data.name)
+          setCity(data.name);
           dispatch(toggleSearchVisible());
         }
         if (route === 'place') {
-<<<<<<< HEAD
-          console.log('data name ==> ', data);
-          dispatch(setPlaceSelected(data));
-=======
           // dispatch(setPlaceSelected(data.name));
           setPlace(data);
->>>>>>> b3f054b213d920993f305ebcb1cdaa7c6611a654
           dispatch(togglePlaceVisible());
         }
       }}

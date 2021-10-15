@@ -7,21 +7,26 @@ import {
   TouchableOpacity 
 } from 'react-native';
 import colors from '../../assets/styles/colors';
+import { setPlaceSelected } from '../../redux/actions/actions';
 
-const dummyTags = [
-  'Nantes',
-  'Philly',
-  'London',
-  'Bournemouth',
-  'Manchester',
-  'Oslo',
-  'Bogota',
-  'Havana',
-  'Miami',
-  'Melbourne',
-];
 
-export default function FiltersContainer() {
+export default function FiltersContainer(props: any) {
+
+  const {cities, places, setFilteredPlaces, tagSelected, setTagSelected, filterPlaces } = props
+
+
+
+  const handlePress = (city) => {
+    if (!tagSelected || tagSelected !== city.name) {
+      setTagSelected(city.name)
+    }
+
+    if (tagSelected === city.name) {
+      setTagSelected('')
+    }
+  }
+
+  
   return (
     <View style={styles.filterContainer}>
       <ScrollView 
@@ -31,10 +36,13 @@ export default function FiltersContainer() {
         bounces={true}
         showsHorizontalScrollIndicator={false}
       >
-        {dummyTags.map((tag) => {
+        {cities.map((city: any) => {
           return (
-          <TouchableOpacity style={styles.textContainer}>
-            <Text style={styles.tag}>{tag}</Text>
+          <TouchableOpacity 
+            style={tagSelected === city.name ? styles.selectedTag : styles.defaultTag} 
+            onPress={() => handlePress(city)}
+          >
+            <Text style={styles.tag}>{city.name}</Text>
           </TouchableOpacity>
           )}
         )}
@@ -67,7 +75,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
-  textContainer: {
+  selectedTag: {
     alignItems: 'center',
     justifyContent: 'center',
     height: '70%',
@@ -78,6 +86,19 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     minWidth: 70,
     backgroundColor: colors.accentFun
+  },
+
+  defaultTag: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '70%',
+    marginHorizontal: 10,
+    paddingHorizontal: 10,
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 10,
+    minWidth: 70,
+    backgroundColor: colors.backgroundLight,
   },
 
   tag: {

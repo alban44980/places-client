@@ -38,7 +38,7 @@ function FriendsList() {
                 <Image
                   style={styles.img}
                   source={{
-                    uri: `https://${friend.image}`,
+                    uri: friend.img,
                   }}
                 />
               </View>

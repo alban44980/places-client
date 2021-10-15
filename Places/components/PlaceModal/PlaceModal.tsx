@@ -19,30 +19,7 @@ import places from '../../dummyData/placesList';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/reducers/reducers';
 
-<<<<<<< HEAD
-function PlaceModal(props: any) {
-  const placeSelected: any = useSelector(
-    (state: RootState) => state.placeSelected
-  );
-
-  console.log('THE PLACE SELECTED ==>', placeSelected);
-
-  // console.log(places);
-  const place = {
-    id: 2,
-    name: 'Connors Quirky Cafe',
-    img: 'https://images.pexels.com/photos/2506993/pexels-photo-2506993.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-    description:
-      'Super hip place, Connor and his baristas can really whip up a nice cold brew',
-    location: '27 Carrer DAvila, Barcelona Spain 08005',
-    address: '27 Carrer DAvila, Barcelona Spain 08005',
-    city: 'Madrid',
-    country: 'Spain',
-  };
-=======
-function PlaceModal({place, handlePress}: any) {
->>>>>>> b3f054b213d920993f305ebcb1cdaa7c6611a654
-
+function PlaceModal({ place, handlePress }: any) {
   // const place = {
   //   id: 2,
   //   name: 'Connors Quirky Cafe',

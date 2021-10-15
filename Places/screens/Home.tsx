@@ -15,7 +15,8 @@ import allFriendsCities from '../dummyData/allFriendsCities';
 import homeScreenPlaces from '../dummyData/homeScreenPlaces';
 import { toggleSearchVisible } from '../redux/actions/actions';
 import places from '../dummyData/placesList';
-import sampleFriendsList from '../dummyData/homeScreenFriends';
+import friends from '../dummyData/friends';
+import colors from '../assets/styles/colors';
 
 function Home() {
   // const [friends, setFriends] = useState<any[]>([]); //Interface Friend
@@ -57,7 +58,7 @@ function Home() {
   //  const  selectedPlace
 
   const [placeSelected, setPlaceSelected] = useState<any>(null);
-  const [citySelected, setCitySelected] = useState<string>(null);
+  const [citySelected, setCitySelected] = useState<string>('');
   const [friendSelected, setFriendSelected] = useState<any>(null);
 
   return (
@@ -65,16 +66,22 @@ function Home() {
       {searchVisible && <SearchModal city={citySelected} />}
       {placeVisible && <PlaceModal place={placeSelected} />}
 
-      <View style={styles.topContainer}>
-        <Text style={styles.text}>MY PLACES</Text>
+      <View style={styles.headerContainer}>
+        <Text style={styles.headerText}>Logo & Image PlaceHolder</Text>
       </View>
-      <TouchableOpacity style={styles.searchTouchable} onPress={handlePress}>
-        <View style={styles.searchContainer}>
+
+      <View style={styles.searchContainer}>
+        <TouchableOpacity style={styles.searchTouchable} onPress={handlePress}>
           <Text style={styles.searchBar}>Where are you going ?</Text>
-        </View>
-      </TouchableOpacity>
+        </TouchableOpacity>
+      </View>
+
       <View style={styles.listsContainer}>
-        <HomeList data={sampleFriendsList} route={'userProfile'} />
+        <HomeList
+          data={friends}
+          route={'userProfile'}
+          setFriend={setFriendSelected}
+        />
         <HomeList
           data={allFriendsCities}
           route={'search'}
@@ -92,42 +99,53 @@ const styles = StyleSheet.create({
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
+    backgroundColor: colors.accentFun,
   },
-  topContainer: {
-    height: '30%',
-    backgroundColor: 'lightblue',
+
+  headerContainer: {
+    height: '25%',
+    backgroundColor: colors.backgroundDark,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
   },
-  text: {
-    color: 'black',
-    fontSize: 30,
+
+  headerText: {
+    fontSize: 24,
+    color: colors.fontLight,
   },
-  searchTouchable: {
-    height: '10%',
-    width: '100%',
-    backgroundColor: 'white',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+
   searchContainer: {
-    width: '80%',
-    height: '70%',
-    backgroundColor: 'gray',
+    width: '100%',
+    height: '15%',
+    backgroundColor: colors.backgroundMedium,
     justifyContent: 'center',
-    borderRadius: 20,
+    alignItems: 'center',
   },
+
+  searchTouchable: {
+    height: '50%',
+    width: '70%',
+    backgroundColor: colors.backgroundLight,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 10,
+    paddingLeft: 18,
+  },
+
   searchBar: {
     width: '100%',
-    textAlign: 'center',
-    color: 'white',
+    color: colors.fontDark,
+    opacity: 0.5,
   },
+
   listsContainer: {
-    width: '100%',
-    height: '55%',
+    flex: 1,
+    width: '95%',
     justifyContent: 'space-evenly',
+    alignSelf: 'center',
+    backgroundColor: colors.backgroundDark,
   },
 });
 

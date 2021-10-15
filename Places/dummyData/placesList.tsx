@@ -18,9 +18,8 @@ const places = [
       'Super hip place, Connor and his baristas can really whip up a nice cold brew',
     location: '27 Carrer DAvila, Barcelona Spain 08005',
     address: '27 Carrer DAvila, Barcelona Spain 08005',
-    city: 'Madrid',
-    country: 'Spain',
-    tags: [{ name: 'sex' }, { name: 'bar' }],
+    city: 'London',
+    country: 'England',
   },
   {
     id: 3,
@@ -51,8 +50,8 @@ const places = [
       'If you like raves this is the place to be. Even for Berlin, shit gets wild here',
     location: '27 Carrer DAvila, Barcelona Spain 08005',
     address: '27 Carrer DAvila, Barcelona Spain 08005',
-    city: 'Berlin',
-    country: 'Germany',
+    city: 'Paris',
+    country: 'France',
   },
   {
     id: 6,

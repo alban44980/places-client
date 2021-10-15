@@ -2,33 +2,38 @@ import React from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import colors from '../../assets/styles/colors';
 
-function MyData() {
+
+
+
+
+function MyData(props: any) {
+
+
+  const { user } = props
+
   return (
     <View style={styles.dataContainer}>
       <View style={styles.dataTop}>
+        
         <View style={styles.profilePicContainer}>
-          <Image
-            style={styles.profilePic}
-            source={{
-              uri:
-                'https://toppng.com/uploads/preview/instagram-default-profile-picture-11562973083brycehrmyv.png',
-            }}
-          />
+          <Image style={styles.profilePic} source={{uri: user.img}} />
         </View>
+
         <View style={styles.followersContainer}>
           <View style={styles.followersInfo}>
             <Text>Followers</Text>
           </View>
           <View style={styles.followersInfo}>
-            <Text style={styles.numbers}>23</Text>
+            <Text style={styles.numbers}>{user.followers_count}</Text>
           </View>
         </View>
+
         <View style={styles.followingContainer}>
           <View style={styles.followersInfo}>
             <Text>Following</Text>
           </View>
           <View style={styles.followersInfo}>
-            <Text style={styles.numbers}>11</Text>
+            <Text style={styles.numbers}>{user.following_count}</Text>
           </View>
         </View>
       </View>
@@ -36,10 +41,7 @@ function MyData() {
       <View style={styles.dataBottom}>
 
         <View style={styles.bio}>
-          <Text style={styles.bioText} numberOfLines={2}>
-            Backpacker, wanderer, enjoy minimalist travel, and authentic local experiences.
-            Remote worker so always finding coffee shops ☕️
-          </Text>
+          <Text style={styles.bioText} numberOfLines={2}>{user.bio}</Text>
 
         </View>
       </View>

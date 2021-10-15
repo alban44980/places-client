@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { StyleSheet, View, Text, SafeAreaView } from 'react-native';
 import MyData from '../components/MyProfile/MyData';
 import ButtonContainer from '../components/MyProfile/ButtonContainer';
@@ -10,16 +10,40 @@ import { RootState } from '../redux/reducers/reducers';
 import PlaceModal from '../components/PlaceModal/PlaceModal';
 import { togglePlaceVisible} from '../redux/actions/actions';
 import colors from '../assets/styles/colors';
+import user from './../dummyData/user'
 
-// Using the places reducer to access a list of selected places
+
+
 
 
 function Profile() {
 
+  const userPlaces = user.places;
+  const cities = user.cities
   const dispatch = useDispatch();
-  const placesArray = places;
   const [selectedPlace, setSelectedPlace] = useState<any>(null);
-  const [placesRendered, setPlacesRendered] = useState<any[]>([...placesArray]);
+  // Places displays all the users
+  const [places, setPlaces] = useState<any[]>([...userPlaces]);
+  const [filteredPlaces, setFilteredPlaces] = useState<any[]>([...places])
+  const [tagSelected, setTagSelected] = useState<string[]>([])
+
+
+  const filterPlaces = () => {
+    let filteredPlacesList: any[] = []
+    if (tagSelected.length) {
+      places.forEach(place => {
+        if (place.city === tagSelected)
+        filteredPlacesList.push(place)
+      })
+      setFilteredPlaces(filteredPlacesList)
+    } else {
+      setFilteredPlaces(places)
+    }
+  }
+
+  useEffect(() => {
+    filterPlaces()
+  }, [tagSelected])
 
   const handlePlacePress = () => {
     dispatch(togglePlaceVisible());
@@ -29,8 +53,8 @@ function Profile() {
     (state: RootState) => state.placeVisible
   );
   
-    // alert(placesRendered[0].name)
 
+  
   return (
     <SafeAreaView style={styles.profileContainer}>
       {placeVisible && (
@@ -41,18 +65,26 @@ function Profile() {
         )}
 
       <View style={styles.titleContainer}>
-        <Text>MY PROFILE</Text>
+        <Text >{user.first_name} {user.last_name}</Text>
       </View>
 
-      <MyData />
+      <MyData user={user}/>
       <ButtonContainer />
-      <FiltersContainer />
+      <FiltersContainer 
+        cities={cities} 
+        places={places} 
+        tagSelected={tagSelected}
+        setTagSelected={setTagSelected}
+        filterPlaces={filterPlaces}
+      />
       {/* Refactor to pass data for this users places */}
       {/* <View style={{height: '80%'}}> */}
       <PlacesList 
         handlePress={handlePlacePress}
         setPlace={setSelectedPlace}
-        places={placesRendered}
+        places={filteredPlaces}
+        setPlaces={setPlaces}
+        tagSelected={tagSelected}
       />
       {/* </View> */}
     </SafeAreaView>

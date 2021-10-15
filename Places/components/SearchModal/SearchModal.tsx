@@ -18,7 +18,6 @@ import {
 function SearchModal( { city }: string) {
   // this is a placeholder for a redux reducer of all places
   const placesArray = places;
-
   const [placesRendered, setPlacesRendered] = useState<any[]>([...placesArray]);
 
   //set initial search with selectedPlace if selectedPlace not null
