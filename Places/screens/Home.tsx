@@ -13,13 +13,12 @@ import SearchModal from '../components/SearchModal/SearchModal';
 import PlaceModal from '../components/PlaceModal/PlaceModal';
 import allFriendsCities from '../dummyData/allFriendsCities';
 import homeScreenPlaces from '../dummyData/homeScreenPlaces';
-import sampleFriendsList from '../dummyData/homeScreenFriends';
-import places from '../dummyData/placesToNavigate';
-
 import { toggleSearchVisible } from '../redux/actions/actions';
+import places from '../dummyData/placesList';
+import sampleFriendsList from '../dummyData/homeScreenFriends';
 
 function Home() {
-  const [friends, setFriends] = useState<any[]>([]); //Interface Friend
+  // const [friends, setFriends] = useState<any[]>([]); //Interface Friend
   const [cities, setCities] = useState<any[]>([]); //Interface City
   const [recentlyAdded, setRecentlyAdded] = useState<any[]>([]); //Interface Place
 
@@ -37,7 +36,7 @@ function Home() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setFriends([...sampleFriendsList]);
+    // setFriends([...sampleFriendsList]);
     //Apicall to get the data
     // fetch('/backenduserdata')
     //   .then((response) => response.json())
@@ -49,7 +48,6 @@ function Home() {
     //   dispatch(setPlaces(data))
     //
     // );
-
     // set friends, cities, recentlyAdded
   }, []);
 
@@ -58,11 +56,14 @@ function Home() {
   }
   //  const  selectedPlace
 
+  const [placeSelected, setPlaceSelected] = useState<any>(null);
+  const [citySelected, setCitySelected] = useState<string>(null);
+  const [friendSelected, setFriendSelected] = useState<any>(null);
+
   return (
     <SafeAreaView style={styles.container}>
-      {searchVisible && <SearchModal />}
-
-      {placeVisible && <PlaceModal />}
+      {searchVisible && <SearchModal city={citySelected} />}
+      {placeVisible && <PlaceModal place={placeSelected} />}
 
       <View style={styles.topContainer}>
         <Text style={styles.text}>MY PLACES</Text>
@@ -73,9 +74,13 @@ function Home() {
         </View>
       </TouchableOpacity>
       <View style={styles.listsContainer}>
-        <HomeList data={friends} route={'userProfile'} />
-        <HomeList data={allFriendsCities} route={'search'} />
-        <HomeList data={places} route={'place'} />
+        <HomeList data={sampleFriendsList} route={'userProfile'} />
+        <HomeList
+          data={allFriendsCities}
+          route={'search'}
+          setCity={setCitySelected}
+        />
+        <HomeList data={places} route={'place'} setPlace={setPlaceSelected} />
       </View>
     </SafeAreaView>
   );

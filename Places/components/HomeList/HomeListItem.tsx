@@ -17,7 +17,9 @@ import {
   setPlaceSelected,
 } from '../../redux/actions/actions';
 
-function HomeListItem({ data, route }: any) {
+function HomeListItem({ data, route, setPlace, setCity }: any) {
+
+
   type userScreenProp = StackNavigationProp<RootStackParamList>;
   const navigation = useNavigation<userScreenProp>();
 
@@ -39,11 +41,17 @@ function HomeListItem({ data, route }: any) {
       onPress={() => {
         if (route === 'userProfile') navigation.navigate('userProfile');
         if (route === 'search') {
+          setCity(data.name)
           dispatch(toggleSearchVisible());
         }
         if (route === 'place') {
+<<<<<<< HEAD
           console.log('data name ==> ', data);
           dispatch(setPlaceSelected(data));
+=======
+          // dispatch(setPlaceSelected(data.name));
+          setPlace(data);
+>>>>>>> b3f054b213d920993f305ebcb1cdaa7c6611a654
           dispatch(togglePlaceVisible());
         }
       }}
@@ -53,7 +61,7 @@ function HomeListItem({ data, route }: any) {
           style={styles.img}
           imageStyle={{ borderRadius: 50 }}
           source={{
-            uri: `https://${data.image}`,
+            uri: data.img,
           }}
         >
           <Text style={styles.title}>{data.name}</Text>
