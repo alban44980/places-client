@@ -9,5 +9,10 @@ npm-debug.*
 *.orig.*
 web-build/
 
+# dotenv environment variables file
+.env
+.env.test
+
+
 # macOS
 .DS_Store

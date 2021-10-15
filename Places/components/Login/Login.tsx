@@ -35,6 +35,12 @@ function Login() {
   const onSubmit = async (data: any) => {
     console.log(data);
     const tokens: any = await apiService.login(data);
+    //getFriendsCityPlaces apicall below
+
+    //   Object {
+    // "email": "Will@gmail.com",
+    // "password": "123456789",
+    // }
     console.log('access token ==>', tokens.accessToken);
     console.log('refresh token ==>', tokens.refreshToken);
     dispatch(saveAccessToken(tokens.accessToken));

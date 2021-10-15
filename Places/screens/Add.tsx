@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 import colors from '../assets/styles/colors';
 import ImageContainer from '../components/AddPlace/ImageContainer';
+import FormContainer from '../components/AddPlace/FormContainer';
 
 // import KeyboardAvoidWrap from '../components/KeyboardAvoidWrap';
 
@@ -21,6 +22,7 @@ function Add() {
   return (
     <View style={styles.addPageContainer}>
       <ImageContainer />
+      <FormContainer />
     </View>
   );
 }
@@ -31,7 +33,7 @@ const styles = StyleSheet.create({
   addPageContainer: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: 'yellow',
+    backgroundColor: 'lightyellow',
     // paddingTop: 60,
   },
 
@@ -47,3 +49,5 @@ const styles = StyleSheet.create({
 
   // }
 });
+
+//what we need
