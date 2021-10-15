@@ -4,7 +4,10 @@ import {
   Text,
   ImageBackground,
   TouchableOpacity,
+  View,
+  Image,
 } from 'react-native';
+
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../App';
@@ -16,8 +19,11 @@ import {
   togglePlaceVisible,
   setPlaceSelected,
 } from '../../redux/actions/actions';
+import colors from '../../assets/styles/colors';
 
-function HomeListItem({ data, route, setPlace, setCity }: any) {
+function HomeListItem({ data, route, setPlace, setCity, setFriend }: any) {
+
+
   type userScreenProp = StackNavigationProp<RootStackParamList>;
   const navigation = useNavigation<userScreenProp>();
 
@@ -31,54 +37,65 @@ function HomeListItem({ data, route, setPlace, setCity }: any) {
     (state: RootState) => state.placeSelected
   );
 
+
+  const handlePress = () => {
+    if (route === 'userProfile') {
+      setFriend(data)
+      navigation.navigate('userProfile', data)
+    };
+
+    if (route === 'search') {
+      setCity(data.name)
+      dispatch(toggleSearchVisible());
+    };
+    
+    if (route === 'place') {
+      // dispatch(setPlaceSelected(data.name));
+      setPlace(data);
+      dispatch(togglePlaceVisible());
+    };
+  }
+
   const dispatch = useDispatch();
 
   return (
-    <TouchableOpacity
-      style={styles.itemContainer}
-      onPress={() => {
-        if (route === 'userProfile') navigation.navigate('userProfile');
-        if (route === 'search') {
-          setCity(data.name);
-          dispatch(toggleSearchVisible());
-        }
-        if (route === 'place') {
-          // dispatch(setPlaceSelected(data.name));
-          setPlace(data);
-          dispatch(togglePlaceVisible());
-        }
-      }}
-    >
-      {data ? (
-        <ImageBackground
-          style={styles.img}
-          imageStyle={{ borderRadius: 50 }}
-          source={{
-            uri: data.img,
-          }}
-        >
-          <Text style={styles.title}>{data.name}</Text>
-        </ImageBackground>
-      ) : null}
+    <TouchableOpacity style={styles.itemContainer} onPress={handlePress} >
+        <Image style={styles.img} source={{ uri: data.img}} resizeMode='cover' />
+        <View style={styles.textContainer}></View>
+        <Text style={styles.title}>{route !== 'userProfile' ? data.name : data.first_name}</Text>
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
   itemContainer: {
-    margin: 10,
+    marginHorizontal: 15,
     width: 80,
-    height: 80,
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 5,
+    overflow: 'hidden'
   },
+
   img: {
     width: '100%',
     height: '100%',
-    flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
+    position: 'absolute'
   },
+
+  textContainer: {
+    backgroundColor: colors.backgroundDark,
+    height: '100%',
+    width: '100%',
+    opacity: .35,
+    position: 'absolute',
+  },
+
   title: {
-    color: 'red',
+    color: colors.fontLight,
+    textAlign: 'center',
+    fontWeight: '700'
   },
 });
 
