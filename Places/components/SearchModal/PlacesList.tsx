@@ -38,7 +38,6 @@ function PlacesList(props: any) {
                 <TouchableOpacity
                   style={styles.touchableItemWrapper}
                   onPress={() => {
-                    alert(JSON.stringify(item))
                     setPlace(item);
                     handlePress()
                   }}

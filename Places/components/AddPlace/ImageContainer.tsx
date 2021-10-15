@@ -3,14 +3,7 @@ import React, { useEffect, useState } from 'react';
 import * as ImagePicker from 'expo-image-picker';
 import {
   StyleSheet,
-  View,
-  Text,
-  SafeAreaView,
-  KeyboardAvoidingView,
   Platform,
-  TouchableWithoutFeedback,
-  Keyboard,
-  ScrollView,
   TouchableHighlight,
   Image,
 } from 'react-native';

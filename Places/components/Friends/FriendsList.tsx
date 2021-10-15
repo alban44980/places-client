@@ -20,20 +20,20 @@ function FriendsList() {
 
   const navigation = useNavigation<userScreenProp>();
 
+
+
   return (
     <View style={styles.listContainer}>
-
-    <ScrollView 
-      style={styles.scrollViewVisual}
-      contentContainerStyle={styles.scrollViewFunctional}
-    >
+      <ScrollView 
+        style={styles.scrollViewVisual}
+        contentContainerStyle={styles.scrollViewFunctional}
+      >
         {sampleFriendsList.map((friend: any) => {
           return (
             <TouchableOpacity
               style={styles.friendContainer}
-              onPress={() => navigation.navigate('userProfile')}
+              onPress={() => navigation.navigate('userProfile', {friend})}
             >
-
               <View style={styles.imageContainer}>
                 <Image
                   style={styles.img}
