@@ -42,7 +42,8 @@ function HomeListItem({ data, route }: any) {
           dispatch(toggleSearchVisible());
         }
         if (route === 'place') {
-          dispatch(setPlaceSelected(data.name));
+          console.log('data name ==> ', data);
+          dispatch(setPlaceSelected(data));
           dispatch(togglePlaceVisible());
         }
       }}

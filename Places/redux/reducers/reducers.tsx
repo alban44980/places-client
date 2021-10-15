@@ -37,7 +37,7 @@ const placeVisible = (state = false, action: any) => {
 };
 
 //placeSelected
-const placeSelected = (state = '', action: any) => {
+const placeSelected = (state = {}, action: any) => {
   switch (action.type) {
     case 'SET_PLACE': {
       const { placeName } = action;

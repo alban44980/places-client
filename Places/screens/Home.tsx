@@ -14,6 +14,7 @@ import PlaceModal from '../components/PlaceModal/PlaceModal';
 import allFriendsCities from '../dummyData/allFriendsCities';
 import homeScreenPlaces from '../dummyData/homeScreenPlaces';
 import sampleFriendsList from '../dummyData/homeScreenFriends';
+import places from '../dummyData/placesToNavigate';
 
 import { toggleSearchVisible } from '../redux/actions/actions';
 
@@ -55,10 +56,12 @@ function Home() {
   function handlePress() {
     dispatch(toggleSearchVisible());
   }
+  //  const  selectedPlace
 
   return (
     <SafeAreaView style={styles.container}>
       {searchVisible && <SearchModal />}
+
       {placeVisible && <PlaceModal />}
 
       <View style={styles.topContainer}>
@@ -72,7 +75,7 @@ function Home() {
       <View style={styles.listsContainer}>
         <HomeList data={friends} route={'userProfile'} />
         <HomeList data={allFriendsCities} route={'search'} />
-        <HomeList data={homeScreenPlaces} route={'place'} />
+        <HomeList data={places} route={'place'} />
       </View>
     </SafeAreaView>
   );

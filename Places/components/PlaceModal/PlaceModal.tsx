@@ -16,9 +16,17 @@ import Description from './Description';
 import Tags from './Tags';
 import colors from '../../assets/styles/colors';
 import places from '../../dummyData/placesList';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/reducers/reducers';
 
 function PlaceModal(props: any) {
-  console.log(places);
+  const placeSelected: any = useSelector(
+    (state: RootState) => state.placeSelected
+  );
+
+  console.log('THE PLACE SELECTED ==>', placeSelected);
+
+  // console.log(places);
   const place = {
     id: 2,
     name: 'Connors Quirky Cafe',

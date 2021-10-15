@@ -33,7 +33,10 @@ export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName={'app'} screenOptions={{headerShown: false}}>
+        <Stack.Navigator
+          initialRouteName={'app'}
+          // screenOptions={{ headerShown: false }}
+        >
           <Stack.Screen name="login" component={Login} />
           <Stack.Screen name="signup" component={SignUp} />
           <Stack.Screen name="app" component={Navigation} />
