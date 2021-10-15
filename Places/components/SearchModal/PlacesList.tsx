@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -13,9 +13,13 @@ import PlaceDetails from './PlaceDetails';
 import PlaceModal from '../PlaceModal/PlaceModal';
 import colors from '../../assets/styles/colors';
 
+
+
 function PlacesList(props: any) {
   const { handlePress, setPlace, places } = props;
-  const data = places;
+
+
+
 
   return (
     <View 
@@ -25,22 +29,26 @@ function PlacesList(props: any) {
       <FlatList
         style={styles.flatListStyle}
         contentContainerStyle={styles.flatListContContStyle}
-        data={data}
+        data={places}
         horizontal={false}
         renderItem={({ item }) => {
           return (
-            <View style={styles.itemElementStyle}>
-              <TouchableOpacity
-                style={styles.touchableItemWrapper}
-                onPress={() => {
-                  setPlace(item);
-                  handlePress();
-                }}
-              >
-                <Image source={{ uri: item.img }} style={styles.imageStyle} />
-                <PlaceDetails item={item} />
-              </TouchableOpacity>
-            </View>
+
+              <View style={styles.itemElementStyle}>
+                <TouchableOpacity
+                  style={styles.touchableItemWrapper}
+                  onPress={() => {
+                    alert(JSON.stringify(item))
+                    setPlace(item);
+                    handlePress()
+                  }}
+                >
+                  <Image source={{ uri: item.img }} style={styles.imageStyle} />
+                  <PlaceDetails item={item} />
+                </TouchableOpacity>
+              </View>
+
+
           );
         }}
       />

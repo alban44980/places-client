@@ -18,7 +18,6 @@ import {
 function SearchModal( { city }: string) {
   // this is a placeholder for a redux reducer of all places
   const placesArray = places;
-
   const [placesRendered, setPlacesRendered] = useState<any[]>([...placesArray]);
   const [search, setSearch] = useState<String>('');
   const [filterModalVisible, setFilterModalVisible] = useState<Boolean>(false);

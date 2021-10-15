@@ -24,15 +24,16 @@ function MyData(props: any) {
             <Text>Followers</Text>
           </View>
           <View style={styles.followersInfo}>
-            <Text style={styles.numbers}>23</Text>
+            <Text style={styles.numbers}>{user.followers_count}</Text>
           </View>
         </View>
+
         <View style={styles.followingContainer}>
           <View style={styles.followersInfo}>
             <Text>Following</Text>
           </View>
           <View style={styles.followersInfo}>
-            <Text style={styles.numbers}>11</Text>
+            <Text style={styles.numbers}>{user.following_count}</Text>
           </View>
         </View>
       </View>
@@ -40,10 +41,7 @@ function MyData(props: any) {
       <View style={styles.dataBottom}>
 
         <View style={styles.bio}>
-          <Text style={styles.bioText} numberOfLines={2}>
-            Backpacker, wanderer, enjoy minimalist travel, and authentic local experiences.
-            Remote worker so always finding coffee shops ☕️
-          </Text>
+          <Text style={styles.bioText} numberOfLines={2}>{user.bio}</Text>
 
         </View>
       </View>
