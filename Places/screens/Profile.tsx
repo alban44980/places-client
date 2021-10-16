@@ -68,6 +68,7 @@ function Profile() {
         savedSelected={savedSelected}
         setSavedSelected={setSavedSelected}
       />
+
       <FiltersContainer
         cities={cities}
         places={places}
@@ -77,13 +78,16 @@ function Profile() {
       />
       {/* Refactor to pass data for this users places */}
       {/* <View style={{height: '80%'}}> */}
-      <PlacesList
-        handlePress={handlePlacePress}
-        setPlace={setSelectedPlace}
-        places={filteredPlaces}
-        setPlaces={setPlaces}
-        tagSelected={tagSelected}
-      />
+      {myPlacesSelected ? (
+        <PlacesList
+          handlePress={handlePlacePress}
+          setPlace={setSelectedPlace}
+          places={filteredPlaces}
+          setPlaces={setPlaces}
+          tagSelected={tagSelected}
+        />
+      ) : null}
+
       {/* </View> */}
     </SafeAreaView>
   );
