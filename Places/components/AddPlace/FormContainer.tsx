@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 
 import { REACT_APP_GOOGLE_MAPS_API_KEY } from '@env';
 
-
 import { StyleSheet, View, TextInput, Button } from 'react-native';
 import colors from '../../assets/styles/colors';
 import { useForm, Controller } from 'react-hook-form';
@@ -93,6 +92,7 @@ function FormContainer() {
     formState: { errors },
   } = useForm();
 
+  //FOR TESTING
   console.log(state);
 
   const onSubmit = async (data: any) => {
@@ -124,10 +124,6 @@ function FormContainer() {
       },
       country: country,
     }));
-
-    setTimeout(() => {
-      console.log('ENTIRE STATE CONSOLE LOGGED BRUV YIIIII ==>', state);
-    }, 2000);
 
     //   .then((res) => res.json())
     //   .then((data) => {
