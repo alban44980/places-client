@@ -1,5 +1,3 @@
-import { Platform } from "react-native";
-import { useSelector } from "react-redux";
 import {
   FriendSchema,
   OtherUserIndoSchema,
@@ -7,17 +5,8 @@ import {
   RemovePlaceSchema,
   SearchUserSchema,
 } from "./Interfaces";
-import { RootState } from "./redux/reducers/reducers";
 
 const BASE_URL = "http://localhost:3001";
-const accessToken = useSelector((state: RootState) => state.accessToken);
-const refreshToken = useSelector((state: RootState) => state.refreshToken);
-
-const authHeader = {
-  "Content-Type": "application/json",
-  Authorization: `Bearer ${accessToken}`,
-  "x-refresh": `${refreshToken}`,
-};
 
 /*
 register expected input
@@ -64,10 +53,18 @@ const login = (credentials: any) => {
     "FriendId":"8ad5a9fa-aa13-4f72-9bb6-0af1445be1bc"
 }
  */
-const addFriend = (friendId: FriendSchema): Promise<any> => {
+const addFriend = (
+  friendId: FriendSchema,
+  refreshToken: string,
+  accessToken: string
+): Promise<any> => {
   return fetch(`${BASE_URL}/add/friend`, {
     method: "POST",
-    headers: authHeader,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+      "x-refresh": `${refreshToken}`,
+    },
     body: JSON.stringify(friendId),
   })
     .then((res) => res.json())
@@ -88,10 +85,18 @@ addPlace expected input
     "country": "Japan"
 }
  */
-const addPlace = (newPlace: PlaceSchema): Promise<any> => {
+const addPlace = (
+  newPlace: PlaceSchema,
+  refreshToken: string,
+  accessToken: string
+): Promise<any> => {
   return fetch(`${BASE_URL}/add/place`, {
     method: "POST",
-    headers: authHeader,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+      "x-refresh": `${refreshToken}`,
+    },
     body: JSON.stringify(newPlace),
   })
     .then((res) => res.json())
@@ -111,10 +116,18 @@ addSavedPlace expected input
     "country": "Japan"
 }
 */
-const addSavedPlace = (newSavedPlace: PlaceSchema): Promise<any> => {
+const addSavedPlace = (
+  newSavedPlace: PlaceSchema,
+  refreshToken: string,
+  accessToken: string
+): Promise<any> => {
   return fetch(`${BASE_URL}/add/savedplace`, {
     method: "POST",
-    headers: authHeader,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+      "x-refresh": `${refreshToken}`,
+    },
     body: JSON.stringify(newSavedPlace),
   })
     .then((res) => res.json())
@@ -127,107 +140,203 @@ searchUser expected input
     "searchValue":"test2UN"
 }
 */
-const searchUser = (searchValue: SearchUserSchema): Promise<any> => {
+const searchUser = (
+  searchValue: SearchUserSchema,
+  refreshToken: string,
+  accessToken: string
+): Promise<any> => {
   return fetch(`${BASE_URL}/searched/user`, {
     method: "POST",
-    headers: authHeader,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+      "x-refresh": `${refreshToken}`,
+    },
     body: JSON.stringify(searchValue),
   })
     .then((res) => res.json())
     .catch((err: any) => console.log(err));
 };
 
-const getOtherUserInfo = (userId: OtherUserIndoSchema): Promise<any> => {
+const getOtherUserInfo = (
+  userId: OtherUserIndoSchema,
+  refreshToken: string,
+  accessToken: string
+): Promise<any> => {
   return fetch(`${BASE_URL}/searched/user`, {
     method: "POST",
-    headers: authHeader,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+      "x-refresh": `${refreshToken}`,
+    },
     body: JSON.stringify(userId),
   })
     .then((res) => res.json())
     .catch((err: any) => console.log(err));
 };
 
-const getFriends = (): Promise<any> => {
+const getFriends = (
+  refreshToken: string,
+  accessToken: string
+): Promise<any> => {
   return fetch(`${BASE_URL}/my/friends`, {
     method: "GET",
-    headers: authHeader,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+      "x-refresh": `${refreshToken}`,
+    },
   })
     .then((res) => res.json())
     .catch((err: any) => console.log(err));
 };
 
-const getFriendsCitesPlace = (): Promise<any> => {
+const getFriendsCitesPlace = (
+  refreshToken: string,
+  accessToken: string
+): Promise<any> => {
   return fetch(`${BASE_URL}/friendsCitiesPlaces`, {
     method: "GET",
-    headers: authHeader,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+      "x-refresh": `${refreshToken}`,
+    },
   })
     .then((res) => res.json())
     .catch((err: any) => console.log(err));
 };
 
-const getSavedPlaces = (): Promise<any> => {
+const getSavedPlaces = (
+  refreshToken: string,
+  accessToken: string
+): Promise<any> => {
   return fetch(`${BASE_URL}/my/savedplaces`, {
     method: "GET",
-    headers: authHeader,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+      "x-refresh": `${refreshToken}`,
+    },
   })
     .then((res) => res.json())
     .catch((err: any) => console.log(err));
 };
 
-const getMyPlaces = (): Promise<any> => {
+const getMyPlaces = (
+  refreshToken: string,
+  accessToken: string
+): Promise<any> => {
   return fetch(`${BASE_URL}/my/places`, {
     method: "GET",
-    headers: authHeader,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+      "x-refresh": `${refreshToken}`,
+    },
   })
     .then((res) => res.json())
     .catch((err: any) => console.log(err));
 };
 
-const getMyCityPlaces = (): Promise<any> => {
+const getMyCityPlaces = (
+  refreshToken: string,
+  accessToken: string
+): Promise<any> => {
   return fetch(`${BASE_URL}/my/citiesPlaces`, {
     method: "GET",
-    headers: authHeader,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+      "x-refresh": `${refreshToken}`,
+    },
   })
     .then((res) => res.json())
     .catch((err: any) => console.log(err));
 };
 
-const logout = (): Promise<any> => {
+const logout = (refreshToken: string, accessToken: string): Promise<any> => {
   return fetch(`${BASE_URL}/logout`, {
     method: "DELETE",
-    headers: authHeader,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+      "x-refresh": `${refreshToken}`,
+    },
   })
     .then((res) => res.json())
     .catch((err: any) => console.log(err));
 };
 
-const removeFriend = (friendId: FriendSchema): Promise<any> => {
+const removeFriend = (
+  friendId: FriendSchema,
+  refreshToken: string,
+  accessToken: string
+): Promise<any> => {
   return fetch(`${BASE_URL}/remove/friend`, {
     method: "DELETE",
-    headers: authHeader,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+      "x-refresh": `${refreshToken}`,
+    },
     body: JSON.stringify(friendId),
   })
     .then((res) => res.json())
     .catch((err: any) => console.log(err));
 };
 
-const removeMyPlace = (placeInfo: RemovePlaceSchema): Promise<any> => {
+const removeMyPlace = (
+  placeInfo: RemovePlaceSchema,
+  refreshToken: string,
+  accessToken: string
+): Promise<any> => {
   return fetch(`${BASE_URL}/remove/myplace`, {
     method: "DELETE",
-    headers: authHeader,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+      "x-refresh": `${refreshToken}`,
+    },
     body: JSON.stringify(placeInfo),
   })
     .then((res) => res.json())
     .catch((err: any) => console.log(err));
 };
-const removeSavedPlace = (placeInfo: RemovePlaceSchema): Promise<any> => {
+const removeSavedPlace = (
+  placeInfo: RemovePlaceSchema,
+  refreshToken: string,
+  accessToken: string
+): Promise<any> => {
   return fetch(`${BASE_URL}/remove/myplace`, {
     method: "DELETE",
-    headers: authHeader,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+      "x-refresh": `${refreshToken}`,
+    },
     body: JSON.stringify(placeInfo),
   })
     .then((res) => res.json())
     .catch((err: any) => console.log(err));
 };
 
-export default { register, login };
+export default {
+  register,
+  login,
+  addFriend,
+  addPlace,
+  addSavedPlace,
+  searchUser,
+  getOtherUserInfo,
+  getFriends,
+  getFriendsCitesPlace,
+  getSavedPlaces,
+  getMyPlaces,
+  getMyCityPlaces,
+  logout,
+  removeFriend,
+  removeMyPlace,
+  removeSavedPlace,
+};
