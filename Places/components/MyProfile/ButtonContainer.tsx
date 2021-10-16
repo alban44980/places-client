@@ -11,18 +11,24 @@ export default function ButtonContainer({
   return (
     <View style={styles.buttonsContainer}>
       <TouchableOpacity
-        style={styles.buttons}
+        style={
+          myPlacesSelected ? styles.buttonSelected : styles.buttonNotSelected
+        }
         onPress={() => {
           console.log('my places button hit');
+          setMyPlacesSelected(true);
+          setSavedSelected(false);
         }}
       >
         <Text style={styles.labelText}>My Places</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
-        style={styles.buttons}
+        style={savedSelected ? styles.buttonSelected : styles.buttonNotSelected}
         onPress={() => {
           console.log('saved button hit');
+          setMyPlacesSelected(false);
+          setSavedSelected(true);
         }}
       >
         <Text style={styles.labelText}>Saved</Text>
@@ -54,5 +60,24 @@ const styles = StyleSheet.create({
   labelText: {
     fontSize: 13,
     fontWeight: '600',
+  },
+
+  buttonSelected: {
+    backgroundColor: colors.backgroundMedium,
+    width: '25%',
+    height: '80%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+    borderWidth: 1,
+  },
+  buttonNotSelected: {
+    backgroundColor: 'transparent',
+    width: '25%',
+    height: '80%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+    borderWidth: 1,
   },
 });

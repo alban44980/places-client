@@ -64,9 +64,9 @@ function Profile() {
       <MyData user={user} />
       <ButtonContainer
         myPlacesSelected={myPlacesSelected}
-        setMyPlacesSelected={myPlacesSelected}
+        setMyPlacesSelected={setMyPlacesSelected}
         savedSelected={savedSelected}
-        setsavedSelected={setSavedSelected}
+        setSavedSelected={setSavedSelected}
       />
       <FiltersContainer
         cities={cities}
