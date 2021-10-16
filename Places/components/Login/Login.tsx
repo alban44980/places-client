@@ -32,6 +32,7 @@ function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const onSubmit = async (data: any) => {
     console.log(data);
     const tokens: any = await apiService.login(data);
@@ -45,7 +46,7 @@ function Login() {
     console.log('refresh token ==>', tokens.refreshToken);
     dispatch(saveAccessToken(tokens.accessToken));
     dispatch(saveRefreshToken(tokens.refreshToken));
-    navigation.navigate('app');
+    navigation.navigate('home');
   };
 
   return (

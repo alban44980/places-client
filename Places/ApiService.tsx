@@ -24,4 +24,6 @@ apiService.login = (credentials: any) => {
     .catch((err) => console.log(err));
 };
 
+//add new place
+
 export default apiService;

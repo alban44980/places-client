@@ -25,8 +25,8 @@ export type RootStackParamList = {
   login: undefined;
   signup: undefined;
   app: undefined;
+  home: undefined;
 };
-
 
 export default function App() {
   // const userInfo: any = useSelector((state: RootState) => state.userInfo);
@@ -35,12 +35,12 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName={'app'}
+          initialRouteName={'home'}
           // screenOptions={{ headerShown: false }}
         >
           <Stack.Screen name="login" component={Login} />
           <Stack.Screen name="signup" component={SignUp} />
-          <Stack.Screen name="app" component={Navigation} />
+          <Stack.Screen name="home" component={Navigation} />
           <Stack.Screen name="userProfile" component={UserProfile} />
           <Stack.Screen name="search" component={SearchModal} />
           <Stack.Screen name="place" component={PlaceModal} />
