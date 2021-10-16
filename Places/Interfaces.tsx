@@ -39,7 +39,7 @@ export interface PlaceSchema {
     location: string;
     address: string;
     city: string;
-    city_info: CitySchema;
+    city_info?: CitySchema;
     country: string;
   };
 }
