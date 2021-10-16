@@ -3,72 +3,16 @@ import React, { useEffect, useState } from 'react';
 
 import { REACT_APP_GOOGLE_MAPS_API_KEY } from '@env';
 
-import { StyleSheet, View, TextInput, Button } from 'react-native';
+import { StyleSheet, View, TextInput, Button, Text } from 'react-native';
 import colors from '../../assets/styles/colors';
 import { useForm, Controller } from 'react-hook-form';
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-import { ScrollView } from 'react-native-gesture-handler';
 import TagsContainer from './tagsContainer';
-
-const CityInput = ({ setCity, setCountry }) => {
-  // const apiKey: any = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
-  // console.log(apiKey);
-  return (
-    <GooglePlacesAutocomplete
-      placeholder="City"
-      onPress={(data, details = null) => {
-        // 'details' is provided when fetchDetails = true
-        setCity(data.terms[0].value);
-        setCountry(data.terms[data.terms.length - 1].value);
-        // console.log('Country ==>', data.terms[data.terms.length - 1].value);
-        // console.log('DETAILS ==>', details.types);
-      }}
-      query={{
-        key: REACT_APP_GOOGLE_MAPS_API_KEY,
-        language: 'en',
-      }}
-      styles={{
-        textInputContainer: {
-          backgroundColor: 'grey',
-          width: '100%',
-        },
-        container: {
-          height: 100,
-        },
-        row: {},
-      }}
-    />
-  );
-};
-const AddressInput = ({ setAddress }) => {
-  // const apiKey: any = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
-
-  return (
-    <GooglePlacesAutocomplete
-      placeholder="Address"
-      onPress={(data, details = null) => {
-        // 'details' is provided when fetchDetails = true
-        console.log(data.description);
-        setAddress(data.description);
-      }}
-      query={{
-        key: REACT_APP_GOOGLE_MAPS_API_KEY,
-        language: 'en',
-      }}
-      styles={{
-        container: {
-          // backgroundColor: 'red',
-        },
-        textInputContainer: {
-          backgroundColor: 'grey',
-          width: '100%',
-        },
-      }}
-    />
-  );
-};
+import CityInput from './CityInput';
+import AddressInput from './AddressInput';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 function FormContainer() {
+  //initial state for form data
   const initialState = {
     name: '',
     description: '',
@@ -92,9 +36,7 @@ function FormContainer() {
     formState: { errors },
   } = useForm();
 
-  //FOR TESTING
-  console.log(state);
-
+  //submit form function
   const onSubmit = async (data: any) => {
     console.log('DATA FROM FORM => ', data);
     console.log('city  state ==>', city);
@@ -124,12 +66,6 @@ function FormContainer() {
       },
       country: country,
     }));
-
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     let coords = data.results[0].geometry.location;
-    //     console.log('COORDINATES FROM GEOCALL BRU: ', coords);
-    //   });
   };
 
   return (
@@ -154,35 +90,6 @@ function FormContainer() {
       />
       <CityInput setCity={setCity} setCountry={setCountry} />
 
-      {/* <Controller
-        control={control}
-        rules={{
-          maxLength: 100,
-          required: true,
-        }}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <View style={styles.googleInputsContainer}>
-            <CityInput />
-          </View>
-        )}
-        name="city"
-        defaultValue=""
-      />
-
-      <Controller
-        control={control}
-        rules={{
-          maxLength: 100,
-          required: true,
-        }}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <View style={styles.googleInputsContainer}>
-            <AddressInput />
-          </View>
-        )}
-        name="address"
-        defaultValue=""
-      /> */}
       <AddressInput address={address} setAddress={setAddress} />
 
       <Controller
@@ -206,7 +113,13 @@ function FormContainer() {
         defaultValue=""
       />
       <TagsContainer />
-      <Button title="Add Place" onPress={handleSubmit(onSubmit)} />
+      <TouchableOpacity
+        style={styles.submitButton}
+        title="Add Place"
+        onPress={handleSubmit(onSubmit)}
+      >
+        <Text style={{ color: 'white', fontSize: 20 }}>addplace</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -220,7 +133,7 @@ const styles = StyleSheet.create({
   },
   googleInputsContainer: {
     width: '100%',
-    height: '20%',
+    height: '10%',
     alignItems: 'center',
   },
   input: {
@@ -239,19 +152,18 @@ const styles = StyleSheet.create({
     height: '30%',
     width: '85%',
     padding: 10,
+    borderRadius: 20,
+  },
+  submitButton: {
+    backgroundColor: 'purple',
+    color: 'green',
+    height: 40,
+    width: 100,
+    margin: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 20,
   },
 });
 
 export default FormContainer;
-
-// {
-//     "name": "Pandy's",
-//     "description" :"great place for drinks",
-//     "tag_list": [{"tag_name": "bars"},{"tag_name": "music"}],
-//     "img": "https://13144adksfjhafakjfhjkhfa.com",
-//     "location": "{lat:131313,lng:1313134}",
-//     "address": "134avc 53st, barc, MW, 33193",
-//     "city":"Lagos",
-//     "city_info": {"name":"Lagos","country":"Japan","location":"{lat:131313,lng:1313134}"},
-//     "country": "Japan"
-// }
