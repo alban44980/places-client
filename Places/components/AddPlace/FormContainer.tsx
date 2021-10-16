@@ -90,7 +90,11 @@ function FormContainer() {
       />
       <CityInput setCity={setCity} setCountry={setCountry} />
 
-      <AddressInput address={address} setAddress={setAddress} />
+      <AddressInput
+        address={address}
+        setAddress={setAddress}
+        country={country}
+      />
 
       <Controller
         control={control}
@@ -142,6 +146,7 @@ const styles = StyleSheet.create({
     height: '10%',
     width: '100%',
     padding: 10,
+    borderRadius: 5,
   },
   addButton: {
     margin: 5,
@@ -157,7 +162,7 @@ const styles = StyleSheet.create({
   submitButton: {
     backgroundColor: 'purple',
     color: 'green',
-    height: 40,
+    height: 30,
     width: 100,
     margin: 10,
     alignItems: 'center',

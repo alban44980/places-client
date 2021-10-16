@@ -4,7 +4,7 @@ import { REACT_APP_GOOGLE_MAPS_API_KEY } from '@env';
 
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
-const AddressInput = ({ setAddress }) => {
+const AddressInput = ({ setAddress, country }) => {
   return (
     <GooglePlacesAutocomplete
       placeholder="Address"
@@ -15,6 +15,8 @@ const AddressInput = ({ setAddress }) => {
       query={{
         key: REACT_APP_GOOGLE_MAPS_API_KEY,
         language: 'en',
+        // components: 'country:us',
+        // types: ['(establishments)'],
       }}
       styles={{
         container: {
