@@ -1,11 +1,22 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 
 //put properties into initial object state
 const userInfo = (state = {}, action: any) => {
   switch (action.type) {
-    case 'SET_USER_DATA': {
+    case "SET_USER_DATA": {
       const { data } = action;
       return data;
+    }
+    default:
+      return state;
+  }
+};
+//holds current user's friends info
+const userFriendInfo = (state = {}, action: any) => {
+  switch (action.type) {
+    case "SET_USER_FRIEND_DATA": {
+      const { frindsInfo } = action;
+      return frindsInfo;
     }
     default:
       return state;
@@ -16,7 +27,7 @@ const userInfo = (state = {}, action: any) => {
 
 const searchVisible = (state = false, action: any) => {
   switch (action.type) {
-    case 'TOGGLE_SEARCH': {
+    case "TOGGLE_SEARCH": {
       return !state;
     }
     default:
@@ -28,7 +39,7 @@ const searchVisible = (state = false, action: any) => {
 
 const placeVisible = (state = false, action: any) => {
   switch (action.type) {
-    case 'TOGGLE_PLACE': {
+    case "TOGGLE_PLACE": {
       return !state;
     }
     default:
@@ -39,7 +50,7 @@ const placeVisible = (state = false, action: any) => {
 //placeSelected
 const placeSelected = (state = {}, action: any) => {
   switch (action.type) {
-    case 'SET_PLACE': {
+    case "SET_PLACE": {
       const { placeName } = action;
       return placeName;
     }
@@ -55,9 +66,9 @@ const placeSelected = (state = {}, action: any) => {
 //setPlaces
 
 // access token
-const accessToken = (state = '', action: any) => {
+const accessToken = (state = "", action: any) => {
   switch (action.type) {
-    case 'SAVE_ACCESS_TOKEN': {
+    case "SAVE_ACCESS_TOKEN": {
       const { token } = action;
       return token;
     }
@@ -67,9 +78,9 @@ const accessToken = (state = '', action: any) => {
 };
 
 //save refresh token
-const refreshToken = (state = '', action: any) => {
+const refreshToken = (state = "", action: any) => {
   switch (action.type) {
-    case 'SAVE_REFRESH_TOKEN': {
+    case "SAVE_REFRESH_TOKEN": {
       const { token } = action;
       return token;
     }
@@ -85,6 +96,7 @@ const reducers = combineReducers({
   placeSelected,
   accessToken,
   refreshToken,
+  userFriendInfo,
 });
 
 export default reducers;

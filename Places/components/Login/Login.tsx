@@ -13,7 +13,11 @@ import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../../App";
 import ApiService from "../../ApiService";
-import { saveAccessToken, saveRefreshToken } from "../../redux/actions/actions";
+import {
+  saveAccessToken,
+  saveRefreshToken,
+  saveUserFriendsInfo,
+} from "../../redux/actions/actions";
 import { RootState } from "../../redux/reducers/reducers";
 
 type userScreenProp = StackNavigationProp<RootStackParamList>;
@@ -35,31 +39,24 @@ function Login() {
 
   const onSubmit = async (data: any) => {
     try {
-      console.log("login info >>>>>>>>>>>", data);
+      //   Object {
+      // "email": "Will@gmail.com",
+      // "password": "123456789",
+      // }
       const tokens: any = await ApiService.login(data);
       //getFriendsCityPlaces apicall below
-      console.log(tokens);
       if (tokens.accessToken && tokens.refreshToken) {
-        console.log("Here inside");
         const frindsInfo = await ApiService.getFriendsCitesPlace(
           tokens.refreshToken,
           tokens.accessToken
         );
 
-        console.log("friendsINFO >>>>>>>>", frindsInfo);
-        //   Object {
-        // "email": "Will@gmail.com",
-        // "password": "123456789",
-        // }
-        console.log("access token ==>", tokens.accessToken);
-        console.log("refresh token ==>", tokens.refreshToken);
+        dispatch(saveUserFriendsInfo(frindsInfo));
         dispatch(saveAccessToken(tokens.accessToken));
         dispatch(saveRefreshToken(tokens.refreshToken));
         navigation.navigate("home");
       }
-    } catch (e) {
-      console.log("cought");
-    }
+    } catch (e) {}
   };
 
   return (

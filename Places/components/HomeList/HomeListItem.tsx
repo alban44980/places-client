@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   StyleSheet,
   Text,
@@ -6,20 +6,20 @@ import {
   TouchableOpacity,
   View,
   Image,
-} from 'react-native';
+} from "react-native";
 
-import { useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '../../App';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../redux/reducers/reducers';
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../../App";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../../redux/reducers/reducers";
 import {
   setUserData,
   toggleSearchVisible,
   togglePlaceVisible,
   setPlaceSelected,
-} from '../../redux/actions/actions';
-import colors from '../../assets/styles/colors';
+} from "../../redux/actions/actions";
+import colors from "../../assets/styles/colors";
 
 function HomeListItem({ data, route, setPlace, setCity, setFriend }: any) {
   type userScreenProp = StackNavigationProp<RootStackParamList>;
@@ -36,17 +36,17 @@ function HomeListItem({ data, route, setPlace, setCity, setFriend }: any) {
   );
 
   const handlePress = () => {
-    if (route === 'userProfile') {
+    if (route === "userProfile") {
       setFriend(data);
-      navigation.navigate('userProfile', data);
+      navigation.navigate("userProfile", data);
     }
 
-    if (route === 'search') {
+    if (route === "search") {
       setCity(data.name);
       dispatch(toggleSearchVisible());
     }
 
-    if (route === 'place') {
+    if (route === "place") {
       setPlace(data);
       dispatch(togglePlaceVisible());
     }
@@ -59,7 +59,7 @@ function HomeListItem({ data, route, setPlace, setCity, setFriend }: any) {
       <Image style={styles.img} source={{ uri: data.img }} resizeMode="cover" />
       <View style={styles.textContainer}></View>
       <Text style={styles.title}>
-        {route !== 'userProfile' ? data.name : data.first_name}
+        {route !== "userProfile" ? data.name : data.first_name}
       </Text>
     </TouchableOpacity>
   );
@@ -69,31 +69,31 @@ const styles = StyleSheet.create({
   itemContainer: {
     marginHorizontal: 15,
     width: 80,
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
+    height: "100%",
+    alignItems: "center",
+    justifyContent: "center",
     borderRadius: 5,
-    overflow: 'hidden',
+    overflow: "hidden",
   },
 
   img: {
-    width: '100%',
-    height: '100%',
-    position: 'absolute',
+    width: "100%",
+    height: "100%",
+    position: "absolute",
   },
 
   textContainer: {
     backgroundColor: colors.backgroundDark,
-    height: '100%',
-    width: '100%',
+    height: "100%",
+    width: "100%",
     opacity: 0.35,
-    position: 'absolute',
+    position: "absolute",
   },
 
   title: {
     color: colors.fontLight,
-    textAlign: 'center',
-    fontWeight: '700',
+    textAlign: "center",
+    fontWeight: "700",
   },
 });
 
