@@ -18,7 +18,7 @@ import {
 import colors from '../../assets/styles/colors';
 import FilterModal from '../SearchModal/FilterModal';
 
-function TagsContainer() {
+function TagsContainer({ formTags, setFormTags }: any) {
   const handleFilterPress = () => {
     setFilterModalVisible(!filterModalVisible);
   };
@@ -34,6 +34,8 @@ function TagsContainer() {
             filterModalVisible={filterModalVisible}
             setFilterModalVisible={setFilterModalVisible}
             handlePress={handleFilterPress}
+            formTags={formTags}
+            setFormTags={setFormTags}
           />
         </View>
       )}

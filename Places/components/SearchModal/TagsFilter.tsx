@@ -1,43 +1,55 @@
-import {StyleSheet, View, Text, TouchableHighlight, ScrollView} from 'react-native';
-import React, {useState} from 'react';
+//@ts-nocheck
+
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableHighlight,
+  ScrollView,
+} from 'react-native';
+import React, { useState } from 'react';
 import colors from '../../assets/styles/colors';
 import tags from '../../dummyData/tagsList';
 
-
-function TagsFilter() {
-
+function TagsFilter({ formTags, setFormTags }: any) {
   // there should be some kind of state for selected --> this is used for rendering color to begin with
-  const [selected, setSelected] = useState<String[]>([])
-  const tagsList = tags
+  const [selected, setSelected] = useState<String[]>([]);
+  const tagsList = tags;
 
   const handlePress = (tag: string) => {
     if (!selected.includes(tag)) {
-      setSelected((prev) => [...prev, tag])
+      setSelected((prev) => [...prev, tag]);
+      setFormTags((prev: any) => [...prev, { tag_name: tag }]);
     }
     if (selected.includes(tag)) {
-      setSelected((prev) => [...prev].filter((item) => item !== tag))
+      setSelected((prev) => [...prev].filter((item) => item !== tag));
+      setFormTags((prev: any) =>
+        [...prev].filter((item) => item !== { tag_name: tag })
+      );
     }
-  }
+  };
 
   return (
     <View style={styles.tagSectionContainer}>
-      <ScrollView style={{width: '100%'}} contentContainerStyle={{alignItems: 'center'}}>
-
-        {
-          tagsList.map((tag) => {
-            return (
-              <TouchableHighlight 
-                style={ selected.includes(tag) ?  styles.tagSelectedContainer : styles.tagDefaultContainer}
-                onPress={() => handlePress(tag)}
-              >
-                <Text style={styles.tagText}>#{tag}</Text>
-              </TouchableHighlight>
-            )
-          })
-        }
-
+      <ScrollView
+        style={{ width: '100%' }}
+        contentContainerStyle={{ alignItems: 'center' }}
+      >
+        {tagsList.map((tag) => {
+          return (
+            <TouchableHighlight
+              style={
+                selected.includes(tag)
+                  ? styles.tagSelectedContainer
+                  : styles.tagDefaultContainer
+              }
+              onPress={() => handlePress(tag)}
+            >
+              <Text style={styles.tagText}>#{tag}</Text>
+            </TouchableHighlight>
+          );
+        })}
       </ScrollView>
-     
     </View>
   );
 }
@@ -60,7 +72,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     justifyContent: 'center',
     borderColor: colors.backgroundDark,
-    borderWidth: 1
+    borderWidth: 1,
   },
 
   tagSelectedContainer: {
@@ -71,14 +83,13 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     justifyContent: 'center',
     borderColor: colors.backgroundDark,
-    borderWidth: 1
+    borderWidth: 1,
   },
 
   tagText: {
     fontSize: 12,
     fontWeight: '600',
     color: colors.fontLight,
-    textAlign: 'center'
-  }
-  
-})
+    textAlign: 'center',
+  },
+});
