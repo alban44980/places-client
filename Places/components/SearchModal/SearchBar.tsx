@@ -1,43 +1,50 @@
-import React, {useState} from 'react';
-import {StyleSheet, View, Text, TouchableOpacity, TextInput, TouchableHighlight,} from 'react-native';
-import FilterModal from './FilterModal';
-import colors from '../../assets/styles/colors';
-import places from '../../dummyData/placesList';
-
+import React, { useState, useEffect } from "react";
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  TextInput,
+  TouchableHighlight,
+} from "react-native";
+import FilterModal from "./FilterModal";
+import colors from "../../assets/styles/colors";
+import places from "../../dummyData/placesList";
 
 function SearchBar(props: any) {
   // on search should also have a drop down list of suggested cities that match the current search
 
-  const {handlePress, setSearch, setSearchResults, data, search, city} = props
-  if (city) {
-    setSearch(city)
-  }
+  const { handlePress, setSearch, setSearchResults, data, search, city } =
+    props;
+
+  useEffect(() => {
+    setSearch(city);
+  }, [city]);
 
   const searchFilter = (text: String) => {
     if (text) {
       const newData = data.filter((item: any) => {
-        const itemData = item.city ? item.city.toUpperCase() : ''.toUpperCase()
-        const textData = text.toUpperCase()
+        const itemData = item.city ? item.city.toUpperCase() : "".toUpperCase();
+        const textData = text.toUpperCase();
         return itemData.indexOf(textData) > -1;
-      })
+      });
       setSearchResults(newData);
-      setSearch(text)
+      setSearch(text);
     } else {
-      setSearchResults(data)
-      setSearch(text)
+      setSearchResults(data);
+      setSearch(text);
     }
-  }
+  };
 
   return (
-
     <View style={styles.searchBarContainer}>
-      <TextInput 
+      <TextInput
         style={styles.searchBar}
         value={search}
-        placeholder='Where are you going?'
+        placeholder="Where are you going?"
         onChangeText={(text) => searchFilter(text)}
       />
-      <TouchableHighlight 
+      <TouchableHighlight
         style={styles.filterButtonContainer}
         onPress={handlePress}
       >
@@ -49,44 +56,42 @@ function SearchBar(props: any) {
 
 export default SearchBar;
 
-
 const styles = StyleSheet.create({
   searchBarContainer: {
     backgroundColor: colors.backgroundDark,
-    width: '100%',
-    height: '10%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
+    width: "100%",
+    height: "10%",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
   },
 
   searchBar: {
     backgroundColor: colors.backgroundLight,
-    height: '70%',
-    width: '65%',
-    paddingLeft: '3%',
+    height: "70%",
+    width: "65%",
+    paddingLeft: "3%",
     borderTopLeftRadius: 10,
     borderBottomLeftRadius: 10,
     borderColor: colors.backgroundDark,
-    borderWidth: 1
+    borderWidth: 1,
   },
 
   filterButtonContainer: {
     backgroundColor: colors.accentFun,
-    height: '70%',
-    width: '15%',
-    justifyContent: 'center',
+    height: "70%",
+    width: "15%",
+    justifyContent: "center",
     borderTopRightRadius: 10,
     borderBottomRightRadius: 10,
     borderColor: colors.backgroundDark,
-    borderWidth: 1
+    borderWidth: 1,
   },
 
   filterText: {
     fontSize: 12,
-    textAlign: 'center',
+    textAlign: "center",
     color: colors.fontDark,
-    fontWeight: '700'
+    fontWeight: "700",
   },
-  
-})
+});

@@ -1,11 +1,22 @@
-import React from 'react';
-import { StyleSheet, View, Text, ScrollView, FlatList } from 'react-native';
-import userPlaces from '../../dummyData/userPlaces';
+import React from "react";
+import { StyleSheet, View, Text, ScrollView, FlatList } from "react-native";
+import { useSelector } from "react-redux";
+import userPlaces from "../../dummyData/userPlaces";
+import { RootState } from "../../redux/reducers/reducers";
 
-function UserPlaces() {
+function UserPlaces({ citiesPlaces }) {
+  const userFriendInfo: any = useSelector(
+    (state: RootState) => state.userFriendInfo
+  );
+
   const renderItem = ({ item }: any) => (
     <View style={styles.itemContainer}>
       <Text>{item.name}</Text>
+      {item.Places.length === 1 ? (
+        <Text>{item.Places.length} Place</Text>
+      ) : (
+        <Text>{item.Places.length} Places</Text>
+      )}
     </View>
   );
 
@@ -30,7 +41,7 @@ function UserPlaces() {
 
     // <View style={styles.userPlacesContainer}>
     <FlatList
-      data={userPlaces}
+      data={citiesPlaces}
       renderItem={renderItem}
       // style={styles.userPlacesContainer}
       contentContainerStyle={styles.userPlacesContainer}
@@ -45,12 +56,12 @@ const styles = StyleSheet.create({
     // backgroundColor: 'lightblue',
     flexGrow: 1,
     borderWidth: 1,
-    borderColor: 'black',
-    width: '100%',
+    borderColor: "black",
+    width: "100%",
     // flex: 1,
     // flexDirection: 'row',
     // flexWrap: 'wrap',
-    alignItems: 'center',
+    alignItems: "center",
   },
   contentContainer: {
     // backgroundColor: 'green',
@@ -68,7 +79,7 @@ const styles = StyleSheet.create({
   itemContainer: {
     height: 140,
     width: 160, //160
-    backgroundColor: 'lightblue',
+    backgroundColor: "lightblue",
     margin: 20,
     // alignSelf: 'center',
   },

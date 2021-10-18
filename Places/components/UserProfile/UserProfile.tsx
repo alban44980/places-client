@@ -1,30 +1,47 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, Text, Image, SafeAreaView } from 'react-native';
-import MyData from '../MyProfile/MyData';
-import ToggleFollowContainer from './ToggleFollowContainer';
-import SearchBar from '../SearchModal/SearchBar';
-import UserPlaces from './UserPlaces';
-
-
+import React, { useEffect, useState } from "react";
+import { StyleSheet, View, Text, Image, SafeAreaView } from "react-native";
+import MyData from "../MyProfile/MyData";
+import ToggleFollowContainer from "./ToggleFollowContainer";
+import SearchBar from "../SearchModal/SearchBar";
+import UserPlaces from "./UserPlaces";
+import { RootState } from "../../redux/reducers/reducers";
+import { useSelector } from "react-redux";
 
 function UserProfile(props: any) {
+  const data = props.route.params;
+  const [selectedUser, setSelectedUser] = useState<{}>({});
 
-  const data = props.route.params
+  useEffect(() => {
+    getFriendPageInfo();
+  }, []);
 
+  const friendId = data.id;
+
+  const userFriendInfo: any = useSelector(
+    (state: RootState) => state.userFriendInfo
+  );
+
+  function getFriendPageInfo() {
+    for (let friend of userFriendInfo) {
+      if (friend.id === friendId) {
+        setSelectedUser(friend);
+      }
+    }
+  }
 
   const [filterModalVisible, setFilterModalVisible] = useState<Boolean>(false);
 
   return (
     <SafeAreaView style={styles.userProfileContainer}>
       <View style={styles.titleContainer}>
-        <Text style={styles.username}>{data.first_name}</Text>
+        <Text style={selectedUser.username}>{selectedUser.first_name}</Text>
       </View>
 
-      {/* <MyData /> */}
-      {/* <ToggleFollowContainer /> */}
+      <MyData user={selectedUser} />
+      <ToggleFollowContainer />
       {/* //SEARCHBAR TO BE MODIFIED */}
-      {/* <SearchBar /> */}
-      {/* <UserPlaces /> */}
+      <SearchBar />
+      <UserPlaces citiesPlaces={selectedUser.Cities} />
     </SafeAreaView>
   );
 }
@@ -34,9 +51,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   titleContainer: {
-    height: '5%',
-    justifyContent: 'center',
-    alignItems: 'center',
+    height: "5%",
+    justifyContent: "center",
+    alignItems: "center",
   },
   username: {
     fontSize: 25,
