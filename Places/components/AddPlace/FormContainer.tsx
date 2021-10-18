@@ -10,14 +10,21 @@ import TagsContainer from './tagsContainer';
 import CityInput from './CityInput';
 import AddressInput from './AddressInput';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import ApiService from '../../ApiService';
+import { useSelector, useDispatch } from 'react-redux';
 
 function FormContainer({ image }) {
+  const accessToken: any = useSelector((state: RootState) => state.accessToken);
+  const refreshToken: any = useSelector(
+    (state: RootState) => state.refreshToken
+  );
+
   //initial state for form data
   const initialState = {
     name: '',
     description: '',
     tag_list: [],
-    img: image,
+    img: '',
     location: '',
     address: '',
     city: '',
@@ -66,6 +73,8 @@ function FormContainer({ image }) {
       },
       country: country,
     }));
+    const result = await ApiService.addPlace(state, refreshToken, accessToken);
+    console.log('RETURN FROM API CALL ==>', result);
   };
 
   return (

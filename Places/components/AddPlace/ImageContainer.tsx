@@ -44,7 +44,8 @@ function ImageContainer({ image, setImage }) {
         .then(async (r) => {
           let data = await r.json();
           console.log('GETTING A RESPONSE FROM CLOUDINARY yiiiii');
-          console.log(data.url);
+          console.log('URL SENT BACK FROM CLOUDINARY', data.url);
+          console.log('TYPE OF URL SENT BACK', typeof data.url);
           setImage(data.url);
           // setImage(data.url);
         })
