@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, SafeAreaView } from 'react-native';
+import { StyleSheet, View, Text, SafeAreaView, ScrollView } from 'react-native';
 import MyData from '../components/MyProfile/MyData';
 import ButtonContainer from '../components/MyProfile/ButtonContainer';
 import FiltersContainer from '../components/MyProfile/FiltersContainer';
@@ -55,46 +55,51 @@ function Profile() {
   );
 
   return (
-    <SafeAreaView style={styles.profileContainer}>
-      {placeVisible && (
-        <PlaceModal handlePress={handlePlacePress} place={selectedPlace} />
-      )}
+    // <ScrollView style={{flex: 1}}>
 
-      <View style={styles.usernameContainer}>
-        <Text style={styles.usernameHeader}>
-          {user.username}
-        </Text>
-      </View>
+      <SafeAreaView style={styles.profileContainer}>
+        {placeVisible && (
+          <PlaceModal handlePress={handlePlacePress} place={selectedPlace} />
+        )}
 
-      <MyData user={user} />
-      <ButtonContainer
-        myPlacesSelected={myPlacesSelected}
-        setMyPlacesSelected={setMyPlacesSelected}
-        savedSelected={savedSelected}
-        setSavedSelected={setSavedSelected}
-      />
+        <View style={styles.usernameContainer}>
+          <Text style={styles.usernameHeader}>
+            {user.username}
+          </Text>
+        </View>
 
-      <FiltersContainer
-        cities={cities}
-        places={places}
-        tagSelected={tagSelected}
-        setTagSelected={setTagSelected}
-        filterPlaces={filterPlaces}
-      />
-      {/* Refactor to pass data for this users places */}
-      {/* <View style={{height: '80%'}}> */}
-      {myPlacesSelected ? (
-        <PlacesList
-          handlePress={handlePlacePress}
-          setPlace={setSelectedPlace}
-          places={filteredPlaces}
-          setPlaces={setPlaces}
-          tagSelected={tagSelected}
+        <MyData user={user} />
+        <ButtonContainer
+          myPlacesSelected={myPlacesSelected}
+          setMyPlacesSelected={setMyPlacesSelected}
+          savedSelected={savedSelected}
+          setSavedSelected={setSavedSelected}
         />
-      ) : null}
 
-      {/* </View> */}
-    </SafeAreaView>
+        <FiltersContainer
+          cities={cities}
+          places={places}
+          tagSelected={tagSelected}
+          setTagSelected={setTagSelected}
+          filterPlaces={filterPlaces}
+        />
+        {/* Refactor to pass data for this users places */}
+        {/* <View style={{height: '80%'}}> */}
+        {myPlacesSelected ? (
+          <View style={{flex: 1}}>
+            <PlacesList
+              handlePress={handlePlacePress}
+              setPlace={setSelectedPlace}
+              places={filteredPlaces}
+              setPlaces={setPlaces}
+              tagSelected={tagSelected}
+            />
+          </View>
+        ) : null}
+
+        {/* </View> */}
+      </SafeAreaView>
+    // </ScrollView>
   );
 }
 
