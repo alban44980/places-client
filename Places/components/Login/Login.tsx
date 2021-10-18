@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   StyleSheet,
   View,
@@ -6,15 +6,15 @@ import {
   TextInput,
   TouchableOpacity,
   Button,
-} from 'react-native';
-import { useForm, Controller } from 'react-hook-form';
-import { useSelector, useDispatch } from 'react-redux';
-import { useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '../../App';
-import apiService from '../../ApiService';
-import { saveAccessToken, saveRefreshToken } from '../../redux/actions/actions';
-import { RootState } from '../../redux/reducers/reducers';
+} from "react-native";
+import { useForm, Controller } from "react-hook-form";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../../App";
+import ApiService from "../../ApiService";
+import { saveAccessToken, saveRefreshToken } from "../../redux/actions/actions";
+import { RootState } from "../../redux/reducers/reducers";
 
 type userScreenProp = StackNavigationProp<RootStackParamList>;
 
@@ -34,19 +34,32 @@ function Login() {
   } = useForm();
 
   const onSubmit = async (data: any) => {
-    console.log(data);
-    const tokens: any = await apiService.login(data);
-    //getFriendsCityPlaces apicall below
+    try {
+      console.log("login info >>>>>>>>>>>", data);
+      const tokens: any = await ApiService.login(data);
+      //getFriendsCityPlaces apicall below
+      console.log(tokens);
+      if (tokens.accessToken && tokens.refreshToken) {
+        console.log("Here inside");
+        const frindsInfo = await ApiService.getFriendsCitesPlace(
+          tokens.refreshToken,
+          tokens.accessToken
+        );
 
-    //   Object {
-    // "email": "Will@gmail.com",
-    // "password": "123456789",
-    // }
-    console.log('access token ==>', tokens.accessToken);
-    console.log('refresh token ==>', tokens.refreshToken);
-    dispatch(saveAccessToken(tokens.accessToken));
-    dispatch(saveRefreshToken(tokens.refreshToken));
-    navigation.navigate('home');
+        console.log("friendsINFO >>>>>>>>", frindsInfo);
+        //   Object {
+        // "email": "Will@gmail.com",
+        // "password": "123456789",
+        // }
+        console.log("access token ==>", tokens.accessToken);
+        console.log("refresh token ==>", tokens.refreshToken);
+        dispatch(saveAccessToken(tokens.accessToken));
+        dispatch(saveRefreshToken(tokens.refreshToken));
+        navigation.navigate("home");
+      }
+    } catch (e) {
+      console.log("cought");
+    }
   };
 
   return (
@@ -67,7 +80,7 @@ function Login() {
               onChangeText={onChange}
               value={value}
               placeholder="Email"
-              textContentType={'emailAddress'}
+              textContentType={"emailAddress"}
               autoCapitalize="none"
             />
           )}
@@ -95,7 +108,7 @@ function Login() {
         />
         <Text
           style={styles.createAccountButton}
-          onPress={() => navigation.navigate('signup')}
+          onPress={() => navigation.navigate("signup")}
         >
           Create an account
         </Text>
@@ -109,40 +122,40 @@ function Login() {
 const styles = StyleSheet.create({
   loginContainer: {
     flex: 1,
-    backgroundColor: 'lightgreen',
+    backgroundColor: "lightgreen",
   },
   topContainer: {
-    height: '30%',
-    backgroundColor: 'lightblue',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    height: "30%",
+    backgroundColor: "lightblue",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   text: {
-    color: 'black',
+    color: "black",
     fontSize: 30,
   },
   formContainer: {
     // backgroundColor: 'red',
-    height: '30%',
-    alignItems: 'center',
+    height: "30%",
+    alignItems: "center",
   },
   input: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     margin: 5,
-    height: '20%',
-    width: '85%',
+    height: "20%",
+    width: "85%",
     padding: 10,
   },
   createAccountButton: {
     margin: 5,
   },
   loginButton: {
-    backgroundColor: 'lightblue',
-    height: '20%',
-    width: '40%',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "lightblue",
+    height: "20%",
+    width: "40%",
+    alignItems: "center",
+    justifyContent: "center",
     borderRadius: 20,
   },
 });

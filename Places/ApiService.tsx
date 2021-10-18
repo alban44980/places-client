@@ -5,9 +5,12 @@ import {
   RemovePlaceSchema,
   SearchUserSchema,
 } from "./Interfaces";
+import { PATHIP } from "@env";
 
-const BASE_URL = "http://localhost:3001";
+const path = PATHIP;
 
+const BASE_URL = `http://${path}:3001`;
+console.log(BASE_URL);
 /*
 register expected input
 {
@@ -44,7 +47,7 @@ const login = (credentials: any) => {
     body: JSON.stringify(credentials),
   })
     .then((res) => res.json())
-    .catch((err: any) => console.log(err));
+    .catch((err: any) => console.log("poop", err));
 };
 
 /**

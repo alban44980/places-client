@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   StyleSheet,
   View,
@@ -6,12 +6,12 @@ import {
   TextInput,
   TouchableOpacity,
   Button,
-} from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '../../App';
-import { useForm, Controller } from 'react-hook-form';
-import apiService from '../../ApiService';
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../../App";
+import { useForm, Controller } from "react-hook-form";
+import ApiService from "../../ApiService";
 
 function SignUp() {
   type userScreenProp = StackNavigationProp<RootStackParamList>;
@@ -23,9 +23,11 @@ function SignUp() {
     formState: { errors },
   } = useForm();
   const onSubmit = async (data: any) => {
-    console.log(data);
-    await apiService.register(data);
-    navigation.navigate('login');
+    console.log("Register User >>>>>>>>>>>", data);
+    const registerRes = await ApiService.register(data);
+    console.log("Register response>>>>>>>>", registerRes);
+
+    navigation.navigate("login");
   };
 
   return (
@@ -101,7 +103,7 @@ function SignUp() {
               onChangeText={onChange}
               value={value}
               placeholder="Email"
-              textContentType={'emailAddress'}
+              textContentType={"emailAddress"}
               autoCapitalize="none"
             />
           )}
@@ -133,7 +135,7 @@ function SignUp() {
             maxLength: 100,
             required: {
               value: true,
-              message: 'OH NOR YOU DID NOT CONFIRM YOUR PASSWORD',
+              message: "OH NOR YOU DID NOT CONFIRM YOUR PASSWORD",
             },
           }}
           render={({ field: { onChange, onBlur, value } }) => (
@@ -178,38 +180,38 @@ function SignUp() {
 const styles = StyleSheet.create({
   loginContainer: {
     flex: 1,
-    backgroundColor: 'lightgreen',
+    backgroundColor: "lightgreen",
   },
   topContainer: {
-    height: '30%',
-    backgroundColor: 'lightblue',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    height: "30%",
+    backgroundColor: "lightblue",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   text: {
-    color: 'black',
+    color: "black",
     fontSize: 30,
   },
   formContainer: {
     // backgroundColor: 'red',
-    height: '30%',
-    alignItems: 'center',
+    height: "30%",
+    alignItems: "center",
   },
   input: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     margin: 5,
-    height: '20%',
-    width: '85%',
+    height: "20%",
+    width: "85%",
     padding: 10,
   },
 
   loginButton: {
-    backgroundColor: 'lightblue',
-    height: '20%',
-    width: '40%',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "lightblue",
+    height: "20%",
+    width: "40%",
+    alignItems: "center",
+    justifyContent: "center",
     borderRadius: 20,
   },
 });
