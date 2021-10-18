@@ -16,14 +16,36 @@ import {
 } from "../../redux/actions/actions";
 import fonts from "../../assets/styles/fonts";
 
-function SearchModal({ city, friendList }: any) {
-  // this is a placeholder for a redux reducer of all places
-  const placesArray = places;
+function SearchModal({ city }: any) {
+  //allFriends cties and places
+  const friendsCitiesPlaces: any = useSelector(
+    (state: RootState) => state.userFriendInfo
+  );
+
+  //extract places from friendsCitiesPlaces reducer
+  const placesArray = [];
+  for (let friend of friendsCitiesPlaces) {
+    for (let cities of friend.Cities) {
+      for (let places of cities.Places) {
+        places.user = {
+          username: friend.user_name,
+          first_name: friend.first_name,
+          last_name: friend.last_name,
+        };
+        placesArray.push(places);
+      }
+    }
+  }
+
+  //places currently rendering
   const [placesRendered, setPlacesRendered] = useState<any[]>([...placesArray]);
 
-  //set initial search with selectedPlace if selectedPlace not null
+  //tags currently selected
+  const [tagsSelected, setTagsSelected] = useState<any[]>([]);
 
+  //set initial search with selectedPlace if selectedPlace not null
   const [search, setSearch] = useState<String>("");
+
   const [filterModalVisible, setFilterModalVisible] = useState<Boolean>(false);
   // waiting for place interface before declaring below
   const [selectedPlace, setSelectedPlace] = useState<any>(null);
@@ -66,6 +88,7 @@ function SearchModal({ city, friendList }: any) {
             filterModalVisible={filterModalVisible}
             setFilterModalVisible={setFilterModalVisible}
             handlePress={handleFilterPress}
+            setTagsSelected={setTagsSelected}
           />
         )}
 
@@ -90,6 +113,7 @@ function SearchModal({ city, friendList }: any) {
           setSearchResults={setPlacesRendered}
           data={placesArray}
           city={city}
+          tagsSelected={tagsSelected}
         />
 
         <FriendPlacesFilter />

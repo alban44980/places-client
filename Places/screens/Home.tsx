@@ -13,11 +13,7 @@ import { RootState } from "../redux/reducers/reducers";
 import HomeList from "../components/HomeList/HomeList";
 import SearchModal from "../components/SearchModal/SearchModal";
 import PlaceModal from "../components/PlaceModal/PlaceModal";
-import allFriendsCities from "../dummyData/allFriendsCities";
-import homeScreenPlaces from "../dummyData/homeScreenPlaces";
 import { toggleSearchVisible } from "../redux/actions/actions";
-import places from "../dummyData/placesList";
-import friends from "../dummyData/friends";
 import colors from "../assets/styles/colors";
 import fonts from "../assets/styles/fonts";
 
@@ -62,7 +58,6 @@ function Home() {
             first_name: friend.first_name,
             last_name: friend.last_name,
           };
-
           recentlyAddedPlaces.push(places);
         }
       }
