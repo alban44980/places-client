@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, Text, Image, SafeAreaView } from 'react-native';
-import MyData from '../MyProfile/MyData';
-import ToggleFollowContainer from './ToggleFollowContainer';
-import SearchBar from '../SearchModal/SearchBar';
-import UserPlaces from './UserPlaces';
-
-
+import React, { useState } from "react";
+import { StyleSheet, View, Text, Image, SafeAreaView } from "react-native";
+import MyData from "../MyProfile/MyData";
+import ToggleFollowContainer from "./ToggleFollowContainer";
+import SearchBar from "../SearchModal/SearchBar";
+import UserPlaces from "./UserPlaces";
+import friends from "../../dummyData/friends";
 
 function UserProfile(props: any) {
-
-  const data = props.route.params
-
+  const data = props.route.params;
 
   const [filterModalVisible, setFilterModalVisible] = useState<Boolean>(false);
 
@@ -20,11 +17,11 @@ function UserProfile(props: any) {
         <Text style={styles.username}>{data.first_name}</Text>
       </View>
 
-      {/* <MyData /> */}
-      {/* <ToggleFollowContainer /> */}
+      <MyData user={friends[0]} />
+      <ToggleFollowContainer />
       {/* //SEARCHBAR TO BE MODIFIED */}
-      {/* <SearchBar /> */}
-      {/* <UserPlaces /> */}
+      <SearchBar />
+      <UserPlaces />
     </SafeAreaView>
   );
 }
@@ -34,9 +31,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   titleContainer: {
-    height: '5%',
-    justifyContent: 'center',
-    alignItems: 'center',
+    height: "5%",
+    justifyContent: "center",
+    alignItems: "center",
   },
   username: {
     fontSize: 25,

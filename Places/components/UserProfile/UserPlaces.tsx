@@ -1,11 +1,12 @@
-import React from 'react';
-import { StyleSheet, View, Text, ScrollView, FlatList } from 'react-native';
-import userPlaces from '../../dummyData/userPlaces';
+import React from "react";
+import { StyleSheet, View, Text, ScrollView, FlatList } from "react-native";
+import userPlaces from "../../dummyData/userPlaces";
 
 function UserPlaces() {
   const renderItem = ({ item }: any) => (
     <View style={styles.itemContainer}>
       <Text>{item.name}</Text>
+      <Text>{item.numberOfPlaces} Places</Text>
     </View>
   );
 
@@ -45,12 +46,12 @@ const styles = StyleSheet.create({
     // backgroundColor: 'lightblue',
     flexGrow: 1,
     borderWidth: 1,
-    borderColor: 'black',
-    width: '100%',
+    borderColor: "black",
+    width: "100%",
     // flex: 1,
     // flexDirection: 'row',
     // flexWrap: 'wrap',
-    alignItems: 'center',
+    alignItems: "center",
   },
   contentContainer: {
     // backgroundColor: 'green',
@@ -68,7 +69,7 @@ const styles = StyleSheet.create({
   itemContainer: {
     height: 140,
     width: 160, //160
-    backgroundColor: 'lightblue',
+    backgroundColor: "lightblue",
     margin: 20,
     // alignSelf: 'center',
   },
