@@ -19,15 +19,16 @@ import friends from "../dummyData/friends";
 import colors from "../assets/styles/colors";
 
 function Home() {
-  const [friendList, setfriendList] = useState<any[]>([]);
-  const [cityList, setcityList] = useState<any[]>([]); //Interface City
-  const [recentlyAddedPlacesList, setrecentlyAddedPlacesList] = useState<any[]>(
+  const [friendList, setFriendList] = useState<any[]>([]);
+  const [cityList, setCityList] = useState<any[]>([]); //Interface City
+  const [recentlyAddedPlacesList, setRecentlyAddedPlacesList] = useState<any[]>(
     []
   );
 
   const userFriendInfo: any = useSelector(
     (state: RootState) => state.userFriendInfo
   );
+
   const searchVisible: any = useSelector(
     (state: RootState) => state.searchVisible
   );
@@ -37,6 +38,24 @@ function Home() {
   //parses files
   function extractInfo() {
     //set friend list
+    setFriendList(userFriendInfo);
+
+    //set cities
+    const friendCities = [];
+    for (let friend of userFriendInfo) {
+      friendCities.push(...friend.Cities);
+    }
+    setCityList(friendCities);
+
+    //set Recently added
+    const recentlyAddedPlaces = [];
+    //create a list of places
+    for (let cities of friendCities) {
+      recentlyAddedPlaces.push(...cities.Places);
+    }
+
+    //need to sort
+    setRecentlyAddedPlacesList(recentlyAddedPlaces);
   }
 
   //useSelector friends
@@ -45,20 +64,8 @@ function Home() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // setFriends([...sampleFriendsList]);
-    //Apicall to get the data
-    // fetch('/backenduserdata')
-    //   .then((response) => response.json())
-    // update userInfo state by dispatching
-    // .then((data) => {
-    //   dispatch(setUserData(data))
-    //   dispatch(setFriends(data))
-    //   dispatch(setCities(data))
-    //   dispatch(setPlaces(data))
-    //
-    // );
-    // set friends, cities, recentlyAdded
-  }, []);
+    extractInfo();
+  }, [userFriendInfo]);
 
   function handlePress() {
     dispatch(toggleSearchVisible());
@@ -86,16 +93,23 @@ function Home() {
 
       <View style={styles.listsContainer}>
         <HomeList
-          data={friends}
+          key={1}
+          data={friendList}
           route={"userProfile"}
           setFriend={setFriendSelected}
         />
         <HomeList
-          data={allFriendsCities}
+          key={2}
+          data={cityList}
           route={"search"}
           setCity={setCitySelected}
         />
-        <HomeList data={places} route={"place"} setPlace={setPlaceSelected} />
+        <HomeList
+          key={3}
+          data={recentlyAddedPlacesList}
+          route={"place"}
+          setPlace={setPlaceSelected}
+        />
       </View>
     </SafeAreaView>
   );
