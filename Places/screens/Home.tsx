@@ -5,6 +5,7 @@ import {
   Text,
   TouchableOpacity,
   SafeAreaView,
+  Image,
 } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/reducers/reducers";
@@ -85,6 +86,10 @@ function Home() {
         <Text style={styles.headerText}>Logo & Image PlaceHolder</Text>
       </View>
 
+      <View style={styles.homeImageBannerContainer}>
+        <Image style={styles.imageBanner} source={{uri: "https://images.pexels.com/photos/695779/pexels-photo-695779.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"}} />
+      </View>
+
       <View style={styles.searchContainer}>
         <TouchableOpacity style={styles.searchTouchable} onPress={handlePress}>
           <Text style={styles.searchBar}>Where are you going ?</Text>
@@ -119,8 +124,6 @@ const styles = StyleSheet.create({
   container: {
     width: "100%",
     height: "100%",
-    display: "flex",
-    flexDirection: "column",
     backgroundColor: colors.accentFun,
   },
 
@@ -135,6 +138,15 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 24,
     color: colors.fontLight,
+  },
+
+  homeImageBannerContainer: {
+
+  },
+
+  imageBanner: {
+    height: '10%',
+    width: '100%'
   },
 
   searchContainer: {

@@ -54,7 +54,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10
   },
 
-
   tagText: {
     fontSize: 10,
     fontWeight: '500',
