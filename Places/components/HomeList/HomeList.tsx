@@ -1,11 +1,23 @@
 import React from "react";
-import { StyleSheet, View, ScrollView } from "react-native";
+import { StyleSheet, View, ScrollView, Text } from "react-native";
 import colors from "../../assets/styles/colors";
+import fonts from "../../assets/styles/fonts";
 import HomeListItem from "./HomeListItem";
 
 function HomeList({ data, route, setPlace, setCity, setFriend }: any) {
+
+
+  let labelText = () => {
+    if (route === 'place') return 'Explore friends recently added places';
+    if (route === 'userProfile') return 'Recently active friends';
+    if (route === 'search') return 'See popular cities';
+      
+  }
+
+
   return (
     <View style={styles.listContainer}>
+      <Text style={styles.listLabel}>{labelText()}</Text>
       <ScrollView
         style={styles.homeListContainer}
         contentContainerStyle={styles.contentContainer}
@@ -34,12 +46,21 @@ function HomeList({ data, route, setPlace, setCity, setFriend }: any) {
 
 const styles = StyleSheet.create({
   listContainer: {
-    height: "30%",
+    height: 300,
     backgroundColor: colors.backgroundDark,
+    marginBottom: 30
+  },
+
+  listLabel: {
+    fontFamily: fonts.semiBold,
+    paddingHorizontal: 10,
+    fontSize: 22,
+    color: colors.fontLight
+
   },
 
   homeListContainer: {
-    backgroundColor: colors.backgroundMedium,
+    backgroundColor: colors.backgroundLight,
     borderRadius: 15,
     margin: 10,
     borderWidth: 1,

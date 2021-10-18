@@ -83,12 +83,13 @@ function HomeListItem({ data, route, setPlace, setCity, setFriend }: any) {
 const styles = StyleSheet.create({
   itemContainer: {
     marginHorizontal: 15,
-    width: 80,
-    height: "100%",
+    width: 150,
+    height: 200,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 5,
     overflow: "hidden",
+    borderWidth: .5,
   },
 
   img: {
