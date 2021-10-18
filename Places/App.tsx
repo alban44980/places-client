@@ -36,7 +36,7 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator
           initialRouteName={'home'}
-          // screenOptions={{ headerShown: false }}
+          screenOptions={{ headerShown: false }}
         >
           <Stack.Screen name="login" component={Login} />
           <Stack.Screen name="signup" component={SignUp} />

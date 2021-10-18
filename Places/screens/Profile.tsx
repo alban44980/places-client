@@ -55,9 +55,9 @@ function Profile() {
         <PlaceModal handlePress={handlePlacePress} place={selectedPlace} />
       )}
 
-      <View style={styles.titleContainer}>
-        <Text>
-          {user.first_name} {user.last_name}
+      <View style={styles.usernameContainer}>
+        <Text style={styles.usernameHeader}>
+          {user.username}
         </Text>
       </View>
 
@@ -99,10 +99,15 @@ const styles = StyleSheet.create({
     backgroundColor: colors.backgroundLight,
   },
 
-  titleContainer: {
-    height: '5%',
+  usernameContainer: {
+    height: '7%',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+
+  usernameHeader: {
+    fontSize: 16,
+    fontWeight: '600'
   },
 });
 
