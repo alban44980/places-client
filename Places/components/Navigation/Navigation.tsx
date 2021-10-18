@@ -19,6 +19,8 @@ import fonts from '../../assets/styles/fonts';
 import colors from '../../assets/styles/colors';
 
 
+
+
 const Tab = createBottomTabNavigator();
 
 function Tabs() {
@@ -31,7 +33,8 @@ function Tabs() {
         tabBarInactiveTintColor: colors.fontDark,
         tabBarLabelStyle: styles.tabBarLabelStyle,
         tabBarActiveBackgroundColor: colors.backgroundDark,
-        tabBarItemStyle: styles.tabBarItem
+        tabBarItemStyle: styles.tabBarItem,
+        tabBarShowLabel: false
        }} 
        
     >
@@ -39,7 +42,7 @@ function Tabs() {
         name="Home"
         component={Home}
         options={{
-              tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({ focused }) => (
             <View style={styles.tabContainer}>
               <Image
                 source={require('../../assets/navigation/home.png')}
@@ -103,31 +106,33 @@ const styles = StyleSheet.create({
   tabBarStyle: {
     backgroundColor: colors.backgroundMedium, 
     height: 60, 
+    position: 'absolute',
     width: '90%',
     bottom: 20, 
-    borderRadius: 20, 
-    alignItems: 'center', 
-    justifyContent: 'center', 
-    borderWidth: 2, 
+    right: 20,
+    left: 20,
+    borderRadius: 20,  
+    borderWidth: 1, 
     borderStyle: 'solid',
   },
 
   tabBarItem: {
-    borderWidth: 1, 
-    borderStyle: 'solid', 
-    flex: 1,    
+    // borderWidth: 1, 
+    // borderStyle: 'solid', 
+    // flex: 1,
+    height: 60,    
     alignItems: 'center', 
     justifyContent: 'center',
   },
 
   tabContainer: {
-    borderWidth: 1,
-    borderStyle: 'solid',
-    height: 30,
-    width: 30,
     alignItems: 'center',
-    justifyContent: 'flex-end',
-    marginBottom: 10,
+    justifyContent: 'center',
+    borderStyle: 'solid',
+    borderWidth: 1,
+    width: '75%',
+    height: '75%',
+    borderRadius: 5
   },
 
   tabBarLabelStyle: {
@@ -141,6 +146,7 @@ const styles = StyleSheet.create({
   iconStyle: {
     height: 24,
     width: 24,
+    // color: accessibilityState.selected ? colors.backgroundDark : colors.backgroundLight
   }
 });
 
