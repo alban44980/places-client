@@ -17,7 +17,7 @@ function MyData(props: any) {
         
         <View style={styles.profilePicContainer}>
           <Image style={styles.profilePic} source={{uri: user.img}} />
-          <Text style={styles.fullNameText}>{user.first_name} {user.last_name}</Text>
+          <Text style={styles.fullNameText} numberOfLines={1}>{user.first_name} {user.last_name}</Text>
         </View>
 
         <View style={styles.followDataContainer}>
@@ -48,8 +48,7 @@ const styles = StyleSheet.create({
     height: '25%',
     backgroundColor: colors.backgroundLight,
     justifyContent: 'space-evenly',
-
-    width: '90%'
+    width: '95%'
   },
 
   dataTop: {
@@ -69,7 +68,7 @@ const styles = StyleSheet.create({
   },
 
   profilePic: {
-    width: '50%',
+    width: '60%',
     height: '75%',
     borderRadius: 100,
     borderColor: colors.backgroundDark,
@@ -77,8 +76,9 @@ const styles = StyleSheet.create({
   },
 
   fullNameText: {
-    fontFamily: fonts.regular,
-    fontSize: 14,
+    fontFamily: fonts.medium,
+    fontSize: 13,
+    letterSpacing: .2
   },
 
   followDataContainer: {
@@ -99,7 +99,6 @@ const styles = StyleSheet.create({
     fontFamily: fonts.regular,
     fontSize: 13
   },
-
 
   followNumbers: {
     fontSize: 20,
@@ -123,7 +122,8 @@ const styles = StyleSheet.create({
 
   bioText: {
     fontSize: 12.5,
-    fontFamily: fonts.regular
+    fontFamily: fonts.regular,
+    lineHeight: 20
   }
 
 
