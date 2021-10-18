@@ -11,13 +11,13 @@ import CityInput from './CityInput';
 import AddressInput from './AddressInput';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-function FormContainer() {
+function FormContainer({ image }) {
   //initial state for form data
   const initialState = {
     name: '',
     description: '',
     tag_list: [],
-    img: '',
+    img: image,
     location: '',
     address: '',
     city: '',
