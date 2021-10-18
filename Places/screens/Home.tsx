@@ -100,7 +100,12 @@ function Home() {
       </View>
 
       <View style={styles.homeImageBannerContainer}>
-        <Image style={styles.imageBanner} source={{uri: "https://images.pexels.com/photos/695779/pexels-photo-695779.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"}} />
+        <Image
+          style={styles.imageBanner}
+          source={{
+            uri: "https://images.pexels.com/photos/695779/pexels-photo-695779.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+          }}
+        />
       </View>
 
       <View style={styles.searchContainer}>
@@ -153,13 +158,11 @@ const styles = StyleSheet.create({
     color: colors.fontLight,
   },
 
-  homeImageBannerContainer: {
-
-  },
+  homeImageBannerContainer: {},
 
   imageBanner: {
-    height: '10%',
-    width: '100%'
+    height: "10%",
+    width: "100%",
   },
 
   searchContainer: {
