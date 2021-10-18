@@ -22,7 +22,7 @@ function FormContainer({ image }) {
   const [city, setCity] = useState('');
   const [country, setCountry] = useState('');
   const [address, setAddress] = useState('');
-  const [tags, setTags] = useState([]);
+  const [formTags, setFormTags] = useState([]);
 
   const {
     control,
@@ -54,14 +54,18 @@ function FormContainer({ image }) {
       },
       country: country,
       img: image,
-      tag_list: [{ tag_name: 'Bar' }, { tag_name: 'Sport' }],
+      tag_list: formTags,
     };
+
+    console.log('TAGS FROM FORM ==> ', objToSend.tag_list);
 
     const result = await ApiService.addPlace(
       objToSend,
       refreshToken,
       accessToken
     );
+
+    console.log('RESPONSE FROM SERVER', result);
   };
 
   return (
@@ -112,7 +116,7 @@ function FormContainer({ image }) {
         name="description"
         defaultValue=""
       />
-      <TagsContainer />
+      <TagsContainer formTags={formTags} setFormTags={setFormTags} />
       <TouchableOpacity
         style={styles.submitButton}
         title="Add Place"
