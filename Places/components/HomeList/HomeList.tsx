@@ -1,14 +1,11 @@
-import React from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
-import colors from '../../assets/styles/colors';
-import HomeListItem from './HomeListItem';
+import React from "react";
+import { StyleSheet, View, ScrollView } from "react-native";
+import colors from "../../assets/styles/colors";
+import HomeListItem from "./HomeListItem";
 
 function HomeList({ data, route, setPlace, setCity, setFriend }: any) {
-
-
   return (
     <View style={styles.listContainer}>
-
       <ScrollView
         style={styles.homeListContainer}
         contentContainerStyle={styles.contentContainer}
@@ -18,29 +15,27 @@ function HomeList({ data, route, setPlace, setCity, setFriend }: any) {
           {data
             ? data.map((el: any) => {
                 return (
-                  <HomeListItem 
-                    key={el.name} 
-                    data={el} 
-                    route={route} 
+                  <HomeListItem
+                    key={el.id}
+                    data={el}
+                    route={route}
                     setPlace={setPlace}
                     setCity={setCity}
                     setFriend={setFriend}
                   />
-              )
-                })
+                );
+              })
             : null}
         </View>
       </ScrollView>
-
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-
   listContainer: {
-    height: '30%',
-    backgroundColor: colors.backgroundDark
+    height: "30%",
+    backgroundColor: colors.backgroundDark,
   },
 
   homeListContainer: {
@@ -48,19 +43,18 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     margin: 10,
     borderWidth: 1,
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
   },
 
   contentContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: colors.backgroundBright,
   },
 
   homeListContent: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
- 
 });
 
 export default HomeList;
