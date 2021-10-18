@@ -11,6 +11,11 @@ import PlaceModal from '../components/PlaceModal/PlaceModal';
 import { togglePlaceVisible } from '../redux/actions/actions';
 import colors from '../assets/styles/colors';
 import user from './../dummyData/user';
+import fonts from '../assets/styles/fonts';
+
+
+
+
 
 function Profile() {
   const userPlaces = user.places;
@@ -107,7 +112,7 @@ const styles = StyleSheet.create({
 
   usernameHeader: {
     fontSize: 16,
-    fontWeight: '600'
+    fontFamily: fonts.medium,
   },
 });
 
