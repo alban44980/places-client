@@ -11,8 +11,7 @@ import CityInput from './CityInput';
 import AddressInput from './AddressInput';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import ApiService from '../../ApiService';
-import { useSelector, useDispatch } from 'react-redux';
-import { constants } from 'fs';
+import { useSelector } from 'react-redux';
 
 function FormContainer({ image }) {
   const accessToken: any = useSelector((state: RootState) => state.accessToken);
@@ -20,19 +19,6 @@ function FormContainer({ image }) {
     (state: RootState) => state.refreshToken
   );
 
-  //initial state for form data
-  const initialState = {
-    name: '',
-    description: '',
-    tag_list: [],
-    img: '',
-    location: '',
-    address: '',
-    city: '',
-    city_info: {},
-    country: '',
-  };
-  const [state, setState] = useState(initialState);
   const [city, setCity] = useState('');
   const [country, setCountry] = useState('');
   const [address, setAddress] = useState('');
@@ -46,21 +32,14 @@ function FormContainer({ image }) {
 
   //submit form function
   const onSubmit = async (data: any) => {
-    console.log('DATA FROM FORM => ', data);
-    console.log('city  state ==>', city);
-    console.log('country ==>', country);
-    console.log('address ==>', address);
     const cityGeoCall = await fetch(
       `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${REACT_APP_GOOGLE_MAPS_API_KEY}`
     );
     const cityGeo = await cityGeoCall.json();
-    console.log('cityGeo ==>', cityGeo.results[0].geometry.location);
     const addressGeoCall = await fetch(
       `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${REACT_APP_GOOGLE_MAPS_API_KEY}`
     );
     const addressGeo = await addressGeoCall.json();
-
-    console.log('addressGeo ==>', addressGeo.results[0].geometry.location);
 
     const objToSend = {
       name: data.name,
@@ -83,8 +62,6 @@ function FormContainer({ image }) {
       refreshToken,
       accessToken
     );
-
-    console.log('RETURN FROM API CALL ==>', result);
   };
 
   return (
