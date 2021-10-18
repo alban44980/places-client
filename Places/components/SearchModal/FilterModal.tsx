@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   View,
@@ -6,18 +6,26 @@ import {
   Modal,
   TouchableOpacity,
   TextInput,
-} from 'react-native';
-import colors from '../../assets/styles/colors';
-import TagsFilter from './TagsFilter';
+} from "react-native";
+
+import colors from "../../assets/styles/colors";
+import TagsFilter from "./TagsFilter";
 
 function FilterModal(props: any) {
+  const [selected, setSelected] = useState<String[]>([]);
+
   const {
     filterModalVisible,
     setFilterModalVisible,
+    handlePress,
     formTags,
     setFormTags,
-    handlePress,
+    setTagsSelected,
   } = props;
+
+  useEffect(() => {
+    setTagsSelected(selected);
+  }, [selected]);
 
   return (
     <Modal
@@ -34,7 +42,12 @@ function FilterModal(props: any) {
         </View>
 
         <View style={styles.tagsListContainer}>
-          <TagsFilter formTags={formTags} setFormTags={setFormTags} />
+          <TagsFilter
+            selected={selected}
+            formTags={formTags}
+            setFormTags={setFormTags}
+            setSelected={setSelected}
+          />
         </View>
 
         <View style={styles.buttonsContainer}>
@@ -54,63 +67,63 @@ export default FilterModal;
 
 const styles = StyleSheet.create({
   filterModalContainer: {
-    height: '50%',
-    width: '80%',
+    height: "50%",
+    width: "80%",
     backgroundColor: colors.backgroundMedium,
-    position: 'absolute',
-    top: '21%',
-    alignSelf: 'center',
+    position: "absolute",
+    top: "21%",
+    alignSelf: "center",
     borderColor: colors.backgroundDark,
     borderWidth: 1,
-    overflow: 'hidden',
+    overflow: "hidden",
     borderRadius: 10,
-    alignItems: 'center',
+    alignItems: "center",
   },
 
   modalHeaderContainer: {
-    height: '15%',
-    width: '100%',
+    height: "15%",
+    width: "100%",
     backgroundColor: colors.accentFun,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
 
   headerText: {
     fontSize: 22,
-    fontWeight: '700',
+    fontWeight: "700",
     color: colors.fontLight,
   },
 
   tagsListContainer: {
-    height: '70%',
-    width: '100%',
+    height: "70%",
+    width: "100%",
     backgroundColor: colors.backgroundDark,
   },
 
   buttonsContainer: {
     // backgroundColor: colors.backgroundLight,
-    width: '70%',
-    height: '15%',
-    justifyContent: 'center',
-    flexDirection: 'row',
+    width: "70%",
+    height: "15%",
+    justifyContent: "center",
+    flexDirection: "row",
     borderRadius: 10,
-    alignItems: 'center',
+    alignItems: "center",
   },
 
   acceptButton: {
     backgroundColor: colors.backgroundLight,
-    justifyContent: 'center',
-    height: '70%',
-    width: '70%',
+    justifyContent: "center",
+    height: "70%",
+    width: "70%",
     borderColor: colors.backgroundDark,
     borderWidth: 1,
     borderRadius: 10,
   },
 
   acceptButtonText: {
-    textAlign: 'center',
+    textAlign: "center",
     color: colors.fontDark,
-    fontWeight: '600',
+    fontWeight: "600",
     fontSize: 15,
   },
 });

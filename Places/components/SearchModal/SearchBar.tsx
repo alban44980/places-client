@@ -14,21 +14,41 @@ import places from "../../dummyData/placesList";
 function SearchBar(props: any) {
   // on search should also have a drop down list of suggested cities that match the current search
 
-  const { handlePress, setSearch, setSearchResults, data, search, city } =
-    props;
+  const {
+    handlePress,
+    setSearch,
+    setSearchResults,
+    data, //list of all user's friends' places
+    search,
+    city,
+    tagsSelected,
+  } = props;
 
   useEffect(() => {
-    setSearch(city);
+    if (city) {
+      setSearch(city);
+    }
   }, [city]);
 
-  const searchFilter = (text: String) => {
+  const searchFilter = (text: String, tags?: string[]) => {
     if (text) {
-      const newData = data.filter((item: any) => {
-        const itemData = item.city ? item.city.toUpperCase() : "".toUpperCase();
+      const matchingPlaces = data.filter((place: any) => {
+        const itemData = place.city
+          ? place.city.toUpperCase()
+          : "".toUpperCase();
+        console.log("ItemDAta >>>>>>>", itemData);
+        console.log("place TAg INCLUDE>>>>>", place.Tags[0].name);
         const textData = text.toUpperCase();
+
+        if (itemData.indexOf(textData)) {
+          for (let tag of place.Tags) {
+            console.log(tag);
+          }
+        }
+        // console.log("INDEX OF >>>>>>>>>>>>", itemData.indexOf(textData) > -1);
         return itemData.indexOf(textData) > -1;
       });
-      setSearchResults(newData);
+      setSearchResults(matchingPlaces);
       setSearch(text);
     } else {
       setSearchResults(data);
@@ -42,7 +62,7 @@ function SearchBar(props: any) {
         style={styles.searchBar}
         value={search}
         placeholder="Where are you going?"
-        onChangeText={(text) => searchFilter(text)}
+        onChangeText={(text) => searchFilter(text, tagsSelected)}
       />
       <TouchableHighlight
         style={styles.filterButtonContainer}

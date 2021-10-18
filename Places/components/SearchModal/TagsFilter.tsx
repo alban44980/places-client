@@ -1,28 +1,27 @@
-//@ts-nocheck
-
 import {
   StyleSheet,
   View,
   Text,
   TouchableHighlight,
   ScrollView,
-} from 'react-native';
-import React, { useState } from 'react';
-import colors from '../../assets/styles/colors';
-import tags from '../../dummyData/tagsList';
+} from "react-native";
+import React, { useState } from "react";
+import colors from "../../assets/styles/colors";
+import tags from "../../dummyData/tagsList";
 
-function TagsFilter({ formTags, setFormTags }: any) {
-  // there should be some kind of state for selected --> this is used for rendering color to begin with
-  const [selected, setSelected] = useState<String[]>([]);
+function TagsFilter({ selected, setSelected, formTags, setFormTags }: any) {
   const tagsList = tags;
 
+  //on press the selected tag state  inside the FilterModal component will be updated
   const handlePress = (tag: string) => {
+    //if tag not already selected, add it to selected list
     if (!selected.includes(tag)) {
-      setSelected((prev) => [...prev, tag]);
+      setSelected((prev: any) => [...prev, tag]);
       setFormTags((prev: any) => [...prev, { tag_name: tag }]);
     }
+    //remove tag from selected list if already selected
     if (selected.includes(tag)) {
-      setSelected((prev) => [...prev].filter((item) => item !== tag));
+      setSelected((prev: any) => [...prev].filter((item) => item !== tag));
       setFormTags((prev: any) =>
         [...prev].filter((item) => item !== { tag_name: tag })
       );
@@ -32,20 +31,21 @@ function TagsFilter({ formTags, setFormTags }: any) {
   return (
     <View style={styles.tagSectionContainer}>
       <ScrollView
-        style={{ width: '100%' }}
-        contentContainerStyle={{ alignItems: 'center' }}
+        style={{ width: "100%" }}
+        contentContainerStyle={{ alignItems: "center" }}
       >
         {tagsList.map((tag) => {
           return (
             <TouchableHighlight
+              key={tag.tag_name}
               style={
-                selected.includes(tag)
+                selected.includes(tag.tag_name)
                   ? styles.tagSelectedContainer
                   : styles.tagDefaultContainer
               }
-              onPress={() => handlePress(tag)}
+              onPress={() => handlePress(tag.tag_name)}
             >
-              <Text style={styles.tagText}>#{tag}</Text>
+              <Text style={styles.tagText}>#{tag.tag_name}</Text>
             </TouchableHighlight>
           );
         })}
@@ -60,36 +60,36 @@ const styles = StyleSheet.create({
   tagSectionContainer: {
     flex: 1,
     backgroundColor: colors.backgroundMedium,
-    alignItems: 'center',
+    alignItems: "center",
     paddingTop: 20,
   },
 
   tagDefaultContainer: {
     height: 45,
-    width: '60%',
+    width: "60%",
     backgroundColor: colors.backgroundDark,
     borderRadius: 10,
     marginBottom: 10,
-    justifyContent: 'center',
+    justifyContent: "center",
     borderColor: colors.backgroundDark,
     borderWidth: 1,
   },
 
   tagSelectedContainer: {
     height: 45,
-    width: '60%',
+    width: "60%",
     backgroundColor: colors.accentFun,
     borderRadius: 10,
     marginBottom: 10,
-    justifyContent: 'center',
+    justifyContent: "center",
     borderColor: colors.backgroundDark,
     borderWidth: 1,
   },
 
   tagText: {
     fontSize: 12,
-    fontWeight: '600',
+    fontWeight: "600",
     color: colors.fontLight,
-    textAlign: 'center',
+    textAlign: "center",
   },
 });
