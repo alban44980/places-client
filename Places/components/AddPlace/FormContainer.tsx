@@ -74,7 +74,7 @@ function FormContainer({ image }) {
         location: JSON.stringify(cityGeo.results[0].geometry.location),
       },
       country: country,
-      img: 'https://13144adksfjhafakjfhjkhfa.com',
+      img: image,
       tag_list: [{ tag_name: 'Bar' }, { tag_name: 'Sport' }],
     };
 
