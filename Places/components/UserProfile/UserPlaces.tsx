@@ -1,12 +1,20 @@
 import React from "react";
 import { StyleSheet, View, Text, ScrollView, FlatList } from "react-native";
+import { useSelector } from "react-redux";
 import userPlaces from "../../dummyData/userPlaces";
+import { RootState } from "../../redux/reducers/reducers";
 
-function UserPlaces() {
+function UserPlaces({ citiesPlaces }) {
+  const alban = "f98a2df5-99ad-4757-bf53-f7b98680f825";
+
+  const userFriendInfo: any = useSelector(
+    (state: RootState) => state.userFriendInfo
+  );
+
   const renderItem = ({ item }: any) => (
     <View style={styles.itemContainer}>
       <Text>{item.name}</Text>
-      <Text>{item.numberOfPlaces} Places</Text>
+      <Text>{item.Places.length} Places</Text>
     </View>
   );
 
@@ -31,7 +39,7 @@ function UserPlaces() {
 
     // <View style={styles.userPlacesContainer}>
     <FlatList
-      data={userPlaces}
+      data={citiesPlaces}
       renderItem={renderItem}
       // style={styles.userPlacesContainer}
       contentContainerStyle={styles.userPlacesContainer}
