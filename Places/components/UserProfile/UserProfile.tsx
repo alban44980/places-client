@@ -4,7 +4,6 @@ import MyData from "../MyProfile/MyData";
 import ToggleFollowContainer from "./ToggleFollowContainer";
 import SearchBar from "../SearchModal/SearchBar";
 import UserPlaces from "./UserPlaces";
-import friends from "../../dummyData/friends";
 import { RootState } from "../../redux/reducers/reducers";
 import { useSelector } from "react-redux";
 
@@ -16,7 +15,7 @@ function UserProfile(props: any) {
     getFriendPageInfo();
   }, []);
 
-  const friendId = "f98a2df5-99ad-4757-bf53-f7b98680f825";
+  const friendId = data.id;
 
   const userFriendInfo: any = useSelector(
     (state: RootState) => state.userFriendInfo

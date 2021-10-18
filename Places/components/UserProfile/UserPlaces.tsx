@@ -5,8 +5,6 @@ import userPlaces from "../../dummyData/userPlaces";
 import { RootState } from "../../redux/reducers/reducers";
 
 function UserPlaces({ citiesPlaces }) {
-  const alban = "f98a2df5-99ad-4757-bf53-f7b98680f825";
-
   const userFriendInfo: any = useSelector(
     (state: RootState) => state.userFriendInfo
   );
@@ -14,7 +12,11 @@ function UserPlaces({ citiesPlaces }) {
   const renderItem = ({ item }: any) => (
     <View style={styles.itemContainer}>
       <Text>{item.name}</Text>
-      <Text>{item.Places.length} Places</Text>
+      {item.Places.length === 1 ? (
+        <Text>{item.Places.length} Place</Text>
+      ) : (
+        <Text>{item.Places.length} Places</Text>
+      )}
     </View>
   );
 

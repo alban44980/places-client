@@ -50,7 +50,6 @@ export default function App() {
     Poppins_700Bold,
   });
 
-   
   return (
     <Provider store={store}>
       <NavigationContainer>
@@ -68,7 +67,6 @@ export default function App() {
       </NavigationContainer>
     </Provider>
   );
-}
 }
 
 // const styles = StyleSheet.create({
