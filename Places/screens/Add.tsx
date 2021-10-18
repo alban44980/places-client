@@ -19,10 +19,12 @@ import FormContainer from '../components/AddPlace/FormContainer';
 // import KeyboardAvoidWrap from '../components/KeyboardAvoidWrap';
 
 function Add() {
+  const [image, setImage] = useState<any>(null);
+
   return (
     <View style={styles.addPageContainer}>
-      <ImageContainer />
-      <FormContainer />
+      <ImageContainer image={image} setImage={setImage} />
+      <FormContainer image={image} />
     </View>
   );
 }
