@@ -47,22 +47,25 @@ const styles = StyleSheet.create({
   dataContainer: {
     height: '25%',
     backgroundColor: colors.backgroundLight,
-    justifyContent: 'space-evenly'
+    justifyContent: 'space-evenly',
+
+    width: '90%'
   },
 
   dataTop: {
     height: '60%',
     width: '90%',
     flexDirection: 'row',
-    alignSelf: 'center'
+    alignSelf: 'center',
+    marginBottom: 10
   },
 
   profilePicContainer: {
     height: '100%',
-    width: '50%',
+    width: '45%',
     justifyContent: 'space-between',
     alignItems: 'center',
-    borderRadius: 20
+
   },
 
   profilePic: {
@@ -83,6 +86,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-evenly',
     alignItems: 'center',
+
   },
 
   followersInfo: {
@@ -103,25 +107,22 @@ const styles = StyleSheet.create({
   },
 
   dataBottom: {
-    height: '40%',
+    height: '35%',
     justifyContent: 'center',
-    alignItems: 'center',
-    borderColor: 'black',
-    borderStyle: 'solid',
-    borderWidth: 1,
-    paddingVertical: 10
+    paddingVertical: 0,
+    alignItems: 'center'
   },
 
   bio: {
-    width: '95%',
-    borderRadius: 10,
+    width: '93%',
     paddingHorizontal: 20,
-    paddingVertical: 12,
-    overflow: 'hidden'
+    paddingVertical: 7,
+    overflow: 'hidden',
+    marginBottom: 10
   },
 
   bioText: {
-    fontSize: 13,
+    fontSize: 12.5,
     fontFamily: fonts.regular
   }
 

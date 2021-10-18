@@ -7,6 +7,7 @@ import {
   TouchableOpacity 
 } from 'react-native';
 import colors from '../../assets/styles/colors';
+import fonts from '../../assets/styles/fonts';
 import { setPlaceSelected } from '../../redux/actions/actions';
 
 
@@ -54,17 +55,16 @@ export default function FiltersContainer(props: any) {
 const styles = StyleSheet.create({
 
   filterContainer: {
-    height: '10%',
-    width: '100%',
+    height: '6%',
+    width: '90%',
     backgroundColor: colors.backgroundLight,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 15
+    marginTop: 5,
   },
 
   scrollViewVisual: {
     backgroundColor: colors.backgroundLight,
-
     paddingHorizontal: 20
   },
 
@@ -78,12 +78,12 @@ const styles = StyleSheet.create({
   selectedTag: {
     alignItems: 'center',
     justifyContent: 'center',
-    height: '70%',
+    height: '60%',
     marginHorizontal: 10,
     paddingHorizontal: 10,
     borderColor: 'black',
     borderWidth: 1,
-    borderRadius: 10,
+    borderRadius: 5,
     minWidth: 70,
     backgroundColor: colors.accentFun
   },
@@ -91,17 +91,18 @@ const styles = StyleSheet.create({
   defaultTag: {
     alignItems: 'center',
     justifyContent: 'center',
-    height: '70%',
+    height: '60%',
     marginHorizontal: 10,
     paddingHorizontal: 10,
     borderColor: 'black',
     borderWidth: 1,
-    borderRadius: 10,
+    borderRadius: 5,
     minWidth: 70,
     backgroundColor: colors.backgroundLight,
   },
 
   tag: {
-    fontSize: 12
+    fontSize: 10,
+    fontFamily: fonts.medium
   },
 });
