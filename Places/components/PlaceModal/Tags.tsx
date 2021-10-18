@@ -36,15 +36,16 @@ export default Tags;
 const styles = StyleSheet.create({
   tagSectionContainer: {
     flex: 1,
-    backgroundColor: colors.accentFun,
+    backgroundColor: colors.backgroundLight,
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 10,
+    padding: 5,
     overflow: 'scroll',
+    borderRadius: 5,
   },
 
   tagContainer: {
-    height: 35,
+    height: '100%',
     minWidth: 50,
     maxWidth: 100,
     backgroundColor: colors.backgroundDark,

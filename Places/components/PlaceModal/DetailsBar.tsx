@@ -1,6 +1,7 @@
 import {StyleSheet, View, Text} from 'react-native';
 import React from 'react';
 import colors from '../../assets/styles/colors';
+import fonts from '../../assets/styles/fonts';
 
 function DetailsBar(props: any) {
   const {place} = props
@@ -19,24 +20,25 @@ const styles = StyleSheet.create({
   detailBarContainer: {
     height: '5%',
     width: '90%',
-    backgroundColor: colors.backgroundDark,
+    backgroundColor: colors.backgroundLight,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 12
+    marginBottom: 20,
+    borderRadius: 5
   },
 
   locationLabel: {
-    fontSize: 15,
-    fontWeight: '800',
+    fontSize: 13,
     marginRight: 10,
-    color: colors.fontLight,
+    color: colors.fontDark,
+    fontFamily: fonts.semiBold
   },
 
   locationText: {
-    fontSize: 12,
-    fontWeight: '400',
-    color: colors.fontLight,
+    fontSize: 11,
+    color: colors.fontDark,
+    fontFamily: fonts.light
   },
   
 })

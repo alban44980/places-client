@@ -30,10 +30,10 @@ function PlaceModal( props: any ) {
         <PlaceImage place={place} />
         <HeaderSection place={place} />
         <DetailsBar place={place} />
-        <Description place={place} />
         <View style={styles.tagContainer}>
           <Tags />
         </View>
+        <Description place={place} />
       </SafeAreaView>
     </Modal>
   );
@@ -49,7 +49,8 @@ const styles = StyleSheet.create({
   },
 
   tagContainer: {
-    height: '10%',
+    height: '8%',
     width: '90%',
+    marginBottom: 15
   },
 });

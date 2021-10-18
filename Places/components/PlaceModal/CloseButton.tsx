@@ -9,6 +9,7 @@ import {
   togglePlaceVisible,
   setPlaceSelected,
 } from '../../redux/actions/actions';
+import fonts from '../../assets/styles/fonts';
 
 function CloseButton(props: any) {
   const { handlePress } = props;
@@ -35,7 +36,7 @@ function CloseButton(props: any) {
       }}
       style={styles.closeButton}
     >
-      <Text style={styles.closeButtonText}>Back Button</Text>
+      <Text style={styles.closeButtonText}>Back</Text>
     </TouchableHighlight>
   );
 }
@@ -44,18 +45,28 @@ export default CloseButton;
 
 const styles = StyleSheet.create({
   closeButton: {
-    height: '7%',
-    width: '90%',
-    backgroundColor: colors.backgroundMedium,
+    height: '5%',
+    width: '22%',
+    backgroundColor: colors.backgroundDark,
+    borderColor: colors.backgroundLight,
+    borderStyle: 'solid',
+    borderWidth: .5,
     justifyContent: 'center',
     borderRadius: 10,
     alignSelf: 'center',
+    position: 'absolute',
+    top: 61,
+    right: 25,
+    zIndex: 2
   },
 
   closeButtonText: {
     color: colors.fontLight,
-    fontSize: 19,
+    fontFamily: fonts.light,
+    fontSize: 14,
     fontWeight: '600',
     textAlign: 'center',
   },
+
+
 });

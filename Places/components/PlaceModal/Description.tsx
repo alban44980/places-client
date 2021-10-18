@@ -1,6 +1,7 @@
 import {StyleSheet, View, Text, ScrollView} from 'react-native';
 import React from 'react';
 import colors from '../../assets/styles/colors';
+import fonts from '../../assets/styles/fonts';
 
 
 
@@ -23,8 +24,8 @@ export default Description;
 
 const styles = StyleSheet.create({
   descriptionContainer: {
-    height: '32%',
-    backgroundColor: colors.backgroundMedium,
+    height: '40%',
+    backgroundColor: colors.backgroundLight,
     borderColor: colors.backgroundLight,
     borderWidth: 1,
     width: '90%',
@@ -37,10 +38,12 @@ const styles = StyleSheet.create({
   },
 
   descriptionText: {
-    fontSize: 17,
-    lineHeight: 30,
+    fontSize: 14,
+    lineHeight: 27,
     overflow: 'hidden',
-    color: colors.fontLight
+    color: colors.fontDark,
+    fontFamily: fonts.regular,
+
   }
   
 })
