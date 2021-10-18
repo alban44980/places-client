@@ -4,23 +4,23 @@ import colors from '../../assets/styles/colors';
 import tags from '../../dummyData/tagsList';
 
 
-function Tags() {
+function Tags(props) {
 
   // there should be some kind of state for selected --> this is used for rendering color to begin with
 
   // for now this is the same tags list but in reality it will be the tags associated with a place or 
   // unique tags associated with a collection of places
-  const tagsList = tags
+  const { tags }  = props
 
 
   return (
     <View style={styles.tagSectionContainer}>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         {
-          tagsList.map((tag) => {
+          tags.map((tag) => {
             return (
-              <View  style={styles.tagContainer} >
-                <Text style={styles.tagText}>#{tag}</Text>
+              <View style={styles.tagContainer} >
+                <Text style={styles.tagText}>#{tag.name}</Text>
               </View>
             )
           })
@@ -36,24 +36,23 @@ export default Tags;
 const styles = StyleSheet.create({
   tagSectionContainer: {
     flex: 1,
-    backgroundColor: colors.accentFun,
+    backgroundColor: colors.backgroundLight,
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 10,
+    padding: 5,
     overflow: 'scroll',
+    borderRadius: 5,
   },
 
   tagContainer: {
-    height: 35,
+    height: '100%',
     minWidth: 50,
-    maxWidth: 100,
     backgroundColor: colors.backgroundDark,
     borderRadius: 10,
     marginHorizontal: 10,
     justifyContent: 'center',
     paddingHorizontal: 10
   },
-
 
   tagText: {
     fontSize: 10,

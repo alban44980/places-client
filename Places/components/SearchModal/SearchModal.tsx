@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Modal, SafeAreaView } from 'react-native';
+import { StyleSheet, View, Text, Modal, SafeAreaView } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../redux/reducers/reducers';
 import PlaceModal from '../PlaceModal/PlaceModal';
@@ -14,6 +14,7 @@ import {
   toggleSearchVisible,
   togglePlaceVisible,
 } from '../../redux/actions/actions';
+import fonts from '../../assets/styles/fonts';
 
 function SearchModal( { city }: string) {
   // this is a placeholder for a redux reducer of all places
@@ -77,6 +78,10 @@ function SearchModal( { city }: string) {
           />
         )}
 
+        <View style={styles.headerSection}>
+          <Text style={styles.headerText}>Explore Places</Text>
+        </View>
+
         <CloseButton handlePress={handleClosePress} />
         <SearchBar
           handlePress={handleFilterPress}
@@ -105,4 +110,21 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.backgroundDark,
   },
+  headerSection: {
+    height: '10%',
+    width: '100%',
+    backgroundColor: colors.backgroundDark,
+
+    justifyContent: 'center',
+    paddingHorizontal: 30
+  },
+
+  headerText: {
+    fontFamily: fonts.semiBold,
+    fontSize: 24,
+    color: colors.fontLight
+  }
+
+
+
 });

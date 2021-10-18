@@ -5,6 +5,7 @@ import {
   Text,
   TouchableOpacity,
   SafeAreaView,
+  Image,
 } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/reducers/reducers";
@@ -19,15 +20,16 @@ import friends from "../dummyData/friends";
 import colors from "../assets/styles/colors";
 
 function Home() {
-  const [friendList, setfriendList] = useState<any[]>([]);
-  const [cityList, setcityList] = useState<any[]>([]); //Interface City
-  const [recentlyAddedPlacesList, setrecentlyAddedPlacesList] = useState<any[]>(
+  const [friendList, setFriendList] = useState<any[]>([]);
+  const [cityList, setCityList] = useState<any[]>([]); //Interface City
+  const [recentlyAddedPlacesList, setRecentlyAddedPlacesList] = useState<any[]>(
     []
   );
 
   const userFriendInfo: any = useSelector(
     (state: RootState) => state.userFriendInfo
   );
+
   const searchVisible: any = useSelector(
     (state: RootState) => state.searchVisible
   );
@@ -37,6 +39,24 @@ function Home() {
   //parses files
   function extractInfo() {
     //set friend list
+    setFriendList(userFriendInfo);
+
+    //set cities
+    const friendCities = [];
+    for (let friend of userFriendInfo) {
+      friendCities.push(...friend.Cities);
+    }
+    setCityList(friendCities);
+
+    //set Recently added
+    const recentlyAddedPlaces = [];
+    //create a list of places
+    for (let cities of friendCities) {
+      recentlyAddedPlaces.push(...cities.Places);
+    }
+
+    //need to sort
+    setRecentlyAddedPlacesList(recentlyAddedPlaces);
   }
 
   //useSelector friends
@@ -45,20 +65,8 @@ function Home() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // setFriends([...sampleFriendsList]);
-    //Apicall to get the data
-    // fetch('/backenduserdata')
-    //   .then((response) => response.json())
-    // update userInfo state by dispatching
-    // .then((data) => {
-    //   dispatch(setUserData(data))
-    //   dispatch(setFriends(data))
-    //   dispatch(setCities(data))
-    //   dispatch(setPlaces(data))
-    //
-    // );
-    // set friends, cities, recentlyAdded
-  }, []);
+    extractInfo();
+  }, [userFriendInfo]);
 
   function handlePress() {
     dispatch(toggleSearchVisible());
@@ -78,6 +86,10 @@ function Home() {
         <Text style={styles.headerText}>Logo & Image PlaceHolder</Text>
       </View>
 
+      <View style={styles.homeImageBannerContainer}>
+        <Image style={styles.imageBanner} source={{uri: "https://images.pexels.com/photos/695779/pexels-photo-695779.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"}} />
+      </View>
+
       <View style={styles.searchContainer}>
         <TouchableOpacity style={styles.searchTouchable} onPress={handlePress}>
           <Text style={styles.searchBar}>Where are you going ?</Text>
@@ -86,16 +98,23 @@ function Home() {
 
       <View style={styles.listsContainer}>
         <HomeList
-          data={friends}
+          key={1}
+          data={friendList}
           route={"userProfile"}
           setFriend={setFriendSelected}
         />
         <HomeList
-          data={allFriendsCities}
+          key={2}
+          data={cityList}
           route={"search"}
           setCity={setCitySelected}
         />
-        <HomeList data={places} route={"place"} setPlace={setPlaceSelected} />
+        <HomeList
+          key={3}
+          data={recentlyAddedPlacesList}
+          route={"place"}
+          setPlace={setPlaceSelected}
+        />
       </View>
     </SafeAreaView>
   );
@@ -105,8 +124,6 @@ const styles = StyleSheet.create({
   container: {
     width: "100%",
     height: "100%",
-    display: "flex",
-    flexDirection: "column",
     backgroundColor: colors.accentFun,
   },
 
@@ -121,6 +138,15 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 24,
     color: colors.fontLight,
+  },
+
+  homeImageBannerContainer: {
+
+  },
+
+  imageBanner: {
+    height: '10%',
+    width: '100%'
   },
 
   searchContainer: {

@@ -1,13 +1,14 @@
 import {StyleSheet, View, Text} from 'react-native';
 import React from 'react';
 import colors from '../../assets/styles/colors';
+import fonts from '../../assets/styles/fonts';
 
 
 function HeaderSection(props: any) {
   const {place} = props
   return (
     <View style={styles.headerContainer}>
-      <Text style={styles.placeTitle}>{place.name}</Text>
+      <Text style={styles.placeTitle} numberOfLines={1}>{place.name}</Text>
       <Text style={styles.placeOwner}>Adriano "The Rocket" Gonzalez</Text>
      </View>
   );
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
   headerContainer: {
     height: '13%',
     width: '90%',
-    backgroundColor: colors.backgroundMedium,
+    backgroundColor: colors.backgroundLight,
     justifyContent: 'center',
     marginBottom: 4,
     borderColor: colors.backgroundLight,
@@ -28,18 +29,21 @@ const styles = StyleSheet.create({
   },
 
   placeTitle: {
-    fontSize: 25,
-    color: colors.fontLight,
+    fontSize: 18,
+    color: colors.fontDark,
     fontWeight: '600',
     textAlign: 'center',
-    marginBottom: 10
+    fontFamily: fonts.semiBold,
+    paddingHorizontal: 20,
+    marginBottom: 3,
   },
 
   placeOwner: {
-    fontSize: 15,
-    color: colors.fontLight,
+    fontSize: 14,
+    color: colors.fontDark,
     fontWeight: '400',
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily: fonts.regular
   },
 
   

@@ -56,16 +56,17 @@ const styles = StyleSheet.create({
 
   filterContainer: {
     height: '6%',
-    width: '90%',
+    width: '85%',
     backgroundColor: colors.backgroundLight,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 5,
+    marginTop: 12,
+    borderStyle: 'solid',
   },
 
   scrollViewVisual: {
     backgroundColor: colors.backgroundLight,
-    paddingHorizontal: 20
+    paddingHorizontal: 0
   },
 
   scrollViewContainer: {

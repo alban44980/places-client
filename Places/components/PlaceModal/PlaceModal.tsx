@@ -18,6 +18,10 @@ import colors from '../../assets/styles/colors';
 import places from '../../dummyData/placesList';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/reducers/reducers';
+import { setPlaceSelected } from '../../redux/actions/actions';
+
+
+
 
 function PlaceModal( props: any ) {
   const { place, handlePress } = props
@@ -30,10 +34,10 @@ function PlaceModal( props: any ) {
         <PlaceImage place={place} />
         <HeaderSection place={place} />
         <DetailsBar place={place} />
-        <Description place={place} />
         <View style={styles.tagContainer}>
-          <Tags />
+          <Tags tags={place.tags}/>
         </View>
+        <Description place={place} />
       </SafeAreaView>
     </Modal>
   );
@@ -49,7 +53,8 @@ const styles = StyleSheet.create({
   },
 
   tagContainer: {
-    height: '10%',
+    height: '8%',
     width: '90%',
+    marginBottom: 15
   },
 });

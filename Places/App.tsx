@@ -50,27 +50,25 @@ export default function App() {
     Poppins_700Bold,
   });
 
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  } else {
-    return (
-      <Provider store={store}>
-        <NavigationContainer>
-          <Stack.Navigator
-            initialRouteName={"login"}
-            screenOptions={{ headerShown: false }}
-          >
-            <Stack.Screen name="login" component={Login} />
-            <Stack.Screen name="signup" component={SignUp} />
-            <Stack.Screen name="home" component={Navigation} />
-            <Stack.Screen name="userProfile" component={UserProfile} />
-            <Stack.Screen name="search" component={SearchModal} />
-            <Stack.Screen name="place" component={PlaceModal} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </Provider>
-    );
-  }
+   
+  return (
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName={"login"}
+          screenOptions={{ headerShown: false }}
+        >
+          <Stack.Screen name="login" component={Login} />
+          <Stack.Screen name="signup" component={SignUp} />
+          <Stack.Screen name="home" component={Navigation} />
+          <Stack.Screen name="userProfile" component={UserProfile} />
+          <Stack.Screen name="search" component={SearchModal} />
+          <Stack.Screen name="place" component={PlaceModal} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
+  );
+}
 }
 
 // const styles = StyleSheet.create({

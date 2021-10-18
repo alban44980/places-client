@@ -9,6 +9,7 @@ const places = [
     address: '27 Carrer DAvila, Barcelona Spain 08005',
     city: 'Barcelona',
     country: 'Spain',
+    tags: [{name: 'bar'}, {name: 'nightlife'}, {name: 'drinks'}, {name: 'gay'},],
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ const places = [
     address: '27 Carrer DAvila, Barcelona Spain 08005',
     city: 'London',
     country: 'England',
+    tags: [{name: 'coffee'}, {name: 'wifi'}, {name: 'remote work'}, {name: 'hip'},],
   },
   {
     id: 3,
@@ -30,6 +32,7 @@ const places = [
     address: '27 Carrer DAvila, Barcelona Spain 08005',
     city: 'Miami',
     country: 'USA',
+    tags: [{name: 'adventure'}, {name: 'off the beaten track'}, {name: 'local culture'}, ],
   },
   {
     id: 4,
@@ -41,6 +44,7 @@ const places = [
     address: '27 Carrer DAvila, Barcelona Spain 08005',
     city: 'Bali',
     country: 'Indonesia',
+    tags: [{name: 'bar'}, {name: 'nightlife'}, {name: 'drinks'}, {name: 'gay'},],
   },
   {
     id: 5,
@@ -52,6 +56,7 @@ const places = [
     address: '27 Carrer DAvila, Barcelona Spain 08005',
     city: 'Paris',
     country: 'France',
+    tags: [{name: 'bar'}, {name: 'nightlife'}, {name: 'drinks'}, {name: 'party'},],
   },
   {
     id: 6,
@@ -62,6 +67,7 @@ const places = [
     address: '27 Carrer DAvila, Barcelona Spain 08005',
     city: 'Philadelphia',
     country: 'USA',
+    tags: [{name: 'food'}, {name: 'local'}, {name: 'culture'}, ],
   },
 ];
 
