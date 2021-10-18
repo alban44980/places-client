@@ -56,7 +56,15 @@ function HomeListItem({ data, route, setPlace, setCity, setFriend }: any) {
 
   return (
     <TouchableOpacity style={styles.itemContainer} onPress={handlePress}>
-      <Image style={styles.img} source={{ uri: data.img }} resizeMode="cover" />
+      <Image
+        style={styles.img}
+        source={{
+          uri:
+            data.img ||
+            "https://images.unsplash.com/photo-1634501087922-c01c76ed66d6?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1M3x8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60",
+        }}
+        resizeMode="cover"
+      />
       <View style={styles.textContainer}></View>
       <Text style={styles.title}>
         {route !== "userProfile" ? data.name : data.first_name}
