@@ -17,6 +17,7 @@ function MyData(props: any) {
         
         <View style={styles.profilePicContainer}>
           <Image style={styles.profilePic} source={{uri: user.img}} />
+          <Text style={styles.fullNameText}>{user.first_name} {user.last_name}</Text>
         </View>
 
         <View style={styles.followersContainer}>
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
   },
 
   dataTop: {
-    height: '50%',
+    height: '60%',
     width: '90%',
     flexDirection: 'row',
     alignSelf: 'center'
@@ -65,15 +66,22 @@ const styles = StyleSheet.create({
 
   profilePicContainer: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: colors.accentFun,
     borderRadius: 20
   },
 
   profilePic: {
-    width: '40%',
-    height: '80%',
+    width: '70%',
+    height: '75%',
+    borderRadius: 100,
+    borderColor: colors.backgroundDark,
+    
+  },
+
+  fullNameText: {
+
   },
 
   followersContainer: {

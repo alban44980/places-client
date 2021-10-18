@@ -37,7 +37,8 @@
     "react-navigation": "^4.4.4",
     "react-redux": "^7.2.5",
     "redux": "^4.1.1",
-    "rn-nodeify": "^10.3.0"
+    "rn-nodeify": "^10.3.0",
+    "expo-font": "~9.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
