@@ -19,14 +19,14 @@ import {
 
 
 
-import store from './redux/store/store';
-import Home from './screens/Home';
-import Navigation from './components/Navigation/Navigation';
-import UserProfile from './components/UserProfile/UserProfile';
-import SearchModal from './components/SearchModal/SearchModal';
-import PlaceModal from './components/PlaceModal/PlaceModal';
-import Login from './components/Login/Login';
-import SignUp from './components/SignUp/SignUp';
+import store from "./redux/store/store";
+import Home from "./screens/Home";
+import Navigation from "./components/Navigation/Navigation";
+import UserProfile from "./components/UserProfile/UserProfile";
+import SearchModal from "./components/SearchModal/SearchModal";
+import PlaceModal from "./components/PlaceModal/PlaceModal";
+import Login from "./components/Login/Login";
+import SignUp from "./components/SignUp/SignUp";
 
 
 const Stack: any = createStackNavigator();
@@ -62,7 +62,7 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName={'home'}
+          initialRouteName={"login"}
           screenOptions={{ headerShown: false }}
         >
           <Stack.Screen name="login" component={Login} />
