@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
   Image,
+  ScrollView,
 } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/reducers/reducers";
@@ -18,6 +19,7 @@ import { toggleSearchVisible } from "../redux/actions/actions";
 import places from "../dummyData/placesList";
 import friends from "../dummyData/friends";
 import colors from "../assets/styles/colors";
+import fonts from "../assets/styles/fonts";
 
 function Home() {
   const [friendList, setFriendList] = useState<any[]>([]);
@@ -82,53 +84,56 @@ function Home() {
       {searchVisible && <SearchModal city={citySelected} />}
       {placeVisible && <PlaceModal place={placeSelected} />}
 
-      <View style={styles.headerContainer}>
-        <Text style={styles.headerText}>Logo & Image PlaceHolder</Text>
-      </View>
+      <ScrollView style={{flex: 1}}>
 
-      <View style={styles.homeImageBannerContainer}>
-        <Image style={styles.imageBanner} source={{uri: "https://images.pexels.com/photos/695779/pexels-photo-695779.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"}} />
-      </View>
+        <View style={styles.headerContainer}>
+          <Text style={styles.headerText}>Logo & Image PlaceHolder</Text>
+        </View>
 
-      <View style={styles.searchContainer}>
-        <TouchableOpacity style={styles.searchTouchable} onPress={handlePress}>
-          <Text style={styles.searchBar}>Where are you going ?</Text>
-        </TouchableOpacity>
-      </View>
+        <View style={styles.homeImageBannerContainer}>
+          <Image style={styles.imageBanner} source={{uri: "https://images.pexels.com/photos/695779/pexels-photo-695779.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"}} />
+        </View>
 
-      <View style={styles.listsContainer}>
-        <HomeList
-          key={1}
-          data={friendList}
-          route={"userProfile"}
-          setFriend={setFriendSelected}
-        />
-        <HomeList
-          key={2}
-          data={cityList}
-          route={"search"}
-          setCity={setCitySelected}
-        />
-        <HomeList
-          key={3}
-          data={recentlyAddedPlacesList}
-          route={"place"}
-          setPlace={setPlaceSelected}
-        />
-      </View>
+        <View style={styles.searchContainer}>
+          <TouchableOpacity style={styles.searchTouchable} onPress={handlePress}>
+            <Text style={styles.searchBar}>Where are you going ?</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.listsContainer}>
+          <HomeList
+            key={3}
+            data={recentlyAddedPlacesList}
+            route={"place"}
+            setPlace={setPlaceSelected}
+          />
+          <HomeList
+            key={1}
+            data={friendList}
+            route={"userProfile"}
+            setFriend={setFriendSelected}
+          />
+          <HomeList
+            key={2}
+            data={cityList}
+            route={"search"}
+            setCity={setCitySelected}
+          />
+        </View>
+      </ScrollView>
+
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
-    height: "100%",
-    backgroundColor: colors.accentFun,
+    flex: 1,
+    backgroundColor: colors.backgroundDark,
   },
 
   headerContainer: {
-    height: "25%",
+    height: 120,
     backgroundColor: colors.backgroundDark,
     display: "flex",
     justifyContent: "center",
@@ -136,30 +141,33 @@ const styles = StyleSheet.create({
   },
 
   headerText: {
-    fontSize: 24,
+    fontSize: 22,
     color: colors.fontLight,
+    fontFamily: fonts.semiBold
   },
 
   homeImageBannerContainer: {
-
+    height: 350,
+    marginBottom: 10
   },
 
   imageBanner: {
-    height: '10%',
-    width: '100%'
+    flex: 1,
   },
 
   searchContainer: {
     width: "100%",
-    height: "15%",
-    backgroundColor: colors.backgroundMedium,
+    height: 100,
+    backgroundColor: colors.backgroundDark,
     justifyContent: "center",
     alignItems: "center",
+    marginBottom: 50
+
   },
 
   searchTouchable: {
     height: "50%",
-    width: "70%",
+    width: "75%",
     backgroundColor: colors.backgroundLight,
     display: "flex",
     alignItems: "center",
@@ -176,7 +184,7 @@ const styles = StyleSheet.create({
 
   listsContainer: {
     flex: 1,
-    width: "95%",
+    width: "90%",
     justifyContent: "space-evenly",
     alignSelf: "center",
     backgroundColor: colors.backgroundDark,
