@@ -47,7 +47,6 @@ function ImageContainer({ image, setImage }) {
           console.log('URL SENT BACK FROM CLOUDINARY', data.url);
           console.log('TYPE OF URL SENT BACK', typeof data.url);
           setImage(data.url);
-          // setImage(data.url);
         })
         .catch((err) => console.log(err));
     }
