@@ -24,6 +24,7 @@ function Home() {
   const [recentlyAddedPlacesList, setRecentlyAddedPlacesList] = useState<any[]>(
     []
   );
+  const [tags, setTags] = useState<any[]>([]);
 
   const userFriendInfo: any = useSelector(
     (state: RootState) => state.userFriendInfo
@@ -48,10 +49,20 @@ function Home() {
     setCityList(friendCities);
 
     //set Recently added
-    const recentlyAddedPlaces = [];
-    //create a list of places
-    for (let cities of friendCities) {
-      recentlyAddedPlaces.push(...cities.Places);
+    const recentlyAddedPlaces: any[] = [];
+
+    for (let friend of userFriendInfo) {
+      for (let cities of friend.Cities) {
+        for (let places of cities.Places) {
+          places.user = {
+            username: friend.user_name,
+            first_name: friend.first_name,
+            last_name: friend.last_name,
+          };
+
+          recentlyAddedPlaces.push(places);
+        }
+      }
     }
 
     //need to sort
@@ -78,7 +89,9 @@ function Home() {
 
   return (
     <SafeAreaView style={styles.container}>
-      {searchVisible && <SearchModal city={citySelected} />}
+      {searchVisible && (
+        <SearchModal city={citySelected} friendList={friendList} />
+      )}
       {placeVisible && <PlaceModal place={placeSelected} />}
 
       <View style={styles.headerContainer}>

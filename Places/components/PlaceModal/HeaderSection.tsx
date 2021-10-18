@@ -1,16 +1,20 @@
-import {StyleSheet, View, Text} from 'react-native';
-import React from 'react';
-import colors from '../../assets/styles/colors';
-import fonts from '../../assets/styles/fonts';
-
+import { StyleSheet, View, Text } from "react-native";
+import React from "react";
+import colors from "../../assets/styles/colors";
+import fonts from "../../assets/styles/fonts";
 
 function HeaderSection(props: any) {
-  const {place} = props
+  const { place } = props;
+
   return (
     <View style={styles.headerContainer}>
-      <Text style={styles.placeTitle} numberOfLines={1}>{place.name}</Text>
-      <Text style={styles.placeOwner}>Adriano "The Rocket" Gonzalez</Text>
-     </View>
+      <Text style={styles.placeTitle} numberOfLines={1}>
+        {place.name}
+      </Text>
+      <Text style={styles.placeOwner}>
+        {place.user.first_name} {place.user.last_name}
+      </Text>
+    </View>
   );
 }
 
@@ -18,21 +22,21 @@ export default HeaderSection;
 
 const styles = StyleSheet.create({
   headerContainer: {
-    height: '13%',
-    width: '90%',
+    height: "13%",
+    width: "90%",
     backgroundColor: colors.backgroundLight,
-    justifyContent: 'center',
+    justifyContent: "center",
     marginBottom: 4,
     borderColor: colors.backgroundLight,
     borderWidth: 1,
-    borderRadius: 5
+    borderRadius: 5,
   },
 
   placeTitle: {
     fontSize: 18,
     color: colors.fontDark,
-    fontWeight: '600',
-    textAlign: 'center',
+    fontWeight: "600",
+    textAlign: "center",
     fontFamily: fonts.semiBold,
     paddingHorizontal: 20,
     marginBottom: 3,
@@ -41,10 +45,8 @@ const styles = StyleSheet.create({
   placeOwner: {
     fontSize: 14,
     color: colors.fontDark,
-    fontWeight: '400',
-    textAlign: 'center',
-    fontFamily: fonts.regular
+    fontWeight: "400",
+    textAlign: "center",
+    fontFamily: fonts.regular,
   },
-
-  
-})
+});
