@@ -1,3 +1,7 @@
+
+
+
+
 const colors = {
   backgroundDark: 'rgba(94, 100, 114, 1)',
   backgroundMedium: 'rgba(174, 217, 224, 1)',

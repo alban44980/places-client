@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import colors from '../../assets/styles/colors';
+import fonts from '../../assets/styles/fonts';
 
 export default function ButtonContainer({
   myPlacesSelected,
@@ -39,45 +40,39 @@ export default function ButtonContainer({
 
 const styles = StyleSheet.create({
   buttonsContainer: {
-    marginVertical: 5,
-    height: '7%',
+    height: '6%',
+    width: '90%',
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'center',
     backgroundColor: colors.backgroundLight,
-  },
-
-  buttons: {
-    backgroundColor: colors.backgroundMedium,
-    width: '25%',
-    height: '80%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 10,
-    borderWidth: 1,
+    marginTop: 10,
   },
 
   labelText: {
     fontSize: 13,
     fontWeight: '600',
+    fontFamily: fonts.medium,
+    letterSpacing: .8
   },
 
   buttonSelected: {
     backgroundColor: colors.backgroundMedium,
-    width: '25%',
-    height: '80%',
+    width: '40%',
+    height: '65%',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 10,
+    borderRadius: 5,
     borderWidth: 1,
   },
+
   buttonNotSelected: {
     backgroundColor: 'transparent',
-    width: '25%',
-    height: '80%',
+    width: '40%',
+    height: '65%',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 10,
+    borderRadius: 5,
     borderWidth: 1,
   },
 });

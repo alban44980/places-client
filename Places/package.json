@@ -9,17 +9,22 @@
     "postinstall": "node_modules/.bin/rn-nodeify --install crypto,fs,https --hack"
   },
   "dependencies": {
+    "@expo-google-fonts/poppins": "^0.2.0",
     "@react-google-maps/api": "^2.5.0",
     "@react-navigation/bottom-tabs": "^6.0.8",
     "@react-navigation/native": "^6.0.5",
     "@react-navigation/native-stack": "^6.2.4",
     "@react-navigation/stack": "^6.0.11",
+    "app": "^0.1.0",
     "expo": "~42.0.1",
+    "expo-app-loading": "^1.1.2",
+    "expo-font": "~9.2.1",
     "expo-image-picker": "~10.2.2",
     "expo-status-bar": "~1.0.4",
     "fs": "0.0.1-security",
     "https-browserify": "^0.0.1",
     "install": "^0.13.0",
+    "loading": "^1.13.3",
     "npm": "^8.0.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
@@ -37,8 +42,7 @@
     "react-navigation": "^4.4.4",
     "react-redux": "^7.2.5",
     "redux": "^4.1.1",
-    "rn-nodeify": "^10.3.0",
-    "expo-font": "~9.2.1"
+    "rn-nodeify": "^10.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

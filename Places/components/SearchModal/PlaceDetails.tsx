@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, View, Text, BackHandler} from 'react-native';
 import colors from '../../assets/styles/colors';
+import fonts from '../../assets/styles/fonts';
 
 
 function PlaceDetails(props: any) {
@@ -9,10 +10,12 @@ function PlaceDetails(props: any) {
 
   return (
     <View style={styles.itemContentContainer}>
+
       <View style={styles.itemHeaderBar}>
-        <Text style={styles.headerTextName}>{item.name}</Text>
+        <Text style={styles.headerTextName} numberOfLines={1}>{item.name}</Text>
         <Text style={styles.headerTextCity}>{item.city}</Text>
       </View>
+
       <View style={styles.itemContentSection}>
         <Text style={styles.descriptionText} numberOfLines={2}>{item.description}</Text>
       </View>
@@ -27,11 +30,12 @@ const styles = StyleSheet.create({
     flex: 1,
     overflow: 'hidden',
     borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10
+    borderBottomRightRadius: 10,
+    justifyContent: 'flex-end'
   },
 
   itemHeaderBar: {
-    height: '50%',
+    height: '35%',
     backgroundColor: colors.backgroundDark,
     flexDirection: 'column',
     justifyContent: 'center',
@@ -40,27 +44,29 @@ const styles = StyleSheet.create({
   headerTextName: {
     color: colors.fontLight,
     textAlign: 'center',
-    fontSize: 16,
-    fontWeight: '700',
-    marginBottom: 3
+    fontSize: 14,
+    marginBottom: 3,
+    fontFamily: fonts.semiBold,
+    paddingHorizontal: 30
   },
 
   headerTextCity: {
     color: colors.fontLight,
     textAlign: 'center',
-    fontSize: 15
+    fontSize: 12,
+    fontFamily: fonts.regular
   },
   
   itemContentSection: {
-    height: '50%',
+    height: '35%',
     backgroundColor: colors.backgroundLight,
     paddingHorizontal: 20,
     paddingVertical: 10
   },
 
   descriptionText: {
-    fontSize: 13,
-    fontWeight: '400',
-    lineHeight: 17
+    fontSize: 11,
+    fontFamily: fonts.light,
+    textAlign: 'center'
   },
 })
