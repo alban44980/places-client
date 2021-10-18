@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import * as ImagePicker from 'expo-image-picker';
-import {
-  StyleSheet,
-  Platform,
-  TouchableHighlight,
-  Image,
-} from 'react-native';
+import { StyleSheet, Platform, TouchableHighlight, Image } from 'react-native';
 import colors from '../../assets/styles/colors';
 
 function ImageContainer() {
@@ -30,10 +25,13 @@ function ImageContainer() {
       allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
+      base64: true, //we need this to format to Cloudinary
     });
 
     if (!result.cancelled) {
+      console.log(result.uri);
       setImage(result.uri);
+      let base64Img = `data:image/jpg;base64,${result.base64}`; //    //***IMPORTANT*** This step is necessary.  It converts image from //file path format that imagePicker creates, into a form that cloudinary //requires.
     }
   };
   return (

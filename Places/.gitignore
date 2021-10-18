@@ -12,6 +12,7 @@ web-build/
 # dotenv environment variables file
 .env
 .env.test
+.env.local
 
 
 # macOS
