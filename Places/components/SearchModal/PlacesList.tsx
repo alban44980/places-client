@@ -65,16 +65,19 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: colors.backgroundLight,
     alignItems: 'center',
-    paddingTop: 10
+    paddingTop: 10,
+    paddingBottom: 40
   },
 
   flatListStyle: {
     width: '90%',
+    flex: 1,
     paddingTop: 30,
   },
 
   flatListContContStyle: {
     alignItems: 'center',
+    paddingBottom: 50
   },
 
   itemElementStyle: {
