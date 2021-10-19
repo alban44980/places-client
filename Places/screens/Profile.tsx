@@ -47,19 +47,16 @@ function Profile() {
   const [citySelected, setCitySelected] = useState<string[]>([]);
   const [myPlacesSelected, setMyPlacesSelected] = useState<Boolean>(true);
   const [savedSelected, setSavedSelected] = useState<Boolean>(false);
+  const [placeVisible, setPlaceVisible] = useState<Boolean>(false)
+
 
   // redux states
-  const dispatch = useDispatch();
   const handlePlacePress = () => {
-    dispatch(togglePlaceVisible());
-  };
-  const placeVisible: any = useSelector(
-    (state: RootState) => state.placeVisible
-  );
+    setPlaceVisible(!placeVisible)
+  }
+
   const accessToken: any = useSelector((state: RootState) => state.accessToken);
-  const refreshToken: any = useSelector(
-    (state: RootState) => state.refreshToken
-  );
+  const refreshToken: any = useSelector((state: RootState) => state.refreshToken);
 
   // functions
   const filterPlaces = () => {
@@ -81,7 +78,7 @@ function Profile() {
   return (
     <SafeAreaView style={styles.profileContainer}>
       {placeVisible && (
-        <PlaceModal handlePress={handlePlacePress} place={selectedPlace} />
+        <PlaceModal  place={selectedPlace} placeVisible={placeVisible} setPlaceVisible={setPlaceVisible} />
       )}
 
       <View style={styles.usernameContainer}>

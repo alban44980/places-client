@@ -4,7 +4,7 @@ import colors from "../../assets/styles/colors";
 import fonts from "../../assets/styles/fonts";
 import HomeListItem from "./HomeListItem";
 
-function HomeList({ data, route, setPlace, setCity, setFriend }: any) {
+function HomeList({ data, route, setPlace, setCity, setFriend, setPlaceVisible, placeVisible }: any) {
 
 
   let labelText = () => {
@@ -34,6 +34,8 @@ function HomeList({ data, route, setPlace, setCity, setFriend }: any) {
                     setPlace={setPlace}
                     setCity={setCity}
                     setFriend={setFriend}
+                    setPlaceVisible={setPlaceVisible}
+                    placeVisible={placeVisible}
                   />
                 );
               })
