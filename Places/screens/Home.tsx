@@ -21,23 +21,25 @@ import fonts from "../assets/styles/fonts";
 
 
 function Home() {
+
+  // local states
   const [friendList, setFriendList] = useState<any[]>([]);
   const [cityList, setCityList] = useState<any[]>([]); //Interface City
-  const [recentlyAddedPlacesList, setRecentlyAddedPlacesList] = useState<any[]>(
-    []
-  );
+  const [recentlyAddedPlacesList, setRecentlyAddedPlacesList] = useState<any[]>([]);
   const [tags, setTags] = useState<any[]>([]);
+  const [placeSelected, setPlaceSelected] = useState<any>(null);
+  const [citySelected, setCitySelected] = useState<string>("");
+  const [friendSelected, setFriendSelected] = useState<any>(null);
 
-  const userFriendInfo: any = useSelector(
-    (state: RootState) => state.userFriendInfo
-  );
 
-  const searchVisible: any = useSelector(
-    (state: RootState) => state.searchVisible
-  );
-  const placeVisible: any = useSelector(
-    (state: RootState) => state.placeVisible
-  );
+  // redux states
+  const dispatch = useDispatch();
+  const userFriendInfo: any = useSelector((state: RootState) => state.userFriendInfo);
+  const searchVisible: any = useSelector((state: RootState) => state.searchVisible);
+  const placeVisible: any = useSelector((state: RootState) => state.placeVisible);
+
+
+
   //parses files
   function extractInfo() {
     //set friend list
@@ -61,20 +63,16 @@ function Home() {
             first_name: friend.first_name,
             last_name: friend.last_name,
           };
-
           recentlyAddedPlaces.push(places);
         }
       }
     }
-
     //need to sort
     setRecentlyAddedPlacesList(recentlyAddedPlaces);
   }
 
   //useSelector friends
   //create 2 local states with places and cities, grabbed from the friends redux state
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     extractInfo();
@@ -84,10 +82,6 @@ function Home() {
     dispatch(toggleSearchVisible());
   }
 
-  const [placeSelected, setPlaceSelected] = useState<any>(null);
-
-  const [citySelected, setCitySelected] = useState<string>("");
-  const [friendSelected, setFriendSelected] = useState<any>(null);
 
   return (
     <SafeAreaView style={styles.container}>
