@@ -1,5 +1,13 @@
 import React from "react";
-import { StyleSheet, View, Text, ScrollView, FlatList } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  ScrollView,
+  FlatList,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers/reducers";
 
@@ -8,15 +16,27 @@ function UserPlaces({ citiesPlaces }: any) {
     (state: RootState) => state.userFriendInfo
   );
 
+  const handlePress = () => {
+    console.log("poop");
+    console.log(citiesPlaces);
+  };
+
   const renderItem = ({ item }: any) => (
-    <View style={styles.itemContainer}>
+    <TouchableOpacity style={styles.itemContainer} onPress={handlePress}>
+      <Image
+        style={styles.img}
+        source={{
+          uri: "https://images.pexels.com/photos/374870/pexels-photo-374870.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+        }}
+        resizeMode="cover"
+      />
       <Text>{item.name}</Text>
       {item.Places.length === 1 ? (
         <Text>{item.Places.length} Place</Text>
       ) : (
         <Text>{item.Places.length} Places</Text>
       )}
-    </View>
+    </TouchableOpacity>
   );
 
   return (
@@ -85,6 +105,12 @@ const styles = StyleSheet.create({
   // cardcontainer: {
   //   flex: 1,
   // },
+
+  img: {
+    width: "100%",
+    height: "100%",
+    position: "absolute",
+  },
 });
 
 export default UserPlaces;
