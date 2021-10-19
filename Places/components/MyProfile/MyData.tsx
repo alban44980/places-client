@@ -16,7 +16,13 @@ function MyData(props: any) {
       <View style={styles.dataTop}>
         
         <View style={styles.profilePicContainer}>
+          {
+          user.img ?
           <Image style={styles.profilePic} source={{uri: user.img}} />
+          : 
+          <Image style={styles.profilePic} source={{uri: 'https://images.pexels.com/photos/9072452/pexels-photo-9072452.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500'}} />
+
+          }
           <Text style={styles.fullNameText} numberOfLines={1}>{user.first_name} {user.last_name}</Text>
         </View>
 
