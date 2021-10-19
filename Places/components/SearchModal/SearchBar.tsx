@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import FilterModal from "./FilterModal";
 import colors from "../../assets/styles/colors";
-import places from "../../dummyData/placesList";
 
 function SearchBar(props: any) {
   // on search should also have a drop down list of suggested cities that match the current search
@@ -30,23 +29,27 @@ function SearchBar(props: any) {
     }
   }, [city]);
 
-  const searchFilter = (text: String, tags?: string[]) => {
+  const searchFilter = (text: String, tags: string[]) => {
     if (text) {
       const matchingPlaces = data.filter((place: any) => {
         const itemData = place.city
           ? place.city.toUpperCase()
           : "".toUpperCase();
-        console.log("ItemDAta >>>>>>>", itemData);
-        console.log("place TAg INCLUDE>>>>>", place.Tags[0].name);
+        // console.log("ItemDAta >>>>>>>", itemData);
+        // console.log("place TAg INCLUDE>>>>>", place.Tags[0].name);
         const textData = text.toUpperCase();
 
-        if (itemData.indexOf(textData)) {
+        if (itemData.indexOf(textData) > -1) {
+          //if tags list is empty, the run matching text search
+          if (tags.length < 1) return true;
+
+          //loop through the current place's tags
           for (let tag of place.Tags) {
-            console.log(tag);
+            //if current place's tag is in the tags list, return true
+            if (tags.includes(tag.name)) return true;
           }
         }
-        // console.log("INDEX OF >>>>>>>>>>>>", itemData.indexOf(textData) > -1);
-        return itemData.indexOf(textData) > -1;
+        return false;
       });
       setSearchResults(matchingPlaces);
       setSearch(text);

@@ -22,10 +22,10 @@ function Add() {
   const [image, setImage] = useState<any>(null);
 
   return (
-    <View style={styles.addPageContainer}>
+    <SafeAreaView style={styles.addPageContainer}>
       <ImageContainer image={image} setImage={setImage} />
       <FormContainer image={image} />
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -35,21 +35,8 @@ const styles = StyleSheet.create({
   addPageContainer: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: 'lightyellow',
-    // paddingTop: 60,
+    backgroundColor: colors.backgroundDark,
   },
 
-  // innerContainer: {
-  //   flex: 1,
-  //   width: '100%',
-  // },
 
-  // scrollContainer: {
-  //   alignItems: 'center',
-  //   flex: 1,
-  //   width: '100%',
-
-  // }
 });
-
-//what we need

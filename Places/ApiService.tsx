@@ -9,8 +9,9 @@ import { PATHIP } from "@env";
 
 const path = "192.168.1.169";
 
-const BASE_URL = `http://${path}:3001`;
-console.log(BASE_URL);
+// const BASE_URL = `http://${path}:3001`;
+const BASE_URL = "http://9a1f-147-161-122-215.ngrok.io";
+
 /*
 register expected input
 {
@@ -47,7 +48,11 @@ const login = (credentials: any) => {
     body: JSON.stringify(credentials),
   })
     .then((res) => res.json())
+<<<<<<< HEAD
     .catch((err: any) => console.log("cannot loggin", err));
+=======
+    .catch((err: any) => alert(err));
+>>>>>>> 7e4867e6a9a409b9c9b4bb6cc174f8d9702f09e5
 };
 
 /**
