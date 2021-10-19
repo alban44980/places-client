@@ -78,7 +78,8 @@ const styles = StyleSheet.create({
     height: '75%',
     borderRadius: 100,
     borderColor: colors.backgroundDark,
-    marginBottom: 10
+    marginBottom: 10,
+    borderWidth: .5
   },
 
   fullNameText: {
