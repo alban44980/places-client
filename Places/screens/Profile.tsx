@@ -47,7 +47,7 @@ function Profile() {
   const [cities, setCities] = useState<any[]>([]);
   const [selectedPlace, setSelectedPlace] = useState<any>(null);
   const [filteredPlaces, setFilteredPlaces] = useState<any[]>([...places]);
-  const [tagSelected, setTagSelected] = useState<string[]>([]);
+  const [citySelected, setCitySelected] = useState<string[]>([]);
   const [myPlacesSelected, setMyPlacesSelected] = useState<Boolean>(true);
   const [savedSelected, setSavedSelected] = useState<Boolean>(false);
 
@@ -63,9 +63,9 @@ function Profile() {
   // functions
   const filterPlaces = () => {
     let filteredPlacesList: any[] = [];
-    if (tagSelected.length) {
+    if (citySelected.length) {
       places.forEach((place) => {
-        if (place.city === tagSelected) filteredPlacesList.push(place);
+        if (place.city === citySelected) filteredPlacesList.push(place);
       });
       setFilteredPlaces(filteredPlacesList);
     } else {
@@ -75,7 +75,7 @@ function Profile() {
 
   useEffect(() => {
     filterPlaces();
-  }, [tagSelected]);
+  }, [citySelected]);
 
 
 
@@ -83,8 +83,6 @@ function Profile() {
 
 
   return (
-    // <ScrollView style={{flex: 1}}>
-
       <SafeAreaView style={styles.profileContainer}>
         {placeVisible && (
           <PlaceModal handlePress={handlePlacePress} place={selectedPlace} />
@@ -107,12 +105,11 @@ function Profile() {
         <FiltersContainer
           cities={cities}
           places={places}
-          tagSelected={tagSelected}
-          setTagSelected={setTagSelected}
+          tagSelected={citySelected}
+          setTagSelected={setCitySelected}
           filterPlaces={filterPlaces}
         />
-        {/* Refactor to pass data for this users places */}
-        {/* <View style={{height: '80%'}}> */}
+
         {myPlacesSelected ? (
           <View style={{flex: 1}}>
             <PlacesList
@@ -120,14 +117,12 @@ function Profile() {
               setPlace={setSelectedPlace}
               places={filteredPlaces}
               setPlaces={setPlaces}
-              tagSelected={tagSelected}
+              tagSelected={citySelected}
             />
           </View>
         ) : null}
 
-        {/* </View> */}
       </SafeAreaView>
-    // </ScrollView>
   );
 }
 
