@@ -1,10 +1,9 @@
 import React from "react";
 import { StyleSheet, View, Text, ScrollView, FlatList } from "react-native";
 import { useSelector } from "react-redux";
-import userPlaces from "../../dummyData/userPlaces";
 import { RootState } from "../../redux/reducers/reducers";
 
-function UserPlaces({ citiesPlaces }) {
+function UserPlaces({ citiesPlaces }: any) {
   const userFriendInfo: any = useSelector(
     (state: RootState) => state.userFriendInfo
   );
