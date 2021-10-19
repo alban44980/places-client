@@ -16,8 +16,6 @@ function Tags(props: any) {
   // unique tags associated with a collection of places
   const { tags } = props;
 
-  console.log("TAGS >>>>>>>>>>>>", tags);
-
   return (
     <View style={styles.tagSectionContainer}>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
