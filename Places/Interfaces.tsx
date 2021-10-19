@@ -19,15 +19,11 @@ export interface CitySchema {
 }
 
 export interface FriendSchema {
-  body: {
-    FriendId: string;
-  };
+  FriendId: string;
 }
 
-export interface OtherUserIndoSchema {
-  body: {
-    userId: string;
-  };
+export interface OtherUserInfoSchema {
+  userId: string;
 }
 
 export interface PlaceSchema {

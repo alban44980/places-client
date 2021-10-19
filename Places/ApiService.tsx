@@ -1,13 +1,13 @@
 import {
   FriendSchema,
-  OtherUserIndoSchema,
+  OtherUserInfoSchema,
   PlaceSchema,
   RemovePlaceSchema,
   SearchUserSchema,
 } from "./Interfaces";
 import { PATHIP } from "@env";
 
-const path = PATHIP;
+const path = "192.168.1.169";
 
 const BASE_URL = `http://${path}:3001`;
 console.log(BASE_URL);
@@ -47,7 +47,7 @@ const login = (credentials: any) => {
     body: JSON.stringify(credentials),
   })
     .then((res) => res.json())
-    .catch((err: any) => console.log("poop", err));
+    .catch((err: any) => console.log("cannot loggin", err));
 };
 
 /**
@@ -69,9 +69,7 @@ const addFriend = (
       "x-refresh": `${refreshToken}`,
     },
     body: JSON.stringify(friendId),
-  })
-    .then((res) => res.json())
-    .catch((err: any) => console.log(err));
+  }).catch((err: any) => console.log("AddFriend Error:", err));
 };
 
 /*
@@ -162,11 +160,11 @@ const searchUser = (
 };
 
 const getOtherUserInfo = (
-  userId: OtherUserIndoSchema,
+  userId: OtherUserInfoSchema,
   refreshToken: string,
   accessToken: string
 ): Promise<any> => {
-  return fetch(`${BASE_URL}/searched/user`, {
+  return fetch(`${BASE_URL}/otherUserInfo`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -285,9 +283,7 @@ const removeFriend = (
       "x-refresh": `${refreshToken}`,
     },
     body: JSON.stringify(friendId),
-  })
-    .then((res) => res.json())
-    .catch((err: any) => console.log(err));
+  }).catch((err: any) => console.log("RemoveFriend Error:", err));
 };
 
 const removeMyPlace = (

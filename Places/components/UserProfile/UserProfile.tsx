@@ -9,13 +9,17 @@ import { useSelector } from "react-redux";
 
 function UserProfile(props: any) {
   const data = props.route.params;
-  const [selectedUser, setSelectedUser] = useState<{}>({});
+  const [selectedUser, setSelectedUser] = useState<{
+    username: string;
+    first_name: string;
+    Cities: string;
+  }>({ username: "", first_name: "", Cities: "" });
 
   useEffect(() => {
     getFriendPageInfo();
   }, []);
 
-  const friendId = data.id;
+  const friendId: string = data.id;
 
   const userFriendInfo: any = useSelector(
     (state: RootState) => state.userFriendInfo
@@ -34,11 +38,14 @@ function UserProfile(props: any) {
   return (
     <SafeAreaView style={styles.userProfileContainer}>
       <View style={styles.titleContainer}>
-        <Text style={selectedUser.username}>{selectedUser.first_name}</Text>
+        <Text style={styles.username}>{selectedUser.first_name}</Text>
       </View>
 
       <MyData user={selectedUser} />
-      <ToggleFollowContainer />
+      <ToggleFollowContainer
+        setSelectedUser={setSelectedUser}
+        friendId={friendId}
+      />
       {/* //SEARCHBAR TO BE MODIFIED */}
       <SearchBar />
       <UserPlaces citiesPlaces={selectedUser.Cities} />

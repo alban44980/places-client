@@ -15,8 +15,8 @@ const userInfo = (state = {}, action: any) => {
 const userFriendInfo = (state = {}, action: any) => {
   switch (action.type) {
     case "SET_USER_FRIEND_DATA": {
-      const { frindsInfo } = action;
-      return frindsInfo;
+      const { friendsInfo } = action;
+      return friendsInfo;
     }
     default:
       return state;

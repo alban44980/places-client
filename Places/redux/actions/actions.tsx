@@ -28,7 +28,7 @@ export const saveRefreshToken = (token: string) => ({
   type: "SAVE_REFRESH_TOKEN",
   token,
 });
-export const saveUserFriendsInfo = (frindsInfo: any) => ({
+export const saveUserFriendsInfo = (friendsInfo: any) => ({
   type: "SET_USER_FRIEND_DATA",
-  frindsInfo,
+  friendsInfo,
 });

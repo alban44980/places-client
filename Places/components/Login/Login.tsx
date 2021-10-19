@@ -46,12 +46,12 @@ function Login() {
       const tokens: any = await ApiService.login(data);
       //getFriendsCityPlaces apicall below
       if (tokens.accessToken && tokens.refreshToken) {
-        const frindsInfo = await ApiService.getFriendsCitesPlace(
+        const friendsInfo = await ApiService.getFriendsCitesPlace(
           tokens.refreshToken,
           tokens.accessToken
         );
 
-        dispatch(saveUserFriendsInfo(frindsInfo));
+        dispatch(saveUserFriendsInfo(friendsInfo));
         dispatch(saveAccessToken(tokens.accessToken));
         dispatch(saveRefreshToken(tokens.refreshToken));
         navigation.navigate("home");
