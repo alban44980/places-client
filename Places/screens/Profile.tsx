@@ -8,34 +8,59 @@ import places from '../dummyData/placesList';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/reducers/reducers';
 import PlaceModal from '../components/PlaceModal/PlaceModal';
-import { togglePlaceVisible } from '../redux/actions/actions';
+import { setPlaceSelected, togglePlaceVisible } from '../redux/actions/actions';
 import colors from '../assets/styles/colors';
 import user from './../dummyData/user';
 import fonts from '../assets/styles/fonts';
-
+import ApiService from '../ApiService';
 
 
 
 
 function Profile() {
 
+  // onload useEffect
+  useEffect( () => {
+    async function getUser() {
+      let user = await ApiService.getMyCityPlaces(refreshToken, accessToken)
+      setUser(user)
+    }
+    getUser()
 
-  const userPlaces = user.places;
-  const cities = user.cities;
+  setCities(user.Cities)
+  let userPlaces = []
+  for (let city of user.Cities) {
 
+    for (let place of city.Places) {
+      userPlaces.push(place)
+    }
+  }
+  setPlaces(userPlaces)
 
+  }, [])
 
-
-  const dispatch = useDispatch();
+  
+  
+  // states
+  const [user, setUser] = useState<any>({})
+  const [places, setPlaces] = useState<any[]>([]);
+  const [cities, setCities] = useState<any[]>([]);
   const [selectedPlace, setSelectedPlace] = useState<any>(null);
-  // Places displays all the users
-  const [places, setPlaces] = useState<any[]>([...userPlaces]);
   const [filteredPlaces, setFilteredPlaces] = useState<any[]>([...places]);
   const [tagSelected, setTagSelected] = useState<string[]>([]);
-
   const [myPlacesSelected, setMyPlacesSelected] = useState<Boolean>(true);
   const [savedSelected, setSavedSelected] = useState<Boolean>(false);
 
+
+  // redux states
+  const dispatch = useDispatch();
+  const handlePlacePress = () => {dispatch(togglePlaceVisible())};
+  const placeVisible: any = useSelector((state: RootState) => state.placeVisible);
+  const accessToken: any = useSelector((state: RootState) => state.accessToken);
+  const refreshToken: any = useSelector((state: RootState) => state.refreshToken);
+
+
+  // functions
   const filterPlaces = () => {
     let filteredPlacesList: any[] = [];
     if (tagSelected.length) {
@@ -52,19 +77,7 @@ function Profile() {
     filterPlaces();
   }, [tagSelected]);
 
-  const handlePlacePress = () => {
-    dispatch(togglePlaceVisible());
-  };
 
-  const placeVisible: any = useSelector(
-    (state: RootState) => state.placeVisible
-  );
-
-  const userData: any = useSelector(
-    (state: RootState) => state.userInfo
-  );
-
-  alert(userData.username)
 
 
 
@@ -117,6 +130,12 @@ function Profile() {
     // </ScrollView>
   );
 }
+
+
+
+
+
+
 
 const styles = StyleSheet.create({
   profileContainer: {
