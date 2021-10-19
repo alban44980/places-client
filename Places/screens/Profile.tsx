@@ -85,7 +85,7 @@ function Profile() {
       )}
 
       <View style={styles.usernameContainer}>
-        <Text style={styles.usernameHeader}>{user.username}</Text>
+        <Text style={styles.usernameHeader}>{user.user_name}</Text>
       </View>
 
       <MyData user={user} />
