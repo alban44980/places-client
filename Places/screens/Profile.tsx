@@ -18,8 +18,14 @@ import fonts from '../assets/styles/fonts';
 
 
 function Profile() {
+
+
   const userPlaces = user.places;
   const cities = user.cities;
+
+
+
+
   const dispatch = useDispatch();
   const [selectedPlace, setSelectedPlace] = useState<any>(null);
   // Places displays all the users
@@ -53,6 +59,15 @@ function Profile() {
   const placeVisible: any = useSelector(
     (state: RootState) => state.placeVisible
   );
+
+  const userData: any = useSelector(
+    (state: RootState) => state.userInfo
+  );
+
+  alert(userData.username)
+
+
+
 
   return (
     // <ScrollView style={{flex: 1}}>

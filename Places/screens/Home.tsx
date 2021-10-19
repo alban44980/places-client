@@ -15,9 +15,6 @@ import SearchModal from "../components/SearchModal/SearchModal";
 import PlaceModal from "../components/PlaceModal/PlaceModal";
 import homeScreenPlaces from "../dummyData/homeScreenPlaces";
 import { toggleSearchVisible } from "../redux/actions/actions";
-import places from "../dummyData/placesList";
-import friends from "../dummyData/friends";
-import allFriendsCities from "../dummyData/allFriendsCities";
 import colors from "../assets/styles/colors";
 import fonts from "../assets/styles/fonts";
 
@@ -125,22 +122,19 @@ function Home() {
         <View style={styles.listsContainer}>
           <HomeList
             key={3}
-            data={places}
-            // data={recentlyAddedPlacesList}
+            data={recentlyAddedPlacesList}
             route={"place"}
             setPlace={setPlaceSelected}
           />
           <HomeList
             key={1}
-            data={friends}
-            // data={friendList}
+            data={friendList}
             route={"userProfile"}
             setFriend={setFriendSelected}
           />
           <HomeList
             key={2}
-            data={allFriendsCities}
-            // data={cityList}
+            data={cityList}
             route={"search"}
             setCity={setCitySelected}
           />
