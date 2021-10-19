@@ -12,6 +12,7 @@ import AddressInput from './AddressInput';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import ApiService from '../../ApiService';
 import { useSelector } from 'react-redux';
+import fonts from '../../assets/styles/fonts';
 
 function FormContainer({ image }) {
   const accessToken: any = useSelector((state: RootState) => state.accessToken);
@@ -77,24 +78,30 @@ function FormContainer({ image }) {
           required: true,
         }}
         render={({ field: { onChange, onBlur, value } }) => (
-          <TextInput
-            style={styles.input}
-            onChangeText={onChange}
-            value={value}
-            placeholder="Place name"
-            autoCapitalize="none"
-          />
+          <View style={styles.placeNameInputContainer}>
+            <Text style={styles.inputLabelText} >Place name</Text>
+            <TextInput
+              style={styles.placeNameInput}
+              onChangeText={onChange}
+              value={value}
+              placeholder="Place name"
+              autoCapitalize="none"
+            />
+          </View>
         )}
         name="name"
         defaultValue=""
       />
-      <CityInput setCity={setCity} setCountry={setCountry} />
+      <View style={styles.googleInputFieldsContainer}>
+        <CityInput setCity={setCity} setCountry={setCountry} />
 
-      <AddressInput
-        address={address}
-        setAddress={setAddress}
-        country={country}
-      />
+        <AddressInput
+          address={address}
+          setAddress={setAddress}
+          country={country}
+        />
+
+      </View>
 
       <Controller
         control={control}
@@ -103,15 +110,17 @@ function FormContainer({ image }) {
           required: true,
         }}
         render={({ field: { onChange, onBlur, value } }) => (
-          <TextInput
-            style={styles.placeDescription}
-            onChangeText={onChange}
-            value={value}
-            placeholder="Description"
-            autoCapitalize="none"
-            multiline={true}
-            numberOfLines={5}
-          />
+  
+            <TextInput
+              style={styles.placeDescription}
+              onChangeText={onChange}
+              value={value}
+              placeholder="Description"
+              autoCapitalize="none"
+              multiline={true}
+              numberOfLines={5}
+            />
+
         )}
         name="description"
         defaultValue=""
@@ -130,24 +139,43 @@ function FormContainer({ image }) {
 
 const styles = StyleSheet.create({
   formContainer: {
-    backgroundColor: 'lightblue',
+    backgroundColor: colors.backgroundDark,
     flex: 1,
-    width: '90%',
+    width: '85%',
     alignItems: 'center',
   },
-  googleInputsContainer: {
+
+  placeNameInputContainer: {
     width: '100%',
-    height: '10%',
-    alignItems: 'center',
+    height: '15%',
+    borderWidth: 1,
+    justifyContent: 'center'
   },
-  input: {
-    backgroundColor: 'white',
-    margin: 5,
-    height: '10%',
+
+  inputLabelText: {
+    fontFamily: fonts.semiBold,
+    fontSize: 18,
+    color: colors.fontLight,
+    marginBottom: 3,
+  },
+
+  placeNameInput: {
+    backgroundColor: colors.backgroundLight,
+    height: '50%',
     width: '100%',
-    padding: 10,
+    paddingHorizontal: 10,
     borderRadius: 5,
   },
+
+  googleInputFieldsContainer: {
+    flex: 1,
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+
+
+  
   addButton: {
     margin: 5,
   },

@@ -13,9 +13,15 @@ import { RootState } from "../redux/reducers/reducers";
 import HomeList from "../components/HomeList/HomeList";
 import SearchModal from "../components/SearchModal/SearchModal";
 import PlaceModal from "../components/PlaceModal/PlaceModal";
+import homeScreenPlaces from "../dummyData/homeScreenPlaces";
 import { toggleSearchVisible } from "../redux/actions/actions";
+import places from "../dummyData/placesList";
+import friends from "../dummyData/friends";
+import allFriendsCities from "../dummyData/allFriendsCities";
 import colors from "../assets/styles/colors";
 import fonts from "../assets/styles/fonts";
+
+
 
 function Home() {
   const [friendList, setFriendList] = useState<any[]>([]);
@@ -58,6 +64,7 @@ function Home() {
             first_name: friend.first_name,
             last_name: friend.last_name,
           };
+
           recentlyAddedPlaces.push(places);
         }
       }
@@ -118,19 +125,22 @@ function Home() {
         <View style={styles.listsContainer}>
           <HomeList
             key={3}
-            data={recentlyAddedPlacesList}
+            data={places}
+            // data={recentlyAddedPlacesList}
             route={"place"}
             setPlace={setPlaceSelected}
           />
           <HomeList
             key={1}
-            data={friendList}
+            data={friends}
+            // data={friendList}
             route={"userProfile"}
             setFriend={setFriendSelected}
           />
           <HomeList
             key={2}
-            data={cityList}
+            data={allFriendsCities}
+            // data={cityList}
             route={"search"}
             setCity={setCitySelected}
           />
