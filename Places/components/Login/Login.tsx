@@ -19,6 +19,9 @@ import {
   saveUserFriendsInfo,
 } from "../../redux/actions/actions";
 import { RootState } from "../../redux/reducers/reducers";
+import colors from "../../assets/styles/colors";
+import fonts from "../../assets/styles/fonts";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 type userScreenProp = StackNavigationProp<RootStackParamList>;
 
@@ -59,7 +62,7 @@ function Login() {
   return (
     <View style={styles.loginContainer}>
       <View style={styles.topContainer}>
-        <Text style={styles.text}>MY PLACES</Text>
+        <Text style={styles.headerText}>MY PLACES</Text>
       </View>
       <View style={styles.formContainer}>
         <Controller
@@ -100,57 +103,81 @@ function Login() {
           name="password"
           defaultValue=""
         />
-        <Text
+        <TouchableWithoutFeedback 
           style={styles.createAccountButton}
           onPress={() => navigation.navigate("signup")}
         >
-          Create an account
-        </Text>
+          <Text style={styles.createAccountButtonLabel}> Create an account </Text>
+        </TouchableWithoutFeedback>
 
-        <Button title="Login" onPress={handleSubmit(onSubmit)} />
+        <TouchableOpacity 
+          style={styles.loginButtonContainer}
+          onPress={handleSubmit(onSubmit)}
+        >
+          <Text>Login</Text>
+        </TouchableOpacity>
+
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+
   loginContainer: {
     flex: 1,
-    backgroundColor: "lightgreen",
+    backgroundColor: colors.backgroundDark,
   },
+
   topContainer: {
-    height: "30%",
-    backgroundColor: "lightblue",
+    height: "25%",
+    backgroundColor: colors.backgroundLight,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    paddingTop: 20
   },
-  text: {
-    color: "black",
-    fontSize: 30,
+
+
+  headerText: {
+    color: colors.fontDark,
+    fontSize: 40,
+    fontFamily: fonts.medium,
+    letterSpacing: 1
   },
+
   formContainer: {
-    // backgroundColor: 'red',
-    height: "30%",
+    height: "40%",
     alignItems: "center",
+    paddingTop: 30,
   },
+
   input: {
-    backgroundColor: "white",
+    backgroundColor: colors.backgroundLight,
     margin: 5,
-    height: "20%",
-    width: "85%",
-    padding: 10,
+    height: "16%",
+    width: "75%",
+    paddingHorizontal: 10,
+    borderRadius: 10,
+    marginBottom: 10
   },
-  createAccountButton: {
-    margin: 5,
+
+  createAccountButtonLabel: {
+    fontFamily: fonts.regular,
+    color: colors.backgroundLight,
+    marginVertical: 15
   },
-  loginButton: {
-    backgroundColor: "lightblue",
-    height: "20%",
-    width: "40%",
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 20,
+
+  loginButtonContainer: {
+    borderWidth: 1,
+    borderRadius: 12,
+    width: 150,
+    height: 40,
+    backgroundColor: colors.backgroundLight,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 5,
+    
   },
 });
 
