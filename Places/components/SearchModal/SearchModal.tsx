@@ -89,6 +89,7 @@ function SearchModal({ city }: any) {
             setFilterModalVisible={setFilterModalVisible}
             handlePress={handleFilterPress}
             setTagsSelected={setTagsSelected}
+            tagsSelected={tagsSelected}
           />
         )}
 
@@ -116,7 +117,11 @@ function SearchModal({ city }: any) {
           tagsSelected={tagsSelected}
         />
 
-        <FriendPlacesFilter />
+        <FriendPlacesFilter
+          tagsSelected={tagsSelected}
+          setSearchResults={setPlacesRendered}
+          friendsList={friendsCitiesPlaces}
+        />
         <PlacesList
           handlePress={handlePlacePress}
           setPlace={setSelectedPlace}

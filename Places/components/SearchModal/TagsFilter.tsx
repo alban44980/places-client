@@ -16,15 +16,17 @@ function TagsFilter({ selected, setSelected, formTags, setFormTags }: any) {
   const handlePress = (tag: string) => {
     //if tag not already selected, add it to selected list
     if (!selected.includes(tag)) {
-      setSelected((prev: any) => [...prev, tag]);
-      setFormTags((prev: any) => [...prev, { tag_name: tag }]);
+      if (setSelected) setSelected((prev: any) => [...prev, tag]);
+      if (setFormTags) setFormTags((prev: any) => [...prev, { tag_name: tag }]);
     }
     //remove tag from selected list if already selected
     if (selected.includes(tag)) {
-      setSelected((prev: any) => [...prev].filter((item) => item !== tag));
-      setFormTags((prev: any) =>
-        [...prev].filter((item) => item !== { tag_name: tag })
-      );
+      if (setSelected)
+        setSelected((prev: any) => [...prev].filter((item) => item !== tag));
+      if (setFormTags)
+        setFormTags((prev: any) =>
+          [...prev].filter((item) => item !== { tag_name: tag })
+        );
     }
   };
 
