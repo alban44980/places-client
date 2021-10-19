@@ -24,18 +24,18 @@ function Profile() {
     async function getUser() {
       let user = await ApiService.getMyCityPlaces(refreshToken, accessToken)
       setUser(user)
+      setCities(user.Cities)
+      let userPlaces = []
+      for (let city of user.Cities) {
+        for (let place of city.Places) {
+          userPlaces.push(place)
+        }
+      }
+      setPlaces(userPlaces)
     }
     getUser()
 
-  setCities(user.Cities)
-  let userPlaces = []
-  for (let city of user.Cities) {
 
-    for (let place of city.Places) {
-      userPlaces.push(place)
-    }
-  }
-  setPlaces(userPlaces)
 
   }, [])
 
