@@ -9,9 +9,9 @@ import { PATHIP } from "@env";
 
 const path = PATHIP;
 
-const BASE_URL = 'http://9a1f-147-161-122-215.ngrok.io';
 // const BASE_URL = `http://${path}:3001`;
-console.log(BASE_URL);
+const BASE_URL = "http://9a1f-147-161-122-215.ngrok.io";
+
 /*
 register expected input
 {
@@ -42,14 +42,13 @@ login expected input
 }
 */
 const login = (credentials: any) => {
-  
   return fetch(`${BASE_URL}/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(credentials),
   })
-  .then((res) => res.json())
-  .catch((err: any) => alert(err));
+    .then((res) => res.json())
+    .catch((err: any) => alert(err));
 };
 
 /**

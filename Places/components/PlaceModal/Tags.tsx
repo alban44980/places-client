@@ -15,7 +15,6 @@ function Tags(props: any) {
   // for now this is the same tags list but in reality it will be the tags associated with a place or
   // unique tags associated with a collection of places
   const { tags } = props;
-  console.log("TAGS >>>>>>>>>>>>", tags);
 
   return (
     <View style={styles.tagSectionContainer}>

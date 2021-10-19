@@ -4,10 +4,10 @@ import {
   Text,
   TouchableHighlight,
   ScrollView,
-} from 'react-native';
-import React, { useState } from 'react';
-import colors from '../../assets/styles/colors';
-import tags from '../../dummyData/tagsList';
+} from "react-native";
+import React, { useState } from "react";
+import colors from "../../assets/styles/colors";
+import tags from "../../dummyData/tagsList";
 
 function TagsFilter({ selected, setSelected, formTags, setFormTags }: any) {
   const tagsList = tags;
@@ -16,24 +16,25 @@ function TagsFilter({ selected, setSelected, formTags, setFormTags }: any) {
   const handlePress = (tag: string) => {
     //if tag not already selected, add it to selected list
     if (!selected.includes(tag)) {
-      console.log(tag);
-      setSelected((prev: any) => [...prev, tag]);
-      setFormTags((prev: any) => [...prev, { tag_name: tag }]);
+      if (setSelected) setSelected((prev: any) => [...prev, tag]);
+      if (setFormTags) setFormTags((prev: any) => [...prev, { tag_name: tag }]);
     }
     //remove tag from selected list if already selected
     if (selected.includes(tag)) {
-      setSelected((prev: any) => [...prev].filter((item) => item !== tag));
-      setFormTags((prev: any) =>
-        [...prev].filter((item) => item !== { tag_name: tag })
-      );
+      if (setSelected)
+        setSelected((prev: any) => [...prev].filter((item) => item !== tag));
+      if (setFormTags)
+        setFormTags((prev: any) =>
+          [...prev].filter((item) => item !== { tag_name: tag })
+        );
     }
   };
 
   return (
     <View style={styles.tagSectionContainer}>
       <ScrollView
-        style={{ width: '100%' }}
-        contentContainerStyle={{ alignItems: 'center' }}
+        style={{ width: "100%" }}
+        contentContainerStyle={{ alignItems: "center" }}
       >
         {tagsList.map((tag) => {
           return (
@@ -61,36 +62,36 @@ const styles = StyleSheet.create({
   tagSectionContainer: {
     flex: 1,
     backgroundColor: colors.backgroundMedium,
-    alignItems: 'center',
+    alignItems: "center",
     paddingTop: 20,
   },
 
   tagDefaultContainer: {
     height: 45,
-    width: '60%',
+    width: "60%",
     backgroundColor: colors.backgroundDark,
     borderRadius: 10,
     marginBottom: 10,
-    justifyContent: 'center',
+    justifyContent: "center",
     borderColor: colors.backgroundDark,
     borderWidth: 1,
   },
 
   tagSelectedContainer: {
     height: 45,
-    width: '60%',
+    width: "60%",
     backgroundColor: colors.accentFun,
     borderRadius: 10,
     marginBottom: 10,
-    justifyContent: 'center',
+    justifyContent: "center",
     borderColor: colors.backgroundDark,
     borderWidth: 1,
   },
 
   tagText: {
     fontSize: 12,
-    fontWeight: '600',
+    fontWeight: "600",
     color: colors.fontLight,
-    textAlign: 'center',
+    textAlign: "center",
   },
 });

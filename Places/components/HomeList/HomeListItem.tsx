@@ -37,23 +37,17 @@ function HomeListItem({ data, route, setPlace, setCity, setFriend }: any) {
 
   const handlePress = () => {
     if (route === "userProfile") {
-      // console.log("userPROFILE START>>>>>>>>>", data);
-      // console.log("userPROFILE END>>>>>>>>>");
       setFriend(data);
       navigation.navigate("userProfile", data);
     }
 
     if (route === "search") {
-      console.log("SEARCH START>>>>>>>>>", data);
-      console.log("SEARCH END>>>>>>>>>");
       //passes click cities data
       setCity(data.name);
       dispatch(toggleSearchVisible());
     }
 
     if (route === "place") {
-      // console.log("PLACE START>>>>>>>>>", data);
-      // console.log("PLACE END>>>>>>>>>");
       setPlace(data);
       dispatch(togglePlaceVisible());
     }
@@ -89,7 +83,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 5,
     overflow: "hidden",
-    borderWidth: .5,
+    borderWidth: 0.5,
   },
 
   img: {

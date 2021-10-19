@@ -15,7 +15,7 @@ import DetailsBar from "./DetailsBar";
 import Description from "./Description";
 import Tags from "./Tags";
 import colors from "../../assets/styles/colors";
-import places from "../../dummyData/placesList";
+
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers/reducers";
 import { setPlaceSelected } from "../../redux/actions/actions";

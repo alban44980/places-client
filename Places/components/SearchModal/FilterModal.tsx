@@ -12,8 +12,6 @@ import colors from '../../assets/styles/colors';
 import TagsFilter from './TagsFilter';
 
 function FilterModal(props: any) {
-  const [selected, setSelected] = useState<String[]>([]);
-
   const {
     filterModalVisible,
     setFilterModalVisible,
@@ -21,7 +19,10 @@ function FilterModal(props: any) {
     formTags,
     setFormTags,
     setTagsSelected,
+    tagsSelected,
   } = props;
+
+  const [selected, setSelected] = useState<String[]>(tagsSelected);
 
   useEffect(() => {
     if (setTagsSelected) setTagsSelected(selected);
