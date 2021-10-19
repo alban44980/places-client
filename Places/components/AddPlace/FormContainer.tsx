@@ -10,25 +10,19 @@ import TagsContainer from './tagsContainer';
 import CityInput from './CityInput';
 import AddressInput from './AddressInput';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import ApiService from '../../ApiService';
+import { useSelector } from 'react-redux';
 
-function FormContainer() {
-  //initial state for form data
-  const initialState = {
-    name: '',
-    description: '',
-    tag_list: [],
-    img: '',
-    location: '',
-    address: '',
-    city: '',
-    city_info: null,
-    country: '',
-  };
-  const [state, setState] = useState(initialState);
+function FormContainer({ image }) {
+  const accessToken: any = useSelector((state: RootState) => state.accessToken);
+  const refreshToken: any = useSelector(
+    (state: RootState) => state.refreshToken
+  );
+
   const [city, setCity] = useState('');
   const [country, setCountry] = useState('');
   const [address, setAddress] = useState('');
-  const [tags, setTags] = useState([]);
+  const [formTags, setFormTags] = useState([]);
 
   const {
     control,
@@ -38,22 +32,16 @@ function FormContainer() {
 
   //submit form function
   const onSubmit = async (data: any) => {
-    console.log('DATA FROM FORM => ', data);
-    console.log('city  state ==>', city);
-    console.log('country ==>', country);
-    console.log('address ==>', address);
     const cityGeoCall = await fetch(
       `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${REACT_APP_GOOGLE_MAPS_API_KEY}`
     );
     const cityGeo = await cityGeoCall.json();
-    console.log('cityGeo ==>', cityGeo.results[0].geometry.location);
     const addressGeoCall = await fetch(
       `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${REACT_APP_GOOGLE_MAPS_API_KEY}`
     );
     const addressGeo = await addressGeoCall.json();
-    console.log('addressGeo ==>', addressGeo.results[0].geometry.location);
-    setState((previous) => ({
-      ...previous,
+
+    const objToSend = {
       name: data.name,
       description: data.description,
       location: JSON.stringify(addressGeo.results[0].geometry.location),
@@ -65,7 +53,19 @@ function FormContainer() {
         location: JSON.stringify(cityGeo.results[0].geometry.location),
       },
       country: country,
-    }));
+      img: image,
+      tag_list: formTags,
+    };
+
+    console.log('TAGS FROM FORM ==> ', objToSend.tag_list);
+
+    const result = await ApiService.addPlace(
+      objToSend,
+      refreshToken,
+      accessToken
+    );
+
+    console.log('RESPONSE FROM SERVER', result);
   };
 
   return (
@@ -116,7 +116,7 @@ function FormContainer() {
         name="description"
         defaultValue=""
       />
-      <TagsContainer />
+      <TagsContainer formTags={formTags} setFormTags={setFormTags} />
       <TouchableOpacity
         style={styles.submitButton}
         title="Add Place"

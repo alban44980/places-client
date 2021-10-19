@@ -1,17 +1,11 @@
+//@ts-nocheck
 import React, { useEffect, useState } from 'react';
 
 import * as ImagePicker from 'expo-image-picker';
-import {
-  StyleSheet,
-  Platform,
-  TouchableHighlight,
-  Image,
-} from 'react-native';
+import { StyleSheet, Platform, TouchableHighlight, Image } from 'react-native';
 import colors from '../../assets/styles/colors';
 
-function ImageContainer() {
-  const [image, setImage] = useState<any>(null);
-
+function ImageContainer({ image, setImage }) {
   useEffect(() => {
     (async () => {
       if (Platform.OS !== 'web') {
@@ -30,10 +24,31 @@ function ImageContainer() {
       allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
+      base64: true, //we need this to format to Cloudinary
     });
 
     if (!result.cancelled) {
-      setImage(result.uri);
+      // setImage(result.uri);
+      let base64Img = `data:image/jpg;base64,${result.base64}`; //    //***IMPORTANT*** This step is necessary.  It converts image from //file path format that imagePicker creates, into a form that cloudinary //requires.
+      let data = {
+        file: base64Img,
+        upload_preset: 'place_imgs',
+      };
+      fetch('https://api.cloudinary.com/v1_1/dgdnva4a7/upload', {
+        body: JSON.stringify(data),
+        headers: {
+          'content-type': 'application/json',
+        },
+        method: 'POST',
+      })
+        .then(async (r) => {
+          let data = await r.json();
+          console.log('GETTING A RESPONSE FROM CLOUDINARY yiiiii');
+          console.log('URL SENT BACK FROM CLOUDINARY', data.url);
+          console.log('TYPE OF URL SENT BACK', typeof data.url);
+          setImage(data.url);
+        })
+        .catch((err) => console.log(err));
     }
   };
   return (

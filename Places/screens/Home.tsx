@@ -13,11 +13,7 @@ import { RootState } from "../redux/reducers/reducers";
 import HomeList from "../components/HomeList/HomeList";
 import SearchModal from "../components/SearchModal/SearchModal";
 import PlaceModal from "../components/PlaceModal/PlaceModal";
-import allFriendsCities from "../dummyData/allFriendsCities";
-import homeScreenPlaces from "../dummyData/homeScreenPlaces";
 import { toggleSearchVisible } from "../redux/actions/actions";
-import places from "../dummyData/placesList";
-import friends from "../dummyData/friends";
 import colors from "../assets/styles/colors";
 import fonts from "../assets/styles/fonts";
 
@@ -62,7 +58,6 @@ function Home() {
             first_name: friend.first_name,
             last_name: friend.last_name,
           };
-
           recentlyAddedPlaces.push(places);
         }
       }
@@ -97,18 +92,25 @@ function Home() {
       )}
       {placeVisible && <PlaceModal place={placeSelected} />}
 
-      <ScrollView style={{flex: 1}}>
-
+      <ScrollView style={{ flex: 1 }}>
         <View style={styles.headerContainer}>
           <Text style={styles.headerText}>Logo & Image PlaceHolder</Text>
         </View>
 
         <View style={styles.homeImageBannerContainer}>
-          <Image style={styles.imageBanner} source={{uri: "https://images.pexels.com/photos/695779/pexels-photo-695779.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"}} />
+          <Image
+            style={styles.imageBanner}
+            source={{
+              uri: "https://images.pexels.com/photos/695779/pexels-photo-695779.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+            }}
+          />
         </View>
 
         <View style={styles.searchContainer}>
-          <TouchableOpacity style={styles.searchTouchable} onPress={handlePress}>
+          <TouchableOpacity
+            style={styles.searchTouchable}
+            onPress={handlePress}
+          >
             <Text style={styles.searchBar}>Where are you going ?</Text>
           </TouchableOpacity>
         </View>
@@ -134,7 +136,6 @@ function Home() {
           />
         </View>
       </ScrollView>
-
     </SafeAreaView>
   );
 }
@@ -156,12 +157,12 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 22,
     color: colors.fontLight,
-    fontFamily: fonts.semiBold
+    fontFamily: fonts.semiBold,
   },
 
   homeImageBannerContainer: {
     height: 350,
-    marginBottom: 10
+    marginBottom: 10,
   },
 
   imageBanner: {
@@ -174,8 +175,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.backgroundDark,
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 50
-
+    marginBottom: 50,
   },
 
   searchTouchable: {

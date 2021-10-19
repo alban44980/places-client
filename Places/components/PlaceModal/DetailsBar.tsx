@@ -9,7 +9,7 @@ function DetailsBar(props: any) {
   return (
     <View style={styles.detailBarContainer}>
       <Text style={styles.locationLabel}>Location</Text>
-      <Text style={styles.locationText}>{place.address}</Text>
+      <Text style={styles.locationText} numberOfLines={1}>{place.address}</Text>
     </View>
   );
 }
@@ -26,6 +26,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginBottom: 20,
     borderRadius: 5,
+    paddingHorizontal: 50,
+    overflow: 'hidden'
   },
 
   locationLabel: {

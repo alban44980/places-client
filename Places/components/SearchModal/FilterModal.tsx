@@ -1,47 +1,64 @@
-import React, {useState} from 'react';
-import {StyleSheet, View, Text, Modal, TouchableOpacity, TextInput} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import {
+  StyleSheet,
+  View,
+  Text,
+  Modal,
+  TouchableOpacity,
+  TextInput,
+} from 'react-native';
+
 import colors from '../../assets/styles/colors';
 import TagsFilter from './TagsFilter';
 
-
-
 function FilterModal(props: any) {
+  const [selected, setSelected] = useState<String[]>([]);
 
-  const {filterModalVisible, setFilterModalVisible, handlePress} = props
+  const {
+    filterModalVisible,
+    setFilterModalVisible,
+    handlePress,
+    formTags,
+    setFormTags,
+    setTagsSelected,
+  } = props;
 
+  useEffect(() => {
+    if (setTagsSelected) setTagsSelected(selected);
+  }, [selected]);
 
   return (
     <Modal
-      animationType="none" 
-      transparent={true} 
+      animationType="none"
+      transparent={true}
       visible={filterModalVisible}
       onRequestClose={() => {
         setFilterModalVisible(!filterModalVisible);
-       }}
+      }}
     >
-      
-
       <View style={styles.filterModalContainer}>
-
         <View style={styles.modalHeaderContainer}>
           <Text style={styles.headerText}>Select Tags</Text>
         </View>
 
         <View style={styles.tagsListContainer}>
-          <TagsFilter />
+          <TagsFilter
+            selected={selected}
+            formTags={formTags}
+            setFormTags={setFormTags}
+            setSelected={setSelected}
+          />
         </View>
 
-       <View style={styles.buttonsContainer}>
-          <TouchableOpacity 
-            onPress={() => setFilterModalVisible(!filterModalVisible)} 
+        <View style={styles.buttonsContainer}>
+          <TouchableOpacity
+            onPress={() => setFilterModalVisible(!filterModalVisible)}
             style={styles.acceptButton}
           >
             <Text style={styles.acceptButtonText}>Accept 👍</Text>
           </TouchableOpacity>
-       </View>
-
+        </View>
       </View>
-
     </Modal>
   );
 }
@@ -60,7 +77,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     overflow: 'hidden',
     borderRadius: 10,
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   modalHeaderContainer: {
@@ -68,13 +85,13 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: colors.accentFun,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 
   headerText: {
     fontSize: 22,
     fontWeight: '700',
-    color: colors.fontLight
+    color: colors.fontLight,
   },
 
   tagsListContainer: {
@@ -90,7 +107,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'row',
     borderRadius: 10,
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   acceptButton: {
@@ -100,14 +117,13 @@ const styles = StyleSheet.create({
     width: '70%',
     borderColor: colors.backgroundDark,
     borderWidth: 1,
-    borderRadius: 10
+    borderRadius: 10,
   },
 
   acceptButtonText: {
     textAlign: 'center',
     color: colors.fontDark,
     fontWeight: '600',
-    fontSize: 15
-  }
-  
-})
+    fontSize: 15,
+  },
+});
