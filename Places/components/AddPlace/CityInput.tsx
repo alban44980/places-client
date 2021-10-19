@@ -16,7 +16,7 @@ const CityInput = ({ setCity, setCountry }) => {
         key: REACT_APP_GOOGLE_MAPS_API_KEY,
         language: 'en',
         // components: 'country:us',
-        // types: ['(cities)'],
+        types: ['(cities)'],
       }}
       styles={{
         textInputContainer: {

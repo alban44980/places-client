@@ -16,9 +16,9 @@
     "@react-navigation/native-stack": "^6.2.4",
     "@react-navigation/stack": "^6.0.11",
     "app": "^0.1.0",
+    "cloudinary-core": "^2.12.0",
     "expo": "~42.0.1",
     "expo-app-loading": "^1.1.2",
-    "cloudinary-core": "^2.12.0",
     "expo-font": "~9.2.1",
     "expo-image-picker": "~10.2.2",
     "expo-status-bar": "~1.0.4",
@@ -43,7 +43,8 @@
     "react-navigation": "^4.4.4",
     "react-redux": "^7.2.5",
     "redux": "^4.1.1",
-    "rn-nodeify": "^10.3.0"
+    "rn-nodeify": "^10.3.0",
+    "react-native-maps": "0.28.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
