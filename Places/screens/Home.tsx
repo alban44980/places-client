@@ -199,6 +199,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     alignSelf: "center",
     backgroundColor: colors.backgroundDark,
+    paddingBottom: 70,
   },
 });
 
