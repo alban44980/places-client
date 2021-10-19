@@ -48,11 +48,7 @@ const login = (credentials: any) => {
     body: JSON.stringify(credentials),
   })
     .then((res) => res.json())
-<<<<<<< HEAD
     .catch((err: any) => console.log("cannot loggin", err));
-=======
-    .catch((err: any) => alert(err));
->>>>>>> 7e4867e6a9a409b9c9b4bb6cc174f8d9702f09e5
 };
 
 /**
