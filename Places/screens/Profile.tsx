@@ -32,11 +32,9 @@ function Profile() {
         }
       }
       setPlaces(userPlaces)
+      setFilteredPlaces(userPlaces)
     }
     getUser()
-
-
-
   }, [])
 
   
@@ -46,7 +44,7 @@ function Profile() {
   const [places, setPlaces] = useState<any[]>([]);
   const [cities, setCities] = useState<any[]>([]);
   const [selectedPlace, setSelectedPlace] = useState<any>(null);
-  const [filteredPlaces, setFilteredPlaces] = useState<any[]>([...places]);
+  const [filteredPlaces, setFilteredPlaces] = useState<any[]>([]);
   const [citySelected, setCitySelected] = useState<string[]>([]);
   const [myPlacesSelected, setMyPlacesSelected] = useState<Boolean>(true);
   const [savedSelected, setSavedSelected] = useState<Boolean>(false);

@@ -31,7 +31,6 @@ function PlacesList(props: any) {
         horizontal={false}
         renderItem={({ item }) => {
           return (
-
               <View style={styles.itemElementStyle}>
                 <TouchableOpacity
                   style={styles.touchableItemWrapper}
