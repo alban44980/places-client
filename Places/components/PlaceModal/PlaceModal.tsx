@@ -14,10 +14,11 @@ import HeaderSection from "./HeaderSection";
 import DetailsBar from "./DetailsBar";
 import Description from "./Description";
 import Tags from "./Tags";
+import AddSavePlace from "./AddSavePlace";
 import colors from "../../assets/styles/colors";
 
 function PlaceModal(props: any) {
-  const { place, setPlaceVisible, placeVisible } = props;
+  const { place, setPlaceVisible, placeVisible, showSavedButton } = props;
 
   const handlePress = () => {
     setPlaceVisible(!placeVisible);
@@ -27,6 +28,8 @@ function PlaceModal(props: any) {
     <Modal>
       <SafeAreaView style={styles.modalSAVContainer}>
         <CloseButton handlePress={handlePress} />
+
+        {showSavedButton ? "" : <AddSavePlace placeToSave={place} />}
         <PlaceImage place={place} />
         <HeaderSection place={place} />
         <DetailsBar place={place} />

@@ -27,31 +27,25 @@ export interface OtherUserInfoSchema {
 }
 
 export interface PlaceSchema {
-  body: {
-    name: string;
-    description: string;
-    tag_list: TagSchema[];
-    img: string;
-    location: string;
-    address: string;
-    city: string;
-    city_info?: CitySchema;
-    country: string;
-  };
+  name: string;
+  description: string;
+  tag_list: TagSchema[];
+  img: string;
+  location: string;
+  address: string;
+  city: string;
+  city_info?: CitySchema;
+  country: string;
 }
 
 export interface RemovePlaceSchema {
-  body: {
-    name: string;
-    id: string;
-    CityId: string;
-  };
+  name: string;
+  id: string;
+  CityId: string;
 }
 
 export interface SearchUserSchema {
-  body: {
-    searchValue: string;
-  };
+  searchValue: string;
 }
 
 export interface SessionSchema {

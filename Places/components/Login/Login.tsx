@@ -42,7 +42,6 @@ function Login() {
 
   const onSubmit = async (data: any) => {
     try {
-
       const tokens: any = await ApiService.login(data);
       //getFriendsCityPlaces apicall below
       if (tokens.accessToken && tokens.refreshToken) {
@@ -103,27 +102,28 @@ function Login() {
           name="password"
           defaultValue=""
         />
-        <TouchableWithoutFeedback 
+        <TouchableWithoutFeedback
           style={styles.createAccountButton}
           onPress={() => navigation.navigate("signup")}
         >
-          <Text style={styles.createAccountButtonLabel}> Create an account </Text>
+          <Text style={styles.createAccountButtonLabel}>
+            {" "}
+            Create an account{" "}
+          </Text>
         </TouchableWithoutFeedback>
 
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.loginButtonContainer}
           onPress={handleSubmit(onSubmit)}
         >
           <Text>Login</Text>
         </TouchableOpacity>
-
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-
   loginContainer: {
     flex: 1,
     backgroundColor: colors.backgroundDark,
@@ -135,15 +135,14 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    paddingTop: 20
+    paddingTop: 20,
   },
-
 
   headerText: {
     color: colors.fontDark,
     fontSize: 40,
     fontFamily: fonts.medium,
-    letterSpacing: 1
+    letterSpacing: 1,
   },
 
   formContainer: {
@@ -159,13 +158,13 @@ const styles = StyleSheet.create({
     width: "75%",
     paddingHorizontal: 10,
     borderRadius: 10,
-    marginBottom: 10
+    marginBottom: 10,
   },
 
   createAccountButtonLabel: {
     fontFamily: fonts.regular,
     color: colors.backgroundLight,
-    marginVertical: 15
+    marginVertical: 15,
   },
 
   loginButtonContainer: {
@@ -174,10 +173,9 @@ const styles = StyleSheet.create({
     width: 150,
     height: 40,
     backgroundColor: colors.backgroundLight,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     marginTop: 5,
-    
   },
 });
 
