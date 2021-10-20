@@ -16,14 +16,12 @@ import Description from "./Description";
 import Tags from "./Tags";
 import colors from "../../assets/styles/colors";
 
-
-
 function PlaceModal(props: any) {
   const { place, setPlaceVisible, placeVisible } = props;
 
   const handlePress = () => {
-    setPlaceVisible(!placeVisible)
-  }
+    setPlaceVisible(!placeVisible);
+  };
 
   return (
     <Modal>

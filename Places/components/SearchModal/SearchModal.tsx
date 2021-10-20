@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Text, Modal, SafeAreaView } from "react-native";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers/reducers";
 import PlaceModal from "../PlaceModal/PlaceModal";
 import FilterModal from "./FilterModal";
-import FriendPlacesFilter from "./FriendPlacesFilter";
 import PlacesList from "./PlacesList";
 import SearchBar from "./SearchBar";
 import colors from "../../assets/styles/colors";
 import CloseButton from "../PlaceModal/CloseButton";
+import Tags from "../PlaceModal/Tags";
 
 import fonts from "../../assets/styles/fonts";
 
@@ -17,7 +17,6 @@ function SearchModal({ city, searchVisible, setSearchVisible }: any) {
   const friendsCitiesPlaces: any = useSelector(
     (state: RootState) => state.userFriendInfo
   );
-
   //extract places from friendsCitiesPlaces reducer
   const placesArray = [];
   for (let friend of friendsCitiesPlaces) {
@@ -77,7 +76,6 @@ function SearchModal({ city, searchVisible, setSearchVisible }: any) {
             tagsSelected={tagsSelected}
           />
         )}
-
         {placeVisible && (
           <PlaceModal
             placeVisible={placeVisible}
@@ -85,11 +83,9 @@ function SearchModal({ city, searchVisible, setSearchVisible }: any) {
             place={selectedPlace}
           />
         )}
-
         <View style={styles.headerSection}>
           <Text style={styles.headerText}>Explore Places</Text>
         </View>
-
         <CloseButton handlePress={handleClosePress} />
         <SearchBar
           handlePress={handleFilterPress}
@@ -101,11 +97,10 @@ function SearchModal({ city, searchVisible, setSearchVisible }: any) {
           tagsSelected={tagsSelected}
         />
 
-        <FriendPlacesFilter
-          tagsSelected={tagsSelected}
-          setSearchResults={setPlacesRendered}
-          friendsList={friendsCitiesPlaces}
-        />
+        <View style={styles.tagContainer}>
+          <Tags tags={tagsSelected} />
+        </View>
+
         <PlacesList
           handlePress={handlePlacePress}
           setPlace={setSelectedPlace}
@@ -119,6 +114,11 @@ function SearchModal({ city, searchVisible, setSearchVisible }: any) {
 export default SearchModal;
 
 const styles = StyleSheet.create({
+  tagContainer: {
+    height: "8%",
+    width: "100%",
+    marginBottom: "-3%",
+  },
   searchScreenContainer: {
     flex: 1,
     backgroundColor: colors.backgroundDark,
