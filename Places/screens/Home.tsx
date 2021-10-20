@@ -184,10 +184,12 @@ const styles = StyleSheet.create({
   searchContainer: {
     width: "100%",
     height: 100,
-    backgroundColor: colors.backgroundDark,
+    // backgroundColor: colors.backgroundDark,
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 50,
+    position: 'absolute',
+    top: 419
   },
 
   searchTouchable: {
@@ -214,6 +216,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     backgroundColor: colors.backgroundDark,
     paddingBottom: 70,
+    marginTop: 70
   },
 });
 
