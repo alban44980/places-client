@@ -49,9 +49,7 @@ export interface RemovePlaceSchema {
 }
 
 export interface SearchUserSchema {
-  body: {
-    searchValue: string;
-  };
+  searchValue: string;
 }
 
 export interface SessionSchema {

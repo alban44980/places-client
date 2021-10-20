@@ -14,11 +14,7 @@ import { RootStackParamList } from "../../App";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useNavigation } from "@react-navigation/core";
 
-function FriendsList() {
-  const userFriendInfo: any = useSelector(
-    (state: RootState) => state.userFriendInfo
-  );
-
+function FriendsList({ friendsList }: any) {
   type userScreenProp = StackNavigationProp<RootStackParamList>;
   const navigation = useNavigation<userScreenProp>();
 
@@ -33,7 +29,7 @@ function FriendsList() {
         style={styles.scrollViewVisual}
         contentContainerStyle={styles.scrollViewFunctional}
       >
-        {userFriendInfo.map((friend: any) => {
+        {friendsList.map((friend: any) => {
           return (
             <TouchableOpacity
               style={styles.friendContainer}

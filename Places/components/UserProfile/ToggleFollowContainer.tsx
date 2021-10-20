@@ -8,19 +8,19 @@ import { RootState } from "../../redux/reducers/reducers";
 import colors from "../../assets/styles/colors";
 import fonts from "../../assets/styles/fonts";
 
-
 function ToggleFollowContainer({ friendId, setSelectedUser }: any) {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
   const dispatch = useDispatch();
 
-
   // Redux
   const accessToken: any = useSelector((state: RootState) => state.accessToken);
-  const refreshToken: any = useSelector((state: RootState) => state.refreshToken);
-  const userFriendInfo: any = useSelector((state: RootState) => state.userFriendInfo);
-
-
+  const refreshToken: any = useSelector(
+    (state: RootState) => state.refreshToken
+  );
+  const userFriendInfo: any = useSelector(
+    (state: RootState) => state.userFriendInfo
+  );
 
   const setFollowingToggle = () => {
     for (let friend of userFriendInfo) {
@@ -52,7 +52,7 @@ function ToggleFollowContainer({ friendId, setSelectedUser }: any) {
       );
       setSelectedUser(updatedFriend);
     } catch (e) {
-      console.log("pop", e);
+      console.log("add", e);
     }
   };
 
@@ -89,8 +89,13 @@ function ToggleFollowContainer({ friendId, setSelectedUser }: any) {
         <Switch
           style={styles.switchButton}
           // trackColor={{ false: "#767577", true: "#81b0ff" }}
-          trackColor={{ false: colors.backgroundLight, true: colors.backgroundDark }}
-          thumbColor={isEnabled ? colors.backgroundLight : colors.backgroundBright}
+          trackColor={{
+            false: colors.backgroundLight,
+            true: colors.backgroundDark,
+          }}
+          thumbColor={
+            isEnabled ? colors.backgroundLight : colors.backgroundBright
+          }
           ios_backgroundColor="#3e3e3e"
           onValueChange={() => {
             toggleSwitch();
@@ -121,7 +126,7 @@ const styles = StyleSheet.create({
   switchContainer: {
     justifyContent: "center",
     alignItems: "center",
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
   },
 
   switchButton: {
@@ -131,17 +136,17 @@ const styles = StyleSheet.create({
   textContainer: {
     justifyContent: "center",
     alignItems: "center",
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
   },
 
   textContentFollowing: {
     fontSize: 17,
-    fontFamily: fonts.light
+    fontFamily: fonts.light,
   },
 
   textContentFollow: {
     fontSize: 16,
-    fontFamily: fonts.regular
+    fontFamily: fonts.regular,
   },
 });
 
