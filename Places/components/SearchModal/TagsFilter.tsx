@@ -5,29 +5,23 @@ import {
   TouchableHighlight,
   ScrollView,
 } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import colors from "../../assets/styles/colors";
 import tags from "../../dummyData/tagsList";
 
-function TagsFilter({ selected, setSelected, formTags, setFormTags }: any) {
+function TagsFilter({ selected, setSelected }: any) {
   const tagsList = tags;
 
   //on press the selected tag state  inside the FilterModal component will be updated
   const handlePress = (tag: string) => {
     //if tag not already selected, add it to selected list
-    if (!selected.includes(tag)) {
-      if (setSelected) setSelected((prev: any) => [...prev, tag]);
-      if (setFormTags) setFormTags((prev: any) => [...prev, { tag_name: tag }]);
+    if (selected && !selected.includes(tag)) {
+      setSelected((prev: any) => [...prev, tag]);
     }
+
     //remove tag from selected list if already selected
-    if (selected.includes(tag)) {
-      if (setSelected)
-        setSelected((prev: any) => [...prev].filter((item) => item !== tag));
-      if (setFormTags)
-        setFormTags((prev: any) =>
-          [...prev].filter((item) => item !== { tag_name: tag })
-        );
-    }
+    if (selected && selected.includes(tag))
+      setSelected((prev: any) => [...prev].filter((item) => item !== tag));
   };
 
   return (
@@ -47,7 +41,15 @@ function TagsFilter({ selected, setSelected, formTags, setFormTags }: any) {
               }
               onPress={() => handlePress(tag.tag_name)}
             >
-              <Text style={selected.includes(tag.tag_name)? styles.tagSelectedText : styles.tagText}>#{tag.tag_name}</Text>
+              <Text
+                style={
+                  selected.includes(tag.tag_name)
+                    ? styles.tagSelectedText
+                    : styles.tagText
+                }
+              >
+                #{tag.tag_name}
+              </Text>
             </TouchableHighlight>
           );
         })}
@@ -76,7 +78,7 @@ const styles = StyleSheet.create({
     borderColor: colors.backgroundDark,
     borderWidth: 1,
   },
-  
+
   tagDefaultContainer: {
     height: 45,
     width: "60%",

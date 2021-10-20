@@ -13,8 +13,7 @@ import { RootState } from "../redux/reducers/reducers";
 import HomeList from "../components/HomeList/HomeList";
 import SearchModal from "../components/SearchModal/SearchModal";
 import PlaceModal from "../components/PlaceModal/PlaceModal";
-import homeScreenPlaces from "../dummyData/homeScreenPlaces";
-import { toggleSearchVisible } from "../redux/actions/actions";
+
 import colors from "../assets/styles/colors";
 import fonts from "../assets/styles/fonts";
 
@@ -34,12 +33,10 @@ function Home() {
   const [placeVisible, setPlaceVisible] = useState<Boolean>(false);
 
   // redux states
-  const dispatch = useDispatch();
+
   const userFriendInfo: any = useSelector(
     (state: RootState) => state.userFriendInfo
   );
-  // const searchVisible: any = useSelector((state: RootState) => state.searchVisible);
-  // const placeVisible: any = useSelector((state: RootState) => state.placeVisible);
 
   //parses files
   function extractInfo() {
@@ -64,10 +61,12 @@ function Home() {
             first_name: friend.first_name,
             last_name: friend.last_name,
           };
+
           recentlyAddedPlaces.push(places);
         }
       }
     }
+
     //need to sort
     setRecentlyAddedPlacesList(recentlyAddedPlaces);
   }
@@ -132,8 +131,6 @@ function Home() {
             data={recentlyAddedPlacesList}
             route={"place"}
             setPlace={setPlaceSelected}
-            placeVisible={placeVisible}
-            setPlaceVisible={setPlaceVisible}
           />
           <HomeList
             key={1}
@@ -146,8 +143,6 @@ function Home() {
             data={cityList}
             route={"search"}
             setCity={setCitySelected}
-            searchVisible={searchVisible}
-            setSearchVisible={setSearchVisible}
           />
         </View>
       </ScrollView>
@@ -190,8 +185,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 50,
-    position: 'absolute',
-    top: 419
+    position: "absolute",
+    top: 419,
   },
 
   searchTouchable: {
@@ -203,8 +198,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 10,
     paddingLeft: 18,
-    borderWidth: 1
-
+    borderWidth: 1,
   },
 
   searchBar: {
@@ -220,7 +214,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     backgroundColor: colors.backgroundDark,
     paddingBottom: 70,
-    marginTop: 70
+    marginTop: 70,
   },
 });
 

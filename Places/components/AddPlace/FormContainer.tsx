@@ -1,18 +1,18 @@
 //@ts-nocheck
-import React, { useEffect, useState } from 'react';
+import React, { useState } from "react";
 
-import { REACT_APP_GOOGLE_MAPS_API_KEY } from '@env';
+import { REACT_APP_GOOGLE_MAPS_API_KEY } from "@env";
 
-import { StyleSheet, View, TextInput, Button, Text } from 'react-native';
-import colors from '../../assets/styles/colors';
-import { useForm, Controller } from 'react-hook-form';
-import TagsContainer from './tagsContainer';
-import CityInput from './CityInput';
-import AddressInput from './AddressInput';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import ApiService from '../../ApiService';
-import { useSelector } from 'react-redux';
-import fonts from '../../assets/styles/fonts';
+import { StyleSheet, View, TextInput, Button, Text } from "react-native";
+import colors from "../../assets/styles/colors";
+import { useForm, Controller } from "react-hook-form";
+import TagsContainer from "./tagsContainer";
+import CityInput from "./CityInput";
+import AddressInput from "./AddressInput";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import ApiService from "../../ApiService";
+import { useSelector } from "react-redux";
+import fonts from "../../assets/styles/fonts";
 
 function FormContainer({ image }) {
   const accessToken: any = useSelector((state: RootState) => state.accessToken);
@@ -20,10 +20,10 @@ function FormContainer({ image }) {
     (state: RootState) => state.refreshToken
   );
 
-  const [city, setCity] = useState('');
-  const [country, setCountry] = useState('');
-  const [address, setAddress] = useState('');
-  const [formTags, setFormTags] = useState([]);
+  const [city, setCity] = useState<string>("");
+  const [country, setCountry] = useState<string>("");
+  const [address, setAddress] = useState<string>("");
+  const [formTags, setFormTags] = useState<any>([]);
 
   const {
     control,
@@ -41,7 +41,12 @@ function FormContainer({ image }) {
       `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${REACT_APP_GOOGLE_MAPS_API_KEY}`
     );
     const addressGeo = await addressGeoCall.json();
-    console.log('adress Geo ==>>>, ', addressGeo);
+    console.log("adress Geo ==>>>, ", addressGeo);
+
+    let tag_list = [];
+    for (let aTag of formTags) {
+      tag_list.push({ tag_name: aTag });
+    }
 
     const objToSend = {
       name: data.name,
@@ -56,18 +61,17 @@ function FormContainer({ image }) {
       },
       country: country,
       img: image,
-      tag_list: formTags,
+      tag_list: tag_list,
     };
 
-    // console.log('TAGS FROM FORM ==> ', objToSend.tag_list);
-    console.log('OBJECT TO BE SENT ==> ', objToSend);
+    console.log("OBJECT TO BE SENT ==> ", objToSend);
     const result = await ApiService.addPlace(
       objToSend,
       refreshToken,
       accessToken
     );
 
-    console.log('RESPONSE FROM SERVER', result);
+    console.log("RESPONSE FROM SERVER", result);
   };
 
   return (
@@ -134,7 +138,7 @@ function FormContainer({ image }) {
         title="Add Place"
         onPress={handleSubmit(onSubmit)}
       >
-        <Text style={{ color: 'white', fontSize: 20 }}>addplace</Text>
+        <Text style={{ color: "white", fontSize: 20 }}>addplace</Text>
       </TouchableOpacity>
     </View>
   );
@@ -144,37 +148,37 @@ const styles = StyleSheet.create({
   formContainer: {
     backgroundColor: colors.backgroundDark,
     flex: 1,
-    width: '100%',
-    alignItems: 'center',
+    width: "100%",
+    alignItems: "center",
     borderWidth: 1,
   },
 
   placeNameInputContainer: {
-    width: '100%',
-    height: '20%',
+    width: "100%",
+    height: "20%",
     borderWidth: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
 
   cityInputContainer: {
-    width: '100%',
+    width: "100%",
     zIndex: 5,
-    backgroundColor: 'gray',
-    height: '20%',
+    backgroundColor: "gray",
+    height: "20%",
     borderWidth: 1,
   },
 
   addressInputContainer: {
-    width: '100%',
-    height: '20%',
+    width: "100%",
+    height: "20%",
     zIndex: 3,
   },
 
   descriptionInputContainer: {
-    width: '100%',
-    height: '40%',
+    width: "100%",
+    height: "40%",
     borderWidth: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
 
   inputLabelText: {
@@ -186,16 +190,16 @@ const styles = StyleSheet.create({
 
   placeNameInput: {
     backgroundColor: colors.backgroundLight,
-    height: '50%',
-    width: '100%',
+    height: "50%",
+    width: "100%",
     paddingHorizontal: 10,
     borderRadius: 5,
   },
 
   googleInputFieldsContainer: {
-    height: '40%',
-    width: '100%',
-    justifyContent: 'space-evenly',
+    height: "40%",
+    width: "100%",
+    justifyContent: "space-evenly",
     zIndex: 3,
     borderWidth: 2,
   },
@@ -205,22 +209,22 @@ const styles = StyleSheet.create({
   },
 
   placeDescription: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     margin: 5,
-    height: '70%',
-    width: '85%',
+    height: "70%",
+    width: "85%",
     padding: 10,
     borderRadius: 20,
   },
 
   submitButton: {
-    backgroundColor: 'purple',
-    color: 'green',
+    backgroundColor: "purple",
+    color: "green",
     height: 30,
     width: 100,
     margin: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     borderRadius: 20,
   },
 });
