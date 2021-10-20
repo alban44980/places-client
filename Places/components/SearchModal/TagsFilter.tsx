@@ -5,7 +5,7 @@ import {
   TouchableHighlight,
   ScrollView,
 } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import colors from "../../assets/styles/colors";
 import tags from "../../dummyData/tagsList";
 
@@ -14,20 +14,26 @@ function TagsFilter({ selected, setSelected, formTags, setFormTags }: any) {
 
   //on press the selected tag state  inside the FilterModal component will be updated
   const handlePress = (tag: string) => {
+    console.log("TAGGGGG>>>>>>>>>>>", tag);
     //if tag not already selected, add it to selected list
-    if (!selected.includes(tag)) {
-      if (setSelected) setSelected((prev: any) => [...prev, tag]);
-      if (setFormTags) setFormTags((prev: any) => [...prev, { tag_name: tag }]);
+    if (formTags && !formTags.includes(tag)) {
+      setFormTags((prev: any) => [...prev, { tag_name: tag }]);
     }
+    if (selected && !selected.includes(tag)) {
+      setSelected((prev: any) => [...prev, tag]);
+    }
+
     //remove tag from selected list if already selected
-    if (selected.includes(tag)) {
-      if (setSelected)
-        setSelected((prev: any) => [...prev].filter((item) => item !== tag));
-      if (setFormTags)
-        setFormTags((prev: any) =>
-          [...prev].filter((item) => item !== { tag_name: tag })
-        );
+    if (formTags && !formTags.includes(tag))
+      setFormTags((prev: any) =>
+        [...prev].filter((item) => item !== { tag_name: tag })
+      );
+    if (selected && selected.includes(tag)) {
+      setSelected((prev: any) => [...prev].filter((item) => item !== tag));
     }
+
+    // console.log("FORMTAGGGG >>>>>>>>>>>>>>", formTags[0]);
+    // console.log("SELECTED TAG >>>>>>>>>>>>>>", selected[0]);
   };
 
   return (
@@ -41,7 +47,11 @@ function TagsFilter({ selected, setSelected, formTags, setFormTags }: any) {
             <TouchableHighlight
               key={tag.tag_name}
               style={
-                selected.includes(tag.tag_name)
+                selected
+                  ? selected.includes(tag.tag_name)
+                    ? styles.tagSelectedContainer
+                    : styles.tagDefaultContainer
+                  : formTags.includes(tag.tag_name)
                   ? styles.tagSelectedContainer
                   : styles.tagDefaultContainer
               }
@@ -49,7 +59,11 @@ function TagsFilter({ selected, setSelected, formTags, setFormTags }: any) {
             >
               <Text
                 style={
-                  selected.includes(tag.tag_name)
+                  selected
+                    ? selected.includes(tag.tag_name)
+                      ? styles.tagSelectedText
+                      : styles.tagText
+                    : formTags.includes(tag.tag_name)
                     ? styles.tagSelectedText
                     : styles.tagText
                 }

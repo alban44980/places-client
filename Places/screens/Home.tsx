@@ -13,38 +13,30 @@ import { RootState } from "../redux/reducers/reducers";
 import HomeList from "../components/HomeList/HomeList";
 import SearchModal from "../components/SearchModal/SearchModal";
 import PlaceModal from "../components/PlaceModal/PlaceModal";
-import homeScreenPlaces from "../dummyData/homeScreenPlaces";
-import { toggleSearchVisible } from "../redux/actions/actions";
+
 import colors from "../assets/styles/colors";
 import fonts from "../assets/styles/fonts";
 
-
-
 function Home() {
-
   // local states
   const [friendList, setFriendList] = useState<any[]>([]);
   const [cityList, setCityList] = useState<any[]>([]); //Interface City
-  const [recentlyAddedPlacesList, setRecentlyAddedPlacesList] = useState<any[]>([]);
+  const [recentlyAddedPlacesList, setRecentlyAddedPlacesList] = useState<any[]>(
+    []
+  );
   const [tags, setTags] = useState<any[]>([]);
   const [placeSelected, setPlaceSelected] = useState<any>(null);
   const [citySelected, setCitySelected] = useState<string>("");
   const [friendSelected, setFriendSelected] = useState<any>(null);
 
-
-  const [searchVisible, setSearchVisible] = useState<Boolean>(false)
-  const [placeVisible, setPlaceVisible] = useState<Boolean>(false)
-
-
-
+  const [searchVisible, setSearchVisible] = useState<Boolean>(false);
+  const [placeVisible, setPlaceVisible] = useState<Boolean>(false);
 
   // redux states
-  const dispatch = useDispatch();
-  const userFriendInfo: any = useSelector((state: RootState) => state.userFriendInfo);
-  // const searchVisible: any = useSelector((state: RootState) => state.searchVisible);
-  // const placeVisible: any = useSelector((state: RootState) => state.placeVisible);
 
-
+  const userFriendInfo: any = useSelector(
+    (state: RootState) => state.userFriendInfo
+  );
 
   //parses files
   function extractInfo() {
@@ -69,10 +61,12 @@ function Home() {
             first_name: friend.first_name,
             last_name: friend.last_name,
           };
+
           recentlyAddedPlaces.push(places);
         }
       }
     }
+
     //need to sort
     setRecentlyAddedPlacesList(recentlyAddedPlaces);
   }
@@ -85,20 +79,28 @@ function Home() {
   }, [userFriendInfo]);
 
   function handlePress() {
-    setSearchVisible(!searchVisible)
+    setSearchVisible(!searchVisible);
     // dispatch(toggleSearchVisible());
   }
-
 
   return (
     <SafeAreaView style={styles.container}>
       {searchVisible && (
-        <SearchModal city={citySelected} friendList={friendList} searchVisible={searchVisible} setSearchVisible={setSearchVisible}/>
+        <SearchModal
+          city={citySelected}
+          friendList={friendList}
+          searchVisible={searchVisible}
+          setSearchVisible={setSearchVisible}
+        />
       )}
 
-      {placeVisible && 
-        <PlaceModal place={placeSelected} placeVisible={placeVisible} setPlaceVisible={setPlaceVisible} />}
-
+      {placeVisible && (
+        <PlaceModal
+          place={placeSelected}
+          placeVisible={placeVisible}
+          setPlaceVisible={setPlaceVisible}
+        />
+      )}
 
       <ScrollView style={{ flex: 1 }}>
         <View style={styles.headerContainer}>
@@ -129,8 +131,6 @@ function Home() {
             data={recentlyAddedPlacesList}
             route={"place"}
             setPlace={setPlaceSelected}
-            placeVisible={placeVisible}
-            setPlaceVisible={setPlaceVisible}
           />
           <HomeList
             key={1}
@@ -143,8 +143,6 @@ function Home() {
             data={cityList}
             route={"search"}
             setCity={setCitySelected}
-            searchVisible={searchVisible}
-            setSearchVisible={setSearchVisible}
           />
         </View>
       </ScrollView>
@@ -213,7 +211,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     alignSelf: "center",
     backgroundColor: colors.backgroundDark,
-    paddingBottom: 70,
   },
 });
 
