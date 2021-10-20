@@ -26,13 +26,21 @@ function Tabs() {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
+<<<<<<< Updated upstream
         tabBarStyle: styles.tabBarStyle,
         tabBarActiveTintColor: colors.fontDark,
         tabBarInactiveTintColor: colors.fontLight,
         tabBarLabelStyle: styles.tabBarLabelStyle,
         tabBarActiveBackgroundColor: colors.backgroundDark,
+=======
+        // tabBarStyle: styles.tabBarStyle,
+        tabBarActiveTintColor: colors.fontDark,
+        tabBarInactiveTintColor: colors.fontLight,
+        // tabBarLabelStyle: styles.tabBarLabelStyle,
+        // tabBarActiveBackgroundColor: colors.backgroundDark,
+>>>>>>> Stashed changes
         tabBarItemStyle: styles.tabBarItem,
-        tabBarShowLabel: false,
+        tabBarShowLabel: true,
       }}
     >
       <Tab.Screen
@@ -72,7 +80,7 @@ function Tabs() {
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabContainer}>
               <Image
-                source={require('../../assets/navigation/world.png')}
+                source={require('../../assets/navigation/map.png')}
                 resizeMode="contain"
                 style={styles.iconStyle}
               />
@@ -87,7 +95,7 @@ function Tabs() {
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabContainer}>
               <Image
-                source={require('../../assets/navigation/plus.png')}
+                source={require('../../assets/navigation/add.png')}
                 resizeMode="contain"
                 style={styles.iconStyle}
               />
@@ -102,7 +110,7 @@ function Tabs() {
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabContainer}>
               <Image
-                source={require('../../assets/navigation/robot.png')}
+                source={require('../../assets/navigation/profile.png')}
                 resizeMode="contain"
                 style={styles.iconStyle}
               />
