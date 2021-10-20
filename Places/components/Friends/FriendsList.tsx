@@ -5,14 +5,12 @@ import {
   ScrollView,
   TouchableOpacity,
   Image,
-} from "react-native";
-import React, { useState } from "react";
-import colors from "../../assets/styles/colors";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/reducers/reducers";
-import { RootStackParamList } from "../../App";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { useNavigation } from "@react-navigation/core";
+} from 'react-native';
+import React, { useState } from 'react';
+import colors from '../../assets/styles/colors';
+import { RootStackParamList } from '../../App';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { useNavigation } from '@react-navigation/core';
 
 function FriendsList({ friendsList }: any) {
   type userScreenProp = StackNavigationProp<RootStackParamList>;
@@ -20,7 +18,7 @@ function FriendsList({ friendsList }: any) {
 
   const handlePress = (friend: any) => {
     const data = friend;
-    navigation.navigate("userProfile", data);
+    navigation.navigate('userProfile', data);
   };
 
   return (
@@ -62,27 +60,27 @@ const styles = StyleSheet.create({
   listContainer: {
     backgroundColor: colors.backgroundLight,
     flex: 1,
-    alignItems: "center",
+    alignItems: 'center',
     paddingTop: 30,
   },
 
   scrollViewVisual: {
-    width: "90%",
+    width: '90%',
     backgroundColor: colors.backgroundLight,
     borderRadius: 10,
   },
 
   scrollViewFunctional: {
-    alignItems: "center",
+    alignItems: 'center',
   },
 
   friendContainer: {
     backgroundColor: colors.accentFun,
     height: 75,
-    width: "80%",
+    width: '80%',
     marginVertical: 15,
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     borderRadius: 10,
     borderColor: colors.backgroundLight,
     borderWidth: 1,
@@ -90,31 +88,31 @@ const styles = StyleSheet.create({
   },
 
   imageContainer: {
-    width: "25%",
-    height: "80%",
+    width: '25%',
+    height: '80%',
     borderWidth: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   img: {
     borderRadius: 10,
     borderWidth: 1,
-    height: "90%",
-    width: "90%",
+    height: '90%',
+    width: '90%',
   },
 
   textContainer: {
     marginLeft: 20,
     borderWidth: 1,
-    width: "60%",
-    height: "60%",
-    justifyContent: "center",
+    width: '60%',
+    height: '60%',
+    justifyContent: 'center',
     paddingHorizontal: 10,
   },
 
   friendsName: {
     fontSize: 22,
-    fontWeight: "400",
+    fontWeight: '400',
   },
 });

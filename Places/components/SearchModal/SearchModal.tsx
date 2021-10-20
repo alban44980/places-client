@@ -114,9 +114,10 @@ export default SearchModal;
 
 const styles = StyleSheet.create({
   tagContainer: {
-    height: '8%',
+    height: '5%',
     width: '100%',
-    marginBottom: '-3%',
+    backgroundColor: colors.backgroundDark,
+    marginTop: 10,
   },
 
   searchScreenContainer: {

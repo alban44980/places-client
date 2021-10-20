@@ -12,6 +12,8 @@ import PlaceModal from '../components/PlaceModal/PlaceModal';
 import makeItAnObject from '../components/Map/helper';
 import MapContainer from '../components/Map/MapContainer';
 import Preview from '../components/Map/Preview';
+import fonts from '../assets/styles/fonts';
+import { BlurView } from 'expo-blur';
 
 function Map() {
   const [location, setLocation] = useState(null);
@@ -107,7 +109,7 @@ function Map() {
             />
           </View>
 
-          <View style={{ flex: 1, zIndex: 1 }}>
+          <View style={{ height: '80%', zIndex: -1 }}>
             <MapContainer
               placesToShow={placesToShow}
               location={location}
@@ -123,8 +125,8 @@ function Map() {
               />
             ) : (
               <View style={styles.beforeContainer}>
-                <Text style={{ color: colors.fontLight }}>
-                  Touch a place to preview !
+                <Text style={styles.previewPlaceholder}>
+                  Explore your friends places
                 </Text>
               </View>
             )}
@@ -149,13 +151,24 @@ const styles = StyleSheet.create({
   previewContainer: {
     backgroundColor: colors.backgroundDark,
     height: '30%',
+    zIndex: 2,
   },
 
   beforeContainer: {
     backgroundColor: colors.backgroundDark,
-    height: '30%',
+    height: '70%',
     justifyContent: 'center',
     alignItems: 'center',
+    paddingHorizontal: 20,
+    width: '100%',
+    paddingVertical: 20,
+  },
+
+  previewPlaceholder: {
+    fontFamily: fonts.medium,
+    color: colors.fontLight,
+    fontSize: 30,
+    height: '100%',
   },
 });
 

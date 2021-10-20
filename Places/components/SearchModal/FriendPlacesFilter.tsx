@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   friendFilterListContainer: {
     height: '12%',
     width: '100%',
-    backgroundColor: colors.backgroundLight,
+    backgroundColor: colors.backgroundDark,
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: '3%',
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   },
 
   list: {
-    backgroundColor: colors.backgroundLight,
+    backgroundColor: colors.backgroundDark,
     width: '90%',
     borderStyle: 'solid',
     borderColor: colors.backgroundLight,

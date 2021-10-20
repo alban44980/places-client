@@ -72,7 +72,6 @@ function FriendsSearchBar({
       <TextInput
         style={styles.searchBar}
         placeholder="Search"
-        //onChangeText={(text: string) => setSearchInput(text)}
         onChangeText={
           searchList
             ? (text) => {
@@ -88,7 +87,12 @@ function FriendsSearchBar({
       />
       <TouchableOpacity
         style={styles.findNewFriendsButton}
-        onPress={toggleList}
+        onPress={() => {
+          toggleList();
+          setSearchInput("");
+          setFriendsList(userFriendInfo);
+          setNonFriendsList([]);
+        }}
       >
         <Text style={styles.buttonLabelText}>+</Text>
       </TouchableOpacity>
