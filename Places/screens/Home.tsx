@@ -184,7 +184,6 @@ const styles = StyleSheet.create({
   searchContainer: {
     width: "100%",
     height: 100,
-    // backgroundColor: colors.backgroundDark,
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 50,
@@ -201,6 +200,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 10,
     paddingLeft: 18,
+    borderWidth: 1
+
   },
 
   searchBar: {

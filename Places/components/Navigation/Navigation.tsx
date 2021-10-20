@@ -117,9 +117,7 @@ const styles = StyleSheet.create({
   },
 
   tabBarItem: {
-    // borderWidth: 1, 
-    // borderStyle: 'solid', 
-    // flex: 1,
+
     height: 60,    
     alignItems: 'center', 
     justifyContent: 'center',
