@@ -1,7 +1,7 @@
-import { StyleSheet, View, Text, ScrollView } from 'react-native';
-import React from 'react';
-import colors from '../../assets/styles/colors';
-import fonts from '../../assets/styles/fonts';
+import { StyleSheet, View, Text, ScrollView } from "react-native";
+import React from "react";
+import colors from "../../assets/styles/colors";
+import fonts from "../../assets/styles/fonts";
 
 function Tags(props: any) {
   // there should be some kind of state for selected --> this is used for rendering color to begin with
@@ -14,10 +14,8 @@ function Tags(props: any) {
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         {tags.map((tag: any) => {
           return (
-            <View style={styles.tagContainer}>
-              <Text key={tag.name ? tag.name : tag} style={styles.tagText}>
-                #{tag.name ? tag.name : tag}
-              </Text>
+            <View style={styles.tagContainer} key={tag.name ? tag.name : tag}>
+              <Text style={styles.tagText}>#{tag.name ? tag.name : tag}</Text>
             </View>
           );
         })}
@@ -30,20 +28,20 @@ export default Tags;
 
 const styles = StyleSheet.create({
   tagSectionContainer: {
-    height: '100%',
-    flexDirection: 'row',
-    alignItems: 'center',
+    height: "100%",
+    flexDirection: "row",
+    alignItems: "center",
     padding: 5,
-    overflow: 'scroll',
+    overflow: "scroll",
     borderRadius: 5,
   },
 
   tagContainer: {
-    height: '100%',
+    height: "100%",
     minWidth: 50,
     borderRadius: 10,
     marginHorizontal: 10,
-    justifyContent: 'center',
+    justifyContent: "center",
     paddingHorizontal: 10,
   },
 
@@ -51,7 +49,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontFamily: fonts.regular,
     color: colors.fontLight,
-    textAlign: 'center',
+    textAlign: "center",
     letterSpacing: 1.2,
   },
 });
