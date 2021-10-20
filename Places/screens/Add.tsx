@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { StyleSheet, SafeAreaView } from "react-native";
 import colors from "../assets/styles/colors";
 import ImageContainer from "../components/AddPlace/ImageContainer";
 import FormContainer from "../components/AddPlace/FormContainer";
 import KeyboardAvoidWrap from "../components/KeyboardAvoidWrap";
-
-// import KeyboardAvoidWrap from '../components/KeyboardAvoidWrap';
 
 function Add() {
   const [image, setImage] = useState<any>(null);
