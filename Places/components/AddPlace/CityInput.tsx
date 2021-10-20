@@ -4,13 +4,20 @@ import { REACT_APP_GOOGLE_MAPS_API_KEY } from '@env';
 
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
-const CityInput = ({ setCity, setCountry, cityCoords, setCityCoords }) => {
+const CityInput = ({
+  setCity,
+  setCountry,
+  cityCoords,
+  setCityCoords,
+  setInputValue,
+}) => {
   return (
     <GooglePlacesAutocomplete
       placeholder="City"
       onPress={(data, details = null) => {
-        console.log('DATA FROM SEARCH  INPUT', data);
-        setCity(data.terms[0].value);
+        console.log('DATA FROM SEARCH  INPUT', data.description);
+        if (setCity) setCity(data.terms[0].value);
+        if (setInputValue) setInputValue(data.description);
         if (setCountry) setCountry(data.terms[data.terms.length - 1].value);
       }}
       query={{
