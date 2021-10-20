@@ -26,11 +26,11 @@ function Tabs() {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        // tabBarStyle: styles.tabBarStyle,
-        tabBarActiveTintColor: colors.fontDark,
-        tabBarInactiveTintColor: colors.fontLight,
-        // tabBarLabelStyle: styles.tabBarLabelStyle,
-        // tabBarActiveBackgroundColor: colors.backgroundLight,
+        tabBarStyle: styles.tabBarStyle,
+        tabBarActiveTintColor: colors.accentFun,
+        tabBarInactiveTintColor: colors.fontDark,
+        tabBarLabelStyle: styles.tabBarLabelStyle,
+        // tabBarActiveBackgroundColor: colors.backgroundDark,
         tabBarItemStyle: styles.tabBarItem,
         tabBarShowLabel: true,
       }}
@@ -116,16 +116,8 @@ function Tabs() {
 
 const styles = StyleSheet.create({
   tabBarStyle: {
-    backgroundColor: colors.backgroundMedium,
-    height: 60,
+    height: 90,
     position: 'absolute',
-    width: '90%',
-    bottom: 20,
-    right: 20,
-    left: 20,
-    borderRadius: 20,
-    borderWidth: 1,
-    borderStyle: 'solid',
   },
 
   tabBarItem: {
@@ -137,18 +129,16 @@ const styles = StyleSheet.create({
   tabContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    borderStyle: 'solid',
-    borderWidth: 1,
     width: '75%',
     height: '75%',
     borderRadius: 5,
   },
 
   tabBarLabelStyle: {
-    fontFamily: fonts.light,
+    fontFamily: fonts.semiBold,
     letterSpacing: 0.5,
-    marginTop: 2,
-    flex: 1,
+    marginTop: 0.5,
+    flex: 0.5,
   },
 
   iconStyle: {
