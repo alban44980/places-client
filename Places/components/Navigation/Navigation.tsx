@@ -26,19 +26,11 @@ function Tabs() {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-<<<<<<< Updated upstream
-        tabBarStyle: styles.tabBarStyle,
-        tabBarActiveTintColor: colors.fontDark,
-        tabBarInactiveTintColor: colors.fontLight,
-        tabBarLabelStyle: styles.tabBarLabelStyle,
-        tabBarActiveBackgroundColor: colors.backgroundDark,
-=======
         // tabBarStyle: styles.tabBarStyle,
         tabBarActiveTintColor: colors.fontDark,
         tabBarInactiveTintColor: colors.fontLight,
         // tabBarLabelStyle: styles.tabBarLabelStyle,
         // tabBarActiveBackgroundColor: colors.backgroundDark,
->>>>>>> Stashed changes
         tabBarItemStyle: styles.tabBarItem,
         tabBarShowLabel: true,
       }}
