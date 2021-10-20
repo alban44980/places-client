@@ -8,10 +8,14 @@ import { RootState } from "../../redux/reducers/reducers";
 import { useSelector } from "react-redux";
 import fonts from "../../assets/styles/fonts";
 import colors from "../../assets/styles/colors";
+import UserCityPlacesModal from "../UserCityModal/UserCityPlacesModal";
 
 function UserProfile(props: any) {
-  
   const data = props.route.params;
+
+  const [cityPlacesVisible, setCityPlacesVisible] = useState<Boolean>(false);
+  const [selectedCityInfo, setSelectedCityInfo] = useState<string>("");
+
   const [selectedUser, setSelectedUser] = useState<{
     user_name: string;
     first_name: string;
@@ -40,7 +44,14 @@ function UserProfile(props: any) {
 
   return (
     <SafeAreaView style={styles.userProfileContainer}>
-   
+      {cityPlacesVisible && (
+        <UserCityPlacesModal
+          setCityPlacesVisible={setCityPlacesVisible}
+          cityPlacesVisible={cityPlacesVisible}
+          setSelectedCityInfo={setSelectedCityInfo}
+          selectedCityInfo={selectedCityInfo}
+        />
+      )}
 
       <View style={styles.usernameContainer}>
         <Text style={styles.usernameHeader}>{selectedUser.user_name}</Text>
@@ -51,9 +62,12 @@ function UserProfile(props: any) {
         setSelectedUser={setSelectedUser}
         friendId={friendId}
       />
-      {/* //SEARCHBAR TO BE MODIFIED */}
-      <SearchBar />
-      <UserPlaces citiesPlaces={selectedUser.Cities} />
+      <UserPlaces
+        citiesPlaces={selectedUser.Cities}
+        setCityPlacesVisible={setCityPlacesVisible}
+        cityPlacesVisible={cityPlacesVisible}
+        setSelectedCityInfo={setSelectedCityInfo}
+      />
     </SafeAreaView>
   );
 }
@@ -61,7 +75,7 @@ function UserProfile(props: any) {
 const styles = StyleSheet.create({
   userProfileContainer: {
     flex: 1,
-    backgroundColor: colors.backgroundLight
+    backgroundColor: colors.backgroundLight,
   },
 
   usernameContainer: {

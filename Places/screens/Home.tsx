@@ -18,33 +18,28 @@ import { toggleSearchVisible } from "../redux/actions/actions";
 import colors from "../assets/styles/colors";
 import fonts from "../assets/styles/fonts";
 
-
-
 function Home() {
-
   // local states
   const [friendList, setFriendList] = useState<any[]>([]);
   const [cityList, setCityList] = useState<any[]>([]); //Interface City
-  const [recentlyAddedPlacesList, setRecentlyAddedPlacesList] = useState<any[]>([]);
+  const [recentlyAddedPlacesList, setRecentlyAddedPlacesList] = useState<any[]>(
+    []
+  );
   const [tags, setTags] = useState<any[]>([]);
   const [placeSelected, setPlaceSelected] = useState<any>(null);
   const [citySelected, setCitySelected] = useState<string>("");
   const [friendSelected, setFriendSelected] = useState<any>(null);
 
-
-  const [searchVisible, setSearchVisible] = useState<Boolean>(false)
-  const [placeVisible, setPlaceVisible] = useState<Boolean>(false)
-
-
-
+  const [searchVisible, setSearchVisible] = useState<Boolean>(false);
+  const [placeVisible, setPlaceVisible] = useState<Boolean>(false);
 
   // redux states
   const dispatch = useDispatch();
-  const userFriendInfo: any = useSelector((state: RootState) => state.userFriendInfo);
+  const userFriendInfo: any = useSelector(
+    (state: RootState) => state.userFriendInfo
+  );
   // const searchVisible: any = useSelector((state: RootState) => state.searchVisible);
   // const placeVisible: any = useSelector((state: RootState) => state.placeVisible);
-
-
 
   //parses files
   function extractInfo() {
@@ -85,20 +80,28 @@ function Home() {
   }, [userFriendInfo]);
 
   function handlePress() {
-    setSearchVisible(!searchVisible)
+    setSearchVisible(!searchVisible);
     // dispatch(toggleSearchVisible());
   }
-
 
   return (
     <SafeAreaView style={styles.container}>
       {searchVisible && (
-        <SearchModal city={citySelected} friendList={friendList} searchVisible={searchVisible} setSearchVisible={setSearchVisible}/>
+        <SearchModal
+          city={citySelected}
+          friendList={friendList}
+          searchVisible={searchVisible}
+          setSearchVisible={setSearchVisible}
+        />
       )}
 
-      {placeVisible && 
-        <PlaceModal place={placeSelected} placeVisible={placeVisible} setPlaceVisible={setPlaceVisible} />}
-
+      {placeVisible && (
+        <PlaceModal
+          place={placeSelected}
+          placeVisible={placeVisible}
+          setPlaceVisible={setPlaceVisible}
+        />
+      )}
 
       <ScrollView style={{ flex: 1 }}>
         <View style={styles.headerContainer}>

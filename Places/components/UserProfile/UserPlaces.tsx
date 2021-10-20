@@ -1,4 +1,5 @@
-import React from "react";
+import { InfoBox } from "@react-google-maps/api";
+import React, { useState } from "react";
 import {
   StyleSheet,
   View,
@@ -11,18 +12,26 @@ import {
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers/reducers";
 
-function UserPlaces({ citiesPlaces }: any) {
+function UserPlaces({
+  citiesPlaces,
+  setCityPlacesVisible,
+  cityPlacesVisible,
+  setSelectedCityInfo,
+}: any) {
   const userFriendInfo: any = useSelector(
     (state: RootState) => state.userFriendInfo
   );
 
-  const handlePress = () => {
-    console.log("poop");
-    console.log(citiesPlaces);
+  const handlePress = (info: any) => {
+    setSelectedCityInfo(info);
+    setCityPlacesVisible(!cityPlacesVisible);
   };
 
   const renderItem = ({ item }: any) => (
-    <TouchableOpacity style={styles.itemContainer} onPress={handlePress}>
+    <TouchableOpacity
+      style={styles.itemContainer}
+      onPress={() => handlePress(item)}
+    >
       <Image
         style={styles.img}
         source={{
@@ -40,25 +49,6 @@ function UserPlaces({ citiesPlaces }: any) {
   );
 
   return (
-    // <ScrollView>
-    // <ScrollView
-    //   style={styles.userPlacesContainer}
-    // contentContainerStyle={styles.contentContainer}
-    // >
-
-    /* {userPlaces.map((item: any) => {
-        return (
-          <View style={styles.itemContainer}>
-            <Text>Places: {item.name}</Text>
-            <Text>{item.numberOfPlaces}</Text>
-          </View>
-        );
-      })}
-    </ScrollView> */
-
-    // </ScrollView>
-
-    // <View style={styles.userPlacesContainer}>
     <FlatList
       data={citiesPlaces}
       renderItem={renderItem}
