@@ -14,7 +14,7 @@ import ApiService from '../../ApiService';
 import { useSelector } from 'react-redux';
 import fonts from '../../assets/styles/fonts';
 
-function FormContainer({ image }) {
+function FormContainer({ image, setImage }) {
   const accessToken: any = useSelector((state: RootState) => state.accessToken);
   const refreshToken: any = useSelector(
     (state: RootState) => state.refreshToken
@@ -33,6 +33,10 @@ function FormContainer({ image }) {
 
   //submit form function
   const onSubmit = async (data: any) => {
+    if (!image) {
+      alert('OH NOR IMAGE IS STILL LOADING');
+      return;
+    }
     const cityGeoCall = await fetch(
       `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${REACT_APP_GOOGLE_MAPS_API_KEY}`
     );
@@ -41,7 +45,6 @@ function FormContainer({ image }) {
       `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${REACT_APP_GOOGLE_MAPS_API_KEY}`
     );
     const addressGeo = await addressGeoCall.json();
-    console.log('adress Geo ==>>>, ', addressGeo);
 
     let tag_list = [];
     for (let aTag of formTags) {
@@ -64,14 +67,11 @@ function FormContainer({ image }) {
       tag_list: tag_list,
     };
 
-    console.log('OBJECT TO BE SENT ==> ', objToSend);
     const result = await ApiService.addPlace(
       objToSend,
       refreshToken,
       accessToken
     );
-
-    console.log('RESPONSE FROM SERVER', result);
   };
 
   return (
