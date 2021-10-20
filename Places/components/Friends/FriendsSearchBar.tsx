@@ -83,7 +83,7 @@ function FriendsSearchBar({
                 filterNonFriendsList(text);
               }
         }
-        // value={searchInput}
+        value={searchInput}
       />
       <TouchableOpacity
         style={styles.findNewFriendsButton}
