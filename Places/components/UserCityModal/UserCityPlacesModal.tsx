@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -8,10 +8,11 @@ import {
   Image,
   Modal,
   TouchableOpacity,
-} from "react-native";
-import PlaceModal from "../PlaceModal/PlaceModal";
-import PlacesList from "../SearchModal/PlacesList";
-import BackButton from "./BackButton";
+} from 'react-native';
+import colors from '../../assets/styles/colors';
+import PlaceModal from '../PlaceModal/PlaceModal';
+import PlacesList from '../SearchModal/PlacesList';
+import BackButton from './BackButton';
 
 const UserCityPlacesModal = ({
   setCityPlacesVisible,
@@ -39,8 +40,11 @@ const UserCityPlacesModal = ({
         />
       )}
 
-      <BackButton handlePress={handleBackPress} />
-      <Text>{selectedCityInfo.Places[0].city}</Text>
+      <View style={styles.headerSection}>
+        <BackButton handlePress={handleBackPress} />
+        <Text>{selectedCityInfo.Places[0].city}</Text>
+      </View>
+
       <PlacesList
         places={selectedCityInfo.Places}
         handlePress={handlePlacePress}
@@ -51,3 +55,12 @@ const UserCityPlacesModal = ({
 };
 
 export default UserCityPlacesModal;
+
+const styles = StyleSheet.create({
+  headerSection: {
+    height: '20%',
+    backgroundColor: colors.backgroundLight,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
