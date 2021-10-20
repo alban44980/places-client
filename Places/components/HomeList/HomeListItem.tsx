@@ -21,17 +21,13 @@ import {
 } from "../../redux/actions/actions";
 import colors from "../../assets/styles/colors";
 
-function HomeListItem({ data, route, setPlace, setCity, setFriend, setPlaceVisible, placeVisible }: any) {
+function HomeListItem({ data, route, setPlace, setCity, setFriend, setPlaceVisible, placeVisible, searchVisible, setSearchVisible }: any) {
   
   type userScreenProp = StackNavigationProp<RootStackParamList>;
   const navigation = useNavigation<userScreenProp>();
 
-  const searchVisible: any = useSelector(
-    (state: RootState) => state.searchVisible
-  );
-  // const placeVisible: any = useSelector(
-  //   (state: RootState) => state.placeVisible
-  // );
+
+
   const placeSelected: any = useSelector(
     (state: RootState) => state.placeSelected
   );
@@ -43,19 +39,16 @@ function HomeListItem({ data, route, setPlace, setCity, setFriend, setPlaceVisib
     }
 
     if (route === "search") {
-      //passes click cities data
       setCity(data.name);
-      dispatch(toggleSearchVisible());
+      setSearchVisible(!searchVisible)
     }
 
     if (route === "place") {
       setPlace(data);
       setPlaceVisible(!placeVisible)
-      // dispatch(togglePlaceVisible());
     }
   };
 
-  const dispatch = useDispatch();
 
   return (
     <TouchableOpacity style={styles.itemContainer} onPress={handlePress}>

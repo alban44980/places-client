@@ -143,6 +143,8 @@ function Home() {
             data={cityList}
             route={"search"}
             setCity={setCitySelected}
+            searchVisible={searchVisible}
+            setSearchVisible={setSearchVisible}
           />
         </View>
       </ScrollView>
