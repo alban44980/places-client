@@ -15,10 +15,11 @@ import CityInput from '../components/AddPlace/CityInput';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import colors from '../assets/styles/colors';
 import * as Location from 'expo-location';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import places from '../dummyData/placesList';
 import PlacesList from '../components/SearchModal/PlacesList';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import PlaceModal from '../components/PlaceModal/PlaceModal';
 
 function Map() {
   const [location, setLocation] = useState(null);
@@ -28,6 +29,7 @@ function Map() {
   const [country, setCountry] = useState<String>('');
   const [placeList, setPlaceList] = useState<any[]>([]);
   const [currentPlaceReview, setCurrentPlaceReview] = useState<any>(null);
+  const [placeVisible, setPlaceVisible] = useState<Boolean>(false);
 
   const userFriendInfo: any = useSelector(
     (state: RootState) => state.userFriendInfo
@@ -106,6 +108,13 @@ function Map() {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
+      {placeVisible && (
+        <PlaceModal
+          setPlaceVisible={setPlaceVisible}
+          placeVisible={placeVisible}
+          place={currentPlaceReview}
+        />
+      )}
       {location ? (
         <View style={{ flex: 1 }}>
           <View style={styles.searchContainer}>
@@ -184,9 +193,7 @@ function Map() {
                     <TouchableOpacity
                       style={styles.viewButton}
                       onPress={() => {
-                        for (let tag of currentPlaceReview.Tags) {
-                          console.log(tag.name);
-                        }
+                        setPlaceVisible(true);
                         // console.log(currentPlaceReview.Tags);
                       }}
                     >
