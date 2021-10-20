@@ -1,101 +1,107 @@
-import React from 'react';
-import { 
-  StyleSheet, 
-  Text, 
-  ScrollView, 
-  View, 
-  TouchableOpacity 
-} from 'react-native';
-import colors from '../../assets/styles/colors';
-import fonts from '../../assets/styles/fonts';
-import { setPlaceSelected } from '../../redux/actions/actions';
-
+import React from "react";
+import {
+  StyleSheet,
+  Text,
+  ScrollView,
+  View,
+  TouchableOpacity,
+} from "react-native";
+import colors from "../../assets/styles/colors";
+import fonts from "../../assets/styles/fonts";
 
 export default function FiltersContainer(props: any) {
+  const { cities, tagSelected, setTagSelected } = props;
 
-  const {cities, places, setFilteredPlaces, tagSelected, setTagSelected, filterPlaces } = props
-
-
-
-  const handlePress = (city) => {
+  const handlePress = (city: any) => {
     if (!tagSelected || tagSelected !== city.name) {
-      setTagSelected(city.name)
+      setTagSelected(city.name);
     }
 
     if (tagSelected === city.name) {
-      setTagSelected('')
+      setTagSelected("");
     }
-  }
+  };
 
-  
   return (
     <View style={styles.filterContainer}>
-      <ScrollView 
+      <ScrollView
         style={styles.scrollViewVisual}
         contentContainerStyle={styles.scrollViewContainer}
-        horizontal={true} 
+        horizontal={true}
         bounces={true}
         showsHorizontalScrollIndicator={false}
       >
         {cities.map((city: any) => {
           return (
-          <TouchableOpacity 
-            style={tagSelected === city.name ? styles.selectedTag : styles.defaultTag} 
-            onPress={() => handlePress(city)}
-          >
-            <Text style={tagSelected === city.name ? styles.selectedTagLabel : styles.defaultTagLabel}>{city.name}</Text>
-          </TouchableOpacity>
-          )}
-        )}
+            <TouchableOpacity
+              key={city.name}
+              style={
+                tagSelected === city.name
+                  ? styles.selectedTag
+                  : styles.defaultTag
+              }
+              onPress={() => handlePress(city)}
+            >
+              <Text
+                style={
+                  tagSelected === city.name
+                    ? styles.selectedTagLabel
+                    : styles.defaultTagLabel
+                }
+              >
+                {city.name}
+              </Text>
+            </TouchableOpacity>
+          );
+        })}
       </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-
   filterContainer: {
-    height: '6%',
-    width: '85%',
+    height: "6%",
+    width: "85%",
     backgroundColor: colors.backgroundLight,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     marginTop: 12,
-    borderStyle: 'solid',
+    borderStyle: "solid",
   },
 
   scrollViewVisual: {
     backgroundColor: colors.backgroundLight,
-    paddingHorizontal: 0
+    paddingHorizontal: 0,
   },
 
   scrollViewContainer: {
-    flexDirection: 'row',
-    height: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: "row",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
   },
 
   selectedTag: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '60%',
+    alignItems: "center",
+    justifyContent: "center",
+    height: "60%",
     marginHorizontal: 10,
     paddingHorizontal: 10,
-    borderColor: 'black',
+    borderColor: "black",
     borderWidth: 1,
     borderRadius: 5,
     minWidth: 70,
-    backgroundColor: colors.backgroundDark
+    backgroundColor: colors.backgroundDark,
   },
 
   defaultTag: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '60%',
+    alignItems: "center",
+    justifyContent: "center",
+    height: "60%",
     marginHorizontal: 10,
     paddingHorizontal: 10,
-    borderColor: 'black',
+    borderColor: "black",
     borderWidth: 1,
     borderRadius: 5,
     minWidth: 70,
@@ -104,12 +110,12 @@ const styles = StyleSheet.create({
 
   defaultTagLabel: {
     fontSize: 10,
-    fontFamily: fonts.medium
+    fontFamily: fonts.medium,
   },
 
   selectedTagLabel: {
     fontSize: 10,
     fontFamily: fonts.medium,
-    color: colors.fontLight
+    color: colors.fontLight,
   },
 });

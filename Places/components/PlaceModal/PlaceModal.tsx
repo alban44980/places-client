@@ -18,7 +18,7 @@ import AddSavePlace from "./AddSavePlace";
 import colors from "../../assets/styles/colors";
 
 function PlaceModal(props: any) {
-  const { place, setPlaceVisible, placeVisible, showSavedButton } = props;
+  const { place, setPlaceVisible, placeVisible, showSaveButton } = props;
 
   const handlePress = () => {
     setPlaceVisible(!placeVisible);
@@ -29,7 +29,11 @@ function PlaceModal(props: any) {
       <SafeAreaView style={styles.modalSAVContainer}>
         <CloseButton handlePress={handlePress} />
 
-        {showSavedButton ? "" : <AddSavePlace placeToSave={place} />}
+        {showSaveButton ? (
+          <Text>""</Text>
+        ) : (
+          <AddSavePlace placeToSave={place} />
+        )}
         <PlaceImage place={place} />
         <HeaderSection place={place} />
         <DetailsBar place={place} />
