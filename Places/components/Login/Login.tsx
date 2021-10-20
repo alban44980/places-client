@@ -107,13 +107,8 @@ function Login() {
           onPress={() => navigation.navigate('signup')}
         >
           <Text style={styles.createAccountButtonLabel}>
-<<<<<<< HEAD
-            {" "}
-            Create an account{" "}
-=======
             {' '}
             Create an account{' '}
->>>>>>> colorTesting
           </Text>
         </TouchableWithoutFeedback>
 
