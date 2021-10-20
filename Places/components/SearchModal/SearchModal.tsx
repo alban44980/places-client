@@ -118,15 +118,16 @@ const styles = StyleSheet.create({
     width: '100%',
     marginBottom: '-3%',
   },
+
   searchScreenContainer: {
     flex: 1,
     backgroundColor: colors.backgroundLight,
   },
+
   headerSection: {
     height: '10%',
     width: '100%',
     backgroundColor: colors.backgroundLight,
-
     justifyContent: 'center',
     paddingHorizontal: 30,
   },
@@ -134,6 +135,6 @@ const styles = StyleSheet.create({
   headerText: {
     fontFamily: fonts.semiBold,
     fontSize: 24,
-    color: colors.fontLight,
+    color: colors.fontDark,
   },
 });

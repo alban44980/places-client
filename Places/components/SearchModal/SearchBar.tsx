@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 
 import colors from '../../assets/styles/colors';
+import fonts from '../../assets/styles/fonts';
 
 function SearchBar(props: any) {
   // on search should also have a drop down list of suggested cities that match the current search
@@ -70,6 +71,7 @@ function SearchBar(props: any) {
         style={styles.searchBar}
         value={search}
         placeholder="Where are you going?"
+        placeholderTextColor={colors.backgroundDark}
         onChangeText={(text) => searchFilter(text, tagsSelected)}
       />
       <TouchableHighlight
@@ -89,37 +91,37 @@ const styles = StyleSheet.create({
     backgroundColor: colors.backgroundLight,
     width: '100%',
     height: '10%',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
     flexDirection: 'row',
   },
 
   searchBar: {
-    backgroundColor: colors.backgroundLight,
+    backgroundColor: 'white',
     height: '70%',
     width: '65%',
     paddingLeft: '3%',
-    borderTopLeftRadius: 10,
-    borderBottomLeftRadius: 10,
-    borderColor: colors.backgroundLight,
+    borderRadius: 10,
+    borderColor: colors.backgroundDark,
     borderWidth: 1,
+    color: colors.fontDark,
+    // marginLeft: 10,
   },
 
   filterButtonContainer: {
-    backgroundColor: colors.accentFun,
+    backgroundColor: colors.backgroundDark,
     height: '70%',
-    width: '15%',
+    width: '13%',
     justifyContent: 'center',
-    borderTopRightRadius: 10,
-    borderBottomRightRadius: 10,
-    borderColor: colors.backgroundLight,
+    borderRadius: 10,
+    borderColor: colors.backgroundDark,
     borderWidth: 1,
   },
 
   filterText: {
     fontSize: 12,
     textAlign: 'center',
-    color: colors.fontDark,
-    fontWeight: '700',
+    color: colors.fontLight,
+    fontFamily: fonts.regular,
   },
 });

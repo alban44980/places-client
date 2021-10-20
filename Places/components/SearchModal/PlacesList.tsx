@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: 10,
     paddingBottom: 40,
+    borderTopWidth: 1,
   },
 
   flatListStyle: {

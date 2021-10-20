@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, Modal, TouchableOpacity } from 'react-native';
 
 import colors from '../../assets/styles/colors';
+import fonts from '../../assets/styles/fonts';
 import TagsFilter from './TagsFilter';
 
 function FilterModal(props: any) {
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: '21%',
     alignSelf: 'center',
-    borderColor: colors.backgroundLight,
+    borderColor: colors.backgroundDark,
     borderWidth: 1,
     overflow: 'hidden',
     borderRadius: 10,
@@ -76,8 +77,8 @@ const styles = StyleSheet.create({
 
   headerText: {
     fontSize: 22,
-    fontWeight: '700',
-    color: colors.fontLight,
+    fontFamily: fonts.semiBold,
+    color: colors.fontDark,
   },
 
   tagsListContainer: {
@@ -87,29 +88,28 @@ const styles = StyleSheet.create({
   },
 
   buttonsContainer: {
-    // backgroundColor: colors.backgroundLight,
-    width: '70%',
+    width: '100%',
     height: '15%',
     justifyContent: 'center',
     flexDirection: 'row',
     borderRadius: 10,
     alignItems: 'center',
+    borderTopWidth: 0.5,
   },
 
   acceptButton: {
-    backgroundColor: colors.backgroundLight,
     justifyContent: 'center',
-    height: '70%',
-    width: '70%',
-    borderColor: colors.backgroundLight,
+    height: '60%',
+    width: '40%',
+    borderColor: colors.backgroundDark,
     borderWidth: 1,
     borderRadius: 10,
   },
 
   acceptButtonText: {
     textAlign: 'center',
-    color: colors.fontLight,
-    fontWeight: '600',
+    color: colors.fontDark,
+    fontFamily: fonts.medium,
     fontSize: 15,
   },
 });

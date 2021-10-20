@@ -32,9 +32,11 @@ function PlaceModal(props: any) {
         <BlurView intensity={80} style={styles.blurView}>
           <HeaderSection place={place} />
           <DetailsBar place={place} />
-          <View style={styles.tagContainer}>
-            <Tags tags={place.Tags} />
-          </View>
+          {place.Tags && (
+            <View style={styles.tagContainer}>
+              <Tags tags={place.Tags} />
+            </View>
+          )}
         </BlurView>
         <Description place={place} />
       </SafeAreaView>
@@ -57,6 +59,7 @@ const styles = StyleSheet.create({
     height: '20%',
     width: '90%',
     alignItems: 'center',
+    justifyContent: 'center',
   },
 
   tagContainer: {

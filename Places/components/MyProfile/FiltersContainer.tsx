@@ -20,7 +20,7 @@ export default function FiltersContainer(props: any) {
     filterPlaces,
   } = props;
 
-  const handlePress = (city) => {
+  const handlePress = (city: any) => {
     if (!tagSelected || tagSelected !== city.name) {
       setTagSelected(city.name);
     }
@@ -75,6 +75,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 12,
     borderStyle: 'solid',
+    marginBottom: 10,
   },
 
   scrollViewVisual: {

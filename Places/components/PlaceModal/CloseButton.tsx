@@ -33,9 +33,9 @@ export default CloseButton;
 const styles = StyleSheet.create({
   closeButton: {
     height: '5%',
-    width: '22%',
+    width: '17%',
     backgroundColor: colors.backgroundLight,
-    borderColor: colors.backgroundLight,
+    borderColor: colors.backgroundDark,
     borderStyle: 'solid',
     borderWidth: 0.5,
     justifyContent: 'center',

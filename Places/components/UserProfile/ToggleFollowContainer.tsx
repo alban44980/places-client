@@ -88,10 +88,9 @@ function ToggleFollowContainer({ friendId, setSelectedUser }: any) {
       <View style={styles.switchContainer}>
         <Switch
           style={styles.switchButton}
-          // trackColor={{ false: "#767577", true: "#81b0ff" }}
           trackColor={{
-            false: colors.backgroundLight,
-            true: colors.backgroundLight,
+            false: colors.backgroundDark,
+            true: colors.backgroundDark,
           }}
           thumbColor={
             isEnabled ? colors.backgroundLight : colors.backgroundBright
@@ -117,7 +116,6 @@ function ToggleFollowContainer({ friendId, setSelectedUser }: any) {
 
 const styles = StyleSheet.create({
   followContainer: {
-    // backgroundColor: 'red',
     height: '10%',
     flexDirection: 'row',
     justifyContent: 'center',

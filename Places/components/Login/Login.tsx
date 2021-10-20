@@ -159,11 +159,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderRadius: 10,
     marginBottom: 10,
+    borderWidth: 0.5,
   },
 
   createAccountButtonLabel: {
     fontFamily: fonts.regular,
-    color: colors.backgroundLight,
+    color: colors.fontDark,
     marginVertical: 15,
   },
 
@@ -172,7 +173,6 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     width: 150,
     height: 40,
-    backgroundColor: colors.backgroundLight,
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 5,

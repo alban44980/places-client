@@ -8,6 +8,7 @@ import {
 import React from 'react';
 import colors from '../../assets/styles/colors';
 import tags from '../../dummyData/tagsList';
+import fonts from '../../assets/styles/fonts';
 
 function TagsFilter({ selected, setSelected }: any) {
   const tagsList = tags;
@@ -71,11 +72,11 @@ const styles = StyleSheet.create({
   tagSelectedContainer: {
     height: 45,
     width: '60%',
-    backgroundColor: colors.backgroundLight,
+    backgroundColor: colors.backgroundDark,
     borderRadius: 10,
     marginBottom: 10,
     justifyContent: 'center',
-    borderColor: colors.backgroundLight,
+    borderColor: colors.backgroundDark,
     borderWidth: 1,
   },
 
@@ -86,7 +87,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 10,
     justifyContent: 'center',
-    borderColor: colors.backgroundLight,
+    borderColor: colors.backgroundDark,
     borderWidth: 1,
   },
 
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
 
   tagText: {
     fontSize: 12,
-    fontWeight: '600',
+    fontFamily: fonts.regular,
     color: colors.fontDark,
     textAlign: 'center',
   },
