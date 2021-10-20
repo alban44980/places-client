@@ -12,7 +12,7 @@ function Add() {
     <SafeAreaView style={styles.addPageContainer}>
       <ImageContainer image={image} setImage={setImage} />
       <KeyboardAvoidWrap>
-        <FormContainer image={image} />
+        <FormContainer image={image} setImage={setImage} />
       </KeyboardAvoidWrap>
     </SafeAreaView>
   );
