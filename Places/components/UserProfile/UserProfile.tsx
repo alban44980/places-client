@@ -12,6 +12,7 @@ import UserCityPlacesModal from "../UserCityModal/UserCityPlacesModal";
 
 function UserProfile(props: any) {
   const data = props.route.params;
+  console.log("Passed Data ------------->", data.id);
 
   const [cityPlacesVisible, setCityPlacesVisible] = useState<Boolean>(false);
   const [selectedCityInfo, setSelectedCityInfo] = useState<string>("");
@@ -23,7 +24,7 @@ function UserProfile(props: any) {
   }>({ user_name: "", first_name: "", Cities: "" });
 
   useEffect(() => {
-    getFriendPageInfo();
+    setSelectedUser(data);
   }, []);
 
   const friendId: string = data.id;
@@ -32,13 +33,13 @@ function UserProfile(props: any) {
     (state: RootState) => state.userFriendInfo
   );
 
-  function getFriendPageInfo() {
-    for (let friend of userFriendInfo) {
-      if (friend.id === friendId) {
-        setSelectedUser(friend);
-      }
-    }
-  }
+  // function getFriendPageInfo() {
+  //   for (let friend of userFriendInfo) {
+  //     if (friend.id === friendId) {
+  //       setSelectedUser(friend);
+  //     }
+  //   }
+  // }
 
   const [filterModalVisible, setFilterModalVisible] = useState<Boolean>(false);
 
