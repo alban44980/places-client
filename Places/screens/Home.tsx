@@ -104,7 +104,7 @@ function Home() {
 
       <ScrollView style={{ flex: 1 }}>
         <View style={styles.headerContainer}>
-          <Text style={styles.headerText}>Logo & Image PlaceHolder</Text>
+          <Text style={styles.headerText}>Holaa Adriano!</Text>
         </View>
 
         <View style={styles.homeImageBannerContainer}>
@@ -169,9 +169,9 @@ const styles = StyleSheet.create({
   },
 
   headerText: {
-    fontSize: 22,
+    fontSize: 35,
     color: colors.fontDark,
-    fontFamily: fonts.semiBold,
+    fontFamily: fonts.bold,
   },
 
   homeImageBannerContainer: {

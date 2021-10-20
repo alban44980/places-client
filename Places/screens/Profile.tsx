@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Text, SafeAreaView, ScrollView } from "react-native";
-import MyData from "../components/MyProfile/MyData";
-import ButtonContainer from "../components/MyProfile/ButtonContainer";
-import FiltersContainer from "../components/MyProfile/FiltersContainer";
-import PlacesList from "../components/SearchModal/PlacesList";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../redux/reducers/reducers";
-import PlaceModal from "../components/PlaceModal/PlaceModal";
-import colors from "../assets/styles/colors";
-import user from "./../dummyData/user";
-import fonts from "../assets/styles/fonts";
-import ApiService from "../ApiService";
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, View, Text, SafeAreaView, ScrollView } from 'react-native';
+import MyData from '../components/MyProfile/MyData';
+import ButtonContainer from '../components/MyProfile/ButtonContainer';
+import FiltersContainer from '../components/MyProfile/FiltersContainer';
+import PlacesList from '../components/SearchModal/PlacesList';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../redux/reducers/reducers';
+import PlaceModal from '../components/PlaceModal/PlaceModal';
+import colors from '../assets/styles/colors';
+import fonts from '../assets/styles/fonts';
+import ApiService from '../ApiService';
 
 function Profile() {
   // onload useEffect
@@ -159,13 +158,13 @@ const styles = StyleSheet.create({
   profileContainer: {
     flex: 1,
     backgroundColor: colors.backgroundLight,
-    alignItems: "center",
+    alignItems: 'center',
   },
 
   usernameContainer: {
-    height: "7%",
-    justifyContent: "center",
-    alignItems: "center",
+    height: '7%',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   usernameHeader: {
