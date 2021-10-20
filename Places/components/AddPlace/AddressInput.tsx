@@ -20,7 +20,7 @@ const AddressInput = ({ setAddress, country }) => {
       styles={{
         textInputContainer: {backgroundColor: colors.backgroundDark, width: '100%', height: 40},
         container: {  flex: 1, height: 150, zIndex: 5},
-        listView: {borderWidth: 2, zIndex: 10, position: 'absolute'},
+        listView: {borderWidth: 2, zIndex: 10, position: 'absolute', top: 50},
         row: {flex: 1, alignItems: 'center', },
         description: {color: colors.fontDark, fontSize: 12, fontFamily: fonts.medium},
       }}

@@ -15,6 +15,7 @@ import {
 import colors from '../assets/styles/colors';
 import ImageContainer from '../components/AddPlace/ImageContainer';
 import FormContainer from '../components/AddPlace/FormContainer';
+import KeyboardAvoidWrap from '../components/KeyboardAvoidWrap';
 
 // import KeyboardAvoidWrap from '../components/KeyboardAvoidWrap';
 
@@ -24,7 +25,9 @@ function Add() {
   return (
     <SafeAreaView style={styles.addPageContainer}>
       <ImageContainer image={image} setImage={setImage} />
-      <FormContainer image={image} />
+      <KeyboardAvoidWrap> 
+        <FormContainer image ={image} />
+      </KeyboardAvoidWrap>
     </SafeAreaView>
   );
 }

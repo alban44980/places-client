@@ -100,7 +100,7 @@ function FormContainer({ image }) {
 
       {/* </View> */}
       <View style={styles.descriptionInputContainer}>
-        <Text style={styles.inputLabelText} >Place name</Text>
+        <Text style={styles.inputLabelText} >Describe your experience</Text>
         <Controller control={control} rules={{maxLength: 100, required: true,}} name="description" defaultValue=""
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
@@ -132,9 +132,9 @@ const styles = StyleSheet.create({
   formContainer: {
     backgroundColor: colors.backgroundDark,
     flex: 1,
-    width: '85%',
+    width: '100%',
     alignItems: 'center',
-    borderWidth: 2,
+    borderWidth: 1,
   },
 
   placeNameInputContainer: {
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
 
   descriptionInputContainer: {
     width: '100%',
-    height: '20%',
+    height: '40%',
     borderWidth: 1,
     justifyContent: 'center'
   },
@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
   placeDescription: {
     backgroundColor: 'white',
     margin: 5,
-    height: '30%',
+    height: '70%',
     width: '85%',
     padding: 10,
     borderRadius: 20,

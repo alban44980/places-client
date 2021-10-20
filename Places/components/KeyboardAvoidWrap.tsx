@@ -20,16 +20,16 @@ const screenHeight = Dimensions.get('screen').height;
 const screenWidth = Dimensions.get('window').width;
 
 
-const KeyboardAvoidWrap = ({children}) => {
+const KeyboardAvoidWrap = ({children}: any) => {
 
   return (
     <>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'position'}
-        style={{flex: 1}}>
-        <SafeAreaView style={styles.container}>
-          <ScrollView style={{paddingVertical:2}}>
-            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        style={styles.container}>
+        <SafeAreaView style={styles.safeAreaViewStyle}>
+          <ScrollView style={styles.scrollView}>
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss} style={styles.TWFStyle}>
               { children }
             </TouchableWithoutFeedback>
           </ScrollView>
@@ -41,8 +41,24 @@ const KeyboardAvoidWrap = ({children}) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1, 
+    width: '100%', 
+    alignItems: 'center'
   },
+
+  safeAreaViewStyle: {
+    flex: 1,
+    height: '100%',
+    width: '90%',
+  },
+
+  scrollView: {
+    flex: 1
+  },
+
+  TWFStyle: {
+    flex: 1,
+  }
 });
 
 export default KeyboardAvoidWrap;

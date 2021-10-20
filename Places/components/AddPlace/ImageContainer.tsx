@@ -72,7 +72,7 @@ function ImageContainer({ image, setImage }) {
 
 const styles = StyleSheet.create({
   container: {
-    height: '25%',
+    height: '18%',
     width: '60%',
     backgroundColor: colors.backgroundMedium,
     justifyContent: 'center',
