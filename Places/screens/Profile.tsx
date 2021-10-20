@@ -38,7 +38,7 @@ function Profile() {
     getUser();
   }, []);
 
-  // states
+  // States
   const [user, setUser] = useState<any>({});
   const [places, setPlaces] = useState<any[]>([]);
   const [cities, setCities] = useState<any[]>([]);
@@ -50,15 +50,12 @@ function Profile() {
   const [placeVisible, setPlaceVisible] = useState<Boolean>(false)
 
 
-  // redux states
-  const handlePlacePress = () => {
-    setPlaceVisible(!placeVisible)
-  }
-
+  // Redux states
   const accessToken: any = useSelector((state: RootState) => state.accessToken);
   const refreshToken: any = useSelector((state: RootState) => state.refreshToken);
 
-  // functions
+
+  // Functions
   const filterPlaces = () => {
     let filteredPlacesList: any[] = [];
     if (citySelected.length) {
@@ -70,6 +67,10 @@ function Profile() {
       setFilteredPlaces(places);
     }
   };
+
+  const handlePlacePress = () => {
+    setPlaceVisible(!placeVisible)
+  }
 
   useEffect(() => {
     filterPlaces();

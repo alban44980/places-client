@@ -6,14 +6,17 @@ import SearchBar from "../SearchModal/SearchBar";
 import UserPlaces from "./UserPlaces";
 import { RootState } from "../../redux/reducers/reducers";
 import { useSelector } from "react-redux";
+import fonts from "../../assets/styles/fonts";
+import colors from "../../assets/styles/colors";
 
 function UserProfile(props: any) {
+  
   const data = props.route.params;
   const [selectedUser, setSelectedUser] = useState<{
-    username: string;
+    user_name: string;
     first_name: string;
     Cities: string;
-  }>({ username: "", first_name: "", Cities: "" });
+  }>({ user_name: "", first_name: "", Cities: "" });
 
   useEffect(() => {
     getFriendPageInfo();
@@ -37,8 +40,10 @@ function UserProfile(props: any) {
 
   return (
     <SafeAreaView style={styles.userProfileContainer}>
-      <View style={styles.titleContainer}>
-        <Text style={styles.username}>{selectedUser.first_name}</Text>
+   
+
+      <View style={styles.usernameContainer}>
+        <Text style={styles.usernameHeader}>{selectedUser.user_name}</Text>
       </View>
 
       <MyData user={selectedUser} />
@@ -56,14 +61,18 @@ function UserProfile(props: any) {
 const styles = StyleSheet.create({
   userProfileContainer: {
     flex: 1,
+    backgroundColor: colors.backgroundLight
   },
-  titleContainer: {
-    height: "5%",
+
+  usernameContainer: {
+    height: "7%",
     justifyContent: "center",
     alignItems: "center",
   },
-  username: {
-    fontSize: 25,
+
+  usernameHeader: {
+    fontSize: 16,
+    fontFamily: fonts.medium,
   },
 });
 
