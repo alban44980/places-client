@@ -56,7 +56,7 @@ function FilterModal(props: any) {
             onPress={() => setFilterModalVisible(!filterModalVisible)}
             style={styles.acceptButton}
           >
-            <Text style={styles.acceptButtonText}>Accept 👍</Text>
+            <Text style={styles.acceptButtonText}>Accept</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   filterModalContainer: {
     height: '50%',
     width: '80%',
-    backgroundColor: colors.backgroundMedium,
+    backgroundColor: colors.backgroundLight,
     position: 'absolute',
     top: '21%',
     alignSelf: 'center',
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   modalHeaderContainer: {
     height: '15%',
     width: '100%',
-    backgroundColor: colors.accentFun,
+    backgroundColor: colors.backgroundDark,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
   },
 
   acceptButton: {
-    backgroundColor: colors.backgroundLight,
+    backgroundColor: colors.backgroundDark,
     justifyContent: 'center',
     height: '70%',
     width: '70%',
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
 
   acceptButtonText: {
     textAlign: 'center',
-    color: colors.fontDark,
+    color: colors.fontLight,
     fontWeight: '600',
     fontSize: 15,
   },
