@@ -106,12 +106,15 @@ function Map() {
               setCityCoords={setCityCoords}
             />
           </View>
-          <MapContainer
-            placesToShow={placesToShow}
-            location={location}
-            placeList={placeList}
-            setCurrentPlaceReview={setCurrentPlaceReview}
-          />
+
+          <View style={{ flex: 1, zIndex: 1 }}>
+            <MapContainer
+              placesToShow={placesToShow}
+              location={location}
+              placeList={placeList}
+              setCurrentPlaceReview={setCurrentPlaceReview}
+            />
+          </View>
           <View style={styles.previewContainer}>
             {currentPlaceReview ? (
               <Preview
@@ -139,11 +142,15 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '15%',
     paddingTop: 35,
+    paddingHorizontal: '10%',
+    zIndex: 2,
   },
+
   previewContainer: {
     backgroundColor: colors.backgroundDark,
     height: '30%',
   },
+
   beforeContainer: {
     backgroundColor: colors.backgroundDark,
     height: '30%',
