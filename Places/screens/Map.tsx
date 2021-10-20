@@ -171,14 +171,36 @@ function Map() {
                   <View style={styles.placeName}>
                     <Text style={styles.title}>{currentPlaceReview.name}</Text>
                   </View>
-                  <View style={styles.tagsContainer}></View>
-                  <TouchableOpacity style={styles.viewButton}>
-                    <Text style={{ fontSize: 20 }}>View</Text>
-                  </TouchableOpacity>
+                  <View style={styles.tagsContainer}>
+                    {currentPlaceReview.Tags.map((tag) => {
+                      return (
+                        <Text style={{ color: colors.fontLight, margin: 2 }}>
+                          #{tag.name}
+                        </Text>
+                      );
+                    })}
+                  </View>
+                  <View style={styles.buttonContainer}>
+                    <TouchableOpacity
+                      style={styles.viewButton}
+                      onPress={() => {
+                        for (let tag of currentPlaceReview.Tags) {
+                          console.log(tag.name);
+                        }
+                        // console.log(currentPlaceReview.Tags);
+                      }}
+                    >
+                      <Text style={{ fontSize: 20 }}>View</Text>
+                    </TouchableOpacity>
+                  </View>
                 </View>
               </View>
             ) : (
-              <Text>OH NOR THERE IS NO PLACE TO REVIEW YET</Text>
+              <View style={styles.beforeContainer}>
+                <Text style={{ color: colors.fontLight }}>
+                  Touch a place to preview !
+                </Text>
+              </View>
             )}
           </View>
         </View>
@@ -209,6 +231,12 @@ const styles = StyleSheet.create({
     backgroundColor: colors.backgroundDark,
     // flexGrow: 1,
     height: '30%',
+  },
+  beforeContainer: {
+    backgroundColor: colors.backgroundDark,
+    height: '30%',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   placePreviewContainer: {
     // backgroundColor: 'yellow',
@@ -241,16 +269,26 @@ const styles = StyleSheet.create({
   },
   tagsContainer: {
     height: '25%',
-    backgroundColor: 'lightblue',
+    // backgroundColor: 'lightblue',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+  },
+  buttonContainer: {
+    // backgroundColor: 'red',
+    height: '50%',
+    justifyContent: 'center',
+    marginTop: 10,
+    // alignItems: 'center',
   },
   viewButton: {
-    height: '60%',
-    backgroundColor: 'red',
-    margin: 5,
+    height: '70%',
+    width: '70%',
     backgroundColor: 'lightblue',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 20,
+    marginLeft: 30,
   },
 });
 
