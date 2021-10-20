@@ -131,6 +131,8 @@ function Home() {
             data={recentlyAddedPlacesList}
             route={"place"}
             setPlace={setPlaceSelected}
+            placeVisible={placeVisible}
+            setPlaceVisible={setPlaceVisible}
           />
           <HomeList
             key={1}
@@ -143,6 +145,8 @@ function Home() {
             data={cityList}
             route={"search"}
             setCity={setCitySelected}
+            searchVisible={searchVisible}
+            setSearchVisible={setSearchVisible}
           />
         </View>
       </ScrollView>
