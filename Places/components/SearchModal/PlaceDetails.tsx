@@ -1,8 +1,8 @@
-import React from 'react';
-import { StyleSheet, View, Text, BackHandler } from 'react-native';
-import colors from '../../assets/styles/colors';
-import fonts from '../../assets/styles/fonts';
-import { BlurView } from 'expo-blur';
+import React from "react";
+import { StyleSheet, View, Text, BackHandler } from "react-native";
+import colors from "../../assets/styles/colors";
+import fonts from "../../assets/styles/fonts";
+import { BlurView } from "expo-blur";
 
 function PlaceDetails(props: any) {
   const { item } = props;
@@ -25,30 +25,30 @@ export default PlaceDetails;
 const styles = StyleSheet.create({
   itemContentContainer: {
     flex: 1,
-    overflow: 'hidden',
+    overflow: "hidden",
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
-    justifyContent: 'flex-end',
+    justifyContent: "flex-end",
   },
 
   opacityLayer: {
-    height: '35%',
-    width: '100%',
-    position: 'absolute',
+    height: "35%",
+    width: "100%",
+    position: "absolute",
     backgroundColor: colors.backgroundMedium,
     opacity: 0.65,
   },
 
   itemHeaderBar: {
-    height: '35%',
+    height: "35%",
     // backgroundColor: colors.backgroundLight,
-    flexDirection: 'column',
-    justifyContent: 'center',
+    flexDirection: "column",
+    justifyContent: "center",
   },
 
   headerTextName: {
     color: colors.fontLight,
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 14,
     marginBottom: 2,
     fontFamily: fonts.semiBold,
@@ -57,13 +57,13 @@ const styles = StyleSheet.create({
 
   headerTextCity: {
     color: colors.fontLight,
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 12,
     fontFamily: fonts.regular,
   },
 
   itemContentSection: {
-    height: '35%',
+    height: "35%",
     backgroundColor: colors.backgroundLight,
     paddingHorizontal: 20,
     paddingVertical: 10,
@@ -72,6 +72,6 @@ const styles = StyleSheet.create({
   descriptionText: {
     fontSize: 11,
     fontFamily: fonts.light,
-    textAlign: 'center',
+    textAlign: "center",
   },
 });

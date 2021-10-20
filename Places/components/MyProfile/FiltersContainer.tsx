@@ -1,24 +1,16 @@
-import React from 'react';
+import React from "react";
 import {
   StyleSheet,
   Text,
   ScrollView,
   View,
   TouchableOpacity,
-} from 'react-native';
-import colors from '../../assets/styles/colors';
-import fonts from '../../assets/styles/fonts';
-import { setPlaceSelected } from '../../redux/actions/actions';
+} from "react-native";
+import colors from "../../assets/styles/colors";
+import fonts from "../../assets/styles/fonts";
 
 export default function FiltersContainer(props: any) {
-  const {
-    cities,
-    places,
-    setFilteredPlaces,
-    tagSelected,
-    setTagSelected,
-    filterPlaces,
-  } = props;
+  const { cities, tagSelected, setTagSelected } = props;
 
   const handlePress = (city: any) => {
     if (!tagSelected || tagSelected !== city.name) {
@@ -26,7 +18,7 @@ export default function FiltersContainer(props: any) {
     }
 
     if (tagSelected === city.name) {
-      setTagSelected('');
+      setTagSelected("");
     }
   };
 
@@ -42,6 +34,7 @@ export default function FiltersContainer(props: any) {
         {cities.map((city: any) => {
           return (
             <TouchableOpacity
+              key={city.name}
               style={
                 tagSelected === city.name
                   ? styles.selectedTag
@@ -68,14 +61,13 @@ export default function FiltersContainer(props: any) {
 
 const styles = StyleSheet.create({
   filterContainer: {
-    height: '6%',
-    width: '85%',
+    height: "6%",
+    width: "85%",
     backgroundColor: colors.backgroundLight,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     marginTop: 12,
-    borderStyle: 'solid',
-    marginBottom: 10,
+    borderStyle: "solid",
   },
 
   scrollViewVisual: {
@@ -84,19 +76,19 @@ const styles = StyleSheet.create({
   },
 
   scrollViewContainer: {
-    flexDirection: 'row',
-    height: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: "row",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
   },
 
   selectedTag: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '60%',
+    alignItems: "center",
+    justifyContent: "center",
+    height: "60%",
     marginHorizontal: 10,
     paddingHorizontal: 10,
-    borderColor: 'black',
+    borderColor: "black",
     borderWidth: 1,
     borderRadius: 5,
     minWidth: 70,
@@ -104,12 +96,12 @@ const styles = StyleSheet.create({
   },
 
   defaultTag: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '60%',
+    alignItems: "center",
+    justifyContent: "center",
+    height: "60%",
     marginHorizontal: 10,
     paddingHorizontal: 10,
-    borderColor: 'black',
+    borderColor: "black",
     borderWidth: 1,
     borderRadius: 5,
     minWidth: 70,

@@ -4,11 +4,9 @@ import MyData from "../components/MyProfile/MyData";
 import ButtonContainer from "../components/MyProfile/ButtonContainer";
 import FiltersContainer from "../components/MyProfile/FiltersContainer";
 import PlacesList from "../components/SearchModal/PlacesList";
-import places from "../dummyData/placesList";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/reducers/reducers";
 import PlaceModal from "../components/PlaceModal/PlaceModal";
-import { setPlaceSelected, togglePlaceVisible } from "../redux/actions/actions";
 import colors from "../assets/styles/colors";
 import user from "./../dummyData/user";
 import fonts from "../assets/styles/fonts";
@@ -48,6 +46,7 @@ function Profile() {
   const [myPlacesSelected, setMyPlacesSelected] = useState<Boolean>(true);
   const [savedSelected, setSavedSelected] = useState<Boolean>(false);
   const [placeVisible, setPlaceVisible] = useState<Boolean>(false);
+  const [savedPlaces, setSavedPlaces] = useState<any[]>([]);
 
   // Redux states
   const accessToken: any = useSelector((state: RootState) => state.accessToken);
@@ -68,9 +67,33 @@ function Profile() {
     }
   };
 
+  //grab user's saved places from backend and saves state
+  const initSavedPlaces = async (): Promise<void> => {
+    const allSavedPlaces = await ApiService.getSavedPlaces(
+      refreshToken,
+      accessToken
+    );
+    const savedPlacesArr = [];
+    for (let place of allSavedPlaces.SavedPlaces) {
+      place.user = {
+        username: allSavedPlaces.user_name,
+        first_name: allSavedPlaces.first_name,
+        last_name: allSavedPlaces.last_name,
+      };
+      savedPlacesArr.push(place);
+    }
+
+    //need to loop through each saved place and add the following
+    setSavedPlaces(savedPlacesArr);
+  };
+
   const handlePlacePress = () => {
     setPlaceVisible(!placeVisible);
   };
+
+  useEffect(() => {
+    initSavedPlaces();
+  }, [savedSelected]);
 
   useEffect(() => {
     filterPlaces();
@@ -80,6 +103,7 @@ function Profile() {
     <SafeAreaView style={styles.profileContainer}>
       {placeVisible && (
         <PlaceModal
+          showSaveButton={true}
           place={selectedPlace}
           placeVisible={placeVisible}
           setPlaceVisible={setPlaceVisible}
@@ -116,7 +140,17 @@ function Profile() {
             tagSelected={citySelected}
           />
         </View>
-      ) : null}
+      ) : (
+        <View style={{ flex: 1 }}>
+          <PlacesList
+            handlePress={handlePlacePress}
+            setPlace={setSelectedPlace}
+            places={savedPlaces}
+            setPlaces={setPlaces}
+            tagSelected={citySelected}
+          />
+        </View>
+      )}
     </SafeAreaView>
   );
 }

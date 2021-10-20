@@ -19,16 +19,13 @@ function AddSavePlace(props: any) {
       if (placeToSave) {
         const formatedPlace: PlaceSchema = formatPlace(placeToSave);
 
-        const poop = await ApiService.addSavedPlace(
+        await ApiService.addSavedPlace(
           formatedPlace,
           refreshToken,
           accessToken
         );
       } else {
-        const result = await ApiService.getSavedPlaces(
-          refreshToken,
-          accessToken
-        );
+        await ApiService.getSavedPlaces(refreshToken, accessToken);
       }
     } catch (e: any) {}
   }
