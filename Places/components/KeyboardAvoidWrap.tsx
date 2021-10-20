@@ -28,7 +28,7 @@ const KeyboardAvoidWrap = ({children}: any) => {
         behavior={Platform.OS === 'ios' ? 'padding' : 'position'}
         style={styles.container}>
         <SafeAreaView style={styles.safeAreaViewStyle}>
-          <ScrollView style={styles.scrollView}>
+          <ScrollView style={styles.scrollView} keyboardShouldPersistTaps="handled">
             <TouchableWithoutFeedback onPress={Keyboard.dismiss} style={styles.TWFStyle}>
               { children }
             </TouchableWithoutFeedback>
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   safeAreaViewStyle: {
     flex: 1,
     height: '100%',
-    width: '90%',
+    width: '80%',
   },
 
   scrollView: {

@@ -10,6 +10,7 @@ const colors = {
   fontDark: 'rgba(32, 30, 31, 1)',
   fontLight: 'rgba(250, 243, 221, 1)',
   accentFun: 'rgba(184, 242, 230, 1)',
+  formInputBackgroundLight: 'rgba(255, 255, 255, 1)',
 };
 
 export default colors;

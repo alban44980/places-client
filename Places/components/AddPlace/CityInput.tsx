@@ -21,7 +21,6 @@ const CityInput = ({
     <GooglePlacesAutocomplete
       placeholder="City"
       onPress={(data, details = null) => {
-        console.log('DATA FROM SEARCH  INPUT', data.description);
         if (setCity) setCity(data.terms[0].value);
         if (setInputValue) setInputValue(data.description);
         if (setCountry) setCountry(data.terms[data.terms.length - 1].value);
@@ -29,16 +28,15 @@ const CityInput = ({
       query={{
         key: REACT_APP_GOOGLE_MAPS_API_KEY,
         language: 'en',
-        // components: 'country:us',
         types: ['(cities)'],
       }}
       styles={{
-        textInputContainer: {backgroundColor: colors.backgroundDark, width: '100%', height: 40},
-        container: {  flex: 1, zIndex: 5},
-        listView: {borderWidth: 2, zIndex: 10, position: 'absolute', top: 50},
-        row: {flex: 1, alignItems: 'center', },
-        description: {color: colors.fontDark, fontSize: 12, fontFamily: fonts.medium},
-    
+        container: {  flex: 1, zIndex: 5, height: 100, },
+        textInputContainer: { width: '100%', flex: 1,},
+        textInput: {fontFamily: fonts.regular, fontSize: 14},
+        listView: {borderWidth: 1, zIndex: 10, position: 'absolute', top: 50, height: 200 },
+        row: {flex: 1, alignItems: 'center' },
+        description: {color: colors.fontDark, fontSize: 14, fontFamily: fonts.regular},
       }}
     />
   );

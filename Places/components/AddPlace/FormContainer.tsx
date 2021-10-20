@@ -80,7 +80,7 @@ function FormContainer({ image }) {
                 style={styles.placeNameInput}
                 onChangeText={onChange}
                 value={value}
-                placeholder="Place name"
+                placeholder="Name"
                 autoCapitalize="none"
               />
           )}
@@ -117,13 +117,14 @@ function FormContainer({ image }) {
       </View>
 
       <TagsContainer formTags={formTags} setFormTags={setFormTags} />
+
       <TouchableOpacity
         style={styles.submitButton}
-        title="Add Place"
         onPress={handleSubmit(onSubmit)}
       >
-        <Text style={{ color: 'white', fontSize: 20 }}>addplace</Text>
+        <Text style={styles.submitLabel}>Submit</Text>
       </TouchableOpacity>
+
     </View>
   );
 }
@@ -131,86 +132,84 @@ function FormContainer({ image }) {
 const styles = StyleSheet.create({
   formContainer: {
     backgroundColor: colors.backgroundDark,
-    flex: 1,
+    height: 520,
     width: '100%',
     alignItems: 'center',
-    borderWidth: 1,
+    justifyContent: 'flex-start'
   },
 
   placeNameInputContainer: {
+    height: '16%',
     width: '100%',
-    height: '20%',
-    borderWidth: 1,
-    justifyContent: 'center'
   },
 
   cityInputContainer: {
+    height: '16%',
     width: '100%', 
     zIndex: 5, 
-    backgroundColor: 'gray',
-    height: '20%',
-    borderWidth: 1
   },
 
   addressInputContainer: {
+    height: '16%',
     width: '100%',
-    height: '20%',
-    zIndex: 3
+    zIndex: 3,
   },
 
   descriptionInputContainer: {
+    height: '25%',
     width: '100%',
-    height: '40%',
-    borderWidth: 1,
-    justifyContent: 'center'
   },
 
   inputLabelText: {
     fontFamily: fonts.semiBold,
-    fontSize: 18,
+    fontSize: 16,
     color: colors.fontLight,
-    marginBottom: 3,
+    marginBottom: 2,
+    marginTop: 3
   },
 
   placeNameInput: {
-    backgroundColor: colors.backgroundLight,
+    backgroundColor: colors.formInputBackgroundLight,
     height: '50%',
     width: '100%',
     paddingHorizontal: 10,
     borderRadius: 5,
+    fontFamily: fonts.regular,
+    fontSize: 14
   },
 
   googleInputFieldsContainer: {
-    height: '40%',
+    height: '30%',
     width: '100%',
     justifyContent: 'space-evenly',
     zIndex: 3,
-    borderWidth: 2
-  },
-
-  addButton: {
-    margin: 5,
   },
 
   placeDescription: {
-    backgroundColor: 'white',
-    margin: 5,
+    backgroundColor: colors.formInputBackgroundLight,
     height: '70%',
-    width: '85%',
     padding: 10,
-    borderRadius: 20,
+    borderRadius: 5,
+    fontFamily: fonts.regular,
+    fontSize: 14,
+    paddingTop: 10,
   },
 
   submitButton: {
-    backgroundColor: 'purple',
-    color: 'green',
-    height: 30,
-    width: 100,
-    margin: 10,
+    height: 45,
+    width: 90,
+    backgroundColor: colors.backgroundLight,
+    marginVertical: 5,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 20,
+    borderRadius: 10,
+    borderWidth: 1
   },
+
+  submitLabel: {
+    fontFamily: fonts.semiBold,
+    color: colors.fontDark
+  }
 });
 
 export default FormContainer;

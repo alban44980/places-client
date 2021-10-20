@@ -1,22 +1,16 @@
-import React, { useEffect, useState } from 'react';
-
-import * as ImagePicker from 'expo-image-picker';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
   Text,
-  SafeAreaView,
-  KeyboardAvoidingView,
-  Platform,
-  TouchableWithoutFeedback,
-  Keyboard,
-  ScrollView,
   TouchableHighlight,
-  Image,
-  TextInput,
 } from 'react-native';
 import colors from '../../assets/styles/colors';
+import fonts from '../../assets/styles/fonts';
 import FilterModal from '../SearchModal/FilterModal';
+
+
+
 
 function TagsContainer({ formTags, setFormTags }: any) {
   const handleFilterPress = () => {
@@ -29,7 +23,7 @@ function TagsContainer({ formTags, setFormTags }: any) {
   return (
     <View style={styles.container}>
       {filterModalVisible && (
-        <View style={styles.opacityForModalOpen}>
+        // <View style={styles.opacityForModalOpen}>
           <FilterModal
             filterModalVisible={filterModalVisible}
             setFilterModalVisible={setFilterModalVisible}
@@ -37,14 +31,14 @@ function TagsContainer({ formTags, setFormTags }: any) {
             formTags={formTags}
             setFormTags={setFormTags}
           />
-        </View>
+        // </View>
       )}
 
       <TouchableHighlight
         style={styles.filterButtonContainer}
         onPress={handleFilterPress}
       >
-        <Text style={styles.filterText}>Tags</Text>
+        <Text style={styles.filterText}>Select tags #</Text>
       </TouchableHighlight>
     </View>
   );
@@ -52,9 +46,8 @@ function TagsContainer({ formTags, setFormTags }: any) {
 
 const styles = StyleSheet.create({
   container: {
-    height: '10%',
-    width: '80%',
-    backgroundColor: colors.backgroundLight,
+    height: '12%',
+    width: '60%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-evenly',
@@ -69,38 +62,23 @@ const styles = StyleSheet.create({
     left: -50,
   },
 
-  placeNameInputContainer: {
-    height: '50%',
-    width: '40%',
-    backgroundColor: colors.backgroundMedium,
-  },
-
-  searchBar: {
-    backgroundColor: colors.backgroundLight,
-    height: '70%',
-    width: '65%',
-    paddingLeft: '3%',
-    borderRadius: 10,
-    borderColor: colors.backgroundDark,
-    borderWidth: 1,
-  },
-
   filterButtonContainer: {
     backgroundColor: colors.backgroundDark,
     height: '70%',
-    width: '20%',
+    width: '80%',
     justifyContent: 'center',
     borderRadius: 10,
-    borderColor: colors.backgroundDark,
-    borderWidth: 1,
+    marginTop: 5
   },
 
   filterText: {
-    fontSize: 12,
+    fontSize: 15,
     textAlign: 'center',
     color: colors.fontLight,
-    fontWeight: '700',
+    fontFamily: fonts.semiBold,
+    letterSpacing: .75
   },
+
 });
 
 export default TagsContainer;
