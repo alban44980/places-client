@@ -12,6 +12,7 @@ import PlaceModal from '../components/PlaceModal/PlaceModal';
 import makeItAnObject from '../components/Map/helper';
 import MapContainer from '../components/Map/MapContainer';
 import Preview from '../components/Map/Preview';
+import LottieView from 'lottie-react-native';
 
 function Map() {
   const [location, setLocation] = useState(null);
@@ -131,7 +132,13 @@ function Map() {
           </View>
         </View>
       ) : (
-        <Text>LOADING BRUV</Text>
+        <View style={{ flex: 1 }}>
+          <LottieView
+            source={require('../assets/37178-travel.json')}
+            style={styles.animation}
+            autoPlay
+          />
+        </View>
       )}
     </SafeAreaView>
   );
