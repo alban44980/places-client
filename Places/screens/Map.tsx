@@ -14,6 +14,7 @@ import MapContainer from '../components/Map/MapContainer';
 import Preview from '../components/Map/Preview';
 import fonts from '../assets/styles/fonts';
 import { BlurView } from 'expo-blur';
+import LottieView from 'lottie-react-native';
 
 function Map() {
   const [location, setLocation] = useState(null);
@@ -133,7 +134,13 @@ function Map() {
           </View>
         </View>
       ) : (
-        <Text>LOADING BRUV</Text>
+        <View style={{ flex: 1 }}>
+          <LottieView
+            source={require('../assets/37178-travel.json')}
+            style={styles.animation}
+            autoPlay
+          />
+        </View>
       )}
     </SafeAreaView>
   );
