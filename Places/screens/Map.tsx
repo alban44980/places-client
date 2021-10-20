@@ -1,6 +1,8 @@
 //@ts-nocheck
 
 import React, { useState, useEffect } from 'react';
+import { REACT_APP_GOOGLE_MAPS_API_KEY } from '@env';
+
 import {
   StyleSheet,
   View,
@@ -20,6 +22,7 @@ function Map() {
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState<String>('');
   const [city, setCity] = useState<String>('');
+  const [cityCoords, setCityCoords] = useState<any>();
   const [country, setCountry] = useState<String>('');
   const [markerlist, setMarkerlist] = useState<any[]>([]);
 
@@ -34,7 +37,27 @@ function Map() {
       let location = await Location.getCurrentPositionAsync({});
       setLocation(location);
     })();
+
+    //below set the markers list
   }, []);
+
+  useEffect(() => {
+    console.log('CITY VALUE HAS CHANGED !!!!!');
+    (async () => {
+      const cityGeoCall = await fetch(
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${REACT_APP_GOOGLE_MAPS_API_KEY}`
+      );
+      const cityGeo = await cityGeoCall.json();
+      // console.log('coordinates of newCity ==>', cityGeo);
+      console.log(
+        'EXACT CORDINATES  ==> ',
+        JSON.stringify(cityGeo.results[0].geometry.location)
+      );
+      setLocation({
+        coords: cityGeo.results[0].geometry.location,
+      });
+    })();
+  }, [city]);
 
   let text = 'Waiting..';
   if (errorMsg) {
@@ -46,20 +69,30 @@ function Map() {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <MapView
-        style={styles.map}
-        initialRegion={{
-          latitude: 37.785834,
-          longitude: -122.406417,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
-        }}
-      >
-        <View style={styles.searchContainer}>
-          <CityInput setCity={setCity} setCountry={setCountry} />
-        </View>
-        <Marker coordinate={{ latitude: 41.4036, longitude: 2.1744 }} />
-      </MapView>
+      {location ? (
+        <MapView
+          style={styles.map}
+          initialRegion={{
+            latitude: location ? location.coords.latitude : 41.3874,
+            longitude: location ? location.coords.longitude : 2.1686,
+            // latitude: 41.3874,
+            // longitude: 2.1686,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+        >
+          <View style={styles.searchContainer}>
+            <CityInput
+              setCity={setCity}
+              setCountry={setCountry}
+              cityCoords={cityCoords}
+              setCityCoords={setCityCoords}
+            />
+          </View>
+        </MapView>
+      ) : (
+        <Text>LOADING BRUV</Text>
+      )}
 
       <View style={styles.mapContainer}></View>
       <View style={styles.previewContainer}></View>
