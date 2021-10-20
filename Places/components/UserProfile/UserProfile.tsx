@@ -90,6 +90,7 @@ const styles = StyleSheet.create({
   userProfileContainer: {
     flex: 1,
     backgroundColor: colors.backgroundLight,
+    alignItems: 'center',
   },
 
   usernameContainer: {
