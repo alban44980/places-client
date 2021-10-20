@@ -41,6 +41,7 @@ function FormContainer({ image }) {
       `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${REACT_APP_GOOGLE_MAPS_API_KEY}`
     );
     const addressGeo = await addressGeoCall.json();
+    console.log('adress Geo ==>>>, ', addressGeo);
 
     const objToSend = {
       name: data.name,
@@ -79,7 +80,7 @@ function FormContainer({ image }) {
         }}
         render={({ field: { onChange, onBlur, value } }) => (
           <View style={styles.placeNameInputContainer}>
-            <Text style={styles.inputLabelText} >Place name</Text>
+            <Text style={styles.inputLabelText}>Place name</Text>
             <TextInput
               style={styles.placeNameInput}
               onChangeText={onChange}
@@ -100,7 +101,6 @@ function FormContainer({ image }) {
           setAddress={setAddress}
           country={country}
         />
-
       </View>
 
       <Controller
@@ -110,17 +110,15 @@ function FormContainer({ image }) {
           required: true,
         }}
         render={({ field: { onChange, onBlur, value } }) => (
-  
-            <TextInput
-              style={styles.placeDescription}
-              onChangeText={onChange}
-              value={value}
-              placeholder="Description"
-              autoCapitalize="none"
-              multiline={true}
-              numberOfLines={5}
-            />
-
+          <TextInput
+            style={styles.placeDescription}
+            onChangeText={onChange}
+            value={value}
+            placeholder="Description"
+            autoCapitalize="none"
+            multiline={true}
+            numberOfLines={5}
+          />
         )}
         name="description"
         defaultValue=""
@@ -149,7 +147,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '15%',
     borderWidth: 1,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 
   inputLabelText: {
@@ -171,11 +169,9 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
 
-
-  
   addButton: {
     margin: 5,
   },
