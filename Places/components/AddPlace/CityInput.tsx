@@ -10,17 +10,27 @@ import fonts from '../../assets/styles/fonts';
 
 
 
-const CityInput = ({ setCity, setCountry }) => {
+const CityInput = ({
+  setCity,
+  setCountry,
+  cityCoords,
+  setCityCoords,
+  setInputValue,
+}) => {
   return (
     <GooglePlacesAutocomplete
       placeholder="City"
       onPress={(data, details = null) => {
-        setCity(data.terms[0].value);
-        setCountry(data.terms[data.terms.length - 1].value);
+        console.log('DATA FROM SEARCH  INPUT', data.description);
+        if (setCity) setCity(data.terms[0].value);
+        if (setInputValue) setInputValue(data.description);
+        if (setCountry) setCountry(data.terms[data.terms.length - 1].value);
       }}
       query={{
         key: REACT_APP_GOOGLE_MAPS_API_KEY,
         language: 'en',
+        // components: 'country:us',
+        types: ['(cities)'],
       }}
       styles={{
         textInputContainer: {backgroundColor: colors.backgroundDark, width: '100%', height: 40},

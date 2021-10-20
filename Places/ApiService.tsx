@@ -4,13 +4,13 @@ import {
   PlaceSchema,
   RemovePlaceSchema,
   SearchUserSchema,
-} from "./Interfaces";
-import { PATHIP } from "@env";
+} from './Interfaces';
+// import { PATHIP } from "@env";
 
-const path = "192.168.1.169";
+const path = '192.168.1.169';
 
 // const BASE_URL = `http://${path}:3001`;
-const BASE_URL = "http://9a1f-147-161-122-215.ngrok.io";
+const BASE_URL = 'http://9a1f-147-161-122-215.ngrok.io';
 
 /*
 register expected input
@@ -26,8 +26,8 @@ register expected input
 */
 const register = (user: any) => {
   return fetch(`${BASE_URL}/register`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(user),
   })
     .then((res) => res.json())
@@ -43,12 +43,12 @@ login expected input
 */
 const login = (credentials: any) => {
   return fetch(`${BASE_URL}/login`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(credentials),
   })
     .then((res) => res.json())
-    .catch((err: any) => console.log("cannot loggin", err));
+    .catch((err: any) => console.log('cannot loggin', err));
 };
 
 /**
@@ -63,18 +63,18 @@ const addFriend = (
   accessToken: string
 ): Promise<any> => {
   return fetch(`${BASE_URL}/add/friend`, {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${accessToken}`,
-      "x-refresh": `${refreshToken}`,
+      'x-refresh': `${refreshToken}`,
     },
     body: JSON.stringify(friendId),
-  }).catch((err: any) => console.log("AddFriend Error:", err));
+  }).catch((err: any) => console.log('AddFriend Error:', err));
 };
 
 /*
-addPlace expected input 
+addPlace expected input
 {
     "name": "Candy's",
     "description" :"great place for drinks",
@@ -93,11 +93,11 @@ const addPlace = (
   accessToken: string
 ): Promise<any> => {
   return fetch(`${BASE_URL}/add/place`, {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${accessToken}`,
-      "x-refresh": `${refreshToken}`,
+      'x-refresh': `${refreshToken}`,
     },
     body: JSON.stringify(newPlace),
   })
@@ -124,11 +124,11 @@ const addSavedPlace = (
   accessToken: string
 ): Promise<any> => {
   return fetch(`${BASE_URL}/add/savedplace`, {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${accessToken}`,
-      "x-refresh": `${refreshToken}`,
+      'x-refresh': `${refreshToken}`,
     },
     body: JSON.stringify(newSavedPlace),
   })
@@ -148,11 +148,11 @@ const searchUser = (
   accessToken: string
 ): Promise<any> => {
   return fetch(`${BASE_URL}/searched/user`, {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${accessToken}`,
-      "x-refresh": `${refreshToken}`,
+      'x-refresh': `${refreshToken}`,
     },
     body: JSON.stringify(searchValue),
   })
@@ -166,11 +166,11 @@ const getOtherUserInfo = (
   accessToken: string
 ): Promise<any> => {
   return fetch(`${BASE_URL}/otherUserInfo`, {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${accessToken}`,
-      "x-refresh": `${refreshToken}`,
+      'x-refresh': `${refreshToken}`,
     },
     body: JSON.stringify(userId),
   })
@@ -183,11 +183,11 @@ const getFriends = (
   accessToken: string
 ): Promise<any> => {
   return fetch(`${BASE_URL}/my/friends`, {
-    method: "GET",
+    method: 'GET',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${accessToken}`,
-      "x-refresh": `${refreshToken}`,
+      'x-refresh': `${refreshToken}`,
     },
   })
     .then((res) => res.json())
@@ -199,11 +199,11 @@ const getFriendsCitesPlace = (
   accessToken: string
 ): Promise<any> => {
   return fetch(`${BASE_URL}/friendsCitiesPlaces`, {
-    method: "GET",
+    method: 'GET',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${accessToken}`,
-      "x-refresh": `${refreshToken}`,
+      'x-refresh': `${refreshToken}`,
     },
   })
     .then((res) => res.json())
@@ -215,11 +215,11 @@ const getSavedPlaces = (
   accessToken: string
 ): Promise<any> => {
   return fetch(`${BASE_URL}/my/savedplaces`, {
-    method: "GET",
+    method: 'GET',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${accessToken}`,
-      "x-refresh": `${refreshToken}`,
+      'x-refresh': `${refreshToken}`,
     },
   })
     .then((res) => res.json())
@@ -231,11 +231,11 @@ const getMyPlaces = (
   accessToken: string
 ): Promise<any> => {
   return fetch(`${BASE_URL}/my/places`, {
-    method: "GET",
+    method: 'GET',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${accessToken}`,
-      "x-refresh": `${refreshToken}`,
+      'x-refresh': `${refreshToken}`,
     },
   })
     .then((res) => res.json())
@@ -247,11 +247,11 @@ const getMyCityPlaces = (
   accessToken: string
 ): Promise<any> => {
   return fetch(`${BASE_URL}/my/citiesPlaces`, {
-    method: "GET",
+    method: 'GET',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${accessToken}`,
-      "x-refresh": `${refreshToken}`,
+      'x-refresh': `${refreshToken}`,
     },
   })
     .then((res) => res.json())
@@ -260,11 +260,11 @@ const getMyCityPlaces = (
 
 const logout = (refreshToken: string, accessToken: string): Promise<any> => {
   return fetch(`${BASE_URL}/logout`, {
-    method: "DELETE",
+    method: 'DELETE',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${accessToken}`,
-      "x-refresh": `${refreshToken}`,
+      'x-refresh': `${refreshToken}`,
     },
   })
     .then((res) => res.json())
@@ -277,14 +277,14 @@ const removeFriend = (
   accessToken: string
 ): Promise<any> => {
   return fetch(`${BASE_URL}/remove/friend`, {
-    method: "DELETE",
+    method: 'DELETE',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${accessToken}`,
-      "x-refresh": `${refreshToken}`,
+      'x-refresh': `${refreshToken}`,
     },
     body: JSON.stringify(friendId),
-  }).catch((err: any) => console.log("RemoveFriend Error:", err));
+  }).catch((err: any) => console.log('RemoveFriend Error:', err));
 };
 
 const removeMyPlace = (
@@ -293,11 +293,11 @@ const removeMyPlace = (
   accessToken: string
 ): Promise<any> => {
   return fetch(`${BASE_URL}/remove/myplace`, {
-    method: "DELETE",
+    method: 'DELETE',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${accessToken}`,
-      "x-refresh": `${refreshToken}`,
+      'x-refresh': `${refreshToken}`,
     },
     body: JSON.stringify(placeInfo),
   })
@@ -310,11 +310,11 @@ const removeSavedPlace = (
   accessToken: string
 ): Promise<any> => {
   return fetch(`${BASE_URL}/remove/myplace`, {
-    method: "DELETE",
+    method: 'DELETE',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${accessToken}`,
-      "x-refresh": `${refreshToken}`,
+      'x-refresh': `${refreshToken}`,
     },
     body: JSON.stringify(placeInfo),
   })
