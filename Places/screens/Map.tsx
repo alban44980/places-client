@@ -3,13 +3,22 @@
 import React, { useState, useEffect } from 'react';
 import { REACT_APP_GOOGLE_MAPS_API_KEY } from '@env';
 
-import { StyleSheet, View, Text, SafeAreaView } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  SafeAreaView,
+  Image,
+  Touchable,
+} from 'react-native';
 import CityInput from '../components/AddPlace/CityInput';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import colors from '../assets/styles/colors';
 import * as Location from 'expo-location';
 import { useSelector } from 'react-redux';
 import places from '../dummyData/placesList';
+import PlacesList from '../components/SearchModal/PlacesList';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 function Map() {
   const [location, setLocation] = useState(null);
@@ -17,7 +26,9 @@ function Map() {
   const [inputValue, setInputValue] = useState<String>('');
   const [cityCoords, setCityCoords] = useState<any>();
   const [country, setCountry] = useState<String>('');
-  const [markerlist, setMarkerlist] = useState<any[]>([]);
+  const [placeList, setPlaceList] = useState<any[]>([]);
+  const [currentPlaceReview, setCurrentPlaceReview] = useState<any>(null);
+
   const userFriendInfo: any = useSelector(
     (state: RootState) => state.userFriendInfo
   );
@@ -35,6 +46,7 @@ function Map() {
         placesList.push(...city.Places);
       }
     }
+    setPlaceList(placesList);
     for (let place of placesList) {
       coordsList.push(makeItAnObject(place.location));
     }
@@ -123,11 +135,52 @@ function Map() {
                         latitude: Number(place.lat),
                         longitude: Number(place.lng),
                       }}
+                      onPress={() => {
+                        console.log('press function running');
+                        console.log(placeList[0].location);
+                        for (let i = 0; i < placeList.length; i++) {
+                          let coords = makeItAnObject(placeList[i].location);
+                          console.log('COORDS CONSOLE LOGGED ==> ', coords);
+                          if (
+                            coords.lat === place.lat &&
+                            coords.lng === place.lng
+                          ) {
+                            console.log('WE FOUND OUR MATCH HEEEEEEEE');
+                            setCurrentPlaceReview(placeList[i]);
+                            break;
+                          }
+                        }
+                      }}
                     />
                   ); //>
                 })
               : null}
           </MapView>
+          <View style={styles.previewContainer}>
+            {currentPlaceReview ? (
+              <View style={styles.placePreviewContainer}>
+                <View style={styles.imageContainer}>
+                  <Image
+                    style={{ width: '80%', height: '80%', borderRadius: 20 }}
+                    source={{
+                      uri: currentPlaceReview.img,
+                    }}
+                  />
+                </View>
+                <View style={styles.infoContainer}>
+                  <View style={styles.placeName}>
+                    <Text style={styles.title}>{currentPlaceReview.name}</Text>
+                  </View>
+                  <View style={styles.tagsContainer}></View>
+                  <TouchableOpacity style={styles.viewButton}>
+                    <Text style={{ fontSize: 20 }}>View</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            ) : (
+              <Text>OH NOR THERE IS NO PLACE TO REVIEW YET</Text>
+            )}
+          </View>
         </View>
       ) : (
         <Text>LOADING BRUV</Text>
@@ -145,16 +198,59 @@ const styles = StyleSheet.create({
   },
   mapContainer: {
     // backgroundColor: 'red',
-    height: '60%',
-  },
-  previewContainer: {
-    backgroundColor: colors.backgroundDark,
-    flexGrow: 1,
+    // height: '70%',
   },
   map: {
     flex: 1,
     // width: Dimensions.get('window').width,
     // height: Dimensions.get('window').height / 1.3,
+  },
+  previewContainer: {
+    backgroundColor: colors.backgroundDark,
+    // flexGrow: 1,
+    height: '30%',
+  },
+  placePreviewContainer: {
+    // backgroundColor: 'yellow',
+    flexDirection: 'row',
+    height: '80%',
+  },
+  imageContainer: {
+    // backgroundColor: 'blue',
+    width: '50%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    // paddingTop: 30,
+    // alignItems: 'center',
+  },
+  infoContainer: {
+    width: '50%',
+    // backgroundColor: 'red',
+  },
+  placeName: {
+    // backgroundColor: 'yellow',
+    height: '30%',
+    // width: '100%',
+    // alignItems: 'center',
+    justifyContent: 'center',
+    paddingLeft: 60,
+  },
+  title: {
+    color: colors.fontLight,
+    fontSize: 18,
+  },
+  tagsContainer: {
+    height: '25%',
+    backgroundColor: 'lightblue',
+  },
+  viewButton: {
+    height: '60%',
+    backgroundColor: 'red',
+    margin: 5,
+    backgroundColor: 'lightblue',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 20,
   },
 });
 
