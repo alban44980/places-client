@@ -43,7 +43,7 @@ export default function FiltersContainer(props: any) {
             style={tagSelected === city.name ? styles.selectedTag : styles.defaultTag} 
             onPress={() => handlePress(city)}
           >
-            <Text style={styles.tag}>{city.name}</Text>
+            <Text style={tagSelected === city.name ? styles.selectedTagLabel : styles.defaultTagLabel}>{city.name}</Text>
           </TouchableOpacity>
           )}
         )}
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     minWidth: 70,
-    backgroundColor: colors.accentFun
+    backgroundColor: colors.backgroundDark
   },
 
   defaultTag: {
@@ -102,8 +102,14 @@ const styles = StyleSheet.create({
     backgroundColor: colors.backgroundLight,
   },
 
-  tag: {
+  defaultTagLabel: {
     fontSize: 10,
     fontFamily: fonts.medium
+  },
+
+  selectedTagLabel: {
+    fontSize: 10,
+    fontFamily: fonts.medium,
+    color: colors.fontLight
   },
 });

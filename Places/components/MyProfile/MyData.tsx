@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     borderColor: colors.backgroundDark,
     marginBottom: 10,
+    borderWidth: 0.5,
   },
 
   fullNameText: {

@@ -16,13 +16,14 @@ import Description from "./Description";
 import Tags from "./Tags";
 import colors from "../../assets/styles/colors";
 
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/reducers/reducers";
-import { setPlaceSelected } from "../../redux/actions/actions";
+
 
 function PlaceModal(props: any) {
-  const { place, handlePress } = props;
-  console.log("PLACE DATA>>>>>>>>>>", place);
+  const { place, setPlaceVisible, placeVisible } = props;
+
+  const handlePress = () => {
+    setPlaceVisible(!placeVisible)
+  }
 
   return (
     <Modal>

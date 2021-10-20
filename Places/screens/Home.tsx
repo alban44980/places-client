@@ -32,11 +32,17 @@ function Home() {
   const [friendSelected, setFriendSelected] = useState<any>(null);
 
 
+  const [searchVisible, setSearchVisible] = useState<Boolean>(false)
+  const [placeVisible, setPlaceVisible] = useState<Boolean>(false)
+
+
+
+
   // redux states
   const dispatch = useDispatch();
   const userFriendInfo: any = useSelector((state: RootState) => state.userFriendInfo);
-  const searchVisible: any = useSelector((state: RootState) => state.searchVisible);
-  const placeVisible: any = useSelector((state: RootState) => state.placeVisible);
+  // const searchVisible: any = useSelector((state: RootState) => state.searchVisible);
+  // const placeVisible: any = useSelector((state: RootState) => state.placeVisible);
 
 
 
@@ -79,16 +85,20 @@ function Home() {
   }, [userFriendInfo]);
 
   function handlePress() {
-    dispatch(toggleSearchVisible());
+    setSearchVisible(!searchVisible)
+    // dispatch(toggleSearchVisible());
   }
 
 
   return (
     <SafeAreaView style={styles.container}>
       {searchVisible && (
-        <SearchModal city={citySelected} friendList={friendList} />
+        <SearchModal city={citySelected} friendList={friendList} searchVisible={searchVisible} setSearchVisible={setSearchVisible}/>
       )}
-      {placeVisible && <PlaceModal place={placeSelected} />}
+
+      {placeVisible && 
+        <PlaceModal place={placeSelected} placeVisible={placeVisible} setPlaceVisible={setPlaceVisible} />}
+
 
       <ScrollView style={{ flex: 1 }}>
         <View style={styles.headerContainer}>
@@ -119,6 +129,8 @@ function Home() {
             data={recentlyAddedPlacesList}
             route={"place"}
             setPlace={setPlaceSelected}
+            placeVisible={placeVisible}
+            setPlaceVisible={setPlaceVisible}
           />
           <HomeList
             key={1}
@@ -131,6 +143,8 @@ function Home() {
             data={cityList}
             route={"search"}
             setCity={setCitySelected}
+            searchVisible={searchVisible}
+            setSearchVisible={setSearchVisible}
           />
         </View>
       </ScrollView>

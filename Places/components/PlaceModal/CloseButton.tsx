@@ -14,26 +14,18 @@ import fonts from "../../assets/styles/fonts";
 function CloseButton(props: any) {
   const { handlePress } = props;
 
-  const placeVisible: any = useSelector(
-    (state: RootState) => state.placeVisible
-  );
+  
 
   const searchVisible: any = useSelector(
     (state: RootState) => state.searchVisible
   );
 
-  console.log("searchVisibleForTest ==>", searchVisible);
-  const dispatch = useDispatch();
+
+
 
   return (
     <TouchableHighlight
-      onPress={() => {
-        if (handlePress) {
-          handlePress();
-        } else {
-          dispatch(togglePlaceVisible());
-        }
-      }}
+      onPress={() => handlePress()}
       style={styles.closeButton}
     >
       <Text style={styles.closeButtonText}>Back</Text>

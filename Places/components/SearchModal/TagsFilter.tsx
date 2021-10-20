@@ -47,7 +47,7 @@ function TagsFilter({ selected, setSelected, formTags, setFormTags }: any) {
               }
               onPress={() => handlePress(tag.tag_name)}
             >
-              <Text style={styles.tagText}>#{tag.tag_name}</Text>
+              <Text style={selected.includes(tag.tag_name)? styles.tagSelectedText : styles.tagText}>#{tag.tag_name}</Text>
             </TouchableHighlight>
           );
         })}
@@ -61,12 +61,12 @@ export default TagsFilter;
 const styles = StyleSheet.create({
   tagSectionContainer: {
     flex: 1,
-    backgroundColor: colors.backgroundMedium,
+    backgroundColor: colors.backgroundLight,
     alignItems: "center",
     paddingTop: 20,
   },
 
-  tagDefaultContainer: {
+  tagSelectedContainer: {
     height: 45,
     width: "60%",
     backgroundColor: colors.backgroundDark,
@@ -76,11 +76,11 @@ const styles = StyleSheet.create({
     borderColor: colors.backgroundDark,
     borderWidth: 1,
   },
-
-  tagSelectedContainer: {
+  
+  tagDefaultContainer: {
     height: 45,
     width: "60%",
-    backgroundColor: colors.accentFun,
+    backgroundColor: colors.backgroundLight,
     borderRadius: 10,
     marginBottom: 10,
     justifyContent: "center",
@@ -88,10 +88,17 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
 
-  tagText: {
+  tagSelectedText: {
     fontSize: 12,
     fontWeight: "600",
     color: colors.fontLight,
+    textAlign: "center",
+  },
+
+  tagText: {
+    fontSize: 12,
+    fontWeight: "600",
+    color: colors.fontDark,
     textAlign: "center",
   },
 });

@@ -16,11 +16,14 @@ import {
 } from "../../redux/actions/actions";
 import fonts from "../../assets/styles/fonts";
 
-function SearchModal({ city }: any) {
+function SearchModal({ city, searchVisible, setSearchVisible }: any) {
   //allFriends cties and places
   const friendsCitiesPlaces: any = useSelector(
     (state: RootState) => state.userFriendInfo
   );
+
+
+
 
   //extract places from friendsCitiesPlaces reducer
   const placesArray = [];
@@ -39,8 +42,6 @@ function SearchModal({ city }: any) {
 
   //places currently rendering
   const [placesRendered, setPlacesRendered] = useState<any[]>([...placesArray]);
-
-  //tags currently selected
   const [tagsSelected, setTagsSelected] = useState<any[]>([]);
 
   //set initial search with selectedPlace if selectedPlace not null
@@ -50,27 +51,24 @@ function SearchModal({ city }: any) {
   // waiting for place interface before declaring below
   const [selectedPlace, setSelectedPlace] = useState<any>(null);
 
-  //Redux
-  const searchVisible: any = useSelector(
-    (state: RootState) => state.searchVisible
-  );
-  const placeVisible: any = useSelector(
-    (state: RootState) => state.placeVisible
-  );
-  const dispatch = useDispatch();
+
 
   const handleFilterPress = () => {
     setFilterModalVisible(!filterModalVisible);
   };
+
+  const [placeVisible, setPlaceVisible] = useState <Boolean> (false)
+
   const handlePlacePress = () => {
-    dispatch(togglePlaceVisible());
-  };
-  const handleClosePress = () => {
-    dispatch(toggleSearchVisible());
-    // dispatch set selected place null
+    setPlaceVisible(!placeVisible)
   };
 
-  console.log("place visible ==>", placeVisible);
+  const handleClosePress = () => {
+    setSearchVisible(!searchVisible)
+    // dispatch(toggleSearchVisible());
+  };
+
+  // console.log("place visible ==>", placeVisible);
 
   return (
     <Modal
@@ -95,9 +93,8 @@ function SearchModal({ city }: any) {
 
         {placeVisible && (
           <PlaceModal
-            // placeModalVisible={placeModalVisible}
-            // setPlaceModalVisible={setPlaceModalVisible}
-            handlePress={handlePlacePress}
+            placeVisible={placeVisible}
+            setPlaceVisible={setPlaceVisible}
             place={selectedPlace}
           />
         )}
