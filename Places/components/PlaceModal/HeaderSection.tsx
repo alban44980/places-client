@@ -1,7 +1,7 @@
-import { StyleSheet, View, Text } from "react-native";
-import React from "react";
-import colors from "../../assets/styles/colors";
-import fonts from "../../assets/styles/fonts";
+import { StyleSheet, View, Text } from 'react-native';
+import React from 'react';
+import colors from '../../assets/styles/colors';
+import fonts from '../../assets/styles/fonts';
 
 function HeaderSection(props: any) {
   const { place } = props;
@@ -22,31 +22,27 @@ export default HeaderSection;
 
 const styles = StyleSheet.create({
   headerContainer: {
-    height: "13%",
-    width: "90%",
-    backgroundColor: colors.backgroundLight,
-    justifyContent: "center",
-    marginBottom: 4,
-    borderColor: colors.backgroundLight,
-    borderWidth: 1,
+    height: '50%',
+    width: '90%',
+    justifyContent: 'center',
+    borderColor: colors.backgroundDark,
     borderRadius: 5,
   },
 
   placeTitle: {
-    fontSize: 18,
-    color: colors.fontDark,
-    fontWeight: "600",
-    textAlign: "center",
+    fontSize: 20,
+    color: colors.fontLight,
+    textAlign: 'center',
     fontFamily: fonts.semiBold,
     paddingHorizontal: 20,
-    marginBottom: 3,
+    marginBottom: 4,
   },
 
   placeOwner: {
-    fontSize: 14,
-    color: colors.fontDark,
-    fontWeight: "400",
-    textAlign: "center",
+    fontSize: 13,
+    color: colors.fontLight,
+    fontWeight: '400',
+    textAlign: 'center',
     fontFamily: fonts.regular,
   },
 });

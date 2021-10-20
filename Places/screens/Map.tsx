@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     height: '60%',
   },
   previewContainer: {
-    backgroundColor: colors.backgroundDark,
+    backgroundColor: colors.backgroundLight,
     flexGrow: 1,
   },
   map: {

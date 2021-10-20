@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   StyleSheet,
   View,
@@ -6,22 +6,22 @@ import {
   TextInput,
   TouchableOpacity,
   Button,
-} from "react-native";
-import { useForm, Controller } from "react-hook-form";
-import { useSelector, useDispatch } from "react-redux";
-import { useNavigation } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { RootStackParamList } from "../../App";
-import ApiService from "../../ApiService";
+} from 'react-native';
+import { useForm, Controller } from 'react-hook-form';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../../App';
+import ApiService from '../../ApiService';
 import {
   saveAccessToken,
   saveRefreshToken,
   saveUserFriendsInfo,
-} from "../../redux/actions/actions";
-import { RootState } from "../../redux/reducers/reducers";
-import colors from "../../assets/styles/colors";
-import fonts from "../../assets/styles/fonts";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+} from '../../redux/actions/actions';
+import { RootState } from '../../redux/reducers/reducers';
+import colors from '../../assets/styles/colors';
+import fonts from '../../assets/styles/fonts';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 type userScreenProp = StackNavigationProp<RootStackParamList>;
 
@@ -42,7 +42,6 @@ function Login() {
 
   const onSubmit = async (data: any) => {
     try {
-
       const tokens: any = await ApiService.login(data);
       //getFriendsCityPlaces apicall below
       if (tokens.accessToken && tokens.refreshToken) {
@@ -54,7 +53,7 @@ function Login() {
         dispatch(saveUserFriendsInfo(friendsInfo));
         dispatch(saveAccessToken(tokens.accessToken));
         dispatch(saveRefreshToken(tokens.refreshToken));
-        navigation.navigate("home");
+        navigation.navigate('home');
       }
     } catch (e) {}
   };
@@ -77,7 +76,7 @@ function Login() {
               onChangeText={onChange}
               value={value}
               placeholder="Email"
-              textContentType={"emailAddress"}
+              textContentType={'emailAddress'}
               autoCapitalize="none"
             />
           )}
@@ -103,69 +102,69 @@ function Login() {
           name="password"
           defaultValue=""
         />
-        <TouchableWithoutFeedback 
+        <TouchableWithoutFeedback
           style={styles.createAccountButton}
-          onPress={() => navigation.navigate("signup")}
+          onPress={() => navigation.navigate('signup')}
         >
-          <Text style={styles.createAccountButtonLabel}> Create an account </Text>
+          <Text style={styles.createAccountButtonLabel}>
+            {' '}
+            Create an account{' '}
+          </Text>
         </TouchableWithoutFeedback>
 
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.loginButtonContainer}
           onPress={handleSubmit(onSubmit)}
         >
           <Text>Login</Text>
         </TouchableOpacity>
-
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-
   loginContainer: {
     flex: 1,
-    backgroundColor: colors.backgroundDark,
+    backgroundColor: colors.backgroundLight,
   },
 
   topContainer: {
-    height: "25%",
+    height: '25%',
     backgroundColor: colors.backgroundLight,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    paddingTop: 20
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: 20,
   },
-
 
   headerText: {
     color: colors.fontDark,
     fontSize: 40,
     fontFamily: fonts.medium,
-    letterSpacing: 1
+    letterSpacing: 1,
   },
 
   formContainer: {
-    height: "40%",
-    alignItems: "center",
+    height: '40%',
+    alignItems: 'center',
     paddingTop: 30,
   },
 
   input: {
     backgroundColor: colors.formInputBackgroundLight,
     margin: 5,
-    height: "16%",
-    width: "75%",
+    height: '16%',
+    width: '75%',
     paddingHorizontal: 10,
     borderRadius: 10,
-    marginBottom: 10
+    marginBottom: 10,
   },
 
   createAccountButtonLabel: {
     fontFamily: fonts.regular,
     color: colors.backgroundLight,
-    marginVertical: 15
+    marginVertical: 15,
   },
 
   loginButtonContainer: {
@@ -177,7 +176,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 5,
-    
   },
 });
 

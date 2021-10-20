@@ -208,7 +208,7 @@ function SignUp() {
 const styles = StyleSheet.create({
   loginContainer: {
     flex: 1,
-    backgroundColor: colors.backgroundDark,
+    backgroundColor: colors.backgroundLight,
   },
 
   topContainer: {

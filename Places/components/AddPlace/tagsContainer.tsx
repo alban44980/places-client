@@ -1,16 +1,8 @@
 import React, { useState } from 'react';
-import {
-  StyleSheet,
-  View,
-  Text,
-  TouchableHighlight,
-} from 'react-native';
+import { StyleSheet, View, Text, TouchableHighlight } from 'react-native';
 import colors from '../../assets/styles/colors';
 import fonts from '../../assets/styles/fonts';
 import FilterModal from '../SearchModal/FilterModal';
-
-
-
 
 function TagsContainer({ formTags, setFormTags }: any) {
   const handleFilterPress = () => {
@@ -23,13 +15,13 @@ function TagsContainer({ formTags, setFormTags }: any) {
     <View style={styles.container}>
       {filterModalVisible && (
         // <View style={styles.opacityForModalOpen}>
-          <FilterModal
-            filterModalVisible={filterModalVisible}
-            setFilterModalVisible={setFilterModalVisible}
-            handlePress={handleFilterPress}
-            tagsSelected={formTags}
-            setTagsSelected={setFormTags}
-          />
+        <FilterModal
+          filterModalVisible={filterModalVisible}
+          setFilterModalVisible={setFilterModalVisible}
+          handlePress={handleFilterPress}
+          tagsSelected={formTags}
+          setTagsSelected={setFormTags}
+        />
         // </View>
       )}
 
@@ -55,29 +47,28 @@ const styles = StyleSheet.create({
   opacityForModalOpen: {
     height: 1000,
     width: 800,
-    position: "absolute",
-    backgroundColor: "white",
+    position: 'absolute',
+    backgroundColor: 'white',
     opacity: 0.85,
     left: -50,
   },
 
   filterButtonContainer: {
-    backgroundColor: colors.backgroundDark,
+    backgroundColor: colors.backgroundLight,
     height: '70%',
     width: '80%',
     justifyContent: 'center',
     borderRadius: 10,
-    marginTop: 5
+    marginTop: 5,
   },
 
   filterText: {
     fontSize: 15,
     textAlign: 'center',
-    color: colors.fontLight,
+    color: colors.fontDark,
     fontFamily: fonts.semiBold,
-    letterSpacing: .75
+    letterSpacing: 0.75,
   },
-
 });
 
 export default TagsContainer;

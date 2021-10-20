@@ -21,7 +21,13 @@ export default function ButtonContainer({
           setSavedSelected(false);
         }}
       >
-        <Text style={myPlacesSelected ? styles.labelSelected : styles.labelNotSelected}>My Places</Text>
+        <Text
+          style={
+            myPlacesSelected ? styles.labelSelected : styles.labelNotSelected
+          }
+        >
+          My Places
+        </Text>
       </TouchableOpacity>
 
       <TouchableOpacity
@@ -32,7 +38,11 @@ export default function ButtonContainer({
           setSavedSelected(true);
         }}
       >
-        <Text style={savedSelected ? styles.labelSelected : styles.labelNotSelected}>Saved</Text>
+        <Text
+          style={savedSelected ? styles.labelSelected : styles.labelNotSelected}
+        >
+          Saved
+        </Text>
       </TouchableOpacity>
     </View>
   );
@@ -53,15 +63,15 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '600',
     fontFamily: fonts.medium,
-    letterSpacing: .8
+    letterSpacing: 0.8,
   },
 
   labelSelected: {
     fontSize: 13,
     fontWeight: '600',
     fontFamily: fonts.medium,
-    letterSpacing: .8,
-    color: colors.fontLight
+    letterSpacing: 0.8,
+    color: colors.fontLight,
   },
 
   buttonSelected: {
