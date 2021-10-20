@@ -14,6 +14,7 @@ import HeaderSection from "./HeaderSection";
 import DetailsBar from "./DetailsBar";
 import Description from "./Description";
 import Tags from "./Tags";
+import AddSavePlace from "./AddSavePlace";
 import colors from "../../assets/styles/colors";
 
 function PlaceModal(props: any) {
@@ -27,6 +28,7 @@ function PlaceModal(props: any) {
     <Modal>
       <SafeAreaView style={styles.modalSAVContainer}>
         <CloseButton handlePress={handlePress} />
+        <AddSavePlace placeToSave={place} />
         <PlaceImage place={place} />
         <HeaderSection place={place} />
         <DetailsBar place={place} />

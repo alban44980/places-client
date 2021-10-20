@@ -6,7 +6,6 @@ import {
   SearchUserSchema,
 } from "./Interfaces";
 
-// const BASE_URL = `http://${path}:3001`;
 const BASE_URL = "http://9a1f-147-161-122-215.ngrok.io";
 
 /*

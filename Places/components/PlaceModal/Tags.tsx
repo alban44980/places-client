@@ -14,7 +14,9 @@ function Tags(props: any) {
         {tags.map((tag: any) => {
           return (
             <View style={styles.tagContainer}>
-              <Text style={styles.tagText}>#{tag.name ? tag.name : tag}</Text>
+              <Text key={tag.name ? tag.name : tag} style={styles.tagText}>
+                #{tag.name ? tag.name : tag}
+              </Text>
             </View>
           );
         })}

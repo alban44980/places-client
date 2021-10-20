@@ -1,27 +1,11 @@
-import { StyleSheet, View, Text, TouchableHighlight } from "react-native";
+import { StyleSheet, Text, TouchableHighlight } from "react-native";
 import React from "react";
 import colors from "../../assets/styles/colors";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../../redux/reducers/reducers";
-import {
-  setUserData,
-  toggleSearchVisible,
-  togglePlaceVisible,
-  setPlaceSelected,
-} from "../../redux/actions/actions";
+
 import fonts from "../../assets/styles/fonts";
 
 function CloseButton(props: any) {
   const { handlePress } = props;
-
-  
-
-  const searchVisible: any = useSelector(
-    (state: RootState) => state.searchVisible
-  );
-
-
-
 
   return (
     <TouchableHighlight
