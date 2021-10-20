@@ -8,8 +8,6 @@ function FilterModal(props: any) {
   const {
     filterModalVisible,
     setFilterModalVisible,
-    formTags,
-    setFormTags,
     setTagsSelected,
     tagsSelected,
   } = props;
@@ -35,12 +33,7 @@ function FilterModal(props: any) {
         </View>
 
         <View style={styles.tagsListContainer}>
-          <TagsFilter
-            selected={selected}
-            formTags={formTags}
-            setFormTags={setFormTags}
-            setSelected={setSelected}
-          />
+          <TagsFilter selected={selected} setSelected={setSelected} />
         </View>
 
         <View style={styles.buttonsContainer}>

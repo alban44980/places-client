@@ -42,6 +42,11 @@ function FormContainer({ image }) {
     );
     const addressGeo = await addressGeoCall.json();
 
+    let tag_list = [];
+    for (let aTag of formTags) {
+      tag_list.push({ tag_name: aTag });
+    }
+
     const objToSend = {
       name: data.name,
       description: data.description,
@@ -55,7 +60,7 @@ function FormContainer({ image }) {
       },
       country: country,
       img: image,
-      tag_list: formTags,
+      tag_list: tag_list,
     };
 
     console.log("OBJECT TO BE SENT ==> ", objToSend);

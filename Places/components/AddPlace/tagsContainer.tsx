@@ -1,20 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-import * as ImagePicker from "expo-image-picker";
-import {
-  StyleSheet,
-  View,
-  Text,
-  SafeAreaView,
-  KeyboardAvoidingView,
-  Platform,
-  TouchableWithoutFeedback,
-  Keyboard,
-  ScrollView,
-  TouchableHighlight,
-  Image,
-  TextInput,
-} from "react-native";
+import { StyleSheet, View, Text, TouchableHighlight } from "react-native";
 import colors from "../../assets/styles/colors";
 import FilterModal from "../SearchModal/FilterModal";
 
@@ -33,8 +19,8 @@ function TagsContainer({ formTags, setFormTags }: any) {
             filterModalVisible={filterModalVisible}
             setFilterModalVisible={setFilterModalVisible}
             handlePress={handleFilterPress}
-            formTags={formTags}
-            setFormTags={setFormTags}
+            tagsSelected={formTags}
+            setTagsSelected={setFormTags}
           />
         </View>
       )}

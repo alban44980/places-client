@@ -9,11 +9,7 @@ import PlacesList from "./PlacesList";
 import SearchBar from "./SearchBar";
 import colors from "../../assets/styles/colors";
 import CloseButton from "../PlaceModal/CloseButton";
-import places from "../../dummyData/placesList";
-import {
-  toggleSearchVisible,
-  togglePlaceVisible,
-} from "../../redux/actions/actions";
+
 import fonts from "../../assets/styles/fonts";
 
 function SearchModal({ city, searchVisible, setSearchVisible }: any) {
@@ -21,9 +17,6 @@ function SearchModal({ city, searchVisible, setSearchVisible }: any) {
   const friendsCitiesPlaces: any = useSelector(
     (state: RootState) => state.userFriendInfo
   );
-
-
-
 
   //extract places from friendsCitiesPlaces reducer
   const placesArray = [];
@@ -51,20 +44,18 @@ function SearchModal({ city, searchVisible, setSearchVisible }: any) {
   // waiting for place interface before declaring below
   const [selectedPlace, setSelectedPlace] = useState<any>(null);
 
-
-
   const handleFilterPress = () => {
     setFilterModalVisible(!filterModalVisible);
   };
 
-  const [placeVisible, setPlaceVisible] = useState <Boolean> (false)
+  const [placeVisible, setPlaceVisible] = useState<Boolean>(false);
 
   const handlePlacePress = () => {
-    setPlaceVisible(!placeVisible)
+    setPlaceVisible(!placeVisible);
   };
 
   const handleClosePress = () => {
-    setSearchVisible(!searchVisible)
+    setSearchVisible(!searchVisible);
     // dispatch(toggleSearchVisible());
   };
 
