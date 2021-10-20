@@ -58,8 +58,8 @@ function FormContainer({ image }) {
       tag_list: formTags,
     };
 
-    console.log('TAGS FROM FORM ==> ', objToSend.tag_list);
-
+    // console.log('TAGS FROM FORM ==> ', objToSend.tag_list);
+    console.log('OBJECT TO BE SENT ==> ', objToSend);
     const result = await ApiService.addPlace(
       objToSend,
       refreshToken,
@@ -71,60 +71,51 @@ function FormContainer({ image }) {
 
   return (
     <View style={styles.formContainer}>
-      <Controller
-        control={control}
-        rules={{
-          maxLength: 100,
-          required: true,
-        }}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <View style={styles.placeNameInputContainer}>
-            <Text style={styles.inputLabelText} >Place name</Text>
-            <TextInput
-              style={styles.placeNameInput}
-              onChangeText={onChange}
-              value={value}
-              placeholder="Place name"
-              autoCapitalize="none"
-            />
-          </View>
-        )}
-        name="name"
-        defaultValue=""
-      />
-      <View style={styles.googleInputFieldsContainer}>
-        <CityInput setCity={setCity} setCountry={setCountry} />
 
-        <AddressInput
-          address={address}
-          setAddress={setAddress}
-          country={country}
+      <View style={styles.placeNameInputContainer}> 
+        <Text style={styles.inputLabelText} >Place name</Text>
+        <Controller control={control} rules={{ maxLength: 100, required: true, }} name="name" defaultValue=""
+          render={({ field: { onChange, onBlur, value } }) => (
+              <TextInput
+                style={styles.placeNameInput}
+                onChangeText={onChange}
+                value={value}
+                placeholder="Place name"
+                autoCapitalize="none"
+              />
+          )}
         />
-
       </View>
 
-      <Controller
-        control={control}
-        rules={{
-          maxLength: 100,
-          required: true,
-        }}
-        render={({ field: { onChange, onBlur, value } }) => (
-  
-            <TextInput
-              style={styles.placeDescription}
-              onChangeText={onChange}
-              value={value}
-              placeholder="Description"
-              autoCapitalize="none"
-              multiline={true}
-              numberOfLines={5}
-            />
+      {/* <View style={styles.googleInputFieldsContainer}> */}
+      <View style={styles.cityInputContainer}>
+        <Text style={styles.inputLabelText} >Choose a city</Text>
+        <CityInput setCity={setCity} setCountry={setCountry} />
+      </View>
 
-        )}
-        name="description"
-        defaultValue=""
-      />
+      <View style={styles.addressInputContainer}>
+        <Text style={styles.inputLabelText} >Enter the address</Text>
+        <AddressInput address={address} setAddress={setAddress} country={country} />
+      </View>
+
+      {/* </View> */}
+      <View style={styles.descriptionInputContainer}>
+        <Text style={styles.inputLabelText} >Place name</Text>
+        <Controller control={control} rules={{maxLength: 100, required: true,}} name="description" defaultValue=""
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+            style={styles.placeDescription}
+            onChangeText={onChange}
+            value={value}
+            placeholder="Description"
+            autoCapitalize="none"
+            multiline={true}
+            numberOfLines={5}
+            />
+            )}
+            />
+      </View>
+
       <TagsContainer formTags={formTags} setFormTags={setFormTags} />
       <TouchableOpacity
         style={styles.submitButton}
@@ -143,11 +134,33 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '85%',
     alignItems: 'center',
+    borderWidth: 2,
   },
 
   placeNameInputContainer: {
     width: '100%',
-    height: '15%',
+    height: '20%',
+    borderWidth: 1,
+    justifyContent: 'center'
+  },
+
+  cityInputContainer: {
+    width: '100%', 
+    zIndex: 5, 
+    backgroundColor: 'gray',
+    height: '20%',
+    borderWidth: 1
+  },
+
+  addressInputContainer: {
+    width: '100%',
+    height: '20%',
+    zIndex: 3
+  },
+
+  descriptionInputContainer: {
+    width: '100%',
+    height: '20%',
     borderWidth: 1,
     justifyContent: 'center'
   },
@@ -168,17 +181,17 @@ const styles = StyleSheet.create({
   },
 
   googleInputFieldsContainer: {
-    flex: 1,
+    height: '40%',
     width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-evenly',
+    zIndex: 3,
+    borderWidth: 2
   },
 
-
-  
   addButton: {
     margin: 5,
   },
+
   placeDescription: {
     backgroundColor: 'white',
     margin: 5,
@@ -187,6 +200,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 20,
   },
+
   submitButton: {
     backgroundColor: 'purple',
     color: 'green',
