@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
 
   listLabel: {
     fontFamily: fonts.semiBold,
-    paddingHorizontal: 10,
+    paddingHorizontal: 15,
     fontSize: 22,
     color: colors.fontDark,
   },
@@ -73,8 +73,8 @@ const styles = StyleSheet.create({
   homeListContainer: {
     backgroundColor: colors.backgroundLight,
     borderRadius: 15,
-    margin: 10,
-    paddingHorizontal: 10,
+    margin: 0,
+    paddingHorizontal: 0,
   },
 
   contentContainer: {

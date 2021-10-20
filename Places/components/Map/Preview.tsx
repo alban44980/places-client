@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
 import colors from '../../assets/styles/colors';
+import { BlurView } from 'expo-blur';
 
 function Preview({ currentPlaceReview, setPlaceVisible }: any) {
   return (
-    <View style={styles.placePreviewContainer}>
+    <BlurView intensity={100} style={styles.placePreviewContainer}>
       <View style={styles.imageContainer}>
         <Image
           style={{ width: '80%', height: '80%', borderRadius: 20 }}
@@ -39,7 +39,7 @@ function Preview({ currentPlaceReview, setPlaceVisible }: any) {
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </BlurView>
   );
 }
 
@@ -47,6 +47,9 @@ const styles = StyleSheet.create({
   placePreviewContainer: {
     flexDirection: 'row',
     height: '100%',
+    position: 'absolute',
+    bottom: 230,
+    zIndex: 2,
   },
   imageContainer: {
     width: '50%',
