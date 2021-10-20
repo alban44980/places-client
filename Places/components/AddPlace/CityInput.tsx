@@ -6,10 +6,6 @@ import colors from '../../assets/styles/colors';
 import Description from './Description';
 import fonts from '../../assets/styles/fonts';
 
-
-
-
-
 const CityInput = ({
   setCity,
   setCountry,
@@ -31,12 +27,26 @@ const CityInput = ({
         types: ['(cities)'],
       }}
       styles={{
-        container: {  flex: 1, zIndex: 5, height: 100, },
-        textInputContainer: { width: '100%', flex: 1,},
-        textInput: {fontFamily: fonts.regular, fontSize: 14},
-        listView: {borderWidth: 1, zIndex: 10, position: 'absolute', top: 50, height: 200 },
-        row: {flex: 1, alignItems: 'center' },
-        description: {color: colors.fontDark, fontSize: 14, fontFamily: fonts.regular},
+        container: { flex: 1, zIndex: 5, height: 100 },
+        textInputContainer: { width: '100%', flex: 1 },
+        textInput: {
+          fontFamily: fonts.regular,
+          fontSize: 14,
+          borderWidth: 0.5,
+        },
+        listView: {
+          borderWidth: 1,
+          zIndex: 10,
+          position: 'absolute',
+          top: 50,
+          height: 200,
+        },
+        row: { flex: 1, alignItems: 'center' },
+        description: {
+          color: colors.fontDark,
+          fontSize: 14,
+          fontFamily: fonts.regular,
+        },
       }}
     />
   );

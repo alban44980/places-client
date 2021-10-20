@@ -26,12 +26,11 @@ export default BackButton;
 
 const styles = StyleSheet.create({
   closeButton: {
-    height: '25%',
+    height: '20%',
     width: '22%',
     backgroundColor: colors.backgroundLight,
     borderColor: colors.backgroundDark,
     borderStyle: 'solid',
-    borderWidth: 0.5,
     justifyContent: 'center',
     borderRadius: 10,
     alignSelf: 'center',
@@ -43,7 +42,7 @@ const styles = StyleSheet.create({
 
   closeButtonText: {
     color: colors.fontDark,
-    fontFamily: fonts.light,
+    fontFamily: fonts.semiBold,
     fontSize: 14,
     textAlign: 'center',
   },

@@ -20,7 +20,11 @@ const AddressInput = ({ setAddress, country }) => {
       styles={{
         container: { flex: 1, zIndex: 5, height: 100 },
         textInputContainer: { width: '100%', flex: 1 },
-        textInput: { fontFamily: fonts.regular, fontSize: 14 },
+        textInput: {
+          fontFamily: fonts.regular,
+          fontSize: 14,
+          borderWidth: 0.5,
+        },
         listView: {
           borderWidth: 1,
           zIndex: 10,

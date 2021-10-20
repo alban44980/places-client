@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import colors from '../../assets/styles/colors';
+import fonts from '../../assets/styles/fonts';
 import PlaceModal from '../PlaceModal/PlaceModal';
 import PlacesList from '../SearchModal/PlacesList';
 import BackButton from './BackButton';
@@ -42,7 +43,7 @@ const UserCityPlacesModal = ({
 
       <View style={styles.headerSection}>
         <BackButton handlePress={handleBackPress} />
-        <Text>{selectedCityInfo.Places[0].city}</Text>
+        <Text style={styles.headerText}>{selectedCityInfo.Places[0].city}</Text>
       </View>
 
       <PlacesList
@@ -58,9 +59,15 @@ export default UserCityPlacesModal;
 
 const styles = StyleSheet.create({
   headerSection: {
-    height: '20%',
+    height: '23%',
     backgroundColor: colors.backgroundLight,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  headerText: {
+    fontFamily: fonts.semiBold,
+    fontSize: 30,
+    top: 45,
   },
 });

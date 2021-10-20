@@ -191,6 +191,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     fontFamily: fonts.regular,
     fontSize: 14,
+    borderWidth: 0.5,
   },
 
   googleInputFieldsContainer: {
@@ -208,12 +209,13 @@ const styles = StyleSheet.create({
     fontFamily: fonts.regular,
     fontSize: 14,
     paddingTop: 10,
+    borderWidth: 0.5,
   },
 
   submitButton: {
     height: 45,
     width: 90,
-    backgroundColor: colors.backgroundLight,
+    backgroundColor: colors.formInputBackgroundLight,
     marginVertical: 5,
     alignItems: 'center',
     justifyContent: 'center',
