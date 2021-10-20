@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, SafeAreaView, Switch } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import ApiService from '../../ApiService';
-import { FriendSchema, OtherUserInfoSchema } from '../../Interfaces';
-import { saveUserFriendsInfo } from '../../redux/actions/actions';
-import { RootState } from '../../redux/reducers/reducers';
-import colors from '../../assets/styles/colors';
-import fonts from '../../assets/styles/fonts';
+import React, { useState, useEffect } from "react";
+import { StyleSheet, View, Text, SafeAreaView, Switch } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import ApiService from "../../ApiService";
+import { FriendSchema, OtherUserInfoSchema } from "../../Interfaces";
+import { saveUserFriendsInfo } from "../../redux/actions/actions";
+import { RootState } from "../../redux/reducers/reducers";
+import colors from "../../assets/styles/colors";
+import fonts from "../../assets/styles/fonts";
 
 function ToggleFollowContainer({ friendId, setSelectedUser }: any) {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -52,7 +52,7 @@ function ToggleFollowContainer({ friendId, setSelectedUser }: any) {
       );
       setSelectedUser(updatedFriend);
     } catch (e) {
-      console.log('pop', e);
+      console.log("add", e);
     }
   };
 
@@ -71,7 +71,7 @@ function ToggleFollowContainer({ friendId, setSelectedUser }: any) {
       );
       setSelectedUser(nonFriend);
     } catch (e) {
-      console.log('pack', e);
+      console.log("pack", e);
     }
   };
 
@@ -116,14 +116,14 @@ function ToggleFollowContainer({ friendId, setSelectedUser }: any) {
 
 const styles = StyleSheet.create({
   followContainer: {
-    height: '10%',
-    flexDirection: 'row',
-    justifyContent: 'center',
+    height: "10%",
+    flexDirection: "row",
+    justifyContent: "center",
   },
 
   switchContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     paddingHorizontal: 10,
   },
 
@@ -132,8 +132,8 @@ const styles = StyleSheet.create({
   },
 
   textContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     paddingHorizontal: 10,
   },
 

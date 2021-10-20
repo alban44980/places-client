@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   View,
@@ -8,44 +8,49 @@ import {
   Image,
   SafeAreaView,
   TouchableOpacity,
-} from 'react-native';
-
-import sampleFriendsList from '../dummyData/homeScreenFriends';
-
-// import { useNavigation } from '@react-navigation/native';
-// import { StackNavigationProp } from '@react-navigation/stack';
-// import { RootStackParamList } from '../App';
-import SearchBar from '../components/SearchModal/SearchBar';
-import FriendsSearchBar from '../components/Friends/FriendsSearchBar';
-import FriendsList from '../components/Friends/FriendsList';
-import colors from '../assets/styles/colors';
+} from "react-native";
+import SearchBar from "../components/SearchModal/SearchBar";
+import FriendsSearchBar from "../components/Friends/FriendsSearchBar";
+import FriendsList from "../components/Friends/FriendsList";
+import colors from "../assets/styles/colors";
+import FindUsers from "../components/Friends/FindUsers";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/reducers/reducers";
 
 // type userScreenProp = StackNavigationProp<RootStackParamList, 'userProfile'>;
 
 function Friends() {
-  // const navigation = useNavigation<userScreenProp>();
+  const userFriendInfo: any = useSelector(
+    (state: RootState) => state.userFriendInfo
+  );
 
-  // if this is true then
-  // 1) friends list is displayed
-  // 2) search filters freinds
   // if false show result of an api call to get user from user name
-  const [friendView, setFriendView] = useState<Boolean>(true);
+  const [searchList, setSearchList] = useState<Boolean>(true);
+  const [friendsList, setFriendsList] = useState<[]>([]);
+  const [nonFriendsList, setNonFriendsList] = useState<[]>([]);
+  useEffect(() => {
+    setFriendsList(userFriendInfo);
+  }, []);
 
   return (
     // need to have a different view if the button is pressed
     // ---> this should be a local state that gets toggled
 
     <SafeAreaView style={styles.friendsContainer}>
-      <FriendsSearchBar />
+      <FriendsSearchBar
+        searchList={searchList}
+        setView={setSearchList}
+        friendsList={friendsList}
+        setFriendsList={setFriendsList}
+        setNonFriendsList={setNonFriendsList}
+        nonFriendsList={nonFriendsList}
+      />
 
-      {
-        friendView && (
-          // will be a ? instead of &&
-          <FriendsList />
-        )
-        //  or
-        // <FindUsers />
-      }
+      {searchList ? (
+        <FriendsList friendsList={friendsList} />
+      ) : (
+        <FindUsers nonFriendsList={nonFriendsList} />
+      )}
     </SafeAreaView>
   );
 }
