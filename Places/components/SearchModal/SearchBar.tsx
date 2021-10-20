@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   View,
   Text,
-  TouchableOpacity,
   TextInput,
   TouchableHighlight,
 } from "react-native";
-import FilterModal from "./FilterModal";
+
 import colors from "../../assets/styles/colors";
 
 function SearchBar(props: any) {
@@ -23,22 +22,24 @@ function SearchBar(props: any) {
     tagsSelected,
   } = props;
 
+  const [textState, setTextState] = useState<string>("");
+
   useEffect(() => {
     if (city) {
       setSearch(city);
     }
   }, [city]);
 
-  const searchFilter = (text: String, tags: string[]) => {
+  const searchFilter = (text: string, tags: string[]) => {
+    setTextState(text);
+
     if (text) {
       const matchingPlaces = data.filter((place: any) => {
         const itemData = place.city
           ? place.city.toUpperCase()
           : "".toUpperCase();
-        // console.log("ItemDAta >>>>>>>", itemData);
-        // console.log("place TAg INCLUDE>>>>>", place.Tags[0].name);
-        const textData = text.toUpperCase();
 
+        const textData = text.toUpperCase();
         if (itemData.indexOf(textData) > -1) {
           //if tags list is empty, the run matching text search
           if (tags.length < 1) return true;
@@ -58,6 +59,10 @@ function SearchBar(props: any) {
       setSearch(text);
     }
   };
+
+  useEffect(() => {
+    searchFilter(textState, tagsSelected);
+  }, [tagsSelected]);
 
   return (
     <View style={styles.searchBarContainer}>

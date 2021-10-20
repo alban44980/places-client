@@ -56,20 +56,16 @@ function SearchModal({ city, searchVisible, setSearchVisible }: any) {
 
   const handleClosePress = () => {
     setSearchVisible(!searchVisible);
-    // dispatch(toggleSearchVisible());
   };
 
-  // console.log("place visible ==>", placeVisible);
+  useEffect(() => {}, [tagsSelected]);
 
   return (
     <Modal
       animationType="slide"
       transparent={true}
       visible={searchVisible}
-      onRequestClose={() => {
-        // setSearchVisible(false);
-        // dispatch(toggleSearchVisible());
-      }}
+      onRequestClose={() => {}}
     >
       <SafeAreaView style={styles.searchScreenContainer}>
         {filterModalVisible && (
