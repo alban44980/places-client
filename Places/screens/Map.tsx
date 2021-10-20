@@ -3,20 +3,13 @@
 import React, { useState, useEffect } from 'react';
 import { REACT_APP_GOOGLE_MAPS_API_KEY } from '@env';
 
-import {
-  StyleSheet,
-  View,
-  Text,
-  TouchableOpacity,
-  SafeAreaView,
-  Image,
-  ScrollView,
-  Dimensions,
-} from 'react-native';
+import { StyleSheet, View, Text, SafeAreaView } from 'react-native';
 import CityInput from '../components/AddPlace/CityInput';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import colors from '../assets/styles/colors';
 import * as Location from 'expo-location';
+import { useSelector } from 'react-redux';
+import places from '../dummyData/placesList';
 
 function Map() {
   const [location, setLocation] = useState(null);
@@ -25,6 +18,39 @@ function Map() {
   const [cityCoords, setCityCoords] = useState<any>();
   const [country, setCountry] = useState<String>('');
   const [markerlist, setMarkerlist] = useState<any[]>([]);
+  const userFriendInfo: any = useSelector(
+    (state: RootState) => state.userFriendInfo
+  );
+  const [placesToShow, setPlacesToShow] = useState<any[]>([]);
+
+  function getCityPlacesCoords(input) {
+    const friendCities = [];
+    const placesList = [];
+    const coordsList = [];
+    for (let friend of userFriendInfo) {
+      friendCities.push(...friend.Cities);
+    }
+    for (let city of friendCities) {
+      if (city.name === input) {
+        placesList.push(...city.Places);
+      }
+    }
+    for (let place of placesList) {
+      coordsList.push(makeItAnObject(place.location));
+    }
+    return coordsList;
+  }
+
+  //Helper function
+  function makeItAnObject(input) {
+    const str1 = input.split(':')[1].split(',')[0];
+    const str2 = input.split(':')[2].split('}')[0];
+    const obj = {
+      lat: str1,
+      lng: str2,
+    };
+    return obj;
+  }
 
   useEffect(() => {
     (async () => {
@@ -35,7 +61,6 @@ function Map() {
       }
 
       let location = await Location.getCurrentPositionAsync({});
-      console.log('YOUR LOCATION IS ==> ', location);
       setLocation({
         coords: {
           lat: location.coords.latitude,
@@ -43,22 +68,17 @@ function Map() {
         },
       });
     })();
-
-    //below set the markers list
   }, []);
 
   useEffect(() => {
-    console.log('CITY VALUE HAS CHANGED !!!!!');
+    const coordsList = getCityPlacesCoords(inputValue.split(',')[0]);
+    setPlacesToShow(coordsList);
     (async () => {
       const cityGeoCall = await fetch(
         `https://maps.googleapis.com/maps/api/geocode/json?address=${inputValue}&key=${REACT_APP_GOOGLE_MAPS_API_KEY}`
       );
       const cityGeo = await cityGeoCall.json();
-      // console.log('coordinates of newCity ==>', cityGeo);
-      console.log(
-        'EXACT CORDINATES  ==> ',
-        JSON.stringify(cityGeo.results[0].geometry.location)
-      );
+
       setLocation({
         coords: cityGeo.results[0].geometry.location,
       });
@@ -70,7 +90,6 @@ function Map() {
     text = errorMsg;
   } else if (location) {
     text = JSON.stringify(location);
-    console.log(location);
   }
 
   return (
@@ -91,14 +110,23 @@ function Map() {
             region={{
               latitude: location ? location.coords.lat : 41.3874,
               longitude: location ? location.coords.lng : 2.1686,
-              // latitude: 41.3874,
-              // longitude: 2.1686,
               latitudeDelta: 0.0922,
               longitudeDelta: 0.0421,
             }}
             showsUserLocation={true}
           >
-            <Marker coordinate={{ latitude: 41.4036, longitude: 2.1744 }} />
+            {placesToShow
+              ? placesToShow.map((place) => {
+                  return (
+                    <Marker
+                      coordinate={{
+                        latitude: Number(place.lat),
+                        longitude: Number(place.lng),
+                      }}
+                    />
+                  ); //>
+                })
+              : null}
           </MapView>
         </View>
       ) : (

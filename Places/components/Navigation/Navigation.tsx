@@ -17,16 +17,14 @@ import Profile from '../../screens/Profile';
 import UserProfile from '../UserProfile/UserProfile';
 import fonts from '../../assets/styles/fonts';
 import colors from '../../assets/styles/colors';
-
-
-
+import Map from '../../screens/Map';
 
 const Tab = createBottomTabNavigator();
 
 function Tabs() {
   return (
-    <Tab.Navigator 
-      screenOptions={{ 
+    <Tab.Navigator
+      screenOptions={{
         headerShown: false,
         tabBarStyle: styles.tabBarStyle,
         tabBarActiveTintColor: colors.fontLight,
@@ -34,9 +32,8 @@ function Tabs() {
         tabBarLabelStyle: styles.tabBarLabelStyle,
         tabBarActiveBackgroundColor: colors.backgroundDark,
         tabBarItemStyle: styles.tabBarItem,
-        tabBarShowLabel: false
-       }} 
-       
+        tabBarShowLabel: false,
+      }}
     >
       <Tab.Screen
         name="Home"
@@ -61,6 +58,21 @@ function Tabs() {
             <View style={styles.tabContainer}>
               <Image
                 source={require('../../assets/navigation/friends.png')}
+                resizeMode="contain"
+                style={styles.iconStyle}
+              />
+            </View>
+          ),
+        }}
+      ></Tab.Screen>
+      <Tab.Screen
+        name="Map"
+        component={Map}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View style={styles.tabContainer}>
+              <Image
+                source={require('../../assets/navigation/world.png')}
                 resizeMode="contain"
                 style={styles.iconStyle}
               />
@@ -104,22 +116,21 @@ function Tabs() {
 
 const styles = StyleSheet.create({
   tabBarStyle: {
-    backgroundColor: colors.backgroundMedium, 
-    height: 60, 
+    backgroundColor: colors.backgroundMedium,
+    height: 60,
     position: 'absolute',
     width: '90%',
-    bottom: 20, 
+    bottom: 20,
     right: 20,
     left: 20,
-    borderRadius: 20,  
-    borderWidth: 1, 
+    borderRadius: 20,
+    borderWidth: 1,
     borderStyle: 'solid',
   },
 
   tabBarItem: {
-
-    height: 60,    
-    alignItems: 'center', 
+    height: 60,
+    alignItems: 'center',
     justifyContent: 'center',
   },
 
@@ -130,22 +141,21 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     width: '75%',
     height: '75%',
-    borderRadius: 5
+    borderRadius: 5,
   },
 
   tabBarLabelStyle: {
     fontFamily: fonts.light,
-    letterSpacing: .5,
+    letterSpacing: 0.5,
     marginTop: 2,
     flex: 1,
   },
-
 
   iconStyle: {
     height: 24,
     width: 24,
     // color: accessibilityState.selected ? colors.backgroundDark : colors.backgroundLight
-  }
+  },
 });
 
 export default Tabs;

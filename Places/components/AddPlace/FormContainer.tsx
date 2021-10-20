@@ -41,6 +41,7 @@ function FormContainer({ image }) {
       `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${REACT_APP_GOOGLE_MAPS_API_KEY}`
     );
     const addressGeo = await addressGeoCall.json();
+    console.log('adress Geo ==>>>, ', addressGeo);
 
     const objToSend = {
       name: data.name,
@@ -71,49 +72,60 @@ function FormContainer({ image }) {
 
   return (
     <View style={styles.formContainer}>
-
-      <View style={styles.placeNameInputContainer}> 
-        <Text style={styles.inputLabelText} >Place name</Text>
-        <Controller control={control} rules={{ maxLength: 100, required: true, }} name="name" defaultValue=""
+      <View style={styles.placeNameInputContainer}>
+        <Text style={styles.inputLabelText}>Place name</Text>
+        <Controller
+          control={control}
+          rules={{ maxLength: 100, required: true }}
+          name="name"
+          defaultValue=""
           render={({ field: { onChange, onBlur, value } }) => (
-              <TextInput
-                style={styles.placeNameInput}
-                onChangeText={onChange}
-                value={value}
-                placeholder="Place name"
-                autoCapitalize="none"
-              />
+            <TextInput
+              style={styles.placeNameInput}
+              onChangeText={onChange}
+              value={value}
+              placeholder="Place name"
+              autoCapitalize="none"
+            />
           )}
         />
       </View>
 
       {/* <View style={styles.googleInputFieldsContainer}> */}
       <View style={styles.cityInputContainer}>
-        <Text style={styles.inputLabelText} >Choose a city</Text>
+        <Text style={styles.inputLabelText}>Choose a city</Text>
         <CityInput setCity={setCity} setCountry={setCountry} />
       </View>
 
       <View style={styles.addressInputContainer}>
-        <Text style={styles.inputLabelText} >Enter the address</Text>
-        <AddressInput address={address} setAddress={setAddress} country={country} />
+        <Text style={styles.inputLabelText}>Enter the address</Text>
+        <AddressInput
+          address={address}
+          setAddress={setAddress}
+          country={country}
+        />
       </View>
 
       {/* </View> */}
       <View style={styles.descriptionInputContainer}>
-        <Text style={styles.inputLabelText} >Describe your experience</Text>
-        <Controller control={control} rules={{maxLength: 100, required: true,}} name="description" defaultValue=""
+        <Text style={styles.inputLabelText}>Describe your experience</Text>
+        <Controller
+          control={control}
+          rules={{ maxLength: 100, required: true }}
+          name="description"
+          defaultValue=""
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
-            style={styles.placeDescription}
-            onChangeText={onChange}
-            value={value}
-            placeholder="Description"
-            autoCapitalize="none"
-            multiline={true}
-            numberOfLines={5}
+              style={styles.placeDescription}
+              onChangeText={onChange}
+              value={value}
+              placeholder="Description"
+              autoCapitalize="none"
+              multiline={true}
+              numberOfLines={5}
             />
-            )}
-            />
+          )}
+        />
       </View>
 
       <TagsContainer formTags={formTags} setFormTags={setFormTags} />
@@ -141,28 +153,28 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '20%',
     borderWidth: 1,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 
   cityInputContainer: {
-    width: '100%', 
-    zIndex: 5, 
+    width: '100%',
+    zIndex: 5,
     backgroundColor: 'gray',
     height: '20%',
-    borderWidth: 1
+    borderWidth: 1,
   },
 
   addressInputContainer: {
     width: '100%',
     height: '20%',
-    zIndex: 3
+    zIndex: 3,
   },
 
   descriptionInputContainer: {
     width: '100%',
     height: '40%',
     borderWidth: 1,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 
   inputLabelText: {
@@ -185,7 +197,7 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'space-evenly',
     zIndex: 3,
-    borderWidth: 2
+    borderWidth: 2,
   },
 
   addButton: {

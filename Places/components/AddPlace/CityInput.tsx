@@ -21,7 +21,6 @@ const CityInput = ({
     <GooglePlacesAutocomplete
       placeholder="City"
       onPress={(data, details = null) => {
-        console.log('DATA FROM SEARCH  INPUT', data.description);
         if (setCity) setCity(data.terms[0].value);
         if (setInputValue) setInputValue(data.description);
         if (setCountry) setCountry(data.terms[data.terms.length - 1].value);
