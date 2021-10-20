@@ -47,7 +47,15 @@ function TagsFilter({ selected, setSelected, formTags, setFormTags }: any) {
               }
               onPress={() => handlePress(tag.tag_name)}
             >
-              <Text style={selected.includes(tag.tag_name)? styles.tagSelectedText : styles.tagText}>#{tag.tag_name}</Text>
+              <Text
+                style={
+                  selected.includes(tag.tag_name)
+                    ? styles.tagSelectedText
+                    : styles.tagText
+                }
+              >
+                #{tag.tag_name}
+              </Text>
             </TouchableHighlight>
           );
         })}
@@ -76,7 +84,7 @@ const styles = StyleSheet.create({
     borderColor: colors.backgroundDark,
     borderWidth: 1,
   },
-  
+
   tagDefaultContainer: {
     height: 45,
     width: "60%",
