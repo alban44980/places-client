@@ -30,7 +30,7 @@ function Tabs() {
         tabBarActiveTintColor: colors.fontDark,
         tabBarInactiveTintColor: colors.fontLight,
         // tabBarLabelStyle: styles.tabBarLabelStyle,
-        // tabBarActiveBackgroundColor: colors.backgroundDark,
+        // tabBarActiveBackgroundColor: colors.backgroundLight,
         tabBarItemStyle: styles.tabBarItem,
         tabBarShowLabel: true,
       }}
@@ -129,8 +129,8 @@ const styles = StyleSheet.create({
   },
 
   tabBarItem: {
-    height: 60,    
-    alignItems: 'center', 
+    height: 60,
+    alignItems: 'center',
     justifyContent: 'center',
   },
 
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
   iconStyle: {
     height: 24,
     width: 24,
-    // color: accessibilityState.selected ? colors.backgroundDark : colors.backgroundLight
+    // color: accessibilityState.selected ? colors.backgroundLight : colors.backgroundLight
   },
 });
 

@@ -146,7 +146,7 @@ function FormContainer({ image }) {
 
 const styles = StyleSheet.create({
   formContainer: {
-    backgroundColor: colors.backgroundDark,
+    backgroundColor: colors.backgroundLight,
     height: 520,
     width: '100%',
     alignItems: 'center',
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
   inputLabelText: {
     fontFamily: fonts.semiBold,
     fontSize: 16,
-    color: colors.fontLight,
+    color: colors.fontDark,
     marginBottom: 2,
     marginTop: 3,
   },

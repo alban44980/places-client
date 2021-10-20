@@ -1,8 +1,8 @@
-import { StyleSheet, Text, TouchableHighlight } from "react-native";
-import React from "react";
-import colors from "../../assets/styles/colors";
+import { StyleSheet, Text, TouchableHighlight } from 'react-native';
+import React from 'react';
+import colors from '../../assets/styles/colors';
 
-import fonts from "../../assets/styles/fonts";
+import fonts from '../../assets/styles/fonts';
 
 function CloseButton(props: any) {
   const { handlePress } = props;
@@ -21,26 +21,26 @@ export default CloseButton;
 
 const styles = StyleSheet.create({
   closeButton: {
-    height: "5%",
-    width: "22%",
-    backgroundColor: colors.backgroundDark,
-    borderColor: colors.backgroundLight,
-    borderStyle: "solid",
+    height: '5%',
+    width: '17%',
+    backgroundColor: colors.backgroundLight,
+    borderColor: colors.backgroundDark,
+    borderStyle: 'solid',
     borderWidth: 0.5,
-    justifyContent: "center",
+    justifyContent: 'center',
     borderRadius: 10,
-    alignSelf: "center",
-    position: "absolute",
+    alignSelf: 'center',
+    position: 'absolute',
     top: 61,
     right: 25,
     zIndex: 2,
   },
 
   closeButtonText: {
-    color: colors.fontLight,
+    color: colors.fontDark,
     fontFamily: fonts.light,
     fontSize: 14,
-    fontWeight: "600",
-    textAlign: "center",
+    fontWeight: '600',
+    textAlign: 'center',
   },
 });

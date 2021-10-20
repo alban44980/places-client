@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   StyleSheet,
   View,
@@ -6,22 +6,22 @@ import {
   TextInput,
   TouchableOpacity,
   Button,
-} from "react-native";
-import { useForm, Controller } from "react-hook-form";
-import { useSelector, useDispatch } from "react-redux";
-import { useNavigation } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { RootStackParamList } from "../../App";
-import ApiService from "../../ApiService";
+} from 'react-native';
+import { useForm, Controller } from 'react-hook-form';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../../App';
+import ApiService from '../../ApiService';
 import {
   saveAccessToken,
   saveRefreshToken,
   saveUserFriendsInfo,
-} from "../../redux/actions/actions";
-import { RootState } from "../../redux/reducers/reducers";
-import colors from "../../assets/styles/colors";
-import fonts from "../../assets/styles/fonts";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+} from '../../redux/actions/actions';
+import { RootState } from '../../redux/reducers/reducers';
+import colors from '../../assets/styles/colors';
+import fonts from '../../assets/styles/fonts';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 type userScreenProp = StackNavigationProp<RootStackParamList>;
 
@@ -53,7 +53,7 @@ function Login() {
         dispatch(saveUserFriendsInfo(friendsInfo));
         dispatch(saveAccessToken(tokens.accessToken));
         dispatch(saveRefreshToken(tokens.refreshToken));
-        navigation.navigate("home");
+        navigation.navigate('home');
       }
     } catch (e) {}
   };
@@ -76,7 +76,7 @@ function Login() {
               onChangeText={onChange}
               value={value}
               placeholder="Email"
-              textContentType={"emailAddress"}
+              textContentType={'emailAddress'}
               autoCapitalize="none"
             />
           )}
@@ -104,11 +104,16 @@ function Login() {
         />
         <TouchableWithoutFeedback
           style={styles.createAccountButton}
-          onPress={() => navigation.navigate("signup")}
+          onPress={() => navigation.navigate('signup')}
         >
           <Text style={styles.createAccountButtonLabel}>
+<<<<<<< HEAD
             {" "}
             Create an account{" "}
+=======
+            {' '}
+            Create an account{' '}
+>>>>>>> colorTesting
           </Text>
         </TouchableWithoutFeedback>
 
@@ -126,15 +131,15 @@ function Login() {
 const styles = StyleSheet.create({
   loginContainer: {
     flex: 1,
-    backgroundColor: colors.backgroundDark,
+    backgroundColor: colors.backgroundLight,
   },
 
   topContainer: {
-    height: "25%",
+    height: '25%',
     backgroundColor: colors.backgroundLight,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     paddingTop: 20,
   },
 
@@ -146,24 +151,25 @@ const styles = StyleSheet.create({
   },
 
   formContainer: {
-    height: "40%",
-    alignItems: "center",
+    height: '40%',
+    alignItems: 'center',
     paddingTop: 30,
   },
 
   input: {
     backgroundColor: colors.formInputBackgroundLight,
     margin: 5,
-    height: "16%",
-    width: "75%",
+    height: '16%',
+    width: '75%',
     paddingHorizontal: 10,
     borderRadius: 10,
     marginBottom: 10,
+    borderWidth: 0.5,
   },
 
   createAccountButtonLabel: {
     fontFamily: fonts.regular,
-    color: colors.backgroundLight,
+    color: colors.fontDark,
     marginVertical: 15,
   },
 
@@ -172,9 +178,8 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     width: 150,
     height: 40,
-    backgroundColor: colors.backgroundLight,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     marginTop: 5,
   },
 });

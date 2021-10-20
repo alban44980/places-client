@@ -1,26 +1,24 @@
-import {StyleSheet, View, Text, Image} from 'react-native';
+import { StyleSheet, View, Text, Image } from 'react-native';
 import React from 'react';
 import colors from '../../assets/styles/colors';
 
-
 function PlaceImage(props: any) {
-  const {place} = props
+  const { place } = props;
   return (
     <View style={styles.imageContainer}>
-        <Image source={{uri: place.img}} style={styles.imageStyle}/>
+      <Image source={{ uri: place.img }} style={styles.imageStyle} />
     </View>
   );
 }
 
 export default PlaceImage;
 
-
 const styles = StyleSheet.create({
   imageContainer: {
-    height: '25%',
+    height: '68%',
     width: '90%',
     marginTop: 10,
-    marginBottom: 15
+    marginBottom: 15,
   },
 
   imageStyle: {
@@ -28,6 +26,6 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     borderWidth: 1,
     borderRadius: 10,
-    borderColor: colors.backgroundLight
+    borderColor: colors.backgroundLight,
   },
-})
+});

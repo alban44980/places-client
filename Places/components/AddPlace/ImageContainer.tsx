@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 15,
-    borderColor: colors.backgroundDark,
+    borderColor: colors.backgroundLight,
     borderWidth: 2,
     marginBottom: 20,
   },
@@ -85,14 +85,14 @@ const styles = StyleSheet.create({
   addImageIcon: {
     height: '70%',
     width: '80%',
-    marginTop: 15
+    marginTop: 15,
   },
 
   chosenImage: {
     height: '100%',
     width: '60%',
     borderRadius: 15,
-    borderWidth: 1
+    borderWidth: 1,
   },
 });
 

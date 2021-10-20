@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Text, Modal, SafeAreaView } from "react-native";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/reducers/reducers";
-import PlaceModal from "../PlaceModal/PlaceModal";
-import FilterModal from "./FilterModal";
-import PlacesList from "./PlacesList";
-import SearchBar from "./SearchBar";
-import colors from "../../assets/styles/colors";
-import CloseButton from "../PlaceModal/CloseButton";
-import Tags from "../PlaceModal/Tags";
-
-import fonts from "../../assets/styles/fonts";
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, View, Text, Modal, SafeAreaView } from 'react-native';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/reducers/reducers';
+import PlaceModal from '../PlaceModal/PlaceModal';
+import FilterModal from './FilterModal';
+import PlacesList from './PlacesList';
+import SearchBar from './SearchBar';
+import colors from '../../assets/styles/colors';
+import CloseButton from '../PlaceModal/CloseButton';
+import Tags from '../PlaceModal/Tags';
+import fonts from '../../assets/styles/fonts';
 
 function SearchModal({ city, searchVisible, setSearchVisible }: any) {
   //allFriends cties and places
@@ -37,7 +36,7 @@ function SearchModal({ city, searchVisible, setSearchVisible }: any) {
   const [tagsSelected, setTagsSelected] = useState<any[]>([]);
 
   //set initial search with selectedPlace if selectedPlace not null
-  const [search, setSearch] = useState<String>("");
+  const [search, setSearch] = useState<String>('');
 
   const [filterModalVisible, setFilterModalVisible] = useState<Boolean>(false);
   // waiting for place interface before declaring below
@@ -115,26 +114,27 @@ export default SearchModal;
 
 const styles = StyleSheet.create({
   tagContainer: {
-    height: "8%",
-    width: "100%",
-    marginBottom: "-3%",
+    height: '8%',
+    width: '100%',
+    marginBottom: '-3%',
   },
+
   searchScreenContainer: {
     flex: 1,
-    backgroundColor: colors.backgroundDark,
+    backgroundColor: colors.backgroundLight,
   },
-  headerSection: {
-    height: "10%",
-    width: "100%",
-    backgroundColor: colors.backgroundDark,
 
-    justifyContent: "center",
+  headerSection: {
+    height: '10%',
+    width: '100%',
+    backgroundColor: colors.backgroundLight,
+    justifyContent: 'center',
     paddingHorizontal: 30,
   },
 
   headerText: {
     fontFamily: fonts.semiBold,
     fontSize: 24,
-    color: colors.fontLight,
+    color: colors.fontDark,
   },
 });

@@ -4,10 +4,11 @@ import {
   Text,
   TouchableHighlight,
   ScrollView,
-} from "react-native";
-import React from "react";
-import colors from "../../assets/styles/colors";
-import tags from "../../dummyData/tagsList";
+} from 'react-native';
+import React from 'react';
+import colors from '../../assets/styles/colors';
+import tags from '../../dummyData/tagsList';
+import fonts from '../../assets/styles/fonts';
 
 function TagsFilter({ selected, setSelected }: any) {
   const tagsList = tags;
@@ -27,8 +28,8 @@ function TagsFilter({ selected, setSelected }: any) {
   return (
     <View style={styles.tagSectionContainer}>
       <ScrollView
-        style={{ width: "100%" }}
-        contentContainerStyle={{ alignItems: "center" }}
+        style={{ width: '100%' }}
+        contentContainerStyle={{ alignItems: 'center' }}
       >
         {tagsList.map((tag) => {
           return (
@@ -64,43 +65,43 @@ const styles = StyleSheet.create({
   tagSectionContainer: {
     flex: 1,
     backgroundColor: colors.backgroundLight,
-    alignItems: "center",
+    alignItems: 'center',
     paddingTop: 20,
   },
 
   tagSelectedContainer: {
     height: 45,
-    width: "60%",
+    width: '60%',
     backgroundColor: colors.backgroundDark,
     borderRadius: 10,
     marginBottom: 10,
-    justifyContent: "center",
+    justifyContent: 'center',
     borderColor: colors.backgroundDark,
     borderWidth: 1,
   },
 
   tagDefaultContainer: {
     height: 45,
-    width: "60%",
+    width: '60%',
     backgroundColor: colors.backgroundLight,
     borderRadius: 10,
     marginBottom: 10,
-    justifyContent: "center",
+    justifyContent: 'center',
     borderColor: colors.backgroundDark,
     borderWidth: 1,
   },
 
   tagSelectedText: {
     fontSize: 12,
-    fontWeight: "600",
+    fontWeight: '600',
     color: colors.fontLight,
-    textAlign: "center",
+    textAlign: 'center',
   },
 
   tagText: {
     fontSize: 12,
-    fontWeight: "600",
+    fontFamily: fonts.regular,
     color: colors.fontDark,
-    textAlign: "center",
+    textAlign: 'center',
   },
 });

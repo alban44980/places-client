@@ -198,7 +198,7 @@ function SignUp() {
           onPress={handleSubmit(onSubmit)}
           style={styles.submitButtonContainer}
         >
-          <Text>Submit</Text>
+          <Text style={styles.submitLabel}>Submit</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -208,7 +208,7 @@ function SignUp() {
 const styles = StyleSheet.create({
   loginContainer: {
     flex: 1,
-    backgroundColor: colors.backgroundDark,
+    backgroundColor: colors.backgroundLight,
   },
 
   topContainer: {
@@ -259,55 +259,61 @@ const styles = StyleSheet.create({
   },
 
   usernameInput: {
-    backgroundColor: colors.backgroundLight,
+    backgroundColor: colors.formInputBackgroundLight,
     marginVertical: 5,
     height: 40,
     width: '75%',
     paddingHorizontal: 10,
     borderRadius: 10,
+    borderWidth: 0.5,
   },
 
   firstNameInput: {
-    backgroundColor: colors.backgroundLight,
+    backgroundColor: colors.formInputBackgroundLight,
     marginVertical: 5,
     height: 40,
     width: '40%',
     paddingHorizontal: 10,
     borderRadius: 10,
+    borderWidth: 0.5,
   },
 
   lastNameInput: {
-    backgroundColor: colors.backgroundLight,
+    backgroundColor: colors.formInputBackgroundLight,
     marginVertical: 5,
     height: 40,
     width: '55%',
     paddingHorizontal: 10,
     borderRadius: 10,
+    borderWidth: 0.5,
   },
 
   emailInput: {
-    backgroundColor: colors.backgroundLight,
+    backgroundColor: colors.formInputBackgroundLight,
     marginVertical: 5,
     height: 40,
     width: '75%',
     paddingHorizontal: 10,
     borderRadius: 10,
+    borderWidth: 0.5,
   },
   passwordInput: {
-    backgroundColor: colors.backgroundLight,
+    backgroundColor: colors.formInputBackgroundLight,
     marginVertical: 5,
     height: 40,
     width: '75%',
     paddingHorizontal: 10,
     borderRadius: 10,
+    borderWidth: 0.5,
   },
   bioInput: {
-    backgroundColor: colors.backgroundLight,
+    backgroundColor: colors.formInputBackgroundLight,
     marginVertical: 5,
     height: 70,
     width: '75%',
     paddingHorizontal: 10,
     borderRadius: 10,
+    borderWidth: 0.5,
   },
 
   submitButtonContainer: {
@@ -318,6 +324,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 10,
     marginTop: 30,
+    borderWidth: 1,
+  },
+
+  submitLabel: {
+    fontFamily: fonts.semiBold,
+    fontSize: 18,
   },
 });
 

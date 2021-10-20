@@ -45,7 +45,8 @@
     "redux": "^4.1.1",
     "rn-nodeify": "^10.3.0",
     "react-native-maps": "0.28.0",
-    "expo-location": "~12.1.2"
+    "expo-location": "~12.1.2",
+    "expo-blur": "~9.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
