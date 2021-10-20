@@ -18,11 +18,12 @@ const AddressInput = ({ setAddress, country }) => {
         language: 'en',
       }}
       styles={{
-        textInputContainer: {backgroundColor: colors.backgroundDark, width: '100%', height: 40},
-        container: {  flex: 1, height: 150, zIndex: 5},
-        listView: {borderWidth: 2, zIndex: 10, position: 'absolute', top: 50},
-        row: {flex: 1, alignItems: 'center', },
-        description: {color: colors.fontDark, fontSize: 12, fontFamily: fonts.medium},
+        container: {  flex: 1, zIndex: 5, height: 100, },
+        textInputContainer: { width: '100%', flex: 1,},
+        textInput: {fontFamily: fonts.regular, fontSize: 14},
+        listView: {borderWidth: 1, zIndex: 10, position: 'absolute', top: 50, height: 200 },
+        row: {flex: 1, alignItems: 'center' },
+        description: {color: colors.fontDark, fontSize: 14, fontFamily: fonts.regular},
       }}
     />
   );

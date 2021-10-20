@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
   },
 
   input: {
-    backgroundColor: colors.backgroundLight,
+    backgroundColor: colors.formInputBackgroundLight,
     margin: 5,
     height: "16%",
     width: "75%",

@@ -27,8 +27,8 @@ function Tabs() {
       screenOptions={{
         headerShown: false,
         tabBarStyle: styles.tabBarStyle,
-        tabBarActiveTintColor: colors.fontLight,
-        tabBarInactiveTintColor: colors.fontDark,
+        tabBarActiveTintColor: colors.fontDark,
+        tabBarInactiveTintColor: colors.fontLight,
         tabBarLabelStyle: styles.tabBarLabelStyle,
         tabBarActiveBackgroundColor: colors.backgroundDark,
         tabBarItemStyle: styles.tabBarItem,
@@ -129,8 +129,13 @@ const styles = StyleSheet.create({
   },
 
   tabBarItem: {
+<<<<<<< HEAD
     height: 60,
     alignItems: 'center',
+=======
+    height: 60,    
+    alignItems: 'center', 
+>>>>>>> origin/keyboardAvoiding
     justifyContent: 'center',
   },
 

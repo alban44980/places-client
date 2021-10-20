@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
   searchTouchable: {
     height: "50%",
     width: "75%",
-    backgroundColor: colors.backgroundLight,
+    backgroundColor: colors.formInputBackgroundLight,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",

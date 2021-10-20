@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   },
 
   inputField: {
-    backgroundColor: colors.backgroundLight,
+    backgroundColor: colors.formInputBackgroundLight,
     margin: 5,
     height: 40,
     width: "75%",

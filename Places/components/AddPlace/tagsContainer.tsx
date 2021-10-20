@@ -1,8 +1,24 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 
 import { StyleSheet, View, Text, TouchableHighlight } from "react-native";
 import colors from "../../assets/styles/colors";
 import FilterModal from "../SearchModal/FilterModal";
+=======
+import React, { useState } from 'react';
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableHighlight,
+} from 'react-native';
+import colors from '../../assets/styles/colors';
+import fonts from '../../assets/styles/fonts';
+import FilterModal from '../SearchModal/FilterModal';
+>>>>>>> origin/keyboardAvoiding
+
+
+
 
 function TagsContainer({ formTags, setFormTags }: any) {
   const handleFilterPress = () => {
@@ -14,7 +30,7 @@ function TagsContainer({ formTags, setFormTags }: any) {
   return (
     <View style={styles.container}>
       {filterModalVisible && (
-        <View style={styles.opacityForModalOpen}>
+        // <View style={styles.opacityForModalOpen}>
           <FilterModal
             filterModalVisible={filterModalVisible}
             setFilterModalVisible={setFilterModalVisible}
@@ -22,14 +38,14 @@ function TagsContainer({ formTags, setFormTags }: any) {
             tagsSelected={formTags}
             setTagsSelected={setFormTags}
           />
-        </View>
+        // </View>
       )}
 
       <TouchableHighlight
         style={styles.filterButtonContainer}
         onPress={handleFilterPress}
       >
-        <Text style={styles.filterText}>Tags</Text>
+        <Text style={styles.filterText}>Select tags #</Text>
       </TouchableHighlight>
     </View>
   );
@@ -37,12 +53,20 @@ function TagsContainer({ formTags, setFormTags }: any) {
 
 const styles = StyleSheet.create({
   container: {
+<<<<<<< HEAD
     height: "10%",
     width: "80%",
     backgroundColor: colors.backgroundLight,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-evenly",
+=======
+    height: '12%',
+    width: '60%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+>>>>>>> origin/keyboardAvoiding
   },
 
   opacityForModalOpen: {
@@ -54,6 +78,7 @@ const styles = StyleSheet.create({
     left: -50,
   },
 
+<<<<<<< HEAD
   placeNameInputContainer: {
     height: "50%",
     width: "40%",
@@ -75,17 +100,32 @@ const styles = StyleSheet.create({
     height: "70%",
     width: "20%",
     justifyContent: "center",
+=======
+  filterButtonContainer: {
+    backgroundColor: colors.backgroundDark,
+    height: '70%',
+    width: '80%',
+    justifyContent: 'center',
+>>>>>>> origin/keyboardAvoiding
     borderRadius: 10,
-    borderColor: colors.backgroundDark,
-    borderWidth: 1,
+    marginTop: 5
   },
 
   filterText: {
+<<<<<<< HEAD
     fontSize: 12,
     textAlign: "center",
     color: colors.fontLight,
     fontWeight: "700",
+=======
+    fontSize: 15,
+    textAlign: 'center',
+    color: colors.fontLight,
+    fontFamily: fonts.semiBold,
+    letterSpacing: .75
+>>>>>>> origin/keyboardAvoiding
   },
+
 });
 
 export default TagsContainer;
