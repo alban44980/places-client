@@ -8,8 +8,19 @@ import {
 } from "react-native";
 import React from "react";
 import colors from "../../assets/styles/colors";
+import { RootStackParamList } from "../../App";
+import { useNavigation } from "@react-navigation/core";
+import { StackNavigationProp } from "@react-navigation/stack";
 
 function FindUsers({ nonFriendsList }: any) {
+  type userScreenProp = StackNavigationProp<RootStackParamList>;
+  const navigation = useNavigation<userScreenProp>();
+
+  const handlePress = (friend: any) => {
+    const data = friend;
+    navigation.navigate("userProfile", data);
+  };
+
   return (
     <View style={styles.listContainer}>
       <ScrollView
@@ -21,6 +32,7 @@ function FindUsers({ nonFriendsList }: any) {
             <TouchableOpacity
               style={styles.friendContainer}
               key={friend.user_name}
+              onPress={() => handlePress(friend)}
             >
               <View style={styles.imageContainer}>
                 <Image
