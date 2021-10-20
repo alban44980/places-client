@@ -58,8 +58,8 @@ function FormContainer({ image }) {
       tag_list: formTags,
     };
 
-    console.log('TAGS FROM FORM ==> ', objToSend.tag_list);
-
+    // console.log('TAGS FROM FORM ==> ', objToSend.tag_list);
+    console.log('OBJECT TO BE SENT ==> ', objToSend);
     const result = await ApiService.addPlace(
       objToSend,
       refreshToken,
