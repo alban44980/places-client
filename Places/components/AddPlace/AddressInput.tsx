@@ -18,12 +18,22 @@ const AddressInput = ({ setAddress, country }) => {
         language: 'en',
       }}
       styles={{
-        container: {  flex: 1, zIndex: 5, height: 100, },
-        textInputContainer: { width: '100%', flex: 1,},
-        textInput: {fontFamily: fonts.regular, fontSize: 14},
-        listView: {borderWidth: 1, zIndex: 10, position: 'absolute', top: 50, height: 200 },
-        row: {flex: 1, alignItems: 'center' },
-        description: {color: colors.fontDark, fontSize: 14, fontFamily: fonts.regular},
+        container: { flex: 1, zIndex: 5, height: 100 },
+        textInputContainer: { width: '100%', flex: 1 },
+        textInput: { fontFamily: fonts.regular, fontSize: 14 },
+        listView: {
+          borderWidth: 1,
+          zIndex: 10,
+          position: 'absolute',
+          top: 50,
+          height: 200,
+        },
+        row: { flex: 1, alignItems: 'center' },
+        description: {
+          color: colors.fontDark,
+          fontSize: 14,
+          fontFamily: fonts.regular,
+        },
       }}
     />
   );
@@ -31,10 +41,8 @@ const AddressInput = ({ setAddress, country }) => {
 
 export default AddressInput;
 
-
 const styles = StyleSheet.create({
   inputContainer: {
-    backgroundColor: colors.backgroundLight
+    backgroundColor: colors.backgroundLight,
   },
-  
-})
+});

@@ -1,18 +1,18 @@
 //@ts-nocheck
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import { REACT_APP_GOOGLE_MAPS_API_KEY } from "@env";
+import { REACT_APP_GOOGLE_MAPS_API_KEY } from '@env';
 
-import { StyleSheet, View, TextInput, Button, Text } from "react-native";
-import colors from "../../assets/styles/colors";
-import { useForm, Controller } from "react-hook-form";
-import TagsContainer from "./tagsContainer";
-import CityInput from "./CityInput";
-import AddressInput from "./AddressInput";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import ApiService from "../../ApiService";
-import { useSelector } from "react-redux";
-import fonts from "../../assets/styles/fonts";
+import { StyleSheet, View, TextInput, Button, Text } from 'react-native';
+import colors from '../../assets/styles/colors';
+import { useForm, Controller } from 'react-hook-form';
+import TagsContainer from './tagsContainer';
+import CityInput from './CityInput';
+import AddressInput from './AddressInput';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import ApiService from '../../ApiService';
+import { useSelector } from 'react-redux';
+import fonts from '../../assets/styles/fonts';
 
 function FormContainer({ image }) {
   const accessToken: any = useSelector((state: RootState) => state.accessToken);
@@ -20,9 +20,9 @@ function FormContainer({ image }) {
     (state: RootState) => state.refreshToken
   );
 
-  const [city, setCity] = useState<string>("");
-  const [country, setCountry] = useState<string>("");
-  const [address, setAddress] = useState<string>("");
+  const [city, setCity] = useState<string>('');
+  const [country, setCountry] = useState<string>('');
+  const [address, setAddress] = useState<string>('');
   const [formTags, setFormTags] = useState<any>([]);
 
   const {
@@ -41,7 +41,7 @@ function FormContainer({ image }) {
       `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${REACT_APP_GOOGLE_MAPS_API_KEY}`
     );
     const addressGeo = await addressGeoCall.json();
-    console.log("adress Geo ==>>>, ", addressGeo);
+    console.log('adress Geo ==>>>, ', addressGeo);
 
     let tag_list = [];
     for (let aTag of formTags) {
@@ -64,14 +64,14 @@ function FormContainer({ image }) {
       tag_list: tag_list,
     };
 
-    console.log("OBJECT TO BE SENT ==> ", objToSend);
+    console.log('OBJECT TO BE SENT ==> ', objToSend);
     const result = await ApiService.addPlace(
       objToSend,
       refreshToken,
       accessToken
     );
 
-    console.log("RESPONSE FROM SERVER", result);
+    console.log('RESPONSE FROM SERVER', result);
   };
 
   return (
@@ -84,13 +84,13 @@ function FormContainer({ image }) {
           name="name"
           defaultValue=""
           render={({ field: { onChange, onBlur, value } }) => (
-              <TextInput
-                style={styles.placeNameInput}
-                onChangeText={onChange}
-                value={value}
-                placeholder="Name"
-                autoCapitalize="none"
-              />
+            <TextInput
+              style={styles.placeNameInput}
+              onChangeText={onChange}
+              value={value}
+              placeholder="Name"
+              autoCapitalize="none"
+            />
           )}
         />
       </View>
@@ -140,7 +140,6 @@ function FormContainer({ image }) {
       >
         <Text style={styles.submitLabel}>Submit</Text>
       </TouchableOpacity>
-
     </View>
   );
 }
@@ -151,7 +150,7 @@ const styles = StyleSheet.create({
     height: 520,
     width: '100%',
     alignItems: 'center',
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
   },
 
   placeNameInputContainer: {
@@ -161,8 +160,8 @@ const styles = StyleSheet.create({
 
   cityInputContainer: {
     height: '16%',
-    width: '100%', 
-    zIndex: 5, 
+    width: '100%',
+    zIndex: 5,
   },
 
   addressInputContainer: {
@@ -181,7 +180,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: colors.fontLight,
     marginBottom: 2,
-    marginTop: 3
+    marginTop: 3,
   },
 
   placeNameInput: {
@@ -191,7 +190,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderRadius: 5,
     fontFamily: fonts.regular,
-    fontSize: 14
+    fontSize: 14,
   },
 
   googleInputFieldsContainer: {
@@ -219,13 +218,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 10,
-    borderWidth: 1
+    borderWidth: 1,
   },
 
   submitLabel: {
     fontFamily: fonts.semiBold,
-    color: colors.fontDark
-  }
+    color: colors.fontDark,
+  },
 });
 
 export default FormContainer;

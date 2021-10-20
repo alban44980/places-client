@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -6,21 +6,20 @@ import {
   TextInput,
   TouchableOpacity,
   Button,
-} from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { RootStackParamList } from "../../App";
-import { useForm, Controller } from "react-hook-form";
-import ApiService from "../../ApiService";
-import colors from "../../assets/styles/colors";
-import fonts from "../../assets/styles/fonts";
-import InputField from "./InputField";
-
-
+} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../../App';
+import { useForm, Controller } from 'react-hook-form';
+import ApiService from '../../ApiService';
+import colors from '../../assets/styles/colors';
+import fonts from '../../assets/styles/fonts';
+import InputField from './InputField';
 
 function SignUp() {
   type userScreenProp = StackNavigationProp<RootStackParamList>;
   const navigation = useNavigation<userScreenProp>();
+  const { goBack } = navigation;
 
   const {
     control,
@@ -29,18 +28,23 @@ function SignUp() {
   } = useForm();
 
   const onSubmit = async (data: any) => {
-    console.log("Register User >>>>>>>>>>>", data);
+    console.log('Register User >>>>>>>>>>>', data);
     const registerRes = await ApiService.register(data);
-    console.log("Register response>>>>>>>>", registerRes);
+    console.log('Register response>>>>>>>>', registerRes);
 
-    navigation.navigate("login");
+    navigation.navigate('login');
   };
-
 
   return (
     <View style={styles.loginContainer}>
       <View style={styles.topContainer}>
         <Text style={styles.text}>Create an account</Text>
+        <TouchableOpacity
+          style={styles.backButtonContainer}
+          onPress={() => goBack()}
+        >
+          <Text style={styles.backButtonLabel}>Back</Text>
+        </TouchableOpacity>
       </View>
 
       <View style={styles.formContainer}>
@@ -51,7 +55,6 @@ function SignUp() {
         <InputField control={control} placeholder={'Email'} name={'email'} textContentType={"emailAddress"}/>
         <InputField control={control} placeholder={'Username'} name={'user_name'} />
         <InputField control={control} placeholder={'Username'} name={'user_name'} /> */}
-
 
         <Controller
           control={control}
@@ -73,7 +76,6 @@ function SignUp() {
         {errors.firstName && <Text>This is required.</Text>}
 
         <View style={styles.doubleInputLineContainer}>
-
           <Controller
             control={control}
             rules={{
@@ -112,7 +114,6 @@ function SignUp() {
           />
         </View>
 
-
         <Controller
           control={control}
           rules={{
@@ -125,7 +126,7 @@ function SignUp() {
               onChangeText={onChange}
               value={value}
               placeholder="Email"
-              textContentType={"emailAddress"}
+              textContentType={'emailAddress'}
               autoCapitalize="none"
             />
           )}
@@ -157,7 +158,7 @@ function SignUp() {
             maxLength: 100,
             required: {
               value: true,
-              message: "OH FUCKING HELL YOU DID NOT CONFIRM YOUR PASSWORD",
+              message: 'OH FUCKING HELL YOU DID NOT CONFIRM YOUR PASSWORD',
             },
           }}
           render={({ field: { onChange, onBlur, value } }) => (
@@ -193,15 +194,16 @@ function SignUp() {
           defaultValue=""
         />
 
-        <TouchableOpacity onPress={handleSubmit(onSubmit)} style={styles.submitButtonContainer}>
+        <TouchableOpacity
+          onPress={handleSubmit(onSubmit)}
+          style={styles.submitButtonContainer}
+        >
           <Text>Submit</Text>
         </TouchableOpacity>
-      
       </View>
     </View>
   );
 }
-
 
 const styles = StyleSheet.create({
   loginContainer: {
@@ -210,38 +212,57 @@ const styles = StyleSheet.create({
   },
 
   topContainer: {
-    height: "25%",
+    height: '25%',
     backgroundColor: colors.backgroundLight,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    paddingTop: 20
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: 20,
   },
 
   text: {
     color: colors.fontDark,
     fontSize: 30,
     fontFamily: fonts.semiBold,
-    letterSpacing: .25
+    letterSpacing: 0.25,
+  },
+
+  backButtonContainer: {
+    position: 'absolute',
+    height: 30,
+    width: 80,
+    backgroundColor: colors.backgroundLight,
+    right: 15,
+    top: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 10,
+    zIndex: 2,
+  },
+
+  backButtonLabel: {
+    fontFamily: fonts.semiBold,
+    fontSize: 13,
+    color: colors.fontDark,
   },
 
   formContainer: {
-    height: "30%",
-    alignItems: "center",
-    paddingTop: 30
+    height: '30%',
+    alignItems: 'center',
+    paddingTop: 30,
   },
 
   doubleInputLineContainer: {
-    flexDirection: "row",
+    flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '75%'
+    width: '75%',
   },
 
   usernameInput: {
     backgroundColor: colors.backgroundLight,
     marginVertical: 5,
     height: 40,
-    width: "75%",
+    width: '75%',
     paddingHorizontal: 10,
     borderRadius: 10,
   },
@@ -250,7 +271,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.backgroundLight,
     marginVertical: 5,
     height: 40,
-    width: "40%",
+    width: '40%',
     paddingHorizontal: 10,
     borderRadius: 10,
   },
@@ -259,16 +280,16 @@ const styles = StyleSheet.create({
     backgroundColor: colors.backgroundLight,
     marginVertical: 5,
     height: 40,
-    width: "55%",
+    width: '55%',
     paddingHorizontal: 10,
     borderRadius: 10,
   },
-  
+
   emailInput: {
     backgroundColor: colors.backgroundLight,
     marginVertical: 5,
     height: 40,
-    width: "75%",
+    width: '75%',
     paddingHorizontal: 10,
     borderRadius: 10,
   },
@@ -276,7 +297,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.backgroundLight,
     marginVertical: 5,
     height: 40,
-    width: "75%",
+    width: '75%',
     paddingHorizontal: 10,
     borderRadius: 10,
   },
@@ -284,7 +305,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.backgroundLight,
     marginVertical: 5,
     height: 70,
-    width: "75%",
+    width: '75%',
     paddingHorizontal: 10,
     borderRadius: 10,
   },
@@ -292,13 +313,12 @@ const styles = StyleSheet.create({
   submitButtonContainer: {
     backgroundColor: colors.backgroundLight,
     height: 40,
-    width: "35%",
-    alignItems: "center",
-    justifyContent: "center",
+    width: '35%',
+    alignItems: 'center',
+    justifyContent: 'center',
     borderRadius: 10,
-    marginTop: 30
+    marginTop: 30,
   },
-  
 });
 
 export default SignUp;
