@@ -1,7 +1,7 @@
-import React from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
-import colors from "../../assets/styles/colors";
-import fonts from "../../assets/styles/fonts";
+import React from 'react';
+import { StyleSheet, View, Text, Image } from 'react-native';
+import colors from '../../assets/styles/colors';
+import fonts from '../../assets/styles/fonts';
 
 function MyData(props: any) {
   const { user } = props;
@@ -16,7 +16,7 @@ function MyData(props: any) {
             <Image
               style={styles.profilePic}
               source={{
-                uri: "https://images.pexels.com/photos/9072452/pexels-photo-9072452.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+                uri: 'https://images.pexels.com/photos/9072452/pexels-photo-9072452.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
               }}
             />
           )}
@@ -49,30 +49,30 @@ function MyData(props: any) {
 
 const styles = StyleSheet.create({
   dataContainer: {
-    height: "25%",
+    height: '25%',
     backgroundColor: colors.backgroundLight,
-    justifyContent: "space-evenly",
-    width: "95%",
+    justifyContent: 'space-evenly',
+    width: '95%',
   },
 
   dataTop: {
-    height: "60%",
-    width: "90%",
-    flexDirection: "row",
-    alignSelf: "center",
+    height: '60%',
+    width: '90%',
+    flexDirection: 'row',
+    alignSelf: 'center',
     marginBottom: 10,
   },
 
   profilePicContainer: {
-    height: "100%",
-    width: "45%",
-    justifyContent: "space-between",
-    alignItems: "center",
+    height: '100%',
+    width: '45%',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 
   profilePic: {
-    width: "60%",
-    height: "75%",
+    width: '55%',
+    height: '75%',
     borderRadius: 100,
     borderColor: colors.backgroundDark,
     marginBottom: 10,
@@ -86,16 +86,16 @@ const styles = StyleSheet.create({
   },
 
   followDataContainer: {
-    width: "20%",
+    width: '20%',
     flex: 1,
-    justifyContent: "space-evenly",
-    alignItems: "center",
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
   },
 
   followersInfo: {
-    height: "50%",
-    alignItems: "center",
-    justifyContent: "center",
+    height: '50%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   followText: {
@@ -109,22 +109,22 @@ const styles = StyleSheet.create({
   },
 
   dataBottom: {
-    height: "35%",
-    justifyContent: "center",
+    height: '35%',
+    justifyContent: 'center',
     paddingVertical: 0,
-    alignItems: "center",
+    alignItems: 'center',
   },
 
   bio: {
-    width: "93%",
+    width: '93%',
     paddingHorizontal: 20,
     paddingVertical: 7,
-    overflow: "hidden",
+    overflow: 'hidden',
     marginBottom: 10,
   },
 
   bioText: {
-    fontSize: 12.5,
+    fontSize: 12,
     fontFamily: fonts.regular,
     lineHeight: 20,
   },
