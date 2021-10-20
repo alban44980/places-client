@@ -11,6 +11,7 @@ import colors from '../../assets/styles/colors';
 import { RootStackParamList } from '../../App';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/core';
+import { BlurView } from 'expo-blur';
 
 function FriendsList({ friendsList }: any) {
   type userScreenProp = StackNavigationProp<RootStackParamList>;
@@ -34,18 +35,20 @@ function FriendsList({ friendsList }: any) {
               key={friend.user_name}
               onPress={() => handlePress(friend)}
             >
-              <View style={styles.imageContainer}>
-                <Image
-                  style={styles.img}
-                  source={{
-                    uri: friend.img,
-                  }}
-                />
-              </View>
+              <BlurView style={styles.blurStyle} intensity={100}>
+                <View style={styles.imageContainer}>
+                  <Image
+                    style={styles.img}
+                    source={{
+                      uri: friend.img,
+                    }}
+                  />
+                </View>
 
-              <View style={styles.textContainer}>
-                <Text style={styles.friendsName}>{friend.user_name}</Text>
-              </View>
+                <View style={styles.textContainer}>
+                  <Text style={styles.friendsName}>{friend.user_name}</Text>
+                </View>
+              </BlurView>
             </TouchableOpacity>
           );
         })}
@@ -66,7 +69,7 @@ const styles = StyleSheet.create({
 
   scrollViewVisual: {
     width: '90%',
-    backgroundColor: colors.backgroundLight,
+    backgroundColor: colors.backgroundDark,
     borderRadius: 10,
   },
 
@@ -75,16 +78,21 @@ const styles = StyleSheet.create({
   },
 
   friendContainer: {
-    backgroundColor: colors.accentFun,
+    backgroundColor: colors.backgroundMedium,
     height: 75,
     width: '80%',
     marginVertical: 15,
+    borderColor: colors.backgroundLight,
+    borderWidth: 1,
+  },
+
+  blurStyle: {
+    width: '100%',
+    paddingHorizontal: 10,
     flexDirection: 'row',
     alignItems: 'center',
     borderRadius: 10,
-    borderColor: colors.backgroundLight,
-    borderWidth: 1,
-    paddingHorizontal: 10,
+    height: '100%',
   },
 
   imageContainer: {
