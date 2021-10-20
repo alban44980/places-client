@@ -84,15 +84,6 @@ function FormContainer({ image }) {
           name="name"
           defaultValue=""
           render={({ field: { onChange, onBlur, value } }) => (
-<<<<<<< HEAD
-            <TextInput
-              style={styles.placeNameInput}
-              onChangeText={onChange}
-              value={value}
-              placeholder="Place name"
-              autoCapitalize="none"
-            />
-=======
               <TextInput
                 style={styles.placeNameInput}
                 onChangeText={onChange}
@@ -100,7 +91,6 @@ function FormContainer({ image }) {
                 placeholder="Name"
                 autoCapitalize="none"
               />
->>>>>>> origin/keyboardAvoiding
           )}
         />
       </View>
@@ -148,11 +138,7 @@ function FormContainer({ image }) {
         style={styles.submitButton}
         onPress={handleSubmit(onSubmit)}
       >
-<<<<<<< HEAD
-        <Text style={{ color: "white", fontSize: 20 }}>addplace</Text>
-=======
         <Text style={styles.submitLabel}>Submit</Text>
->>>>>>> origin/keyboardAvoiding
       </TouchableOpacity>
 
     </View>
@@ -162,32 +148,6 @@ function FormContainer({ image }) {
 const styles = StyleSheet.create({
   formContainer: {
     backgroundColor: colors.backgroundDark,
-<<<<<<< HEAD
-    flex: 1,
-    width: "100%",
-    alignItems: "center",
-    borderWidth: 1,
-  },
-
-  placeNameInputContainer: {
-    width: "100%",
-    height: "20%",
-    borderWidth: 1,
-    justifyContent: "center",
-  },
-
-  cityInputContainer: {
-    width: "100%",
-    zIndex: 5,
-    backgroundColor: "gray",
-    height: "20%",
-    borderWidth: 1,
-  },
-
-  addressInputContainer: {
-    width: "100%",
-    height: "20%",
-=======
     height: 520,
     width: '100%',
     alignItems: 'center',
@@ -208,20 +168,12 @@ const styles = StyleSheet.create({
   addressInputContainer: {
     height: '16%',
     width: '100%',
->>>>>>> origin/keyboardAvoiding
     zIndex: 3,
   },
 
   descriptionInputContainer: {
-<<<<<<< HEAD
-    width: "100%",
-    height: "40%",
-    borderWidth: 1,
-    justifyContent: "center",
-=======
     height: '25%',
     width: '100%',
->>>>>>> origin/keyboardAvoiding
   },
 
   inputLabelText: {
@@ -233,15 +185,9 @@ const styles = StyleSheet.create({
   },
 
   placeNameInput: {
-<<<<<<< HEAD
-    backgroundColor: colors.backgroundLight,
-    height: "50%",
-    width: "100%",
-=======
     backgroundColor: colors.formInputBackgroundLight,
     height: '50%',
     width: '100%',
->>>>>>> origin/keyboardAvoiding
     paddingHorizontal: 10,
     borderRadius: 5,
     fontFamily: fonts.regular,
@@ -249,24 +195,6 @@ const styles = StyleSheet.create({
   },
 
   googleInputFieldsContainer: {
-<<<<<<< HEAD
-    height: "40%",
-    width: "100%",
-    justifyContent: "space-evenly",
-    zIndex: 3,
-    borderWidth: 2,
-  },
-
-  addButton: {
-    margin: 5,
-  },
-
-  placeDescription: {
-    backgroundColor: "white",
-    margin: 5,
-    height: "70%",
-    width: "85%",
-=======
     height: '30%',
     width: '100%',
     justifyContent: 'space-evenly',
@@ -276,7 +204,6 @@ const styles = StyleSheet.create({
   placeDescription: {
     backgroundColor: colors.formInputBackgroundLight,
     height: '70%',
->>>>>>> origin/keyboardAvoiding
     padding: 10,
     borderRadius: 5,
     fontFamily: fonts.regular,
@@ -285,16 +212,6 @@ const styles = StyleSheet.create({
   },
 
   submitButton: {
-<<<<<<< HEAD
-    backgroundColor: "purple",
-    color: "green",
-    height: 30,
-    width: 100,
-    margin: 10,
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 20,
-=======
     height: 45,
     width: 90,
     backgroundColor: colors.backgroundLight,
@@ -303,7 +220,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 10,
     borderWidth: 1
->>>>>>> origin/keyboardAvoiding
   },
 
   submitLabel: {

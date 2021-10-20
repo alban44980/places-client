@@ -129,13 +129,8 @@ const styles = StyleSheet.create({
   },
 
   tabBarItem: {
-<<<<<<< HEAD
-    height: 60,
-    alignItems: 'center',
-=======
     height: 60,    
     alignItems: 'center', 
->>>>>>> origin/keyboardAvoiding
     justifyContent: 'center',
   },
 
