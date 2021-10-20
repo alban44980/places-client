@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -7,9 +7,11 @@ import {
   FlatList,
   Image,
   TouchableOpacity,
-} from "react-native";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/reducers/reducers";
+} from 'react-native';
+import { useSelector } from 'react-redux';
+import colors from '../../assets/styles/colors';
+import fonts from '../../assets/styles/fonts';
+import { RootState } from '../../redux/reducers/reducers';
 
 function UserPlaces({
   citiesPlaces,
@@ -34,15 +36,16 @@ function UserPlaces({
       <Image
         style={styles.img}
         source={{
-          uri: "https://images.pexels.com/photos/374870/pexels-photo-374870.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+          uri: 'https://images.pexels.com/photos/374870/pexels-photo-374870.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
         }}
         resizeMode="cover"
+        // blurRadius={2}
       />
-      <Text>{item.name}</Text>
+      <Text style={styles.cityName}>{item.name}</Text>
       {item.Places.length === 1 ? (
-        <Text>{item.Places.length} Place</Text>
+        <Text style={styles.numPlacesText}>{item.Places.length} Place</Text>
       ) : (
-        <Text>{item.Places.length} Places</Text>
+        <Text style={styles.numPlacesText}>{item.Places.length} Places</Text>
       )}
     </TouchableOpacity>
   );
@@ -51,54 +54,59 @@ function UserPlaces({
     <FlatList
       data={citiesPlaces}
       renderItem={renderItem}
-      // style={styles.userPlacesContainer}
-      contentContainerStyle={styles.userPlacesContainer}
+      style={styles.userPlacesContainer}
+      contentContainerStyle={styles.userPlacesContentContainer}
       numColumns={2}
     />
-    // </View>
   );
 }
 
 const styles = StyleSheet.create({
   userPlacesContainer: {
-    // backgroundColor: 'lightblue',
-    flexGrow: 1,
-    borderWidth: 1,
-    borderColor: "black",
-    width: "100%",
-    // flex: 1,
-    // flexDirection: 'row',
-    // flexWrap: 'wrap',
-    alignItems: "center",
+    flex: 1,
+    width: '100%',
+    flexDirection: 'column',
+    paddingTop: 20,
+    borderTopWidth: 0.5,
   },
-  contentContainer: {
-    // backgroundColor: 'green',
-    // width: '100%',
-    // maxHeight: '100%',
-    // flex: 1,
-    // flexDirection: 'row',
-    // flexWrap: 'wrap',
-    // flex: 1,
-    // flexWrap: 'wrap',
-    // alignItems: 'center',
-    // justifyContent: 'flex-start',
+
+  userPlacesContentContainer: {
+    alignItems: 'flex-start',
+    paddingHorizontal: 18,
   },
-  //ISSUE WITH HEIGHT AND WIDTH BELOW
+
   itemContainer: {
-    height: 140,
-    width: 160, //160
-    backgroundColor: "lightblue",
-    margin: 20,
-    // alignSelf: 'center',
+    height: 150,
+    width: 150,
+    marginHorizontal: 10,
+    marginVertical: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.backgroundDark,
+    borderRadius: 5,
   },
-  // cardcontainer: {
-  //   flex: 1,
-  // },
 
   img: {
-    width: "100%",
-    height: "100%",
-    position: "absolute",
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    opacity: 0.62,
+    borderRadius: 5,
+    borderWidth: 0.5,
+  },
+
+  cityName: {
+    fontFamily: fonts.semiBold,
+    fontSize: 18,
+    color: 'white',
+    marginBottom: 5,
+    letterSpacing: 0.6,
+  },
+
+  numPlacesText: {
+    fontFamily: fonts.medium,
+    fontSize: 16,
+    color: 'white',
   },
 });
 
