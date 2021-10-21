@@ -46,7 +46,18 @@ function Home() {
     //set cities
     const friendCities = [];
     for (let friend of userFriendInfo) {
-      friendCities.push(...friend.Cities);
+      for (let city of friend.Cities) {
+        //loop through existing city list and compare
+        let found = false;
+        for (let friendC of friendCities) {
+          //if city found in existing list the found will be true
+          if (friendC.name === city.name) {
+            found = true;
+          }
+        }
+        //if city not found in the already existing list, then add city
+        if (!found) friendCities.push(city);
+      }
     }
     setCityList(friendCities);
 
