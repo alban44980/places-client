@@ -30,7 +30,6 @@ function FriendsSearchBar({
   );
   const toggleList = () => setView((previousState: boolean) => !previousState);
   const [searchInput, setSearchInput] = useState<string>("");
-  // console.log(searchInput);
 
   const filterFriendsList = (search: string) => {
     let res: any = [];
@@ -42,6 +41,13 @@ function FriendsSearchBar({
           friend.user_name.substring(0, text.length).toLowerCase()
       ) {
         res.push(friend);
+        res.sort(function (a: any, b: any) {
+          return a.user_name.toLowerCase() === b.user_name.toLowerCase()
+            ? 0
+            : a.user_name.toLowerCase() < b.user_name.toLowerCase()
+            ? -1
+            : 1;
+        });
         setFriendsList(res);
       } else if (text.length === 0) {
         setFriendsList(userFriendInfo);
@@ -58,7 +64,15 @@ function FriendsSearchBar({
           refreshToken,
           accessToken
         );
-        setNonFriendsList(matchingFriends);
+        setNonFriendsList(
+          matchingFriends.sort(function (a: any, b: any) {
+            return a.user_name.toLowerCase() === b.user_name.toLowerCase()
+              ? 0
+              : a.user_name.toLowerCase() < b.user_name.toLowerCase()
+              ? -1
+              : 1;
+          })
+        );
       } else if (searchValue.searchValue.length === 0) {
         setNonFriendsList([]);
       }
