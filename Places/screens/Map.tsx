@@ -118,6 +118,7 @@ function Map() {
           >
             <View style={styles.searchContainer}>
               <CityInput
+                key={1}
                 setInputValue={setInputValue}
                 setCountry={setCountry}
                 cityCoords={cityCoords}
