@@ -5,13 +5,13 @@ import {
   TextInput,
   TouchableHighlight,
   TouchableOpacity,
-} from "react-native";
-import React, { useState } from "react";
-import colors from "../../assets/styles/colors";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/reducers/reducers";
-import ApiService from "../../ApiService";
-import { SearchUserSchema } from "../../Interfaces";
+} from 'react-native';
+import React, { useState } from 'react';
+import colors from '../../assets/styles/colors';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/reducers/reducers';
+import ApiService from '../../ApiService';
+import { SearchUserSchema } from '../../Interfaces';
 
 function FriendsSearchBar({
   setView,
@@ -29,7 +29,12 @@ function FriendsSearchBar({
     (state: RootState) => state.refreshToken
   );
   const toggleList = () => setView((previousState: boolean) => !previousState);
+<<<<<<< HEAD
   const [searchInput, setSearchInput] = useState<string>("");
+=======
+  const [searchInput, setSearchInput] = useState<string>('');
+  // console.log(searchInput);
+>>>>>>> 9b473ed905a22c3dcbb1b12684c468ae67993b5b
 
   const filterFriendsList = (search: string) => {
     let res: any = [];
@@ -103,7 +108,7 @@ function FriendsSearchBar({
         style={styles.findNewFriendsButton}
         onPress={() => {
           toggleList();
-          setSearchInput("");
+          setSearchInput('');
           setFriendsList(userFriendInfo);
           setNonFriendsList([]);
         }}
@@ -119,31 +124,31 @@ export default FriendsSearchBar;
 const styles = StyleSheet.create({
   searchBarContainer: {
     backgroundColor: colors.accentFun,
-    width: "100%",
-    height: "12%",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row",
+    width: '100%',
+    height: '12%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
   },
 
   searchBar: {
     backgroundColor: colors.backgroundLight,
-    height: "50%",
-    width: "60%",
-    paddingLeft: "3%",
+    height: '50%',
+    width: '60%',
+    paddingLeft: '3%',
     borderRadius: 10,
     borderColor: colors.backgroundLight,
     borderWidth: 1,
   },
 
   findNewFriendsButton: {
-    height: "45%",
-    width: "11%",
+    height: '45%',
+    width: '11%',
     backgroundColor: colors.backgroundDark,
     borderWidth: 1,
     borderRadius: 10,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     marginHorizontal: 10,
   },
 

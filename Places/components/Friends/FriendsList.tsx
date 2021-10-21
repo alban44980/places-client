@@ -12,6 +12,7 @@ import { RootStackParamList } from '../../App';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/core';
 import { BlurView } from 'expo-blur';
+import fonts from '../../assets/styles/fonts';
 
 function FriendsList({ friendsList }: any) {
   type userScreenProp = StackNavigationProp<RootStackParamList>;
@@ -46,7 +47,10 @@ function FriendsList({ friendsList }: any) {
                 </View>
 
                 <View style={styles.textContainer}>
-                  <Text style={styles.friendsName}>{friend.user_name}</Text>
+                  <Text style={styles.friendsUserName}>{friend.user_name}</Text>
+                  <Text style={styles.friendsName}>
+                    {friend.first_name} {friend.last_name}
+                  </Text>
                 </View>
               </BlurView>
             </TouchableOpacity>
@@ -69,7 +73,6 @@ const styles = StyleSheet.create({
 
   scrollViewVisual: {
     width: '90%',
-    backgroundColor: colors.backgroundDark,
     borderRadius: 10,
   },
 
@@ -78,12 +81,10 @@ const styles = StyleSheet.create({
   },
 
   friendContainer: {
-    backgroundColor: colors.backgroundMedium,
     height: 75,
     width: '80%',
     marginVertical: 15,
     borderColor: colors.backgroundLight,
-    borderWidth: 1,
   },
 
   blurStyle: {
@@ -98,21 +99,19 @@ const styles = StyleSheet.create({
   imageContainer: {
     width: '25%',
     height: '80%',
-    borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
 
   img: {
-    borderRadius: 10,
+    borderRadius: 100,
     borderWidth: 1,
-    height: '90%',
-    width: '90%',
+    height: 60,
+    width: 60,
   },
 
   textContainer: {
     marginLeft: 20,
-    borderWidth: 1,
     width: '60%',
     height: '60%',
     justifyContent: 'center',
@@ -120,7 +119,13 @@ const styles = StyleSheet.create({
   },
 
   friendsName: {
-    fontSize: 22,
-    fontWeight: '400',
+    fontSize: 15,
+    fontFamily: fonts.regular,
+    color: colors.backgroundMedium,
+  },
+
+  friendsUserName: {
+    fontSize: 16,
+    fontFamily: fonts.medium,
   },
 });
