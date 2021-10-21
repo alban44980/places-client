@@ -33,7 +33,11 @@ function SearchBar(props: any) {
           ? place.city.toUpperCase()
           : "".toUpperCase();
 
-        const textData = text.toUpperCase();
+        let textData = text.toUpperCase();
+        //remove any whitespaces before or after search
+        textData = textData.trimStart();
+        textData = textData.trimEnd();
+
         if (itemData.indexOf(textData) > -1) {
           //if tags list is empty, the run matching text search
           if (tags.length < 1) return true;
