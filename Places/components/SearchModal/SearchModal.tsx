@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Text, Modal, SafeAreaView } from "react-native";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/reducers/reducers";
-import PlaceModal from "../PlaceModal/PlaceModal";
-import FilterModal from "./FilterModal";
-import PlacesList from "./PlacesList";
-import SearchBar from "./SearchBar";
-import colors from "../../assets/styles/colors";
-import CloseButton from "../PlaceModal/CloseButton";
-import Tags from "../PlaceModal/Tags";
-import fonts from "../../assets/styles/fonts";
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, View, Text, Modal, SafeAreaView } from 'react-native';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/reducers/reducers';
+import PlaceModal from '../PlaceModal/PlaceModal';
+import FilterModal from './FilterModal';
+import PlacesList from './PlacesList';
+import SearchBar from './SearchBar';
+import colors from '../../assets/styles/colors';
+import CloseButton from '../PlaceModal/CloseButton';
+import Tags from '../PlaceModal/Tags';
+import fonts from '../../assets/styles/fonts';
 
 function SearchModal({
   city,
@@ -41,7 +41,7 @@ function SearchModal({
   const [tagsSelected, setTagsSelected] = useState<any[]>([]);
 
   //set initial search with selectedPlace if selectedPlace not null
-  const [search, setSearch] = useState<String>("");
+  const [search, setSearch] = useState<String>('');
 
   const [filterModalVisible, setFilterModalVisible] = useState<Boolean>(false);
   // waiting for place interface before declaring below
@@ -120,15 +120,9 @@ export default SearchModal;
 
 const styles = StyleSheet.create({
   tagContainer: {
-<<<<<<< HEAD
-    height: "5%",
-    width: "100%",
-    backgroundColor: colors.backgroundDark,
-=======
     height: '5%',
     width: '100%',
     backgroundColor: colors.buttonDefault,
->>>>>>> finalFormatting
     marginTop: 10,
   },
 
@@ -138,10 +132,10 @@ const styles = StyleSheet.create({
   },
 
   headerSection: {
-    height: "10%",
-    width: "100%",
+    height: '10%',
+    width: '100%',
     backgroundColor: colors.backgroundLight,
-    justifyContent: "center",
+    justifyContent: 'center',
     paddingHorizontal: 30,
   },
 
