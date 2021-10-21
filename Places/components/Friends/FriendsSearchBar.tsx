@@ -5,6 +5,7 @@ import {
   TextInput,
   TouchableHighlight,
   TouchableOpacity,
+  Image,
 } from 'react-native';
 import React, { useState } from 'react';
 import colors from '../../assets/styles/colors';
@@ -94,7 +95,10 @@ function FriendsSearchBar({
           setNonFriendsList([]);
         }}
       >
-        <Text style={styles.buttonLabelText}>+</Text>
+        <Image
+          source={require('./../../assets/generalIcons/outline_person_add_black_24dp.png')}
+          style={styles.addIcon}
+        />
       </TouchableOpacity>
     </View>
   );
@@ -120,20 +124,21 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: colors.backgroundLight,
     borderWidth: 1,
+    marginRight: 18,
   },
 
   findNewFriendsButton: {
-    height: '45%',
-    width: '11%',
-    backgroundColor: colors.backgroundDark,
+    height: '50%',
+    width: '13%',
     borderWidth: 1,
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    marginHorizontal: 10,
+    // marginHorizontal: 15,
   },
 
-  buttonLabelText: {
-    fontSize: 27,
+  addIcon: {
+    height: 27,
+    width: 27,
   },
 });
