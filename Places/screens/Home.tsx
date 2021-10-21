@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -7,15 +7,15 @@ import {
   SafeAreaView,
   Image,
   ScrollView,
-} from "react-native";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../redux/reducers/reducers";
-import HomeList from "../components/HomeList/HomeList";
-import SearchModal from "../components/SearchModal/SearchModal";
-import PlaceModal from "../components/PlaceModal/PlaceModal";
-
-import colors from "../assets/styles/colors";
-import fonts from "../assets/styles/fonts";
+} from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../redux/reducers/reducers';
+import HomeList from '../components/HomeList/HomeList';
+import SearchModal from '../components/SearchModal/SearchModal';
+import PlaceModal from '../components/PlaceModal/PlaceModal';
+import colors from '../assets/styles/colors';
+import fonts from '../assets/styles/fonts';
+import cities from './../assets/defaultCities/defaultCities';
 
 function Home() {
   // local states
@@ -26,7 +26,7 @@ function Home() {
   );
   const [tags, setTags] = useState<any[]>([]);
   const [placeSelected, setPlaceSelected] = useState<any>(null);
-  const [citySelected, setCitySelected] = useState<string>("");
+  const [citySelected, setCitySelected] = useState<string>('');
   const [friendSelected, setFriendSelected] = useState<any>(null);
 
   const [searchVisible, setSearchVisible] = useState<Boolean>(false);
@@ -56,7 +56,12 @@ function Home() {
           }
         }
         //if city not found in the already existing list, then add city
-        if (!found) friendCities.push(city);
+        if (!found) {
+          if (city.name === 'Barcelona') city.img = cities.Barcelona;
+          if (city.name === 'London') city.img = cities.London;
+          if (city.name === 'Berlin') city.img = cities.Berlin;
+          friendCities.push(city);
+        }
       }
     }
     setCityList(friendCities);
@@ -123,7 +128,7 @@ function Home() {
           <Image
             style={styles.imageBanner}
             source={{
-              uri: "https://images.pexels.com/photos/695779/pexels-photo-695779.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+              uri: 'https://images.pexels.com/photos/695779/pexels-photo-695779.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
             }}
           />
         </View>
@@ -141,7 +146,7 @@ function Home() {
           <HomeList
             key={3}
             data={recentlyAddedPlacesList}
-            route={"place"}
+            route={'place'}
             setPlace={setPlaceSelected}
             placeVisible={placeVisible}
             setPlaceVisible={setPlaceVisible}
@@ -149,13 +154,13 @@ function Home() {
           <HomeList
             key={1}
             data={friendList}
-            route={"userProfile"}
+            route={'userProfile'}
             setFriend={setFriendSelected}
           />
           <HomeList
             key={2}
             data={cityList}
-            route={"search"}
+            route={'search'}
             setCity={setCitySelected}
             searchVisible={searchVisible}
             setSearchVisible={setSearchVisible}
@@ -175,9 +180,9 @@ const styles = StyleSheet.create({
   headerContainer: {
     height: 120,
     backgroundColor: colors.backgroundLight,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   headerText: {
@@ -196,38 +201,38 @@ const styles = StyleSheet.create({
   },
 
   searchContainer: {
-    width: "100%",
+    width: '100%',
     height: 100,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     marginBottom: 50,
-    position: "absolute",
+    position: 'absolute',
     top: 419,
   },
 
   searchTouchable: {
-    height: "50%",
-    width: "75%",
+    height: '50%',
+    width: '75%',
     backgroundColor: colors.formInputBackgroundLight,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     borderRadius: 10,
     paddingLeft: 18,
     borderWidth: 1,
   },
 
   searchBar: {
-    width: "100%",
+    width: '100%',
     color: colors.fontDark,
     opacity: 0.5,
   },
 
   listsContainer: {
     flex: 1,
-    width: "90%",
-    justifyContent: "space-evenly",
-    alignSelf: "center",
+    width: '90%',
+    justifyContent: 'space-evenly',
+    alignSelf: 'center',
     backgroundColor: colors.backgroundLight,
     paddingBottom: 70,
     marginTop: 70,
