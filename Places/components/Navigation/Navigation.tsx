@@ -72,7 +72,7 @@ function Tabs() {
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabContainer}>
               <Image
-                source={require('../../assets/navigation/map.png')}
+                source={require('../../assets/navigation/logonav.png')}
                 resizeMode="contain"
                 style={styles.iconStyle}
               />

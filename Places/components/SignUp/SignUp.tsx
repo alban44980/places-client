@@ -232,7 +232,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     height: 30,
     width: 80,
-    backgroundColor: colors.backgroundLight,
+    backgroundColor: colors.buttonDefault,
     right: 15,
     top: 40,
     alignItems: 'center',
@@ -244,7 +244,7 @@ const styles = StyleSheet.create({
   backButtonLabel: {
     fontFamily: fonts.semiBold,
     fontSize: 13,
-    color: colors.fontDark,
+    color: colors.fontLight,
   },
 
   formContainer: {
@@ -319,7 +319,7 @@ const styles = StyleSheet.create({
   },
 
   submitButtonContainer: {
-    backgroundColor: colors.backgroundLight,
+    backgroundColor: colors.buttonDefault,
     height: 40,
     width: '35%',
     alignItems: 'center',
@@ -332,6 +332,7 @@ const styles = StyleSheet.create({
   submitLabel: {
     fontFamily: fonts.semiBold,
     fontSize: 18,
+    color: colors.fontLight,
   },
 });
 

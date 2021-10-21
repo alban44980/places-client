@@ -113,6 +113,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 5,
     fontSize: 12,
+    backgroundColor: colors.buttonDefault,
   },
 });
 

@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
   },
 
   buttonSelected: {
-    backgroundColor: colors.backgroundDark,
+    backgroundColor: colors.buttonDefault,
     width: '40%',
     height: '5%',
     justifyContent: 'center',

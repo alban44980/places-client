@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
   Button,
+  Keyboard,
 } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
@@ -116,7 +117,7 @@ function Login() {
           style={styles.loginButtonContainer}
           onPress={handleSubmit(onSubmit)}
         >
-          <Text>Login</Text>
+          <Text style={{ color: colors.fontLight }}>Login</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -130,7 +131,7 @@ const styles = StyleSheet.create({
   },
 
   topContainer: {
-    height: '25%',
+    height: '40%',
     backgroundColor: colors.backgroundLight,
     display: 'flex',
     justifyContent: 'center',
@@ -176,6 +177,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 5,
+    backgroundColor: colors.buttonDefault,
   },
 });
 

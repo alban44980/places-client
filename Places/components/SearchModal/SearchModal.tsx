@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
   tagContainer: {
     height: '5%',
     width: '100%',
-    backgroundColor: colors.backgroundDark,
+    backgroundColor: colors.buttonDefault,
     marginTop: 10,
   },
 

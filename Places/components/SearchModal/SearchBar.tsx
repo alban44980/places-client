@@ -5,6 +5,7 @@ import {
   Text,
   TextInput,
   TouchableHighlight,
+  Image,
 } from 'react-native';
 
 import colors from '../../assets/styles/colors';
@@ -78,7 +79,10 @@ function SearchBar(props: any) {
         style={styles.filterButtonContainer}
         onPress={handlePress}
       >
-        <Text style={styles.filterText}>Filter</Text>
+        <Image
+          style={styles.filterIcon}
+          source={require('./../../assets/generalIcons/filter.png')}
+        />
       </TouchableHighlight>
     </View>
   );
@@ -109,19 +113,18 @@ const styles = StyleSheet.create({
   },
 
   filterButtonContainer: {
-    backgroundColor: colors.backgroundDark,
+    backgroundColor: colors.buttonDefault,
     height: '70%',
     width: '13%',
     justifyContent: 'center',
     borderRadius: 10,
     borderColor: colors.backgroundDark,
     borderWidth: 1,
+    alignItems: 'center',
   },
 
-  filterText: {
-    fontSize: 12,
-    textAlign: 'center',
-    color: colors.fontLight,
-    fontFamily: fonts.regular,
+  filterIcon: {
+    height: 32,
+    width: 30,
   },
 });

@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   closeButton: {
     height: '5%',
     width: '17%',
-    backgroundColor: colors.backgroundLight,
+    backgroundColor: colors.buttonDefault,
     borderColor: colors.backgroundDark,
     borderStyle: 'solid',
     borderWidth: 0.5,
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   },
 
   closeButtonText: {
-    color: colors.fontDark,
+    color: colors.fontLight,
     fontFamily: fonts.light,
     fontSize: 14,
     fontWeight: '600',
