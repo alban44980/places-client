@@ -102,7 +102,7 @@ function Profile() {
     <SafeAreaView style={styles.profileContainer}>
       {placeVisible && (
         <PlaceModal
-          showSaveButton={false}
+          showSaveButton={true}
           place={selectedPlace}
           placeVisible={placeVisible}
           setPlaceVisible={setPlaceVisible}

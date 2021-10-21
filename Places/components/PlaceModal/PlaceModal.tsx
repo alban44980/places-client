@@ -31,11 +31,7 @@ function PlaceModal(props: any) {
       <SafeAreaView style={styles.modalSAVContainer}>
         <CloseButton handlePress={handlePress} />
 
-        {showSaveButton ? (
-          <Text>""</Text>
-        ) : (
-          <AddSavePlace placeToSave={place} />
-        )}
+        {showSaveButton ? <Text></Text> : <AddSavePlace placeToSave={place} />}
         <PlaceImage place={place} />
         <BlurView intensity={90} style={styles.blurView}>
           <HeaderSection place={place} />
