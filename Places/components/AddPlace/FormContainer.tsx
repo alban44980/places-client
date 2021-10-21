@@ -90,12 +90,14 @@ function FormContainer({ image, setImage }) {
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
               style={styles.placeNameInput}
+              onChangeText={onChange}
+              value={nameInput}
+              placeholder="Name"
+              autoCapitalize="none"
               onChangeText={(text) => {
                 setNameInput(text);
               }}
               value={nameInput}
-              placeholder="Name"
-              autoCapitalize="none"
             />
           )}
         />
@@ -108,9 +110,6 @@ function FormContainer({ image, setImage }) {
           setCity={setCity}
           setCountry={setCountry}
           value={cityInput}
-          onChangeText={(text) => {
-            setCityInput(text);
-          }}
         />
       </View>
 
@@ -121,9 +120,6 @@ function FormContainer({ image, setImage }) {
           setAddress={setAddress}
           country={country}
           value={addressInput}
-          onChangeText={(text) => {
-            setAddressInput(text);
-          }}
         />
       </View>
 
