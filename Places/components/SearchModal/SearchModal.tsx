@@ -120,9 +120,15 @@ export default SearchModal;
 
 const styles = StyleSheet.create({
   tagContainer: {
+<<<<<<< HEAD
     height: "5%",
     width: "100%",
     backgroundColor: colors.backgroundDark,
+=======
+    height: '5%',
+    width: '100%',
+    backgroundColor: colors.buttonDefault,
+>>>>>>> finalFormatting
     marginTop: 10,
   },
 

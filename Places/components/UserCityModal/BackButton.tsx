@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   closeButton: {
     height: '20%',
     width: '22%',
-    backgroundColor: colors.backgroundLight,
+    backgroundColor: colors.buttonDefault,
     borderColor: colors.backgroundDark,
     borderStyle: 'solid',
     justifyContent: 'center',

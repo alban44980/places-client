@@ -236,7 +236,7 @@ const styles = StyleSheet.create({
   submitButton: {
     height: 45,
     width: 90,
-    backgroundColor: colors.formInputBackgroundLight,
+    backgroundColor: colors.buttonDefault,
     marginVertical: 5,
     alignItems: "center",
     justifyContent: "center",
@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
 
   submitLabel: {
     fontFamily: fonts.semiBold,
-    color: colors.fontDark,
+    color: colors.fontLight,
   },
 });
 

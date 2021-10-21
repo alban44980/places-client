@@ -54,18 +54,19 @@ const styles = StyleSheet.create({
   },
 
   filterButtonContainer: {
-    backgroundColor: colors.backgroundLight,
-    height: '70%',
+    backgroundColor: colors.buttonDefault,
+    height: '55%',
     width: '80%',
     justifyContent: 'center',
-    borderRadius: 10,
+    borderRadius: 5,
     marginTop: 5,
+    borderWidth: 0.5,
   },
 
   filterText: {
     fontSize: 15,
     textAlign: 'center',
-    color: colors.fontDark,
+    color: colors.fontLight,
     fontFamily: fonts.semiBold,
     letterSpacing: 0.75,
   },

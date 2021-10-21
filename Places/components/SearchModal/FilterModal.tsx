@@ -104,11 +104,12 @@ const styles = StyleSheet.create({
     borderColor: colors.backgroundDark,
     borderWidth: 1,
     borderRadius: 10,
+    backgroundColor: colors.buttonDefault,
   },
 
   acceptButtonText: {
     textAlign: 'center',
-    color: colors.fontDark,
+    color: colors.fontLight,
     fontFamily: fonts.medium,
     fontSize: 15,
   },
