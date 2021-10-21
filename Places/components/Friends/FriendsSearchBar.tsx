@@ -5,15 +5,6 @@ import {
   TextInput,
   TouchableHighlight,
   TouchableOpacity,
-<<<<<<< HEAD
-} from "react-native";
-import React, { useState } from "react";
-import colors from "../../assets/styles/colors";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/reducers/reducers";
-import ApiService from "../../ApiService";
-import { SearchUserSchema } from "../../Interfaces";
-=======
   Image,
 } from 'react-native';
 import React, { useState } from 'react';
@@ -22,7 +13,6 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/reducers/reducers';
 import ApiService from '../../ApiService';
 import { SearchUserSchema } from '../../Interfaces';
->>>>>>> finalFormatting
 
 function FriendsSearchBar({
   setView,
@@ -40,7 +30,7 @@ function FriendsSearchBar({
     (state: RootState) => state.refreshToken
   );
   const toggleList = () => setView((previousState: boolean) => !previousState);
-  const [searchInput, setSearchInput] = useState<string>("");
+  const [searchInput, setSearchInput] = useState<string>('');
 
   const filterFriendsList = (search: string) => {
     let res: any = [];
@@ -114,7 +104,7 @@ function FriendsSearchBar({
         style={styles.findNewFriendsButton}
         onPress={() => {
           toggleList();
-          setSearchInput("");
+          setSearchInput('');
           setFriendsList(userFriendInfo);
           setNonFriendsList([]);
         }}
@@ -133,18 +123,18 @@ export default FriendsSearchBar;
 const styles = StyleSheet.create({
   searchBarContainer: {
     backgroundColor: colors.accentFun,
-    width: "100%",
-    height: "12%",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row",
+    width: '100%',
+    height: '12%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
   },
 
   searchBar: {
     backgroundColor: colors.backgroundLight,
-    height: "50%",
-    width: "60%",
-    paddingLeft: "3%",
+    height: '50%',
+    width: '60%',
+    paddingLeft: '3%',
     borderRadius: 10,
     borderColor: colors.backgroundLight,
     borderWidth: 1,
@@ -152,16 +142,6 @@ const styles = StyleSheet.create({
   },
 
   findNewFriendsButton: {
-<<<<<<< HEAD
-    height: "45%",
-    width: "11%",
-    backgroundColor: colors.backgroundDark,
-    borderWidth: 1,
-    borderRadius: 10,
-    alignItems: "center",
-    justifyContent: "center",
-    marginHorizontal: 10,
-=======
     height: '50%',
     width: '13%',
     borderWidth: 1,
@@ -169,7 +149,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     // marginHorizontal: 15,
->>>>>>> finalFormatting
   },
 
   addIcon: {
