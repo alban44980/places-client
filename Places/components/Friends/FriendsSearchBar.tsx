@@ -122,7 +122,7 @@ export default FriendsSearchBar;
 
 const styles = StyleSheet.create({
   searchBarContainer: {
-    backgroundColor: colors.accentFun,
+    backgroundColor: colors.buttonDefault,
     width: '100%',
     height: '12%',
     justifyContent: 'center',

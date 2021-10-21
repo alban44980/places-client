@@ -5,6 +5,7 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  Image,
   Button,
   Keyboard,
 } from 'react-native';
@@ -62,7 +63,11 @@ function Login() {
   return (
     <View style={styles.loginContainer}>
       <View style={styles.topContainer}>
-        <Text style={styles.headerText}>MY PLACES</Text>
+        <Image
+          style={styles.logoImage}
+          source={require('./../../assets/logo/myplaceslogo1.png')}
+        />
+        <Text style={styles.headerText}>MyPlaces</Text>
       </View>
       <View style={styles.formContainer}>
         <Controller
@@ -136,14 +141,21 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: 20,
+    paddingTop: 60,
+    // borderWidth: 1,
+  },
+
+  logoImage: {
+    height: 100,
+    width: 100,
+    marginBottom: 10,
   },
 
   headerText: {
     color: colors.fontDark,
     fontSize: 40,
     fontFamily: fonts.medium,
-    letterSpacing: 1,
+    letterSpacing: 0.5,
   },
 
   formContainer: {

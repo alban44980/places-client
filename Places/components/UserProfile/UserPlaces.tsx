@@ -13,6 +13,7 @@ import colors from '../../assets/styles/colors';
 import fonts from '../../assets/styles/fonts';
 import { RootState } from '../../redux/reducers/reducers';
 import { BlurView } from 'expo-blur';
+import cities from '../../assets/defaultCities/defaultCities';
 
 function UserPlaces({
   citiesPlaces,
@@ -29,6 +30,12 @@ function UserPlaces({
     setCityPlacesVisible(!cityPlacesVisible);
   };
 
+  for (let city of citiesPlaces) {
+    if (city.name === 'Barcelona') city.img = cities.Barcelona;
+    if (city.name === 'London') city.img = cities.London;
+    if (city.name === 'Berlin') city.img = cities.Berlin;
+  }
+
   const renderItem = ({ item }: any) => (
     <TouchableOpacity
       style={styles.itemContainer}
@@ -37,7 +44,7 @@ function UserPlaces({
       <Image
         style={styles.img}
         source={{
-          uri: 'https://images.pexels.com/photos/374870/pexels-photo-374870.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
+          uri: item.img,
         }}
         resizeMode="cover"
       />

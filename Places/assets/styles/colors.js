@@ -7,7 +7,7 @@ const colors = {
   fontLight: 'rgba(250, 243, 221, 1)',
   accentFun: 'rgba(102, 178, 255, 1)',
   formInputBackgroundLight: 'rgba(255, 255, 255, 1)',
-  buttonDefault: 'rgba(102, 178, 255, 1)',
+  buttonDefault: 'rgba(53, 167, 255, 1)',
 };
 
 export default colors;
