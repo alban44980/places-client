@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   backButtonLabel: {
     fontFamily: fonts.semiBold,
     fontSize: 13,
-    color: colors.fontDark,
+    color: colors.fontLight,
   },
 });
 

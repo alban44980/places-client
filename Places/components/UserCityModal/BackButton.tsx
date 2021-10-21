@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   },
 
   closeButtonText: {
-    color: colors.fontDark,
+    color: colors.fontLight,
     fontFamily: fonts.semiBold,
     fontSize: 14,
     textAlign: 'center',
