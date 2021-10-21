@@ -21,9 +21,10 @@ function MapContainer({
       showsUserLocation={true}
     >
       {placesToShow
-        ? placesToShow.map((place: any) => {
+        ? placesToShow.map((place: any, index: number) => {
             return (
               <Marker
+                key={index}
                 coordinate={{
                   latitude: Number(place.lat),
                   longitude: Number(place.lng),

@@ -65,9 +65,13 @@ function Map() {
       );
       const cityGeo = await cityGeoCall.json();
 
-      setLocation({
-        coords: cityGeo.results[0].geometry.location,
-      });
+      try {
+        setLocation({
+          coords: cityGeo.results[0].geometry.location,
+        });
+      } catch (error) {
+        console.log(error);
+      }
     })();
   }, [inputValue]);
 
@@ -114,6 +118,7 @@ function Map() {
           >
             <View style={styles.searchContainer}>
               <CityInput
+                key={1}
                 setInputValue={setInputValue}
                 setCountry={setCountry}
                 cityCoords={cityCoords}
