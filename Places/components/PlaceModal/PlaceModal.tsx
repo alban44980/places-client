@@ -6,18 +6,18 @@ import {
   Image,
   TouchableHighlight,
   SafeAreaView,
-} from "react-native";
-import React from "react";
-import CloseButton from "./CloseButton";
-import PlaceImage from "./PlaceImage";
-import HeaderSection from "./HeaderSection";
-import DetailsBar from "./DetailsBar";
-import Description from "./Description";
-import Tags from "./Tags";
-import AddSavePlace from "./AddSavePlace";
-import colors from "../../assets/styles/colors";
+} from 'react-native';
+import React from 'react';
+import CloseButton from './CloseButton';
+import PlaceImage from './PlaceImage';
+import HeaderSection from './HeaderSection';
+import DetailsBar from './DetailsBar';
+import Description from './Description';
+import Tags from './Tags';
+import AddSavePlace from './AddSavePlace';
+import colors from '../../assets/styles/colors';
 
-import { BlurView } from "expo-blur";
+import { BlurView } from 'expo-blur';
 
 function PlaceModal(props: any) {
   const { place, setPlaceVisible, placeVisible, showSaveButton } = props;
@@ -37,7 +37,7 @@ function PlaceModal(props: any) {
           <AddSavePlace placeToSave={place} />
         )}
         <PlaceImage place={place} />
-        <BlurView intensity={80} style={styles.blurView}>
+        <BlurView intensity={90} style={styles.blurView}>
           <HeaderSection place={place} />
           <DetailsBar place={place} />
           {place.Tags && (
@@ -58,21 +58,20 @@ const styles = StyleSheet.create({
   modalSAVContainer: {
     flex: 1,
     backgroundColor: colors.backgroundLight,
-    alignItems: "center",
+    alignItems: 'center',
   },
 
   blurView: {
-    position: "absolute",
+    position: 'absolute',
     top: 405,
-    height: "20%",
-    width: "90%",
-    alignItems: "center",
-    justifyContent: "center",
+    height: '20%',
+    width: '90%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   tagContainer: {
-    height: "15%",
-    width: "90%",
-    marginBottom: 15,
+    height: '20%',
+    width: '90%',
   },
 });

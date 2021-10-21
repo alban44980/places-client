@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   },
 
   placeTitle: {
-    fontSize: 20,
+    fontSize: 22,
     color: colors.fontLight,
     textAlign: 'center',
     fontFamily: fonts.semiBold,

@@ -3,7 +3,14 @@
 import React, { useState, useEffect } from 'react';
 import { REACT_APP_GOOGLE_MAPS_API_KEY } from '@env';
 
-import { StyleSheet, View, Text, SafeAreaView } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  SafeAreaView,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from 'react-native';
 import CityInput from '../components/AddPlace/CityInput';
 import colors from '../assets/styles/colors';
 import * as Location from 'expo-location';
@@ -101,14 +108,19 @@ function Map() {
       )}
       {location ? (
         <View style={{ flex: 1 }}>
-          <View style={styles.searchContainer}>
-            <CityInput
-              setInputValue={setInputValue}
-              setCountry={setCountry}
-              cityCoords={cityCoords}
-              setCityCoords={setCityCoords}
-            />
-          </View>
+          <TouchableWithoutFeedback
+            style={{ flex: 1, zIndex: 2 }}
+            onPress={Keyboard.dismiss}
+          >
+            <View style={styles.searchContainer}>
+              <CityInput
+                setInputValue={setInputValue}
+                setCountry={setCountry}
+                cityCoords={cityCoords}
+                setCityCoords={setCityCoords}
+              />
+            </View>
+          </TouchableWithoutFeedback>
 
           <View style={{ height: '80%', zIndex: -1 }}>
             <MapContainer

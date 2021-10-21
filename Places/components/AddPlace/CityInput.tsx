@@ -27,8 +27,15 @@ const CityInput = ({
         types: ['(cities)'],
       }}
       styles={{
-        container: { flex: 1, zIndex: 5, height: 100 },
-        textInputContainer: { width: '100%', flex: 1 },
+        container: {
+          flex: 1,
+          zIndex: 5,
+          height: 100,
+        },
+        textInputContainer: {
+          width: '100%',
+          flex: 1,
+        },
         textInput: {
           fontFamily: fonts.regular,
           fontSize: 14,
@@ -39,9 +46,12 @@ const CityInput = ({
           zIndex: 10,
           position: 'absolute',
           top: 50,
-          height: 200,
+          height: 150,
         },
-        row: { flex: 1, alignItems: 'center' },
+        row: {
+          flex: 1,
+          alignItems: 'center',
+        },
         description: {
           color: colors.fontDark,
           fontSize: 14,

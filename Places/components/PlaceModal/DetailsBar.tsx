@@ -25,7 +25,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 5,
     paddingHorizontal: 50,
     overflow: 'hidden',
   },
@@ -34,12 +33,13 @@ const styles = StyleSheet.create({
     fontSize: 13,
     marginRight: 10,
     color: colors.fontLight,
-    fontFamily: fonts.medium,
+    fontFamily: fonts.semiBold,
   },
 
   locationText: {
-    fontSize: 11,
+    fontSize: 12,
     color: colors.fontLight,
-    fontFamily: fonts.light,
+    fontFamily: fonts.medium,
+    overflow: 'scroll',
   },
 });
