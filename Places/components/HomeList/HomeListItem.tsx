@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   StyleSheet,
   Text,
@@ -6,22 +6,22 @@ import {
   TouchableOpacity,
   View,
   Image,
-} from "react-native";
+} from 'react-native';
 
-import { useNavigation } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { RootStackParamList } from "../../App";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../../redux/reducers/reducers";
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../../App';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../redux/reducers/reducers';
 import {
   setUserData,
   toggleSearchVisible,
   togglePlaceVisible,
   setPlaceSelected,
-} from "../../redux/actions/actions";
-import colors from "../../assets/styles/colors";
-import { BlurView } from "expo-blur";
-import fonts from "../../assets/styles/fonts";
+} from '../../redux/actions/actions';
+import colors from '../../assets/styles/colors';
+import { BlurView } from 'expo-blur';
+import fonts from '../../assets/styles/fonts';
 
 function HomeListItem({
   data,
@@ -42,17 +42,17 @@ function HomeListItem({
   );
 
   const handlePress = () => {
-    if (route === "userProfile") {
+    if (route === 'userProfile') {
       setFriend(data);
-      navigation.navigate("userProfile", data);
+      navigation.navigate('userProfile', data);
     }
 
-    if (route === "search") {
+    if (route === 'search') {
       setCity(data.name);
       setSearchVisible(!searchVisible);
     }
 
-    if (route === "place") {
+    if (route === 'place') {
       setPlace(data);
       setPlaceVisible(!placeVisible);
     }
@@ -65,13 +65,13 @@ function HomeListItem({
         source={{
           uri:
             data.img ||
-            "https://images.unsplash.com/photo-1634501087922-c01c76ed66d6?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1M3x8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60",
+            'https://images.unsplash.com/photo-1634501087922-c01c76ed66d6?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1M3x8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60',
         }}
         resizeMode="cover"
       />
       <BlurView intensity={80} style={styles.textContainer}>
         <Text style={styles.title}>
-          {route !== "userProfile" ? data.name : data.first_name}
+          {route !== 'userProfile' ? data.name : data.first_name}
         </Text>
       </BlurView>
     </TouchableOpacity>
@@ -83,31 +83,31 @@ const styles = StyleSheet.create({
     marginHorizontal: 15,
     width: 200,
     height: 200,
-    alignItems: "center",
-    justifyContent: "flex-end",
+    alignItems: 'center',
+    justifyContent: 'flex-end',
     borderRadius: 5,
-    overflow: "hidden",
+    overflow: 'hidden',
     borderWidth: 0.5,
   },
 
   img: {
-    width: "100%",
-    height: "100%",
-    position: "absolute",
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
   },
 
   textContainer: {
-    height: "30%",
-    width: "100%",
-    position: "absolute",
-    alignItems: "center",
-    justifyContent: "center",
+    height: '30%',
+    width: '100%',
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   title: {
     color: colors.fontLight,
     fontFamily: fonts.semiBold,
-    textAlign: "center",
+    textAlign: 'center',
     fontSize: 16,
   },
 });
