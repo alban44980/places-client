@@ -18,7 +18,7 @@ export default Description;
 
 const styles = StyleSheet.create({
   descriptionContainer: {
-    height: '26%',
+    height: '17%',
     backgroundColor: colors.backgroundLight,
     borderColor: colors.backgroundDark,
     borderWidth: 1,

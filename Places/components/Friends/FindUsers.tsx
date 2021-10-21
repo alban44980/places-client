@@ -5,12 +5,13 @@ import {
   ScrollView,
   TouchableOpacity,
   Image,
-} from "react-native";
-import React from "react";
-import colors from "../../assets/styles/colors";
-import { RootStackParamList } from "../../App";
-import { useNavigation } from "@react-navigation/core";
-import { StackNavigationProp } from "@react-navigation/stack";
+} from 'react-native';
+import React from 'react';
+import colors from '../../assets/styles/colors';
+import { RootStackParamList } from '../../App';
+import { useNavigation } from '@react-navigation/core';
+import { StackNavigationProp } from '@react-navigation/stack';
+import fonts from '../../assets/styles/fonts';
 
 function FindUsers({ nonFriendsList }: any) {
   type userScreenProp = StackNavigationProp<RootStackParamList>;
@@ -18,7 +19,7 @@ function FindUsers({ nonFriendsList }: any) {
 
   const handlePress = (friend: any) => {
     const data = friend;
-    navigation.navigate("userProfile", data);
+    navigation.navigate('userProfile', data);
   };
 
   return (
@@ -44,7 +45,10 @@ function FindUsers({ nonFriendsList }: any) {
               </View>
 
               <View style={styles.textContainer}>
-                <Text style={styles.friendsName}>{friend.user_name}</Text>
+                <Text style={styles.friendsUserName}>{friend.user_name}</Text>
+                <Text style={styles.friendsName}>
+                  {friend.first_name} {friend.last_name}
+                </Text>
               </View>
             </TouchableOpacity>
           );
@@ -58,61 +62,68 @@ export default FindUsers;
 
 const styles = StyleSheet.create({
   listContainer: {
-    backgroundColor: colors.backgroundDark,
+    backgroundColor: colors.backgroundLight,
     flex: 1,
-    alignItems: "center",
+    alignItems: 'center',
     paddingTop: 30,
   },
 
   scrollViewVisual: {
-    width: "90%",
-    backgroundColor: colors.backgroundLight,
+    width: '90%',
     borderRadius: 10,
   },
 
   scrollViewFunctional: {
-    alignItems: "center",
+    alignItems: 'center',
   },
 
   friendContainer: {
-    backgroundColor: colors.accentFun,
     height: 75,
-    width: "80%",
+    width: '80%',
     marginVertical: 15,
-    flexDirection: "row",
-    alignItems: "center",
-    borderRadius: 10,
-    borderColor: colors.backgroundDark,
-    borderWidth: 1,
+    borderColor: colors.backgroundLight,
+    flexDirection: 'row',
+  },
+
+  blurStyle: {
+    width: '100%',
     paddingHorizontal: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderRadius: 10,
+    height: '100%',
   },
 
   imageContainer: {
-    width: "25%",
-    height: "80%",
-    borderWidth: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    width: '25%',
+    height: '80%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   img: {
-    borderRadius: 10,
+    borderRadius: 100,
     borderWidth: 1,
-    height: "90%",
-    width: "90%",
+    height: 60,
+    width: 60,
   },
 
   textContainer: {
     marginLeft: 20,
-    borderWidth: 1,
-    width: "60%",
-    height: "60%",
-    justifyContent: "center",
+    width: '60%',
+    height: '60%',
+    justifyContent: 'center',
     paddingHorizontal: 10,
   },
 
   friendsName: {
-    fontSize: 22,
-    fontWeight: "400",
+    fontSize: 15,
+    fontFamily: fonts.regular,
+    color: colors.backgroundMedium,
+  },
+
+  friendsUserName: {
+    fontSize: 16,
+    fontFamily: fonts.medium,
   },
 });

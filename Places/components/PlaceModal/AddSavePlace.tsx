@@ -1,21 +1,25 @@
-import { StyleSheet, Text, TouchableHighlight } from "react-native";
-import React from "react";
-import colors from "../../assets/styles/colors";
-import fonts from "../../assets/styles/fonts";
-import { PlaceSchema, TagSchema } from "../../Interfaces";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/reducers/reducers";
-import ApiService from "../../ApiService";
+import { StyleSheet, Text, TouchableHighlight } from 'react-native';
+import React, { useState } from 'react';
+import colors from '../../assets/styles/colors';
+import fonts from '../../assets/styles/fonts';
+import { PlaceSchema, TagSchema } from '../../Interfaces';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/reducers/reducers';
+import ApiService from '../../ApiService';
 
 function AddSavePlace(props: any) {
   const { placeToSave } = props;
+
   const accessToken: any = useSelector((state: RootState) => state.accessToken);
   const refreshToken: any = useSelector(
     (state: RootState) => state.refreshToken
   );
 
+  const [pressed, setPressed] = useState<Boolean>(false);
+
   async function handlePress() {
     try {
+      setPressed(!pressed);
       if (placeToSave) {
         const formatedPlace: PlaceSchema = formatPlace(placeToSave);
 
@@ -59,8 +63,13 @@ function AddSavePlace(props: any) {
   }
 
   return (
-    <TouchableHighlight onPress={() => handlePress()} style={styles.saveButton}>
-      <Text style={styles.saveButtonText}>Add Save Place</Text>
+    <TouchableHighlight
+      onPress={() => handlePress()}
+      style={pressed ? styles.buttonSelected : styles.buttonNotSelected}
+    >
+      <Text style={pressed ? styles.labelSelected : styles.labelNotSelected}>
+        Save Place
+      </Text>
     </TouchableHighlight>
   );
 }
@@ -68,27 +77,40 @@ function AddSavePlace(props: any) {
 export default AddSavePlace;
 
 const styles = StyleSheet.create({
-  saveButton: {
-    height: "5%",
-    width: "22%",
-    backgroundColor: colors.backgroundDark,
-    borderColor: colors.backgroundLight,
-    borderStyle: "solid",
-    borderWidth: 0.5,
-    justifyContent: "center",
-    borderRadius: 10,
-    alignSelf: "center",
-    position: "absolute",
-    bottom: 60,
-    left: "40%",
-    zIndex: 2,
+  labelNotSelected: {
+    fontSize: 13,
+    fontFamily: fonts.medium,
+    letterSpacing: 0.8,
   },
 
-  saveButtonText: {
+  labelSelected: {
+    fontSize: 13,
+    fontFamily: fonts.medium,
+    letterSpacing: 0.8,
     color: colors.fontLight,
-    fontFamily: fonts.light,
-    fontSize: 14,
-    fontWeight: "600",
-    textAlign: "center",
+  },
+
+  buttonSelected: {
+    backgroundColor: colors.backgroundDark,
+    width: '40%',
+    height: '5%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+    borderWidth: 1,
+    position: 'absolute',
+    bottom: 60,
+  },
+
+  buttonNotSelected: {
+    backgroundColor: 'transparent',
+    width: '40%',
+    height: '5%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+    borderWidth: 1,
+    position: 'absolute',
+    bottom: 60,
   },
 });
