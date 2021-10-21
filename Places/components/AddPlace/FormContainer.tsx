@@ -1,28 +1,32 @@
 //@ts-nocheck
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import { REACT_APP_GOOGLE_MAPS_API_KEY } from '@env';
+import { REACT_APP_GOOGLE_MAPS_API_KEY } from "@env";
 
-import { StyleSheet, View, TextInput, Button, Text } from 'react-native';
-import colors from '../../assets/styles/colors';
-import { useForm, Controller } from 'react-hook-form';
-import TagsContainer from './tagsContainer';
-import CityInput from './CityInput';
-import AddressInput from './AddressInput';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import ApiService from '../../ApiService';
-import { useSelector } from 'react-redux';
-import fonts from '../../assets/styles/fonts';
+import { StyleSheet, View, TextInput, Button, Text } from "react-native";
+import colors from "../../assets/styles/colors";
+import { useForm, Controller } from "react-hook-form";
+import TagsContainer from "./tagsContainer";
+import CityInput from "./CityInput";
+import AddressInput from "./AddressInput";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import ApiService from "../../ApiService";
+import { useSelector } from "react-redux";
+import fonts from "../../assets/styles/fonts";
 
 function FormContainer({ image, setImage }) {
+  const [nameInput, setNameInput] = useState<string>("");
+  const [cityInput, setCityInput] = useState<string>("");
+  const [addressInput, setAddressInput] = useState<string>("");
+  const [describeInput, setDescribeInput] = useState<string>("");
   const accessToken: any = useSelector((state: RootState) => state.accessToken);
   const refreshToken: any = useSelector(
     (state: RootState) => state.refreshToken
   );
 
-  const [city, setCity] = useState<string>('');
-  const [country, setCountry] = useState<string>('');
-  const [address, setAddress] = useState<string>('');
+  const [city, setCity] = useState<string>("");
+  const [country, setCountry] = useState<string>("");
+  const [address, setAddress] = useState<string>("");
   const [formTags, setFormTags] = useState<any>([]);
 
   const {
@@ -34,7 +38,7 @@ function FormContainer({ image, setImage }) {
   //submit form function
   const onSubmit = async (data: any) => {
     if (!image) {
-      alert('OH NOR IMAGE IS STILL LOADING');
+      alert("OH NOR IMAGE IS STILL LOADING");
       return;
     }
     const cityGeoCall = await fetch(
@@ -86,8 +90,10 @@ function FormContainer({ image, setImage }) {
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
               style={styles.placeNameInput}
-              onChangeText={onChange}
-              value={value}
+              onChangeText={(text) => {
+                setNameInput(text);
+              }}
+              value={nameInput}
               placeholder="Name"
               autoCapitalize="none"
             />
@@ -98,7 +104,14 @@ function FormContainer({ image, setImage }) {
       {/* <View style={styles.googleInputFieldsContainer}> */}
       <View style={styles.cityInputContainer}>
         <Text style={styles.inputLabelText}>Choose a city</Text>
-        <CityInput setCity={setCity} setCountry={setCountry} />
+        <CityInput
+          setCity={setCity}
+          setCountry={setCountry}
+          value={cityInput}
+          onChangeText={(text) => {
+            setCityInput(text);
+          }}
+        />
       </View>
 
       <View style={styles.addressInputContainer}>
@@ -107,6 +120,10 @@ function FormContainer({ image, setImage }) {
           address={address}
           setAddress={setAddress}
           country={country}
+          value={addressInput}
+          onChangeText={(text) => {
+            setAddressInput(text);
+          }}
         />
       </View>
 
@@ -121,8 +138,10 @@ function FormContainer({ image, setImage }) {
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
               style={styles.placeDescription}
-              onChangeText={onChange}
-              value={value}
+              onChangeText={(text) => {
+                setDescribeInput(text);
+              }}
+              value={describeInput}
               placeholder="Description"
               autoCapitalize="none"
               multiline={true}
@@ -136,7 +155,13 @@ function FormContainer({ image, setImage }) {
 
       <TouchableOpacity
         style={styles.submitButton}
-        onPress={handleSubmit(onSubmit)}
+        onPress={() => {
+          handleSubmit(onSubmit);
+          setNameInput("");
+          setCityInput("");
+          setAddressInput("");
+          setDescribeInput("");
+        }}
       >
         <Text style={styles.submitLabel}>Submit</Text>
       </TouchableOpacity>
@@ -148,31 +173,31 @@ const styles = StyleSheet.create({
   formContainer: {
     backgroundColor: colors.backgroundLight,
     height: 520,
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "flex-start",
   },
 
   placeNameInputContainer: {
-    height: '16%',
-    width: '100%',
+    height: "16%",
+    width: "100%",
   },
 
   cityInputContainer: {
-    height: '16%',
-    width: '100%',
+    height: "16%",
+    width: "100%",
     zIndex: 5,
   },
 
   addressInputContainer: {
-    height: '16%',
-    width: '100%',
+    height: "16%",
+    width: "100%",
     zIndex: 3,
   },
 
   descriptionInputContainer: {
-    height: '25%',
-    width: '100%',
+    height: "25%",
+    width: "100%",
   },
 
   inputLabelText: {
@@ -185,8 +210,8 @@ const styles = StyleSheet.create({
 
   placeNameInput: {
     backgroundColor: colors.formInputBackgroundLight,
-    height: '50%',
-    width: '100%',
+    height: "50%",
+    width: "100%",
     paddingHorizontal: 10,
     borderRadius: 5,
     fontFamily: fonts.regular,
@@ -195,15 +220,15 @@ const styles = StyleSheet.create({
   },
 
   googleInputFieldsContainer: {
-    height: '30%',
-    width: '100%',
-    justifyContent: 'space-evenly',
+    height: "30%",
+    width: "100%",
+    justifyContent: "space-evenly",
     zIndex: 3,
   },
 
   placeDescription: {
     backgroundColor: colors.formInputBackgroundLight,
-    height: '70%',
+    height: "70%",
     padding: 10,
     borderRadius: 5,
     fontFamily: fonts.regular,
@@ -217,8 +242,8 @@ const styles = StyleSheet.create({
     width: 90,
     backgroundColor: colors.formInputBackgroundLight,
     marginVertical: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     borderRadius: 10,
     borderWidth: 1,
   },
