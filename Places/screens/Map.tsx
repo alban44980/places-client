@@ -65,9 +65,13 @@ function Map() {
       );
       const cityGeo = await cityGeoCall.json();
 
-      setLocation({
-        coords: cityGeo.results[0].geometry.location,
-      });
+      try {
+        setLocation({
+          coords: cityGeo.results[0].geometry.location,
+        });
+      } catch (error) {
+        console.log(error);
+      }
     })();
   }, [inputValue]);
 
