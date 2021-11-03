@@ -80,3 +80,13 @@ Enjoy!
 - Make sure to have Expo installed on your machine (npm install --global expo-cli)
 - On your phone, download the Expo app.
 - Run npm start from the terminal, and scan the QR code from your expo app, the app will start running on your phone (you also have the option to use a simulator such as Xcode if you prefer)
+
+
+## Developers Team
+
+- Alban Mansord [Github](https://github.com/alban44980) - [LinkedIn](https://www.linkedin.com/in/alban-mansord/) 
+- Connor Musson [Github](https://github.com/cmusson) - [LinkedIn](https://www.linkedin.com/in/connor-musson/) 
+- Juliana Halko [Github](https://github.com/Julianahlk) - [LinkedIn](https://www.linkedin.com/in/juliana-halko/)
+- Adriano Gonzalez [Github](https://github.com/AdrianoG117) - [LinkedIn](https://www.linkedin.com/in/adriano-gonzalez-alberto/)
+- Will Sukonik [Github](https://github.com/wms8463) - [LinkedIn](https://www.linkedin.com/in/williamsukonik/) 
+
