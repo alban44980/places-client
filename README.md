@@ -1,5 +1,5 @@
 # MyPlaces - Share your favorite places with friends.
-([MyPlaces Frontend](https://github.com/alban44980/places-server))
+([MyPlaces Backend](https://github.com/alban44980/places-server))
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-yellow.svg?style=flat-square)](#contributors-)
 [![GitHub license](https://img.shields.io/github/license/alban44980/places-client)](https://github.com/alban44980/places-server/blob/develop/LICENSE)
